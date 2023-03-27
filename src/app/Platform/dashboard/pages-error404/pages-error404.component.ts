@@ -14,7 +14,7 @@ export class PagesError404Component implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.router.navigate(['']);
+      history.back();
     }, 4000);
   }
 
