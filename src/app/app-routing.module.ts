@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './INDEX/landing/landing.component';
 import { LoginComponent } from './INDEX/login/login.component';
 import { RegisterComponent } from './INDEX/register/register.component';
+import { AdminInterfaceComponent } from './Platform/admin-interface/admin-interface.component';
 import { AccordionComponent } from './Platform/dashboard/addons/accordion/accordion.component';
 import { AlertsComponent } from './Platform/dashboard/addons/alerts/alerts.component';
 import { BadgesComponent } from './Platform/dashboard/addons/badges/badges.component';
@@ -41,6 +42,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'admin', component: AdminInterfaceComponent },
   { path: 'alerts', component: AlertsComponent },
   { path: 'accordion', component: AccordionComponent },
   { path: 'badges', component: BadgesComponent },
@@ -67,7 +69,7 @@ const routes: Routes = [
   { path: 'tooltips', component: TooltipsComponent },
   { path: 'pages-blank', component: PagesBlankComponent },
   { path: 'pages-contact', component: PagesContactComponent },
-  { path: 'pages-error404', component: PagesError404Component },
+  { path: '**', component: PagesError404Component },
   { path: 'pages-faq', component: PagesFaqComponent },
   { path: 'pages-login', component: PagesLoginComponent },
   { path: 'pages-register', component: PagesRegisterComponent },

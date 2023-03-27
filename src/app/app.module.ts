@@ -9,6 +9,8 @@ import { HomeComponent } from './INDEX/home/home.component';
 import { LoginComponent } from './INDEX/login/login.component';
 import { LandingComponent } from './INDEX/landing/landing.component';
 import { RegisterComponent } from './INDEX/register/register.component';
+import { AdminInterfaceComponent } from './Platform/admin-interface/admin-interface.component';
+import { SidebarComponent } from './Platform/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { RegisterComponent } from './INDEX/register/register.component';
     HomeComponent,
     LoginComponent,
     LandingComponent,
-    RegisterComponent  ],
+    RegisterComponent,
+    SidebarComponent,
+    AdminInterfaceComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule
