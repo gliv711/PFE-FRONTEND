@@ -12,6 +12,7 @@ import { RegisterComponent } from './INDEX/register/register.component';
 import { AdminInterfaceComponent } from './Platform/admin-interface/admin-interface.component';
 import { SidebarComponent } from './Platform/sidebar/sidebar.component';
 import { MultistepComponent } from './INDEX/multistep/multistep.component';
+import { InformationGernalComponent } from './INDEX/information global/information-gernal/information-gernal.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MultistepComponent } from './INDEX/multistep/multistep.component';
     SidebarComponent,
     AdminInterfaceComponent,
     MultistepComponent,
+    InformationGernalComponent,
     ],
   imports: [
     BrowserModule,
