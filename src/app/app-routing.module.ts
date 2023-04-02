@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { InformationGernalComponent } from './INDEX/information global/information-gernal/information-gernal.component';
 import { LandingComponent } from './INDEX/landing/landing.component';
 import { LoginComponent } from './INDEX/login/login.component';
 import { MultistepComponent } from './INDEX/multistep/multistep.component';
@@ -67,7 +68,9 @@ const routes: Routes = [
   { path: 'pages-contact', component: PagesContactComponent },
   { path: '**', component: PagesError404Component },
   { path : 'sidebar', component : SidebarComponent},
-  { path : 'multistep', component:MultistepComponent}
+  { path : 'multistep', component:MultistepComponent},
+  {path : 'information-general',component:InformationGernalComponent}
+
 ];
 
 @NgModule({
