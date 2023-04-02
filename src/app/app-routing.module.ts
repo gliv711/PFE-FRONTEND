@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './INDEX/landing/landing.component';
 import { LoginComponent } from './INDEX/login/login.component';
+import { MultistepComponent } from './INDEX/multistep/multistep.component';
 import { RegisterComponent } from './INDEX/register/register.component';
 import { AdminInterfaceComponent } from './Platform/admin-interface/admin-interface.component';
 import { AccordionComponent } from './Platform/dashboard/addons/accordion/accordion.component';
@@ -36,11 +37,12 @@ import { PagesFaqComponent } from './Platform/dashboard/pages-faq/pages-faq.comp
 import { PagesLoginComponent } from './Platform/dashboard/pages-login/pages-login.component';
 import { PagesRegisterComponent } from './Platform/dashboard/pages-register/pages-register.component';
 import { UsersProfileComponent } from './Platform/dashboard/users-profile/users-profile.component';
+import { SidebarComponent } from './Platform/sidebar/sidebar.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
-  {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
+  {path:'register',component:RegisterComponent},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'admin', component: AdminInterfaceComponent },
   { path: 'alerts', component: AlertsComponent },
@@ -55,25 +57,17 @@ const routes: Routes = [
   { path: 'form-editors', component: FormsEditorsComponent },
   { path: 'form-elements', component: FormsElementsComponent },
   { path: 'form-layouts', component: FormsLayoutsComponent },
-  { path: 'icons-bootstrap', component: IconsBootstrapComponent },
-  { path: 'icons-boxicons', component: IconsBoxiconsComponent },
-  { path: 'icons-remix', component: IconsRemixComponent },
-  { path: 'list-group', component: ListGroupComponent },
-  { path: 'modal', component: ModalComponent },
   { path: 'pagination', component: PaginationComponent },
   { path: 'progress', component: ProgressComponent },
   { path: 'spinners', component: SpinnersComponent },
   { path: 'tables-data', component: TablesDataComponent },
   { path: 'tables-general', component: TablesGeneralComponent },
   { path: 'tabs', component: TabsComponent },
-  { path: 'tooltips', component: TooltipsComponent },
-  { path: 'pages-blank', component: PagesBlankComponent },
+  
   { path: 'pages-contact', component: PagesContactComponent },
   { path: '**', component: PagesError404Component },
-  { path: 'pages-faq', component: PagesFaqComponent },
-  { path: 'pages-login', component: PagesLoginComponent },
-  { path: 'pages-register', component: PagesRegisterComponent },
-  { path: 'user-profile', component: UsersProfileComponent },
+  { path : 'sidebar', component : SidebarComponent},
+  { path : 'multistep', component:MultistepComponent}
 ];
 
 @NgModule({

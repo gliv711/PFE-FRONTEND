@@ -11,6 +11,7 @@ import { LandingComponent } from './INDEX/landing/landing.component';
 import { RegisterComponent } from './INDEX/register/register.component';
 import { AdminInterfaceComponent } from './Platform/admin-interface/admin-interface.component';
 import { SidebarComponent } from './Platform/sidebar/sidebar.component';
+import { MultistepComponent } from './INDEX/multistep/multistep.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { SidebarComponent } from './Platform/sidebar/sidebar.component';
     LandingComponent,
     RegisterComponent,
     SidebarComponent,
-    AdminInterfaceComponent  ],
+    AdminInterfaceComponent,
+    MultistepComponent,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule
