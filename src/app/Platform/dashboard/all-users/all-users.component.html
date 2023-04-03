@@ -13,7 +13,8 @@
         <th scope="col">Nom</th>
         <th scope="col">Email</th>
         <th scope="col"></th>
-        <th scope="col"></th>
+        <th scope="col"><button type="button" class="btn btn-secondary" data-bs-target="#update-add-Modal" data-bs-toggle="modal" >Ajouter</button>
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -59,23 +60,28 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           
 
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Name</label>
+                <label for="exampleFormControlInput1" class="form-label">Nom</label>
                 <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="user.nom">
               </div>
               <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Category</label>
-                <input type="email" class="form-control" id="category" placeholder="" [(ngModel)]="user.prenom">
+                <label for="exampleFormControlInput1" class="form-label">Prénom</label>
+                <input type="email" class="form-control" id="LastName" placeholder="" [(ngModel)]="user.prenom">
               </div>
               <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Rating</label>
-                <input type="email" class="form-control" id="rating" placeholder="" [(ngModel)]="user.email">
+                <label for="exampleFormControlInput1" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="" [(ngModel)]="user.email">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Mot de passe </label>
+                <input type="email" class="form-control" id="password" placeholder="" [(ngModel)]="user.mdp">
               </div>
              
 
@@ -84,7 +90,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()" >Close</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  >Save changes</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addUser(user)" >Save changes</button>
         </div>
       </div>
     </div>

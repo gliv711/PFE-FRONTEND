@@ -46,7 +46,7 @@
     }
 
 
-    addUser(){
+    addUser(user:User){
       this.UserService.addUser(this.user).subscribe({
         next: () => {
           this.getUsers();
