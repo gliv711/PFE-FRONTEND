@@ -39,6 +39,7 @@ import { PagesLoginComponent } from './Platform/dashboard/pages-login/pages-logi
 import { PagesRegisterComponent } from './Platform/dashboard/pages-register/pages-register.component';
 import { UsersProfileComponent } from './Platform/dashboard/users-profile/users-profile.component';
 import { SidebarComponent } from './Platform/sidebar/sidebar.component';
+import { AllUsersComponent } from './Platform/dashboard/all-users/all-users.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -64,6 +65,7 @@ const routes: Routes = [
   { path: 'tables-data', component: TablesDataComponent },
   { path: 'tables-general', component: TablesGeneralComponent },
   { path: 'tabs', component: TabsComponent },
+  {path:'all-users',component:AllUsersComponent},
   
   { path: 'pages-contact', component: PagesContactComponent },
   { path: '**', component: PagesError404Component },
