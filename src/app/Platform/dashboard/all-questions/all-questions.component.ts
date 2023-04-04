@@ -13,9 +13,15 @@ export class AllQuestionsComponent implements OnInit {
   survey: Survey = { id:0, question: '', field: '' };
 
 
+
+    
+
   constructor(private SurveyService : SurveyServiceService) {
     this.getSurvey();
    }
+
+
+  
 
 
 
@@ -65,7 +71,6 @@ export class AllQuestionsComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

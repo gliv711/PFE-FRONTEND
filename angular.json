@@ -84,7 +84,8 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angularecommerce:build"
+            "browserTarget": "angularecommerce:build",
+            "proxyConfig":"src/Environement/proxy.conf.json"
           }
         },
         "test": {
