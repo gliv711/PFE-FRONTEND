@@ -9,9 +9,11 @@
     <thead>
       <tr>
         <th scope="col">Id</th>
-        <th scope="col">Prénom</th>
         <th scope="col">Nom</th>
+        <th scope="col">Prénom</th>
         <th scope="col">Email</th>
+        <th scope="col">Type</th>
+        <th scope="col"></th>
         <th scope="col"></th>
         <th scope="col"><button type="button" class="btn btn-secondary" data-bs-target="#update-add-Modal" data-bs-toggle="modal" >Ajouter</button>
         </th>
@@ -23,11 +25,27 @@
         <td>{{user?.nom}}</td>
         <td>{{user?.prenom}}</td>
         <td>{{user?.email}}</td>
+        <td>{{user?.type}}</td>
         <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal" (click)="setCurrentUser(user)">Supprimer</button></td>
         <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-add-Modal" (click)="setCurrentUser(user)"> 
             Update 
           </button>
           </td>
+
+          <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#more-info-Modal" (click)="setCurrentUser(user)"> 
+            Plus d'informations 
+          </button>
+          </td>
+
+  
+
+       
+      </tr>
+    
+    </tbody>
+  </table>
+  </div>
+  </div>
   <!-- Modal -->
   <div class="modal fade" id="are-you-sure-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -47,14 +65,6 @@
     </div>
   </div>
 
-       
-      </tr>
-    
-    </tbody>
-  </table>
-  </div>
-  </div>
-
 
   <div class="modal fade" id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -65,7 +75,10 @@
         </div>
         <div class="modal-body">
           
-
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Type</label>
+            <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="user.type">
+          </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nom</label>
                 <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="user.nom">
@@ -82,6 +95,52 @@
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Mot de passe </label>
                 <input type="email" class="form-control" id="password" placeholder="" [(ngModel)]="user.mdp">
+              </div>
+             
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()" >Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addUser(user)" >Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="more-info-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Plus d'informations </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+
+
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Type</label>
+            <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="user.type" disabled>
+          </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nom</label>
+                <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="user.nom" disabled>
+              </div>
+              
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Prénom</label>
+                <input type="email" class="form-control" id="LastName" placeholder="" [(ngModel)]="user.prenom" disabled>
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="" [(ngModel)]="user.email" disabled>
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Mot de passe </label>
+                <input type="email" class="form-control" id="password" placeholder="" [(ngModel)]="user.mdp" disabled>
               </div>
              
 

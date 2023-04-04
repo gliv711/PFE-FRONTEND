@@ -7,4 +7,5 @@ export interface User{
     prenom?:String;
     email?:String ;
     mdp?:String;
+    type?:String;
 }

@@ -15,6 +15,7 @@ import { InformationGernalComponent } from './INDEX/information global/informati
 import { AllUsersComponent } from './Platform/dashboard/all-users/all-users.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AllQuestionsComponent } from './Platform/dashboard/all-questions/all-questions.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     MultistepComponent,
     InformationGernalComponent,
     AllUsersComponent,
+    AllQuestionsComponent,
     
     ],
   imports: [
