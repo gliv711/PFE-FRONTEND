@@ -14,4 +14,4 @@ landing Ready!
 login Ready !
 register Ready !
 all-users Ready! 
-all-survey Ready! 
+all-questions Ready! 
