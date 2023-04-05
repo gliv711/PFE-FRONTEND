@@ -23,11 +23,14 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+
               "src/styles.css"
             ],
             "scripts": [
             
-  
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
            
 
 
@@ -81,7 +84,8 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angularecommerce:build"
+            "browserTarget": "angularecommerce:build",
+            "proxyConfig":"src/Environement/proxy.conf.json"
           }
         },
         "test": {
