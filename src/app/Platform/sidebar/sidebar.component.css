@@ -1,0 +1,22 @@
+.profile-nav{
+    background: #fff;
+    list-style-type: none;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    padding-top: 5px;
+    margin-top: 15px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+  }
+  .profile-nav li{
+    float: left;
+  }
+  .profile-nav li a{
+    display: block;
+    color: #666;
+    text-align: center;
+    padding-left: 9px;
+    padding-top: 7px;
+    text-decoration: none;
+  }

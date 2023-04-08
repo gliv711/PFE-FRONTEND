@@ -30,8 +30,6 @@ import { TablesDataComponent } from './Platform/dashboard/addons/tables-data/tab
 import { TablesGeneralComponent } from './Platform/dashboard/addons/tables-general/tables-general.component';
 import { TabsComponent } from './Platform/dashboard/addons/tabs/tabs.component';
 import { TooltipsComponent } from './Platform/dashboard/addons/tooltips/tooltips.component';
-import { DashboardComponent } from './Platform/dashboard/dashboard/dashboard.component';
-import { PagesBlankComponent } from './Platform/dashboard/pages-blank/pages-blank.component';
 import { PagesContactComponent } from './Platform/dashboard/pages-contact/pages-contact.component';
 import { PagesError404Component } from './Platform/dashboard/pages-error404/pages-error404.component';
 import { PagesFaqComponent } from './Platform/dashboard/pages-faq/pages-faq.component';
@@ -39,14 +37,13 @@ import { PagesLoginComponent } from './Platform/dashboard/pages-login/pages-logi
 import { PagesRegisterComponent } from './Platform/dashboard/pages-register/pages-register.component';
 import { UsersProfileComponent } from './Platform/dashboard/users-profile/users-profile.component';
 import { SidebarComponent } from './Platform/sidebar/sidebar.component';
-import { AllUsersComponent } from './Platform/dashboard/all-users/all-users.component';
-import { AllQuestionsComponent } from './Platform/dashboard/all-questions/all-questions.component';
+import { SignupComponent } from './INDEX/signup/signup.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
-  { path: 'dashboard', component: DashboardComponent },
+ 
   { path: 'admin', component: AdminInterfaceComponent },
   { path: 'alerts', component: AlertsComponent },
   { path: 'accordion', component: AccordionComponent },
@@ -66,13 +63,13 @@ const routes: Routes = [
   { path: 'tables-data', component: TablesDataComponent },
   { path: 'tables-general', component: TablesGeneralComponent },
   { path: 'tabs', component: TabsComponent },
-  {path:'all-users',component:AllUsersComponent},
-  {path:'all-questions',component:AllQuestionsComponent},
+  
   { path: 'pages-contact', component: PagesContactComponent },
   { path: '**', component: PagesError404Component },
   { path : 'sidebar', component : SidebarComponent},
   { path : 'multistep', component:MultistepComponent},
-  {path : 'information-general',component:InformationGernalComponent}
+  {path : 'information-general',component:InformationGernalComponent},
+  {path: 'signup',component:SignupComponent}
 
 ];
 

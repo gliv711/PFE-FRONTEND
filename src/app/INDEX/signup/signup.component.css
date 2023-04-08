@@ -1,0 +1,8 @@
+.profile-nav li a{
+    display: block;
+    color: #666;
+    text-align: center;
+    padding-left: 9px;
+    padding-top: 7px;
+    text-decoration: none;
+  }
