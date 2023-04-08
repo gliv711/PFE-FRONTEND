@@ -12,9 +12,10 @@ import { AdminInterfaceComponent } from './Platform/admin-interface/admin-interf
 import { SidebarComponent } from './Platform/sidebar/sidebar.component';
 import { MultistepComponent } from './INDEX/multistep/multistep.component';
 import { InformationGernalComponent } from './INDEX/information global/information-gernal/information-gernal.component';
+import { AllUsersComponent } from './Platform/dashboard/all-users/all-users.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SignupComponent } from './INDEX/signup/signup.component';
+import { FormsModule } from '@angular/forms';
+import { AllQuestionsComponent } from './Platform/dashboard/all-questions/all-questions.component';
 
 @NgModule({
   declarations: [
@@ -29,16 +30,15 @@ import { SignupComponent } from './INDEX/signup/signup.component';
     AdminInterfaceComponent,
     MultistepComponent,
     InformationGernalComponent,
-    
-    SignupComponent,
+    AllUsersComponent,
+    AllQuestionsComponent,
     
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
