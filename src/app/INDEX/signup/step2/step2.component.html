@@ -1,0 +1,61 @@
+<form class="card form_container" [formGroup]="myform" (ngSubmit)="Onclick" >
+    <div class="logo_container"><img style="margin: 14%;" class="d-inline-block" src="assets/img/logo.png" alt="logo" /></div>
+    <div class="title_container">
+      <p class="title">Inscription</p>
+      <span class="subtitle">Get started with our app, just create an account and enjoy the experience.</span>
+    </div>
+    <br>
+    <div class="input_container">
+        <label class="input_label" for="emplayeuractuel">emplayeur actuel</label>
+        
+        <input  title="emplayeuractuel" formControlName="emplayeuractuel" name="emplayeuractuel" type="text" class="input_field" id="emplayeuractuel" required>
+        <div  *ngIf=" myform.get('emplayeuractuel').hasError('emplayeuractuel')" style="margin-top: 18px">
+            <span style="color: red;display: flex "> max 30 caracteres</span>
+            <br></div>
+          <div  *ngIf=" myform.get('emplayeuractuel').hasError('minlength')" style="margin-top: 18px">
+            <span style="color: red;display: flex"> min 3 caracteres</span>
+            <br></div>
+          <div  *ngIf="myform.get('emplayeuractuel').touched && myform.get('emplayeuractuel').hasError('required')" style="margin-top: 18px">
+            <span style="color: red;display: flex"> remplir le champs</span>
+            <br></div>
+            <div  *ngIf=" myform.get('emplayeuractuel').hasError('pattern')" style="margin-top: 18px">
+              <span style="color: red;display: flex"> accepte juste alaphab</span>
+              <br></div>
+    </div>
+      <div class="input_container">
+        <label class="input_label" for="email_field">nom de societe </label>
+        
+        <input title="nomsociete" formControlName="nomsociete" name="nomsociete" type="text" class="input_field" id="nomsociete" required>
+        <div  *ngIf=" myform.get('nomsociete').hasError('emplayeuractuel')" style="margin-top: 18px">
+            <span style="color: red;display: flex"> max 30 caracteres</span>
+            <br></div>
+          <div  *ngIf=" myform.get('nomsociete').hasError('minlength')" style="margin-top: 18px">
+            <span style="color: red;display: flex"> min 3 caracteres</span>
+            <br></div>
+          <div  *ngIf="myform.get('nomsociete').touched && myform.get('nomsociete').hasError('required')" style="margin-top: 18px">
+            <span style="color: red;display: flex"> remplir le champs</span>
+            <br></div>
+            <div  *ngIf=" myform.get('nomsociete').hasError('pattern')" style="margin-top: 18px">
+              <span style="color: red;display: flex"> accepte juste alaphab</span>
+              <br></div>
+    </div>
+    <div class="input_container">
+      <label class="input_label" for="email_field">role</label>
+      
+      <input title="Inpit title" name="input-name" type="text" class="input_field" id="email_field">
+    </div>
+    <div class="input_container">
+      <label class="input_label" for="password_field">date de debut</label>
+  
+      <input id="date" type="date" value="2017-06-01" style="color:#115DFC;">
+    </div>
+    <div class="input_container">
+        <label class="input_label" for="password_field">date de fin </label>
+    
+        <input id="date" type="date" value="2017-06-01" style="color:#115DFC;">
+       </div>
+       <button title="Sign up" type="submit" class="sign-in_btn" disabled="myform.invalid">
+        <span (click)="Onclick()"> next</span>
+      </button>
+  
+  </form>
