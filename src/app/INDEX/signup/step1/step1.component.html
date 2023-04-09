@@ -1,0 +1,81 @@
+<form class="card form_container" [formGroup]="myform" (ngSubmit)="Onclick">
+    <div class="logo_container"><img style="margin: 14%;" class="d-inline-block" src="assets/img/logo.png" alt="logo" /></div>
+    <div class="title_container">
+      <p class="title">Inscription</p>
+      <span class="subtitle">Get started with our app, just create an account and enjoy the experience.</span>
+    </div>
+    <br>
+    <div class="input_container">
+        <label class="input_label" for="adresse">adresse </label>
+        <input placeholder="name@mail.com" formControlName="adresse" title="adresse" name="adresse" type="text" class="input_field" id="adresse" required>
+        <div  *ngIf=" myform.get('adresse').hasError('minlength')" style="margin-top: 18px">
+            <span style="color: red;display: flex"> au moin 3 caracteres</span>
+            <br></div>
+            <div  *ngIf="myform.get('adresse').touched && myform.get('adresse').hasError('required')" style="margin-top: 18px">
+                <span style="color: red;display: flex"> remplir le champs</span>
+                <br></div>
+                <div  *ngIf=" myform.get('adresse').hasError('pattern')" style="margin-top: 18px">
+                  <span style="color: red;display: flex"> accepte juste alaphab</span>
+                  <br></div>
+          </div>
+      <div class="input_container">
+        <label class="input_label" for="region">region</label>
+        
+        <input placeholder="tunis" title="region" formControlName="region" name="region" type="text" class="input_field" id="region">
+        <div  *ngIf="myform.get('region').touched && myform.get('region').hasError('required')" style="margin-top: 18px">
+            <span style="color: red;display: flex"> remplir le champs</span>
+            <br></div>
+            <div  *ngIf=" myform.get('region').hasError('pattern')" style="margin-top: 18px">
+              <span style="color: red;display: flex"> accepte juste alaphab</span>
+              <br></div>
+              <div  *ngIf=" myform.get('region').hasError('minlength')" style="margin-top: 18px">
+                <span style="color: red;display: flex"> au moin 3 caracteres</span>
+                <br></div> 
+    </div>
+    <div class="input_container">
+      <label class="input_label" for="telephone">telephone</label>
+      
+      <input placeholder="name@mail.com" formControlName="telephone" title="telephone" name="telephone" type="text" class="input_field" id="telephone">
+      <div  *ngIf=" myform.get('telephone').hasError('maxlength')" style="margin-top: 18px">
+        <span style="color: red;display: flex"> if faut 8 caracteres</span>
+        <br></div>
+      <div  *ngIf=" myform.get('telephone').hasError('minlength')" style="margin-top: 18px">
+        <span style="color: red;display: flex"> if faut 8 caracteres</span>
+        <br></div>
+      <div  *ngIf="myform.get('telephone').touched && myform.get('telephone').hasError('required')" style="margin-top: 18px">
+        <span style="color: red;display: flex"> remplir le champs</span>
+        <br></div>
+        <div  *ngIf=" myform.get('telephone').hasError('pattern')" style="margin-top: 18px">
+          <span style="color: red;display: flex"> accepte juste number</span>
+          <br></div>
+    </div>
+    <div class="input_container">
+      <label class="input_label" for="password_field"> date de naissance</label>
+  
+      <input id="date" type="date" value="2017-06-01" style="color:#115DFC;">
+    </div>
+    <div class="input_container">
+        <label class="input_label" for="password_field">Confirmer mot de passe</label>
+        <fieldset>
+          <label class="input_label" for="email_field">genre</label>
+      
+          <div>
+            <input type="radio" id="huey" name="drone" value="huey"
+                   checked>
+            <label for="huey">M</label>
+          </div>
+      
+          <div>
+            <input type="radio" id="dewey" name="drone" value="dewey">
+            <label for="dewey">H</label>
+          </div>
+      
+      </fieldset>
+      </div>
+      <button title="Sign up" type="submit" class="sign-in_btn">
+       <span (click)="Onclick()"> next</span>
+     </button>
+  
+   
+   
+  </form>
