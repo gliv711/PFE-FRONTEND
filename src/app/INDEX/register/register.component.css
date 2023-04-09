@@ -16,6 +16,13 @@
  
   font-family: "Inter", sans-serif;
   }
+  input.ng-touched {
+    border-right: 2px solid red;
+
+  }
+  input.ng-valid {
+    border-right:  2px solid green;
+  }
   
   .logo_container {
    

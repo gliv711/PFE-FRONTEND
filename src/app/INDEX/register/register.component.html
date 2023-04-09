@@ -1,4 +1,4 @@
-<form class="card form_container">
+<form class="card form_container" [formGroup]="myform" (ngSubmit)="Onclick()">
 
     <div class="title_container">
       <p class="title">Inscription</p>
@@ -6,34 +6,70 @@
     </div>
     <br>
     <div class="input_container">
-        <label class="input_label" for="name_field">Nom </label>
-        
-        <input placeholder="nom" title="Inpit title" name="input-name" type="text" class="input_field" id="name_field">
-      </div>
-      <div class="input_container">
-        <label class="input_label" for="email_field">Prénom</label>
-        
-        <input placeholder="Prénom" title="Inpit title" name="input-name" type="text" class="input_field" id="lastname_field">
-      </div>
+    <label class="input_label" for="name">Nom </label>
+    <input placeholder="nom" formControlName="name" title="Inpit title" name="name" type="text" class="input_field" id="name" required maxlength="30">
+    <div  *ngIf=" myform.get('name').hasError('maxlength')" style="margin-top: 18px">
+      <span style="color: red;display: flex"> max 30 caracteres</span>
+      <br></div>
+    <div  *ngIf=" myform.get('name').hasError('minlength')" style="margin-top: 18px">
+      <span style="color: red;display: flex"> au moin 3 caracteres</span>
+      <br></div>
+    <div  *ngIf="myform.get('name').touched && myform.get('name').hasError('required')" style="margin-top: 18px">
+      <span style="color: red;display: flex"> remplir le champs</span>
+      <br></div>
+      <div  *ngIf=" myform.get('name').hasError('pattern')" style="margin-top: 18px">
+        <span style="color: red;display: flex"> accepte juste alaphab</span>
+        <br></div>
+        </div>
+        <div class="input_container">
+        <label class="input_label" for="Prénom">Prénom</label>
+        <input placeholder="Prénom" formControlName="prenom" title="Prénom" name="Prénom" type="text" class="input_field" id="Prénom" required>
+        <div  *ngIf=" myform.get('prenom').hasError('maxlength')" style="margin-top: 0px">
+          <span style="color: red;display: flex"> max 30 caracteres</span>
+          <br></div>
+        <div  *ngIf=" myform.get('prenom').hasError('minlength')" style="margin-top: 0px">
+          <span style="color: red;display: flex"> au moin 3 caracteres</span>
+          <br></div>
+        <div  *ngIf="myform.get('prenom').touched && myform.get('prenom').hasError('required')" style="margin-top: 0px">
+          <span style="color: red;display: flex"> remplir le champs</span>
+          <br></div>
+          <div  *ngIf=" myform.get('prenom').hasError('pattern')" style="margin-top: 0px">
+            <span style="color: red;display: flex"> accepte juste alaphab</span>
+            <br></div>
+        </div>
     <div class="input_container">
       <label class="input_label" for="email_field">Email</label>
-      
-      <input placeholder="name@mail.com" title="Inpit title" name="input-name" type="text" class="input_field" id="email_field">
+      <input placeholder="name@mail.com" formControlName="email" title="Inpit title" name="email" type="text" class="input_field" id="email" required>
+    
+      <div  *ngIf="myform.get('email').touched && myform.get('email').hasError('required')" style="margin-top: -10px">
+        <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
+        <br></div>
+      <div  *ngIf="myform.get('email').hasError('email')" style="margin-top: 0px">
+        <span style="color: red;display: flex"> mail invalid </span>
+        <br></div>
     </div>
     <div class="input_container">
       <label class="input_label" for="password_field">Password</label>
-  
-      <input placeholder="Password" title="Inpit title" name="input-name" type="password" class="input_field" id="password_field">
-    </div>
+      <input placeholder="Password" title="Inpit title" formControlName="password" name="password" type="password" class="input_field" id="password"required>
+      <div  *ngIf="myform.get('password').touched && myform.get('password').hasError('required')" style="margin-top: 0px">
+        <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
+        <br></div>
+        <div  *ngIf=" myform.get('password').hasError('minlength')" style="margin-top: 0px">
+          <span style="color: red;display: flex"> au moin 8 caracteres</span>
+          <br></div></div>
     <div class="input_container">
         <label class="input_label" for="password_field">Confirmer mot de passe</label>
     
-        <input placeholder="Password" title="Inpit title" name="input-name" type="password" class="input_field" id="password_field">
-      </div>
-    <button title="Sign up" type="submit" class="sign-in_btn">
-      <span (click)="Onclick()"> next</span>
-    </button>
-  
+        <input placeholder="Password" title="Inpit title" formControlName="confpassword" name="confpassword" type="password" class="input_field" id="confpassword" required>
+        <div  *ngIf="myform.get('confpassword').touched && myform.get('confpassword').hasError('required')" style="margin-top: 0px">
+          <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
+          <br></div>
+          <div  *ngIf=" myform.get('confpassword').hasError('minlength')" style="margin-top: 0px">
+            <span style="color: red;display: flex"> au moin 8 caracteres</span>
+            <br></div> </div>
+            <button title="Sign up" type="submit" class="sign-in_btn" disabled="myform.invalid">
+                <span (click)="Onclick()"> next</span>
+              </button>
     
   </form>
 

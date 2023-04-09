@@ -14,8 +14,12 @@ import { MultistepComponent } from './INDEX/multistep/multistep.component';
 import { InformationGernalComponent } from './INDEX/information global/information-gernal/information-gernal.component';
 import { AllUsersComponent } from './Platform/dashboard/all-users/all-users.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AllQuestionsComponent } from './Platform/dashboard/all-questions/all-questions.component';
+import { Step1Component } from './INDEX/signup/step1/step1.component';
+import { Step2Component } from './INDEX/signup/step2/step2.component';
+import { Step3Component } from './INDEX/signup/step3/step3.component';
+import { Step4Component } from './INDEX/signup/step4/step4.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +36,18 @@ import { AllQuestionsComponent } from './Platform/dashboard/all-questions/all-qu
     InformationGernalComponent,
     AllUsersComponent,
     AllQuestionsComponent,
+    Step1Component,
+    Step2Component,
+    Step3Component,
+    Step4Component,
     
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
