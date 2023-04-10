@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SurveyServiceService {
-  api = environment.baseUrl+'SURVEY-MS/api/survey/';
+  api = environment.baseUrl+'SURVEY-MANAGEMENT/api/survey/';
 
   constructor(private http : HttpClient) { }
   getSurvey(): Observable <Survey[]>{

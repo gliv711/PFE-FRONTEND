@@ -7,7 +7,7 @@ import { environment } from 'src/Environement/environement';
   providedIn: 'root'
 })
 export class UserServiceService {
-  api = environment.baseUrl+'USER-MS/api/user/';
+  api = environment.baseUrl+'USER-MANAGEMENT/api/user/';
   constructor(private http : HttpClient) { }
 
   getUsers(): Observable <User[]>{
