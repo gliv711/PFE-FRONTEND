@@ -32,6 +32,7 @@ import { PagesError404Component } from './Platform/dashboard/pages-error404/page
 import { SidebarComponent } from './Platform/sidebar/sidebar.component';
 import { AllUsersComponent } from './Platform/dashboard/all-users/all-users.component';
 import { AllQuestionsComponent } from './Platform/dashboard/all-questions/all-questions.component';
+import { AllResultsComponent } from './Platform/dashboard/all-results/all-results.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -60,6 +61,7 @@ const routes: Routes = [
   {path:'all-users',component:AllUsersComponent},
   {path:'all-questions',component:AllQuestionsComponent},
   { path: 'pages-contact', component: PagesContactComponent },
+  { path: 'all-results', component: AllResultsComponent },
   { path: '**', component: PagesError404Component },
   { path : 'sidebar', component : SidebarComponent},
   { path : 'multistep', component:MultistepComponent},

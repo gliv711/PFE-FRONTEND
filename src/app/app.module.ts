@@ -20,6 +20,7 @@ import { Step1Component } from './INDEX/signup/step1/step1.component';
 import { Step2Component } from './INDEX/signup/step2/step2.component';
 import { Step3Component } from './INDEX/signup/step3/step3.component';
 import { Step4Component } from './INDEX/signup/step4/step4.component';
+import { AllResultsComponent } from './Platform/dashboard/all-results/all-results.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { Step4Component } from './INDEX/signup/step4/step4.component';
     Step2Component,
     Step3Component,
     Step4Component,
+    AllResultsComponent,
     
     ],
   imports: [
