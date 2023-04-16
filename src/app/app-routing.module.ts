@@ -62,7 +62,7 @@ const routes: Routes = [
   {path:'all-questions',component:AllQuestionsComponent},
   { path: 'pages-contact', component: PagesContactComponent },
   { path: 'all-results', component: AllResultsComponent },
-  { path: '**', component: PagesError404Component },
+  { path: '*', component: PagesError404Component },
   { path : 'sidebar', component : SidebarComponent},
   { path : 'multistep', component:MultistepComponent},
   {path : 'information-general',component:InformationGernalComponent}
