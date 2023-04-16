@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/Environement/environement';
 import { Survey } from 'src/Models/Survey';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SurveyServiceService {
-  api = environment.baseUrl+'SURVEY-MANAGEMENT/api/survey/';
+  api = environment.baseUrl+'8085/api/survey/';
 
+  addSurvey(survey:Survey) {
+    return this.http.post<Survey>(this.api,survey);
+  }
   constructor(private http : HttpClient) { }
   getSurvey(): Observable <Survey[]>{
     return this.http.get<Survey[]>(this.api+'all');
@@ -21,8 +24,17 @@ export class SurveyServiceService {
   getSurveyFinances(): Observable <Survey[]>{
     return this.http.get<Survey[]>(this.api+'finances');
   }
-  getSurveyInformatique(): Observable <Survey[]>{
+  getSurveyInformatique(): Observable <Survey[]>{ 
     return this.http.get<Survey[]>(this.api+'informatique');
+  }
+
+  deleteSurvey(survey: Survey): Observable<Survey> {
+    return this.http.delete<Survey>(this.api+survey.id);
+  }
+
+  uploadSurveys(surveys: Survey[]): Observable<void> {
+    const url = `${this.api}/survey/upload`;
+    return this.http.post<void>(url, surveys);
   }
 
 }

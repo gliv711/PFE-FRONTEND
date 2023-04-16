@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InformationGernalComponent } from './INDEX/information global/information-gernal/information-gernal.component';
 import { LandingComponent } from './INDEX/landing/landing.component';
-import { LoginComponent } from './INDEX/login/login.component';
 import { MultistepComponent } from './INDEX/multistep/multistep.component';
 import { RegisterComponent } from './INDEX/register/register.component';
 import { AdminInterfaceComponent } from './Platform/admin-interface/admin-interface.component';
@@ -36,7 +35,6 @@ import { AllResultsComponent } from './Platform/dashboard/all-results/all-result
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
-  {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'admin', component: AdminInterfaceComponent },

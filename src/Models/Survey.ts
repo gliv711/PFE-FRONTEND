@@ -1,7 +1,7 @@
 
 
 export interface Survey{
-    id: number ;
-    question: String;
-    field : String ;
+    id?: String ;
+    question?: String;
+    field? : String ;
 }

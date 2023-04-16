@@ -1,6 +1,7 @@
   import { Component, OnInit } from '@angular/core';
   import { User } from 'src/Models/User';
   import { UserServiceService } from 'src/Services/user-service/user-service.service';
+import { Role } from 'src/enums/role.enum';
 
   @Component({
     selector: 'app-all-users',
@@ -11,6 +12,8 @@
     Users: User[] = [];
     user : User = {};
     constructor(private UserService : UserServiceService) {this.getUsers(); }
+
+    roles = Object.values(Role);
 
 
     getUsers(){
@@ -28,7 +31,7 @@
         next: () => {
           this.getUsers();
         },
-        error: (e) => console.log(user),
+        error: (e) => console.log(e),
         
         complete: () => {
           console.log("Deleted ! ")

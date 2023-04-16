@@ -21,7 +21,7 @@
         <th scope="col">Question</th>
         <th scope="col"></th>
         <th scope="col"><button type="button" class="btn btn-secondary" data-bs-target="#update-add-Modal" data-bs-toggle="modal" >Ajouter</button>
-        </th>
+        
       </tr>
     </thead>
     <tbody>
@@ -29,8 +29,8 @@
         <th scope="row">{{survey.id}}</th>
         <td>{{survey?.field}}</td>
         <td>{{survey?.question}}</td>
-        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal">Supprimer</button></td>
-        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-add-Modal" > 
+        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal"  (click)="setCurrentSurvey(survey)">Supprimer</button></td>
+        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" (click)="setCurrentSurvey(survey)" data-bs-target="#update-add-Modal" > 
             Modifier
           </button>
           </td>
@@ -59,7 +59,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Annuler</button>
-          <button type="button" class="btn btn-primary" >Je confirme</button>
+          <button type="button" class="btn btn-primary"  (click)="deleteSurvey(survey)" data-bs-dismiss="modal">Je confirme</button>
         </div>
       </div>
     </div>
@@ -73,30 +73,41 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">id</label>
-            <input type="text" class="form-control" id="name" placeholder="" [(ngModel)]="survey.id">
+            <label for="id" class="form-label">ID</label>
+            <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.id">
           </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">field</label>
-                <input type="text" class="form-control" id="name" placeholder="" [(ngModel)]="survey.field">
-              </div>
-              <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">question</label>
-                <input type="text" class="form-control" id="LastName" placeholder="" [(ngModel)]="survey.question">
-              </div>
+         
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Field</label>
+            <select class="form-select" id="Field" [(ngModel)]="survey.field" >
+              <option *ngFor="let field of fields" [value]="field">{{ field }}</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="question" class="form-label">Question</label>
+            <input type="text" class="form-control" id="question" placeholder="" [(ngModel)]="survey.question">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
+          <button type="button" class="btn btn-primary" (click)="addSurvey(survey)" data-bs-dismiss="modal" >Enregistrer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+           
               
              
 
 
 
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Save changes</button>
-        </div>
+    
       </div>
-    </div>
-  </div>
+
 

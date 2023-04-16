@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Survey } from 'src/Models/Survey';
 import { SurveyServiceService } from 'src/Services/survey-service/survey-service.service';
+import { Field } from 'src/enums/field.enum';
 
 @Component({
   selector: 'app-all-questions',
@@ -10,16 +12,36 @@ import { SurveyServiceService } from 'src/Services/survey-service/survey-service
 export class AllQuestionsComponent implements OnInit {
 
   Surveys : Survey[] = [];
-  survey: Survey = { id:0, question: '', field: '' };
+  survey : Survey ={} ;
 
-
+  fields = Object.values(Field);
 
     
 
-  constructor(private SurveyService : SurveyServiceService) {
+  constructor(private SurveyService : SurveyServiceService, private http: HttpClient) {
     this.getSurvey();
    }
 
+
+
+
+  setCurrentSurvey(survey : Survey){
+    this.survey=survey;
+  }
+  
+  deleteSurvey(survey : Survey){
+    this.SurveyService.deleteSurvey(survey).subscribe({
+      next: () => {
+        this.getSurvey();
+        console.log(survey);
+      },
+      error: (e) => console.log(e),
+      
+      complete: () => {
+        console.log("Deleted ! ")
+      }
+    })
+  }
 
   
 
@@ -70,6 +92,29 @@ export class AllQuestionsComponent implements OnInit {
     })
 
   }
+  
+  close(){
+    this.survey={};
+  }
+  
+
+  addSurvey(survey:Survey){
+    this.SurveyService.addSurvey(this.survey).subscribe({
+      next: () => {
+        this.getSurvey();
+        this.close();
+      },
+      error: (e) => console.log(e),
+      complete: () => {
+        
+
+      }
+    })
+  }
+  
+  
+   
+  
 
   ngOnInit(): void {}
 

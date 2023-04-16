@@ -3,9 +3,9 @@
 
 export interface User{
     id?:number;
-    nom?:String;
-    prenom?:String;
+    lastName?:String;
+    name?:String;
     email?:String ;
-    mdp?:String;
-    type?:String;
+    password?:String;
+    role?:String;
 }

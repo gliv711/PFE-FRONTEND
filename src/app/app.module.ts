@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './INDEX/header/header.component';
 import { FooterComponent } from './INDEX/footer/footer.component';
 import { HomeComponent } from './INDEX/home/home.component';
-import { LoginComponent } from './INDEX/login/login.component';
 import { LandingComponent } from './INDEX/landing/landing.component';
 import { RegisterComponent } from './INDEX/register/register.component';
 import { AdminInterfaceComponent } from './Platform/admin-interface/admin-interface.component';
@@ -28,7 +27,6 @@ import { AllResultsComponent } from './Platform/dashboard/all-results/all-result
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent,
     LandingComponent,
     RegisterComponent,
     SidebarComponent,

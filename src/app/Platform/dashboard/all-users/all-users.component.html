@@ -4,45 +4,40 @@
 <br><br>
 <div class="card">
     <div class="card-body">
-<table class="table table-striped border-primary">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nom</th>
-        <th scope="col">Prénom</th>
-        <th scope="col">Email</th>
-        <th scope="col">Type</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"><button type="button" class="btn btn-secondary" data-bs-target="#update-add-Modal" data-bs-toggle="modal" >Ajouter</button>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of Users">
-        <th scope="row">{{user.id}}</th>
-        <td>{{user?.nom}}</td>
-        <td>{{user?.prenom}}</td>
-        <td>{{user?.email}}</td>
-        <td>{{user?.type}}</td>
-        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal" (click)="setCurrentUser(user)">Supprimer</button></td>
-        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-add-Modal" (click)="setCurrentUser(user)"> 
-            Update 
-          </button>
-          </td>
-
-          <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#more-info-Modal" (click)="setCurrentUser(user)"> 
-            Plus d'informations 
-          </button>
-          </td>
-
-  
-
-       
-      </tr>
-    
-    </tbody>
-  </table>
+      <div class="table-responsive">
+        <table class="table table-striped border-primary">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Prénom</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Email</th>
+              <th scope="col">Type</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of Users">
+              <th scope="row">{{user.id}}</th>
+              <td>{{user?.name}}</td>
+              <td>{{user?.lastName}}</td>
+              <td>{{user?.email}}</td>
+              <td>{{user?.role}}</td>
+              <td class="d-flex justify-content-around">
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal" (click)="setCurrentUser(user)">Supprimer</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-add-Modal" (click)="setCurrentUser(user)">Update</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#more-info-Modal" (click)="setCurrentUser(user)">Plus d'informations</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-secondary float-end" data-bs-target="#update-add-Modal" data-bs-toggle="modal">Ajouter</button>
+      </div>
+      
+      
   </div>
   </div>
   <!-- Modal -->
@@ -58,7 +53,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
-          <button type="button" class="btn btn-primary" (click)="deleteUser(user)">Je confirme</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteUser(user)">Je confirme</button>
         </div>
       </div>
     </div>
@@ -76,15 +71,15 @@
           
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Type</label>
-            <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="user.type">
+            <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="user.role">
           </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nom</label>
-                <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="user.nom">
+                <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="user.lastName">
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Prénom</label>
-                <input type="email" class="form-control" id="LastName" placeholder="" [(ngModel)]="user.prenom">
+                <input type="email" class="form-control" id="LastName" placeholder="" [(ngModel)]="user.name">
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Email</label>
@@ -93,7 +88,14 @@
 
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Mot de passe </label>
-                <input type="email" class="form-control" id="password" placeholder="" [(ngModel)]="user.mdp">
+                <input type="email" class="form-control" id="password" placeholder="" [(ngModel)]="user.password">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Role</label>
+                <select class="form-select" id="Role" [(ngModel)]="user.role" >
+                  <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+                </select>
               </div>
              
 
@@ -102,7 +104,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()" >Close</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addUser(user)" >Save changes</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addUser(user)"  >Save changes</button>
         </div>
       </div>
     </div>
@@ -121,16 +123,16 @@
 
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Type</label>
-            <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="user.type" disabled>
+            <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="user.role" disabled>
           </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nom</label>
-                <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="user.nom" disabled>
+                <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="user.lastName" disabled>
               </div>
               
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Prénom</label>
-                <input type="email" class="form-control" id="LastName" placeholder="" [(ngModel)]="user.prenom" disabled>
+                <input type="email" class="form-control" id="LastName" placeholder="" [(ngModel)]="user.name" disabled>
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Email</label>
@@ -139,7 +141,12 @@
 
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Mot de passe </label>
-                <input type="email" class="form-control" id="password" placeholder="" [(ngModel)]="user.mdp" disabled>
+                <input type="email" class="form-control" id="password" placeholder="" [(ngModel)]="user.password" disabled>
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Role </label>
+                <input type="email" class="form-control" id="Role" placeholder="" [(ngModel)]="user.role" disabled>
               </div>
              
 
