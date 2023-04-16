@@ -21,7 +21,7 @@ import { Step3Component } from './INDEX/signup/step3/step3.component';
 import { Step4Component } from './INDEX/signup/step4/step4.component';
 import { AllResultsComponent } from './Platform/dashboard/all-results/all-results.component';
 import { LoginComponent } from './INDEX/login/login.component';
-import { Routes, RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { Routes, RouterModule } from '@angular/router';
     Step3Component,
     Step4Component,
     AllResultsComponent,
-    LoginComponent,
+    LoginComponent
     
     ],
   imports: [
