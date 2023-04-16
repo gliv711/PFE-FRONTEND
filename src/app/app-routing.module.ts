@@ -32,9 +32,11 @@ import { SidebarComponent } from './Platform/sidebar/sidebar.component';
 import { AllUsersComponent } from './Platform/dashboard/all-users/all-users.component';
 import { AllQuestionsComponent } from './Platform/dashboard/all-questions/all-questions.component';
 import { AllResultsComponent } from './Platform/dashboard/all-results/all-results.component';
+import { LoginComponent } from './INDEX/login/login.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
+  {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'admin', component: AdminInterfaceComponent },
