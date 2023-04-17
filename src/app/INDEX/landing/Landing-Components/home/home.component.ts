@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
       loop: true,
       typeSpeed: 80,
       deleteSpeed: 80,
-      typeColor: 'red'
+      typeColor: '#F0F465'
     })
     
     writer
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
       5000,
       "Booster votre carrière professionnelle",
       "Optimiser votre profil pour plus d'opportunités", 
-      "Vous faitre Gagnez du temps dans votre recherche d'emploi",
+      "Vous faire Gagnez du temps dans votre recherche d'emploi",
       "réussir votre carrière",
       "Optimisez Vos compétences au service de votre avenir professionnel",
       "Être Le point de départ de votre avenir professionnel"
