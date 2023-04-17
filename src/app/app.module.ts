@@ -21,6 +21,8 @@ import { Step3Component } from './INDEX/signup/step3/step3.component';
 import { Step4Component } from './INDEX/signup/step4/step4.component';
 import { AllResultsComponent } from './Platform/dashboard/all-results/all-results.component';
 import { LoginComponent } from './INDEX/login/login.component';
+import { TopstepsComponent } from './INDEX/signup/topsteps/topsteps.component';
+import { ProgreebarComponent } from './INDEX/signup/progreebar/progreebar.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { LoginComponent } from './INDEX/login/login.component';
     Step3Component,
     Step4Component,
     AllResultsComponent,
-    LoginComponent
+    LoginComponent,
+    TopstepsComponent,
+    ProgreebarComponent
     
     ],
   imports: [

@@ -33,6 +33,7 @@ import { AllUsersComponent } from './Platform/dashboard/all-users/all-users.comp
 import { AllQuestionsComponent } from './Platform/dashboard/all-questions/all-questions.component';
 import { AllResultsComponent } from './Platform/dashboard/all-results/all-results.component';
 import { LoginComponent } from './INDEX/login/login.component';
+import { ProgreebarComponent } from './INDEX/signup/progreebar/progreebar.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -65,7 +66,8 @@ const routes: Routes = [
   { path: '*', component: PagesError404Component },
   { path : 'sidebar', component : SidebarComponent},
   { path : 'multistep', component:MultistepComponent},
-  {path : 'information-general',component:InformationGernalComponent}
+  {path : 'information-general',component:InformationGernalComponent},
+  {path :'progressbar', component: ProgreebarComponent}
 
 ];
 
