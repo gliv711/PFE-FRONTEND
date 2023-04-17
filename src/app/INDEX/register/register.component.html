@@ -67,8 +67,8 @@
           <div  *ngIf=" myform.get('confpassword').hasError('minlength')" style="margin-top: 0px">
             <span style="color: red;display: flex"> au moin 8 caracteres</span>
             <br></div> </div>
-            <button title="Sign up" type="submit" class="sign-in_btn" disabled="myform.invalid">
-                <span (click)="Onclick()"> next</span>
+            <button title="Sign up" type="submit" class="sign-in_btn" (click)="Onclick()" disabled="myform.invalid">
+              Suivant
               </button>
     
   </form>
