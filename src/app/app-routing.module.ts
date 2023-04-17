@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InformationGernalComponent } from './INDEX/information global/information-gernal/information-gernal.component';
 import { LandingComponent } from './INDEX/landing/landing.component';
-import { MultistepComponent } from './INDEX/multistep/multistep.component';
+import { MultistepComponent } from './INDEX/register/multistep/multistep.component';
 import { RegisterComponent } from './INDEX/register/register.component';
 import { AdminInterfaceComponent } from './Platform/admin-interface/admin-interface.component';
 import { AccordionComponent } from './Platform/dashboard/addons/accordion/accordion.component';
@@ -32,8 +32,7 @@ import { SidebarComponent } from './Platform/sidebar/sidebar.component';
 import { AllUsersComponent } from './Platform/dashboard/all-users/all-users.component';
 import { AllQuestionsComponent } from './Platform/dashboard/all-questions/all-questions.component';
 import { AllResultsComponent } from './Platform/dashboard/all-results/all-results.component';
-import { LoginComponent } from './INDEX/login/login.component';
-
+import { LoginComponent } from './INDEX/landing/login/login.component';
 const routes: Routes = [
   {path:'',component:LandingComponent},
   {path:'login',component:LoginComponent},
