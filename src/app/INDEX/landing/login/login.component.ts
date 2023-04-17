@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User_Login } from 'src/Models/User_Login';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user_info : User_Login = {};
-  constructor(private router: Router) { }
-  onSubmit() {
-    if (this.user_info.username === 'root' && this.user_info.password === 'root') {
-      this.router.navigate(['/admin']);
-    } else {
-      // handle invalid login
-    }
+
+  api = environment.baseUrl+'8084/USER-MANAGEMENT/api';
+
+  email :String = '';
+  password : String ='' ;
+  constructor(private router: Router , private http: HttpClient) { }
+   
+  onSubmit(){
+    const credentials = {email : this.email,password:this.password};
+    this.http.post(this.api+'/login', credentials).subscribe(
+      (response: any) => {
+        this.router.navigate(['/admin']);
+      },
+      (error: any) => {
+        console.log("you are not connected !");
+      }
+    );
   }
   ngOnInit(): void {
   }

@@ -17,7 +17,6 @@ import { ChartsChartjsComponent } from './Platform/dashboard/addons/charts-chart
 import { FormsEditorsComponent } from './Platform/dashboard/addons/forms-editors/forms-editors.component';
 import { FormsElementsComponent } from './Platform/dashboard/addons/forms-elements/forms-elements.component';
 import { FormsLayoutsComponent } from './Platform/dashboard/addons/forms-layouts/forms-layouts.component';
-
 import { PaginationComponent } from './Platform/dashboard/addons/pagination/pagination.component';
 import { ProgressComponent } from './Platform/dashboard/addons/progress/progress.component';
 import { SpinnersComponent } from './Platform/dashboard/addons/spinners/spinners.component';
@@ -27,7 +26,6 @@ import { TabsComponent } from './Platform/dashboard/addons/tabs/tabs.component';
 import { DashboardComponent } from './Platform/dashboard/dashboard/dashboard.component';
 import { PagesContactComponent } from './Platform/dashboard/pages-contact/pages-contact.component';
 import { PagesError404Component } from './Platform/dashboard/pages-error404/pages-error404.component';
-
 import { SidebarComponent } from './Platform/sidebar/sidebar.component';
 import { AllUsersComponent } from './Platform/dashboard/all-users/all-users.component';
 import { AllQuestionsComponent } from './Platform/dashboard/all-questions/all-questions.component';
