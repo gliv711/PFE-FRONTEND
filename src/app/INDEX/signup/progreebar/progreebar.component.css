@@ -215,3 +215,10 @@ p {
     width: 100%;
     object-fit: cover
 }
+input.ng-touched {
+    border-right: 2px solid red;
+
+  }
+  input.ng-valid {
+    border-right:  2px solid green;
+  }

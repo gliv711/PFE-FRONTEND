@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,8 +13,14 @@ export class ProgreebarComponent implements OnInit {
   current: number = 1;
   steps!: number;
   progressBarWidth!: number;
+  myform : any 
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder) {
+    this.myform = this.formbuilder.group({
+      email: ['', [Validators.required, Validators.email]]
+
+    })
+   }
 
   ngOnInit() {
     const fieldsets = this.elementRef.nativeElement.querySelectorAll('fieldset');
