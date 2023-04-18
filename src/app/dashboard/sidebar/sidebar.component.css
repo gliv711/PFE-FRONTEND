@@ -9,18 +9,13 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-body{
-    background: #f5f6fa;
-}
-
 .wrapper .sidebar{
     background: rgb(5, 68, 104);
-    position: fixed;
+    padding: 30px;
     top: 0;
     left: 0;
-    width: 225px;
-    height: 100%;
-    padding: 20px 0;
+    height: 100vmax;
+    width: 100%;
     transition: all 0.5s ease;
 }
 .wrapper .sidebar .profile{

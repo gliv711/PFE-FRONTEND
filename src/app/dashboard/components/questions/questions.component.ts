@@ -5,11 +5,11 @@ import { SurveyServiceService } from 'src/Services/survey-service/survey-service
 import { Field } from 'src/enums/field.enum';
 
 @Component({
-  selector: 'app-all-questions',
-  templateUrl: './all-questions.component.html',
-  styleUrls: ['./all-questions.component.css']
+  selector: 'app-questions',
+  templateUrl: './questions.component.html',
+  styleUrls: ['./questions.component.css']
 })
-export class AllQuestionsComponent implements OnInit {
+export class QuestionsComponent implements OnInit {
 
   Surveys : Survey[] = [];
   survey : Survey ={} ;
@@ -21,6 +21,9 @@ export class AllQuestionsComponent implements OnInit {
   constructor(private SurveyService : SurveyServiceService, private http: HttpClient) {
     this.getSurvey();
    }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
 
 
@@ -112,10 +115,5 @@ export class AllQuestionsComponent implements OnInit {
     })
   }
   
-  
-   
-  
-
-  ngOnInit(): void {}
 
 }

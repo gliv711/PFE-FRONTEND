@@ -5,19 +5,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './INDEX/landing/Landing-Components/home/home.component';
 import { LandingComponent } from './INDEX/landing/landing.component';
 import { RegisterComponent } from './INDEX/register/register.component';
-import { AdminInterfaceComponent } from './Platform/admin-interface/admin-interface.component';
-import { SidebarComponent } from './Platform/sidebar/sidebar.component';
 import { MultistepComponent } from './INDEX/register/multistep/multistep.component';
 import { InformationGernalComponent } from './INDEX/information global/information-gernal/information-gernal.component';
-import { AllUsersComponent } from './Platform/dashboard/all-users/all-users.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AllQuestionsComponent } from './Platform/dashboard/all-questions/all-questions.component';
 import { Step1Component } from './INDEX/signup/step1/step1.component';
 import { Step2Component } from './INDEX/signup/step2/step2.component';
 import { Step3Component } from './INDEX/signup/step3/step3.component';
 import { Step4Component } from './INDEX/signup/step4/step4.component';
-import { AllResultsComponent } from './Platform/dashboard/all-results/all-results.component';
 
 import { TopstepsComponent } from './INDEX/signup/topsteps/topsteps.component';
 import { ProgreebarComponent } from './INDEX/signup/progreebar/progreebar.component';
@@ -25,6 +20,8 @@ import { ProgreebarComponent } from './INDEX/signup/progreebar/progreebar.compon
 import { FooterComponent } from './INDEX/landing/Landing-Components/footer/footer.component';
 import { LoginComponent } from './INDEX/landing/login/login.component';
 import { HeaderComponent } from './INDEX/landing/Landing-Components/header/header.component';
+import { SettingsComponent } from './Platform/dashboard/settings/settings.component';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 
 @NgModule({
@@ -35,23 +32,19 @@ import { HeaderComponent } from './INDEX/landing/Landing-Components/header/heade
     HomeComponent,
     LandingComponent,
     RegisterComponent,
-    SidebarComponent,
-    AdminInterfaceComponent,
     MultistepComponent,
     InformationGernalComponent,
-    AllUsersComponent,
-    AllQuestionsComponent,
     Step1Component,
     Step2Component,
     Step3Component,
     Step4Component,
-    AllResultsComponent,
     LoginComponent,
 
     TopstepsComponent,
     ProgreebarComponent,
 
-    FooterComponent
+    FooterComponent,
+      SettingsComponent
     
     ],
   imports: [
@@ -59,7 +52,8 @@ import { HeaderComponent } from './INDEX/landing/Landing-Components/header/heade
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

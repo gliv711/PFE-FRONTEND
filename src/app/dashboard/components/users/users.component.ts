@@ -1,15 +1,16 @@
-  import { Component, OnInit } from '@angular/core';
-  import { User } from 'src/Models/User';
-  import { UserServiceService } from 'src/Services/user-service/user-service.service';
+import { Component, OnInit } from '@angular/core';
+import { User } from 'src/Models/User';
+import { UserServiceService } from 'src/Services/user-service/user-service.service';
 import { Role } from 'src/enums/role.enum';
 
-  @Component({
-    selector: 'app-all-users',
-    templateUrl: './all-users.component.html',
-    styleUrls: ['./all-users.component.css']
-  })
-  export class AllUsersComponent implements OnInit {
-    Users: User[] = [];
+@Component({
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.css']
+})
+export class UsersComponent implements OnInit {
+
+  Users: User[] = [];
     user : User = {};
     constructor(private UserService : UserServiceService) {this.getUsers(); }
 
@@ -67,4 +68,4 @@ import { Role } from 'src/enums/role.enum';
     ngOnInit(): void {
     }
 
-  }
+}
