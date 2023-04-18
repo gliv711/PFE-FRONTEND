@@ -188,6 +188,10 @@
 .team .member .social a+a {
   margin-left: 8px;
 }
+
+
+
+
 .gradient-custom {
   background: radial-gradient(50% 123.47% at 50% 50%, #00ff94 0%, #720059 100%),
     linear-gradient(121.28deg, #669600 0%, #ff0000 100%),
