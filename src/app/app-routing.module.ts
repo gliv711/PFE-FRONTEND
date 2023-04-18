@@ -22,7 +22,6 @@ import { SpinnersComponent } from './Platform/dashboard/addons/spinners/spinners
 import { TablesDataComponent } from './Platform/dashboard/addons/tables-data/tables-data.component';
 import { TablesGeneralComponent } from './Platform/dashboard/addons/tables-general/tables-general.component';
 import { TabsComponent } from './Platform/dashboard/addons/tabs/tabs.component';
-// import { DashboardComponent } from './Platform/dashboard/dashboard/dashboard.component';
 import { PagesContactComponent } from './Platform/dashboard/pages-contact/pages-contact.component';
 import { PagesError404Component } from './Platform/dashboard/pages-error404/pages-error404.component';
 
@@ -34,11 +33,10 @@ import { ProgreebarComponent } from './INDEX/signup/progreebar/progreebar.compon
 
 import { LoginComponent } from './INDEX/landing/login/login.component';
 import { HomeComponent } from './INDEX/landing/Landing-Components/home/home.component';
-import { SettingsComponent } from './Platform/dashboard/settings/settings.component';
-import { DashboardModule } from './dashboard/dashboard.module';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { UsersComponent } from './dashboard/components/users/users.component';
 import { QuestionsComponent } from './dashboard/components/questions/questions.component';
+import { SettingsComponent } from './dashboard/components/settings/settings.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -84,12 +82,7 @@ const routes: Routes = [
   { path : 'multistep', component:MultistepComponent},
   {path : 'information-general',component:InformationGernalComponent},
   {path :'progressbar', component: ProgreebarComponent},
-  {path :'home' , component:HomeComponent},
-  {path :'settings' , component:SettingsComponent},
-
-  {path :'dash' , component: DashboardComponent}
-
-
+  {path :'home' , component:HomeComponent}
 
 ];
 

@@ -1,12 +1,31 @@
 
 <div class="card" style="width: 100% ">
     <div class="card-body">
+  <h2>Tout les Questions </h2>
 
-        <h2>Tout les Questions </h2>
+  
+<label class="select" for="slct">
+<select id="slct" required="required">
+<option value="" disabled="disabled" selected="selected">Select option</option>
+<option value="#">general</option>
+<option value="#">informatique</option>
+<option value="#">gestion</option>
+<option value="#">finance</option>
+
+</select>
+<svg>
+<use xlink:href="#select-arrow-down"></use>
+</svg>
+</label>
+<!-- SVG Sprites-->
+<svg class="sprites">
+<symbol id="select-arrow-down" viewbox="0 0 10 6">
+<polyline points="1 1 5 5 9 1"></polyline>
+</symbol>
+</svg>
+
+<div class="card" style="width: 100%; margin-left: 5%; margin-top: 8%; ">
     
-        <button type="button" class="btn btn-info" (click)="getSurveyGeneral()">Général</button> 
-        <button type="button" class="btn btn-info" (click)="getSurveyInformatique()">Informatique</button>
-        <button type="button" class="btn btn-info" (click)="getSurveyFinances()">Finances</button>
 
 <table class="table table-striped border-primary">
     
