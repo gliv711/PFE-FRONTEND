@@ -38,6 +38,8 @@ import { UsersComponent } from './dashboard/components/users/users.component';
 import { QuestionsComponent } from './dashboard/components/questions/questions.component';
 import { SettingsComponent } from './dashboard/components/settings/settings.component';
 
+import { FooterComponent } from './INDEX/landing/Landing-Components/footer/footer.component';
+
 const routes: Routes = [
   {path:'',component:LandingComponent},
   {path:'login',component:LoginComponent},
@@ -82,7 +84,8 @@ const routes: Routes = [
   { path : 'multistep', component:MultistepComponent},
   {path : 'information-general',component:InformationGernalComponent},
   {path :'progressbar', component: ProgreebarComponent},
-  {path :'home' , component:HomeComponent}
+  {path :'home' , component:HomeComponent},
+ 
 
 ];
 
