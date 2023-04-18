@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InformationGernalComponent } from './INDEX/information global/information-gernal/information-gernal.component';
 import { LandingComponent } from './INDEX/landing/landing.component';
-import { MultistepComponent } from './INDEX/multistep/multistep.component';
+import { MultistepComponent } from './INDEX/register/multistep/multistep.component';
 import { RegisterComponent } from './INDEX/register/register.component';
 import { AdminInterfaceComponent } from './Platform/admin-interface/admin-interface.component';
 import { AccordionComponent } from './Platform/dashboard/addons/accordion/accordion.component';
@@ -17,7 +17,6 @@ import { ChartsChartjsComponent } from './Platform/dashboard/addons/charts-chart
 import { FormsEditorsComponent } from './Platform/dashboard/addons/forms-editors/forms-editors.component';
 import { FormsElementsComponent } from './Platform/dashboard/addons/forms-elements/forms-elements.component';
 import { FormsLayoutsComponent } from './Platform/dashboard/addons/forms-layouts/forms-layouts.component';
-
 import { PaginationComponent } from './Platform/dashboard/addons/pagination/pagination.component';
 import { ProgressComponent } from './Platform/dashboard/addons/progress/progress.component';
 import { SpinnersComponent } from './Platform/dashboard/addons/spinners/spinners.component';
@@ -27,13 +26,17 @@ import { TabsComponent } from './Platform/dashboard/addons/tabs/tabs.component';
 import { DashboardComponent } from './Platform/dashboard/dashboard/dashboard.component';
 import { PagesContactComponent } from './Platform/dashboard/pages-contact/pages-contact.component';
 import { PagesError404Component } from './Platform/dashboard/pages-error404/pages-error404.component';
-
 import { SidebarComponent } from './Platform/sidebar/sidebar.component';
 import { AllUsersComponent } from './Platform/dashboard/all-users/all-users.component';
 import { AllQuestionsComponent } from './Platform/dashboard/all-questions/all-questions.component';
 import { AllResultsComponent } from './Platform/dashboard/all-results/all-results.component';
-import { LoginComponent } from './INDEX/login/login.component';
+
+
 import { ProgreebarComponent } from './INDEX/signup/progreebar/progreebar.component';
+
+
+
+import { LoginComponent } from './INDEX/landing/login/login.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
