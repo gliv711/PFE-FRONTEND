@@ -44,9 +44,8 @@ const routes: Routes = [
   {path:'',component:LandingComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
-  // { path: 'dashboard', component: DashboardComponent },
   {
-    path : 'dash', component : DashboardComponent,
+    path : 'dashboard', component : DashboardComponent,
     children : [
       {
         path : 'users', component : UsersComponent
