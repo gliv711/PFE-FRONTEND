@@ -37,6 +37,7 @@ import { ProgreebarComponent } from './INDEX/signup/progreebar/progreebar.compon
 
 
 import { LoginComponent } from './INDEX/landing/login/login.component';
+import { HomeComponent } from './INDEX/landing/Landing-Components/home/home.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -70,7 +71,8 @@ const routes: Routes = [
   { path : 'sidebar', component : SidebarComponent},
   { path : 'multistep', component:MultistepComponent},
   {path : 'information-general',component:InformationGernalComponent},
-  {path :'progressbar', component: ProgreebarComponent}
+  {path :'progressbar', component: ProgreebarComponent},
+  {path :'home' , component:HomeComponent}
 
 ];
 
