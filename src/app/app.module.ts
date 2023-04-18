@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './INDEX/landing/header/header.component';
 import { HomeComponent } from './INDEX/landing/Landing-Components/home/home.component';
 import { LandingComponent } from './INDEX/landing/landing.component';
 import { RegisterComponent } from './INDEX/register/register.component';
@@ -21,6 +20,7 @@ import { Step4Component } from './INDEX/signup/step4/step4.component';
 import { AllResultsComponent } from './Platform/dashboard/all-results/all-results.component';
 import { FooterComponent } from './INDEX/landing/Landing-Components/footer/footer.component';
 import { LoginComponent } from './INDEX/landing/login/login.component';
+import { HeaderComponent } from './INDEX/landing/Landing-Components/header/header.component';
 
 
 @NgModule({
