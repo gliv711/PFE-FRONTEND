@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './INDEX/landing/header/header.component';
 import { HomeComponent } from './INDEX/landing/Landing-Components/home/home.component';
 import { LandingComponent } from './INDEX/landing/landing.component';
 import { RegisterComponent } from './INDEX/register/register.component';
@@ -25,6 +24,7 @@ import { ProgreebarComponent } from './INDEX/signup/progreebar/progreebar.compon
 
 import { FooterComponent } from './INDEX/landing/Landing-Components/footer/footer.component';
 import { LoginComponent } from './INDEX/landing/login/login.component';
+import { HeaderComponent } from './INDEX/landing/Landing-Components/header/header.component';
 
 
 @NgModule({
