@@ -20,7 +20,6 @@ import { ProgreebarComponent } from './INDEX/signup/progreebar/progreebar.compon
 import { FooterComponent } from './INDEX/landing/Landing-Components/footer/footer.component';
 import { LoginComponent } from './INDEX/landing/login/login.component';
 import { HeaderComponent } from './INDEX/landing/Landing-Components/header/header.component';
-import { SettingsComponent } from './Platform/dashboard/settings/settings.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 
 
@@ -44,7 +43,6 @@ import { DashboardModule } from './dashboard/dashboard.module';
     ProgreebarComponent,
 
     FooterComponent,
-      SettingsComponent
     
     ],
   imports: [

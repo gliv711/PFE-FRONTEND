@@ -24,21 +24,13 @@ import { TablesGeneralComponent } from './Platform/dashboard/addons/tables-gener
 import { TabsComponent } from './Platform/dashboard/addons/tabs/tabs.component';
 import { PagesContactComponent } from './Platform/dashboard/pages-contact/pages-contact.component';
 import { PagesError404Component } from './Platform/dashboard/pages-error404/pages-error404.component';
-
-
-
 import { ProgreebarComponent } from './INDEX/signup/progreebar/progreebar.component';
-
-
-
 import { LoginComponent } from './INDEX/landing/login/login.component';
 import { HomeComponent } from './INDEX/landing/Landing-Components/home/home.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { UsersComponent } from './dashboard/components/users/users.component';
 import { QuestionsComponent } from './dashboard/components/questions/questions.component';
 import { SettingsComponent } from './dashboard/components/settings/settings.component';
-
-import { FooterComponent } from './INDEX/landing/Landing-Components/footer/footer.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
