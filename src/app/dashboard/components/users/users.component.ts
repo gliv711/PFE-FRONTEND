@@ -15,7 +15,8 @@ export class UsersComponent implements OnInit {
     constructor(private UserService : UserServiceService) {this.getUsers(); }
 
     roles = Object.values(Role);
-
+    itemsPerPage = 10;
+    currentPage = 1;
 
     getUsers(){
       this.UserService.getUsers().subscribe({

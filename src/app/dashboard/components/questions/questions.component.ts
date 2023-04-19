@@ -15,7 +15,8 @@ export class QuestionsComponent implements OnInit {
   survey : Survey ={} ;
 
   fields = Object.values(Field);
-
+  itemsPerPage = 10;
+  currentPage = 1;
     
 
   constructor(private SurveyService : SurveyServiceService, private http: HttpClient) {
