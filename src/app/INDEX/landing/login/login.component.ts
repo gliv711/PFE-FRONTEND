@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     const credentials = {email : this.email,password:this.password};
     this.http.post(this.api+'/login', credentials).subscribe(
       (response: any) => {
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/dashboard']);
       },
       (error: any) => {
         console.log("you are not connected !");
