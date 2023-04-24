@@ -13,6 +13,10 @@ export class QuestionsComponent implements OnInit {
 
   Surveys : Survey[] = [];
   survey : Survey ={} ;
+  chargement =false ;
+  mise_a_jour=false ;
+  supprimer=false ;
+  error = false ;
 
   fields = Object.values(Field);
   itemsPerPage = 10;
@@ -38,8 +42,9 @@ export class QuestionsComponent implements OnInit {
       next: () => {
         this.getSurvey();
         console.log(survey);
+        this.supprimer=true;
       },
-      error: (e) => console.log(e),
+        error: (e) =>  {console.log(e),this.error=true;},
       
       complete: () => {
         console.log("Deleted ! ")
@@ -56,7 +61,7 @@ export class QuestionsComponent implements OnInit {
       next: (response: Survey[]) => {
         this.Surveys = response;
       },
-      error: (e) => console.log(e),
+      error: (e) =>  {console.log(e),this.error=true;},
       complete: () => {}
     })
 
@@ -67,7 +72,7 @@ export class QuestionsComponent implements OnInit {
       next: (response: Survey[]) => {
         this.Surveys = response;
       },
-      error: (e) => console.log(e),
+      error: (e) =>  {console.log(e),this.error=true;},
       complete: () => {}
     })
 
@@ -78,7 +83,7 @@ export class QuestionsComponent implements OnInit {
       next: (response: Survey[]) => {
         this.Surveys = response;
       },
-      error: (e) => console.log(e),
+      error: (e) =>  {console.log(e),this.error=true;},
       complete: () => {}
     })
 
@@ -91,7 +96,7 @@ export class QuestionsComponent implements OnInit {
       next: (response: Survey[]) => {
         this.Surveys = response;
       },
-      error: (e) => console.log(e),
+      error: (e) =>  {console.log(e),this.error=true;},
       complete: () => {}
     })
 
@@ -108,7 +113,7 @@ export class QuestionsComponent implements OnInit {
         this.getSurvey();
         this.close();
       },
-      error: (e) => console.log(e),
+      error: (e) =>  {console.log(e),this.error=true;},
       complete: () => {
         
 
