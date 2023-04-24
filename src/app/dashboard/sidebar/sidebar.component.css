@@ -10,13 +10,14 @@
 }
 
 .wrapper .sidebar{
-    background: rgb(5, 68, 104);
+    background: #2B70E4;
     padding: 30px;
     top: 0;
     left: 0;
     height: 100vmax;
     width: 100%;
     transition: all 0.5s ease;
+    
 }
 .wrapper .sidebar .profile{
     margin-bottom: 30px;
