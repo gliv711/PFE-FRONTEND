@@ -43,6 +43,9 @@ export class QuestionsComponent implements OnInit {
         this.getSurvey();
         console.log(survey);
         this.supprimer=true;
+        setTimeout(() => {
+          this.supprimer = false;
+        }, 3000); 
       },
         error: (e) =>  {console.log(e),this.error=true;},
       
@@ -112,6 +115,10 @@ export class QuestionsComponent implements OnInit {
       next: () => {
         this.getSurvey();
         this.close();
+        this.mise_a_jour=true;
+        setTimeout(() => {
+          this.mise_a_jour = false;
+        }, 3000); 
       },
       error: (e) =>  {console.log(e),this.error=true;},
       complete: () => {
