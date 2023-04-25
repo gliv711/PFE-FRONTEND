@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 
@@ -9,7 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./progreebar.component.css']
 })
 export class ProgreebarComponent implements OnInit {
-
+  firstFormGroup = this.formbuilder.group({
+    firstCtrl: ['', Validators.required],
+  });
+  secondFormGroup = this.formbuilder.group({
+    secondCtrl: ['', Validators.required],
+  });
+  isEditable = false;
   current: number = 1;
   steps!: number;
   progressBarWidth!: number;
@@ -17,9 +23,31 @@ export class ProgreebarComponent implements OnInit {
 
   constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder) {
     this.myform = this.formbuilder.group({
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
+      name: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
+      prenom: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confpassword: ['', [Validators.required, Validators.minLength(8), this.matchPasswords.bind(this)]],
+      adresse: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9 ]*'), Validators.maxLength(30)]],
+      region: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
+      telephone :['',[Validators.required,Validators.minLength(8),Validators.maxLength(8),Validators.pattern('[0-9]*')]],
+      dateDeNaissance:["",Validators.required],
+      universite :["",Validators.required],
+      domaine : ["",Validators.required],
 
-    })
+      
+
+
+
+    }) 
+    const n :number=0}
+    matchPasswords(control: FormControl) {
+      const password = control.parent?.get('password');
+      if (password && control.value !== password.value) {
+        return { mismatch: true };
+      }
+      return null;
+    
    }
 
   ngOnInit() {
@@ -30,32 +58,121 @@ export class ProgreebarComponent implements OnInit {
     const nextButtons = this.elementRef.nativeElement.querySelectorAll('.next');
     nextButtons.forEach((button: { addEventListener: (arg0: string, arg1: () => void) => void; parentNode: any; }) => {
       button.addEventListener('click', () => {
-        const current_fs = button.parentNode;
-        const next_fs = current_fs.nextElementSibling;
-
-        // Add Class Active
-        const activeIndex = Array.from(fieldsets).indexOf(next_fs);
-        const progressbarLis = this.elementRef.nativeElement.querySelectorAll('#progressbar li');
-        progressbarLis[activeIndex].classList.add('active');
-
-        // Show the next fieldset
-        next_fs.style.display = 'block';
-
-        // Hide the current fieldset with style
-        let opacity = 0;
-        const animationInterval = setInterval(() => {
-          opacity += 0.1;
-          current_fs.style.opacity = String(1 - opacity);
-          next_fs.style.opacity = String(opacity);
-          if (opacity >= 1) {
-            clearInterval(animationInterval);
-            current_fs.style.display = 'none';
-            current_fs.style.position = 'relative';
-            next_fs.style.position = 'static';
-          }
-        }, 50);
-
-        this.setProgressBar(++this.current);
+        if(this.myform.controls.email.valid && this.myform.controls.name.valid && this.myform.controls.prenom.valid  && this.myform.controls.password.valid && this.myform.controls. confpassword.valid  && nextButtons.item(0)== button) {
+          console.log("success form");
+          const current_fs = button.parentNode;
+          const next_fs = current_fs.nextElementSibling;
+  
+          // Add Class Active
+          const activeIndex = Array.from(fieldsets).indexOf(next_fs);
+          const progressbarLis = this.elementRef.nativeElement.querySelectorAll('#progressbar li');
+          progressbarLis[activeIndex].classList.add('active');
+  
+          // Show the next fieldset
+          next_fs.style.display = 'block';
+  
+          // Hide the current fieldset with style
+          let opacity = 0;
+          const animationInterval = setInterval(() => {
+            opacity += 0.1;
+            current_fs.style.opacity = String(1 - opacity);
+            next_fs.style.opacity = String(opacity);
+            if (opacity >= 1) {
+              clearInterval(animationInterval);
+              current_fs.style.display = 'none';
+              current_fs.style.position = 'relative';
+              next_fs.style.position = 'static';
+            }
+          }, 50);
+          this.setProgressBar(++this.current);
+        }
+        else if(this.myform.controls.telephone.valid &&this.myform.controls.region.valid  &&this.myform.controls.dateDeNaissance.valid&&this.myform.controls.adresse.valid  &&  nextButtons.item(1)== button) {
+          console.log("success form");
+          const current_fs = button.parentNode;
+          const next_fs = current_fs.nextElementSibling;
+  
+          // Add Class Active
+          const activeIndex = Array.from(fieldsets).indexOf(next_fs);
+          const progressbarLis = this.elementRef.nativeElement.querySelectorAll('#progressbar li');
+          progressbarLis[activeIndex].classList.add('active');
+  
+          // Show the next fieldset
+          next_fs.style.display = 'block';
+  
+          // Hide the current fieldset with style
+          let opacity = 0;
+          const animationInterval = setInterval(() => {
+            opacity += 0.1;
+            current_fs.style.opacity = String(1 - opacity);
+            next_fs.style.opacity = String(opacity);
+            if (opacity >= 1) {
+              clearInterval(animationInterval);
+              current_fs.style.display = 'none';
+              current_fs.style.position = 'relative';
+              next_fs.style.position = 'static';
+            }
+          }, 50);
+          this.setProgressBar(++this.current);
+        }
+        else if(this.myform.controls.domaine.valid   && this.myform.controls.universite.valid&&  nextButtons.item(2)== button) {
+          console.log("success form");
+          const current_fs = button.parentNode;
+          const next_fs = current_fs.nextElementSibling;
+  
+          // Add Class Active
+          const activeIndex = Array.from(fieldsets).indexOf(next_fs);
+          const progressbarLis = this.elementRef.nativeElement.querySelectorAll('#progressbar li');
+          progressbarLis[activeIndex].classList.add('active');
+  
+          // Show the next fieldset
+          next_fs.style.display = 'block';
+  
+          // Hide the current fieldset with style
+          let opacity = 0;
+          const animationInterval = setInterval(() => {
+            opacity += 0.1;
+            current_fs.style.opacity = String(1 - opacity);
+            next_fs.style.opacity = String(opacity);
+            if (opacity >= 1) {
+              clearInterval(animationInterval);
+              current_fs.style.display = 'none';
+              current_fs.style.position = 'relative';
+              next_fs.style.position = 'static';
+            }
+          }, 50);
+          this.setProgressBar(++this.current);
+        } 
+        else if( nextButtons.item(3)== button) {
+          console.log("success form");
+          const current_fs = button.parentNode;
+          const next_fs = current_fs.nextElementSibling;
+  
+          // Add Class Active
+          const activeIndex = Array.from(fieldsets).indexOf(next_fs);
+          const progressbarLis = this.elementRef.nativeElement.querySelectorAll('#progressbar li');
+          progressbarLis[activeIndex].classList.add('active');
+  
+          // Show the next fieldset
+          next_fs.style.display = 'block';
+  
+          // Hide the current fieldset with style
+          let opacity = 0;
+          const animationInterval = setInterval(() => {
+            opacity += 0.1;
+            current_fs.style.opacity = String(1 - opacity);
+            next_fs.style.opacity = String(opacity);
+            if (opacity >= 1) {
+              clearInterval(animationInterval);
+              current_fs.style.display = 'none';
+              current_fs.style.position = 'relative';
+              next_fs.style.position = 'static';
+            }
+          }, 50);
+          this.setProgressBar(++this.current);
+        } else {
+          console.log("error on form");
+          
+        }
       });
     });
 

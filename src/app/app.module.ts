@@ -13,7 +13,7 @@ import { Step1Component } from './INDEX/signup/step1/step1.component';
 import { Step2Component } from './INDEX/signup/step2/step2.component';
 import { Step3Component } from './INDEX/signup/step3/step3.component';
 import { Step4Component } from './INDEX/signup/step4/step4.component';
-
+import {MatStepperModule} from '@angular/material/stepper';
 import { TopstepsComponent } from './INDEX/signup/topsteps/topsteps.component';
 import { ProgreebarComponent } from './INDEX/signup/progreebar/progreebar.component';
 
@@ -21,6 +21,7 @@ import { FooterComponent } from './INDEX/landing/Landing-Components/footer/foote
 import { LoginComponent } from './INDEX/landing/login/login.component';
 import { HeaderComponent } from './INDEX/landing/Landing-Components/header/header.component';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { MatFormFieldModule } from '@angular/material';
 
 
 @NgModule({
@@ -48,6 +49,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatStepperModule,
+    MatFormFieldModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
