@@ -12,18 +12,23 @@ export class UsersComponent implements OnInit {
 
   Users: User[] = [];
     user : User = {};
+    chargement =false ;
+    mise_a_jour=false ;
+    supprimer=false ;
+    error = false ;
     constructor(private UserService : UserServiceService) {this.getUsers(); }
 
     roles = Object.values(Role);
     itemsPerPage = 10;
     currentPage = 1;
-
+  
     getUsers(){
       this.UserService.getUsers().subscribe({
         next: (response: User[]) => {
           this.Users = response;
+          
         },
-        error: (e) => console.log(e),
+        error: (e) =>  {console.log(e),this.error=true;},
         complete: () => {}
       })
     }
@@ -32,8 +37,12 @@ export class UsersComponent implements OnInit {
       this.UserService.deleteUser(user).subscribe({
         next: () => {
           this.getUsers();
+          this.supprimer=true;
+          setTimeout(() => {
+            this.supprimer = false;
+          }, 3000); 
         },
-        error: (e) => console.log(e),
+        error: (e) =>  {console.log(e),this.error=true;},
         
         complete: () => {
           console.log("Deleted ! ")
@@ -55,8 +64,12 @@ export class UsersComponent implements OnInit {
       this.UserService.addUser(this.user).subscribe({
         next: () => {
           this.getUsers();
+          this.mise_a_jour=true; 
+          setTimeout(() => {
+            this.mise_a_jour = false;
+          }, 3000); 
         },
-        error: (e) => console.log(e),
+        error: (e) =>  {console.log(e),this.error=true;},
         complete: () => {
           
 

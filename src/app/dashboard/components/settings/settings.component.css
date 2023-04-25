@@ -98,3 +98,8 @@ select:focus{
         line-height: 18px;
     }
 }
+
+.wrapper {
+    opacity: 0.9;
+
+}

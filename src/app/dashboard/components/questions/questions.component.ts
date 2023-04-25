@@ -13,6 +13,10 @@ export class QuestionsComponent implements OnInit {
 
   Surveys : Survey[] = [];
   survey : Survey ={} ;
+  chargement =false ;
+  mise_a_jour=false ;
+  supprimer=false ;
+  error = false ;
 
   fields = Object.values(Field);
   itemsPerPage = 10;
@@ -38,8 +42,12 @@ export class QuestionsComponent implements OnInit {
       next: () => {
         this.getSurvey();
         console.log(survey);
+        this.supprimer=true;
+        setTimeout(() => {
+          this.supprimer = false;
+        }, 3000); 
       },
-      error: (e) => console.log(e),
+        error: (e) =>  {console.log(e),this.error=true;},
       
       complete: () => {
         console.log("Deleted ! ")
@@ -56,7 +64,7 @@ export class QuestionsComponent implements OnInit {
       next: (response: Survey[]) => {
         this.Surveys = response;
       },
-      error: (e) => console.log(e),
+      error: (e) =>  {console.log(e),this.error=true;},
       complete: () => {}
     })
 
@@ -67,7 +75,7 @@ export class QuestionsComponent implements OnInit {
       next: (response: Survey[]) => {
         this.Surveys = response;
       },
-      error: (e) => console.log(e),
+      error: (e) =>  {console.log(e),this.error=true;},
       complete: () => {}
     })
 
@@ -78,7 +86,7 @@ export class QuestionsComponent implements OnInit {
       next: (response: Survey[]) => {
         this.Surveys = response;
       },
-      error: (e) => console.log(e),
+      error: (e) =>  {console.log(e),this.error=true;},
       complete: () => {}
     })
 
@@ -91,7 +99,7 @@ export class QuestionsComponent implements OnInit {
       next: (response: Survey[]) => {
         this.Surveys = response;
       },
-      error: (e) => console.log(e),
+      error: (e) =>  {console.log(e),this.error=true;},
       complete: () => {}
     })
 
@@ -107,8 +115,12 @@ export class QuestionsComponent implements OnInit {
       next: () => {
         this.getSurvey();
         this.close();
+        this.mise_a_jour=true;
+        setTimeout(() => {
+          this.mise_a_jour = false;
+        }, 3000); 
       },
-      error: (e) => console.log(e),
+      error: (e) =>  {console.log(e),this.error=true;},
       complete: () => {
         
 
