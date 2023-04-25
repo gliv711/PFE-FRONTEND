@@ -37,4 +37,8 @@ export class SurveyServiceService {
     return this.http.post<void>(url, surveys);
   }
 
+  getSurveyCount(): Observable<number> {    
+    return this.http.get<number>(this.api+'count');
+  };
+
 }

@@ -9,6 +9,7 @@ import { QuestionsComponent } from './components/questions/questions.component';
 import { FormsModule } from '@angular/forms';
 import { SettingsComponent } from './components/settings/settings.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SidebarComponent,
     UsersComponent,
     QuestionsComponent,
-    SettingsComponent
+    SettingsComponent,
+    AdminHomeComponent
   ],
   imports: [
     CommonModule,

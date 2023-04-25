@@ -22,4 +22,9 @@ export class UserServiceService {
   deleteUser(user: User): Observable<User> {
     return this.http.delete<User>(this.api+user.id);
   }
-}
+
+  getUserCount(): Observable<number> {    
+      return this.http.get<number>(this.api+'count');
+    };
+  }
+

@@ -31,6 +31,7 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { UsersComponent } from './dashboard/components/users/users.component';
 import { QuestionsComponent } from './dashboard/components/questions/questions.component';
 import { SettingsComponent } from './dashboard/components/settings/settings.component';
+import { AdminHomeComponent } from './dashboard/components/admin-home/admin-home.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -39,6 +40,9 @@ const routes: Routes = [
   {
     path : 'dashboard', component : DashboardComponent,
     children : [
+      {
+        path : '', component : AdminHomeComponent
+      },
       {
         path : 'users', component : UsersComponent
       },
