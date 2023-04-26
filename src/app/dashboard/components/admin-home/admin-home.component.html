@@ -19,7 +19,9 @@
     <div class="col-md-3">
       <div class="card-counter danger">
         <i class="fa fa-ticket"></i>
-        <span class="count-numbers">{{survey_count}}</span>
+        <span *ngIf="survey_count>0" class="count-numbers">{{survey_count}}</span>
+        <span *ngIf="survey_count===0 " class="count-numbers">None</span>
+
         <span class="count-name">Questions </span>
       </div>
     </div>
@@ -27,7 +29,8 @@
     <div class="col-md-3">
       <div class="card-counter success">
         <i class="fa fa-database"></i>
-        <span class="count-numbers">6875</span>
+        <span *ngIf="results_count>0" class="count-numbers">{{results_count}}</span>
+        <span *ngIf="results_count===0 " class="count-numbers">None</span>
         <span class="count-name">Data</span>
       </div>
     </div>
@@ -35,7 +38,9 @@
     <div class="col-md-3">
       <div class="card-counter info">
         <i class="fa fa-users"></i>
-        <span class="count-numbers">{{user_count}}</span>
+        <span *ngIf="user_count>0" class="count-numbers">{{user_count}}</span>
+        <span *ngIf="user_count===0 " class="count-numbers">None</span>
+
         <span class="count-name">Utilisateurs</span>
       </div>
     </div>

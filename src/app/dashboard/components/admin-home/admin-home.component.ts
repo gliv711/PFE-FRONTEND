@@ -8,9 +8,9 @@ import { UserServiceService } from 'src/Services/user-service/user-service.servi
   styleUrls: ['./admin-home.component.css']
 })
 export class AdminHomeComponent implements OnInit {
-  user_count : number = 1 ;
-  survey_count : number = 1 ;
-
+  user_count : number = 0 ;
+  survey_count : number = 0 ;
+  results_count : number = 0 ;
 
   constructor(private UserService : UserServiceService, private SurveyService : SurveyServiceService) { }
   ngOnInit() {
