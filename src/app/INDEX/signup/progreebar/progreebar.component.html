@@ -27,58 +27,58 @@
                                 </div>
                             </div>
                             <label class="fieldlabels">Nom: *</label>
-                             <input type="text" name="uname" formControlName="name" placeholder="UserName"  required/>
-                             <div  *ngIf=" myform.get('name').hasError('maxlength')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> max 30 caracteres</span>
-                                <br></div>
-                              <div  *ngIf=" myform.get('name').hasError('minlength')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> au moin 3 caracteres</span>
-                                <br></div>
-                              <div  *ngIf="myform.get('name').touched && myform.get('name').hasError('required')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> remplir le champs</span>
-                                <br></div>
-                                <div  *ngIf=" myform.get('name').hasError('pattern')" style="margin-top: 18px">
-                                  <span style="color: red;display: flex"> accepte juste alaphab</span>
-                                  <br></div>
-                            <label class="fieldlabels">Prénom: *</label>
-                             <input type="text" name="uname" formControlName="prenom" placeholder="UserName" required />
-                             <div  *ngIf=" myform.get('prenom').hasError('maxlength')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> max 30 caracteres</span>
-                                <br></div>
-                              <div  *ngIf=" myform.get('prenom').hasError('minlength')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> au moin 3 caracteres</span>
-                                <br></div>
-                              <div  *ngIf="myform.get('prenom').touched && myform.get('prenom').hasError('required')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> remplir le champs</span>
-                                <br></div>
-                                <div  *ngIf=" myform.get('prenom').hasError('pattern')" style="margin-top: 0px">
-                                  <span style="color: red;display: flex"> accepte juste alaphab</span>
-                                  <br></div>
-                             <label class="fieldlabels">Email: *</label>
-                              <input type="email" name="email" formControlName="email" placeholder="Email Id" required />
-                              <div  *ngIf="myform.get('email').touched && myform.get('email').hasError('required')" style="margin-top: -10px">
-                                <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
-                                <br></div>
-                              <div  *ngIf="myform.get('email').hasError('email')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> mail invalid </span>
-                                <br></div>
+                            <input type="text" name="uname" formControlName="name" placeholder="UserName"  required/>
+                            <div  *ngIf=" myform.get('name').hasError('maxlength')" style="margin-top: 18px">
+                               <span style="color: red;display: flex"> max 30 caracteres</span>
+                               <br></div>
+                             <div  *ngIf=" myform.get('name').hasError('minlength')" style="margin-top: 18px">
+                               <span style="color: red;display: flex"> au moin 3 caracteres</span>
+                               <br></div>
+                             <div  *ngIf="myform.get('name').touched && myform.get('name').hasError('required')" style="margin-top: 18px">
+                               <span style="color: red;display: flex"> remplir le champs</span>
+                               <br></div>
+                               <div  *ngIf=" myform.get('name').hasError('pattern')" style="margin-top: 18px">
+                                 <span style="color: red;display: flex"> accepte juste alaphab</span>
+                                 <br></div>
+                                 <label class="fieldlabels">Prénom: *</label>
+                                 <input type="text" name="uname" formControlName="prenom" placeholder="UserName" required />
+                                 <div  *ngIf=" myform.get('prenom').hasError('maxlength')" style="margin-top: 0px">
+                                    <span style="color: red;display: flex"> max 30 caracteres</span>
+                                    <br></div>
+                                  <div  *ngIf=" myform.get('prenom').hasError('minlength')" style="margin-top: 0px">
+                                    <span style="color: red;display: flex"> au moin 3 caracteres</span>
+                                    <br></div>
+                                  <div  *ngIf="myform.get('prenom').touched && myform.get('prenom').hasError('required')" style="margin-top: 0px">
+                                    <span style="color: red;display: flex"> remplir le champs</span>
+                                    <br></div>
+                                    <div  *ngIf=" myform.get('prenom').hasError('pattern')" style="margin-top: 0px">
+                                      <span style="color: red;display: flex"> accepte juste alaphab</span>
+                                      <br></div>
+                                      <label class="fieldlabels">Email: *</label>
+                                      <input type="email" name="email" formControlName="email" placeholder="Email Id" required />
+                                      <div  *ngIf="myform.get('email').touched && myform.get('email').hasError('required')" style="margin-top: -10px">
+                                        <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
+                                        <br></div>
+                                      <div  *ngIf="myform.get('email').hasError('email')" style="margin-top: 0px">
+                                        <span style="color: red;display: flex"> mail invalid </span>
+                                        <br></div>
+                                        <label class="fieldlabels">Mot de passe: *</label> 
+                                        <input type="password"  formControlName="password" name="pwd" placeholder="Password" />
+                                        <div  *ngIf="myform.get('password').touched && myform.get('password').hasError('required')" style="margin-top: 0px">
+                                          <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
+                                          <br></div>
+                                          <div  *ngIf=" myform.get('password').hasError('minlength')" style="margin-top: 0px">
+                                            <span style="color: red;display: flex"> au moin 8 caracteres</span>
+                                            <br></div>
+                                         <label class="fieldlabels">Confirmer le mot de passe: *</label> 
+                                         <input type="password"  formControlName="confpassword" name="cpwd" placeholder="Confirm Password" />
+                                         <div  *ngIf="myform.get('confpassword').touched && myform.get('confpassword').hasError('required')" style="margin-top: 0px">
+                                          <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
+                                          <br></div>
+                                          <div  *ngIf=" myform.get('confpassword').hasError('minlength')" style="margin-top: 0px">
+                                            <span style="color: red;display: flex"> au moin 8 caracteres</span>
+                                            <br></div>
                              
-                              <label class="fieldlabels">Mot de passe: *</label> 
-                              <input type="password"  formControlName="password" name="pwd" placeholder="Password" />
-                              <div  *ngIf="myform.get('password').touched && myform.get('password').hasError('required')" style="margin-top: 0px">
-                                <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
-                                <br></div>
-                                <div  *ngIf=" myform.get('password').hasError('minlength')" style="margin-top: 0px">
-                                  <span style="color: red;display: flex"> au moin 8 caracteres</span>
-                                  <br></div>
-                               <label class="fieldlabels">Confirmer le mot de passe: *</label> 
-                               <input type="password"  formControlName="confpassword" name="cpwd" placeholder="Confirm Password" />
-                               <div  *ngIf="myform.get('confpassword').touched && myform.get('confpassword').hasError('required')" style="margin-top: 0px">
-                                <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
-                                <br></div>
-                                <div  *ngIf=" myform.get('confpassword').hasError('minlength')" style="margin-top: 0px">
-                                  <span style="color: red;display: flex"> au moin 8 caracteres</span>
-                                  <br></div>
                         </div> <input type="button" name="next" class="next action-button" value="Next"  />
                     </fieldset>
                     <fieldset>
@@ -90,53 +90,52 @@
                                 <div class="col-5">
                                     <h2 class="steps">Step 2 - 5</h2>
                                 </div>
-                            </div> <label class="fieldlabels">telephone: *</label>
-                             <input type="text" name="fname" formControlName="telephone" placeholder="votre telephone" required />
-                             <div  *ngIf=" myform.get('telephone').hasError('maxlength')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> if faut 8 caracteres</span>
-                                <br></div>
-                              <div  *ngIf=" myform.get('telephone').hasError('minlength')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> if faut 8 caracteres</span>
-                                <br></div>
-                              <div  *ngIf="myform.get('telephone').touched && myform.get('telephone').hasError('required')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> remplir le champs</span>
-                                <br></div>
-                                <div  *ngIf=" myform.get('telephone').hasError('pattern')" style="margin-top: 18px">
-                                  <span style="color: red;display: flex"> accepte juste number</span>
-                                  <br></div>
-                              <label class="fieldlabels">date de naissance: *</label> 
-                              <input type="date"  formControlName="dateDeNaissance" value="data-bs-target" name="lname"  />
-                              <div  *ngIf="myform.get('dateDeNaissance').touched && myform.get('telephone').hasError('required')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> remplir le champs</span>
-                                <br></div>
-                               <label class="fieldlabels">  adresse: *</label> 
-                               <input type="text" formControlName="adresse" name="phno" placeholder="votre adresse." />
-                               <div  *ngIf=" myform.get('adresse').hasError('maxlength')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> max 30 caracteres</span>
-                                <br></div>
-                              <div  *ngIf=" myform.get('adresse').hasError('minlength')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> au moin 3 caracteres</span>
-                                <br></div>
-                              <div  *ngIf="myform.get('adresse').touched && myform.get('adresse').hasError('required')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> remplir le champs</span>
-                                <br></div>
-                                <div  *ngIf=" myform.get('adresse').hasError('pattern')" style="margin-top: 0px">
-                                  <span style="color: red;display: flex"> accepte juste alaphab et number</span>
-                                  <br></div> 
-                               <label class="fieldlabels">region *</label> 
-                               <input type="text" name="phno_2" formControlName="region" placeholder="region" />
-                               <div  *ngIf=" myform.get('region').hasError('maxlength')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> max 30 caracteres</span>
-                                <br></div>
-                              <div  *ngIf=" myform.get('region').hasError('minlength')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> au moin 3 caracteres</span>
-                                <br></div>
-                              <div  *ngIf="myform.get('region').touched && myform.get('region').hasError('required')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> remplir le champs</span>
-                                <br></div>
-                                <div  *ngIf=" myform.get('region').hasError('pattern')" style="margin-top: 0px">
-                                  <span style="color: red;display: flex"> accepte juste alaphab</span>
-                                  <br></div>
+                            </div> 
+                            <input type="text" name="fname" formControlName="telephone" placeholder="votre telephone" required />
+                            <div  *ngIf=" myform.get('telephone').hasError('maxlength')" style="margin-top: 18px">
+                               <span style="color: red;display: flex"> if faut 8 caracteres</span>
+                               <br></div>
+                             <div  *ngIf=" myform.get('telephone').hasError('minlength')" style="margin-top: 18px">
+                               <span style="color: red;display: flex"> if faut 8 caracteres</span>
+                               <br></div>
+                             <div  *ngIf="myform.get('telephone').touched && myform.get('telephone').hasError('required')" style="margin-top: 18px">
+                               <span style="color: red;display: flex"> remplir le champs</span>
+                               <br></div>
+                               <div  *ngIf=" myform.get('telephone').hasError('pattern')" style="margin-top: 18px">
+                                 <span style="color: red;display: flex"> accepte juste number</span>
+                                 <br></div>
+                                 <input type="date"  formControlName="dateDeNaissance" value="data-bs-target" name="lname"  />
+                                 <div  *ngIf="myform.get('dateDeNaissance').touched && myform.get('telephone').hasError('required')" style="margin-top: 18px">
+                                   <span style="color: red;display: flex"> remplir le champs</span>
+                                   <br></div>
+                                  <label class="fieldlabels">  adresse: *</label> 
+                                  <input type="text" formControlName="adresse" name="phno" placeholder="votre adresse." />
+                                  <div  *ngIf=" myform.get('adresse').hasError('maxlength')" style="margin-top: 0px">
+                                   <span style="color: red;display: flex"> max 30 caracteres</span>
+                                   <br></div>
+                                 <div  *ngIf=" myform.get('adresse').hasError('minlength')" style="margin-top: 0px">
+                                   <span style="color: red;display: flex"> au moin 3 caracteres</span>
+                                   <br></div>
+                                 <div  *ngIf="myform.get('adresse').touched && myform.get('adresse').hasError('required')" style="margin-top: 0px">
+                                   <span style="color: red;display: flex"> remplir le champs</span>
+                                   <br></div>
+                                   <div  *ngIf=" myform.get('adresse').hasError('pattern')" style="margin-top: 0px">
+                                     <span style="color: red;display: flex"> accepte juste alaphab et number</span>
+                                     <br></div> 
+                                  <label class="fieldlabels">region *</label> 
+                                  <input type="text" name="phno_2" formControlName="region" placeholder="region" />
+                                  <div  *ngIf=" myform.get('region').hasError('maxlength')" style="margin-top: 0px">
+                                   <span style="color: red;display: flex"> max 30 caracteres</span>
+                                   <br></div>
+                                 <div  *ngIf=" myform.get('region').hasError('minlength')" style="margin-top: 0px">
+                                   <span style="color: red;display: flex"> au moin 3 caracteres</span>
+                                   <br></div>
+                                 <div  *ngIf="myform.get('region').touched && myform.get('region').hasError('required')" style="margin-top: 0px">
+                                   <span style="color: red;display: flex"> remplir le champs</span>
+                                   <br></div>
+                                   <div  *ngIf=" myform.get('region').hasError('pattern')" style="margin-top: 0px">
+                                     <span style="color: red;display: flex"> accepte juste alaphab</span>
+                                     <br></div>
                         </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                     </fieldset>
                     <fieldset>
@@ -149,17 +148,15 @@
                                     <h2 class="steps">Step 3 - 5</h2>
                                 </div>
                             </div> 
-                            <label class="fieldlabels">universite:</label>
-                            
                             <input type="text" formControlName="universite" name="fname" placeholder="votre unversite" />
                             <div  *ngIf="myform.get('universite').touched && myform.get('universite').hasError('required')" style="margin-top: 18px">
                                 <span style="color: red;display: flex"> remplir le champs</span>
                                 <br></div>
                             <label class="fieldlabels">domaine:</label>
+                            <input type="text" formControlName="domaine" name="fname" placeholder="votre domaine de etude" />
                             <div  *ngIf="myform.get('domaine').touched && myform.get('domaine').hasError('required')" style="margin-top: 18px">
                                 <span style="color: red;display: flex"> remplir le champs</span>
                                 <br></div>
-                             <input type="text" formControlName="domaine" name="fname" placeholder="votre domaine de etude" />
                              <label class="fieldlabels">date de début: *</label> 
                               <input type="date" value="data-bs-target" name="lname"  />
                               <label class="fieldlabels">date de fin: *</label> 
@@ -181,9 +178,9 @@
                             <input type="text" name="fname" placeholder="votre societe" />
                             <label class="fieldlabels">poste:</label>
                              <input type="text" name="fname" placeholder="votre poste" />
-                             <label class="fieldlabels">date de début: </label> 
+                             <label class="fieldlabels">date de début: *</label> 
                               <input type="date" value="data-bs-target" name="lname"  />
-                              <label class="fieldlabels">date de fin: </label> 
+                              <label class="fieldlabels">date de fin: *</label> 
                               <input type="date" value="data-bs-target" name="lname"  />
                         </div> <input type="button" name="next" class="next action-button" value="Submit" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                     </fieldset>
