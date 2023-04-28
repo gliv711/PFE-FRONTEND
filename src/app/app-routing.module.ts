@@ -39,6 +39,7 @@ const routes: Routes = [
   {path:'register',component:RegisterComponent},
   {
     path : 'dashboard', component : DashboardComponent,
+    
     children : [
       {
         path : '', component : AdminHomeComponent

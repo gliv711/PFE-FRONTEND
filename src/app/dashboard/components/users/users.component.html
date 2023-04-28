@@ -1,5 +1,6 @@
 
 <div class="card" style="width: 100% " >
+  
   <pagination-controls (pageChange)="currentPage = $event">
   </pagination-controls>
   
@@ -131,7 +132,11 @@
         </div>
         <div class="modal-body">
           
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Image profile</label>
+            <td> <img *ngIf="!user?.image" src="assets/img/Placeholder/me.jpg" width="100px" height="100px" alt="" class="circular_image"/></td>
 
+          </div>
 
           
             <div class="mb-3">
