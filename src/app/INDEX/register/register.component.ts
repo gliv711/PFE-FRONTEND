@@ -35,7 +35,15 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/step1']);
       }
     }
-    
+    isFieldInvalid(fieldName: string): boolean {
+  const field = this.myform.get(fieldName);
+  return field.touched && field.invalid;
+}
+
+
+
+
+
     
    
     

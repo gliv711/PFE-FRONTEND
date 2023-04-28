@@ -6,35 +6,35 @@
     </div>
     <br>
     <div class="input_container">
-    <label class="input_label" for="name">Nom </label>
+    <label class="input_label" for="name">Nom</label>
     <input placeholder="nom" formControlName="name" title="Inpit title" name="name" type="text" class="input_field" id="name" required maxlength="30">
     <div  *ngIf=" myform.get('name').hasError('maxlength')" style="margin-top: 18px">
-      <span style="color: red;display: flex"> max 30 caracteres</span>
+      <span style="color: red;display: flex">le Nom ne doit pas dépasser 30 caractéres</span>
       <br></div>
     <div  *ngIf=" myform.get('name').hasError('minlength')" style="margin-top: 18px">
-      <span style="color: red;display: flex"> au moin 3 caracteres</span>
+      <span style="color: red;display: flex">le Nom doit avoir au moin 3 caracteres</span>
       <br></div>
     <div  *ngIf="myform.get('name').touched && myform.get('name').hasError('required')" style="margin-top: 18px">
-      <span style="color: red;display: flex"> remplir le champs</span>
+      <span style="color: red;display: flex">Vous devez remplir tout les champs</span>
       <br></div>
       <div  *ngIf=" myform.get('name').hasError('pattern')" style="margin-top: 18px">
-        <span style="color: red;display: flex"> accepte juste alaphab</span>
+        <span style="color: red;display: flex">le Nom doit contenir que des lettres alphabétiques</span>
         <br></div>
         </div>
         <div class="input_container">
         <label class="input_label" for="Prénom">Prénom</label>
         <input placeholder="Prénom" formControlName="prenom" title="Prénom" name="Prénom" type="text" class="input_field" id="Prénom" required>
         <div  *ngIf=" myform.get('prenom').hasError('maxlength')" style="margin-top: 0px">
-          <span style="color: red;display: flex"> max 30 caracteres</span>
+          <span style="color: red;display: flex">le prénom ne doit pas dépasser 30 caractéres</span>
           <br></div>
         <div  *ngIf=" myform.get('prenom').hasError('minlength')" style="margin-top: 0px">
-          <span style="color: red;display: flex"> au moin 3 caracteres</span>
+          <span style="color: red;display: flex">Le prénom doit avoir aux moins 3 caractéres</span>
           <br></div>
         <div  *ngIf="myform.get('prenom').touched && myform.get('prenom').hasError('required')" style="margin-top: 0px">
-          <span style="color: red;display: flex"> remplir le champs</span>
+          <span style="color: red;display: flex">Vous devez remplir le champ</span>
           <br></div>
           <div  *ngIf=" myform.get('prenom').hasError('pattern')" style="margin-top: 0px">
-            <span style="color: red;display: flex"> accepte juste alaphab</span>
+            <span style="color: red;display: flex">le Prénom doit contenir que des lettres alphabétiques</span>
             <br></div>
         </div>
     <div class="input_container">
@@ -42,30 +42,32 @@
       <input placeholder="name@mail.com" formControlName="email" title="Inpit title" name="email" type="text" class="input_field" id="email" required>
     
       <div  *ngIf="myform.get('email').touched && myform.get('email').hasError('required')" style="margin-top: -10px">
-        <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
+        <span style="color: rgb(190, 4, 4);display: flex">Vous devez remplir le champ Email</span>
         <br></div>
       <div  *ngIf="myform.get('email').hasError('email')" style="margin-top: 0px">
-        <span style="color: red;display: flex"> mail invalid </span>
+        <span style="color: red;display: flex">Email Invalide</span>
         <br></div>
     </div>
+
+    
     <div class="input_container">
-      <label class="input_label" for="password_field">Password</label>
+      <label class="input_label" for="password_field">Mot de passe</label>
       <input placeholder="Password" title="Inpit title" formControlName="password" name="password" type="password" class="input_field" id="password"required>
       <div  *ngIf="myform.get('password').touched && myform.get('password').hasError('required')" style="margin-top: 0px">
-        <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
+        <span style="color: rgb(190, 4, 4);display: flex">Vous devez remplir le champ</span>
         <br></div>
         <div  *ngIf=" myform.get('password').hasError('minlength')" style="margin-top: 0px">
-          <span style="color: red;display: flex"> au moin 8 caracteres</span>
+          <span style="color: red;display: flex">Votre mot de passe doit avoir aux moins 8 caractéres</span>
           <br></div></div>
     <div class="input_container">
         <label class="input_label" for="password_field">Confirmer mot de passe</label>
     
         <input placeholder="Password" title="Inpit title" formControlName="confpassword" name="confpassword" type="password" class="input_field" id="confpassword" required>
         <div  *ngIf="myform.get('confpassword').touched && myform.get('confpassword').hasError('required')" style="margin-top: 0px">
-          <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
+          <span style="color: rgb(190, 4, 4);display: flex">Vous devez remplir le champ</span>
           <br></div>
           <div  *ngIf=" myform.get('confpassword').hasError('minlength')" style="margin-top: 0px">
-            <span style="color: red;display: flex"> au moin 8 caracteres</span>
+            <span style="color: red;display: flex">Ce champ doit avoir au moins 8 caractéres</span>
             <br></div> </div>
             <button title="Sign up" type="submit" class="sign-in_btn" (click)="Onclick()" disabled="myform.invalid">
               Suivant
