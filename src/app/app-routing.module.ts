@@ -32,6 +32,8 @@ import { UsersComponent } from './dashboard/components/users/users.component';
 import { QuestionsComponent } from './dashboard/components/questions/questions.component';
 import { SettingsComponent } from './dashboard/components/settings/settings.component';
 import { AdminHomeComponent } from './dashboard/components/admin-home/admin-home.component';
+import { SignUpsocieteComponent } from './INDEX/signup/sign-upsociete/sign-upsociete.component';
+import { Step1Component } from './INDEX/signup/step1/step1.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -81,6 +83,7 @@ const routes: Routes = [
   {path : 'information-general',component:InformationGernalComponent},
   {path :'progressbar', component: ProgreebarComponent},
   {path :'home' , component:HomeComponent},
+  {path :'signup',component:Step1Component}
  
 
 ];

@@ -9,7 +9,7 @@ import { MultistepComponent } from './INDEX/register/multistep/multistep.compone
 import { InformationGernalComponent } from './INDEX/information global/information-gernal/information-gernal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Step1Component } from './INDEX/signup/step1/step1.component';
+
 import { Step2Component } from './INDEX/signup/step2/step2.component';
 import { Step3Component } from './INDEX/signup/step3/step3.component';
 import { Step4Component } from './INDEX/signup/step4/step4.component';
@@ -21,6 +21,7 @@ import { LoginComponent } from './INDEX/landing/login/login.component';
 import { HeaderComponent } from './INDEX/landing/Landing-Components/header/header.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { MatFormFieldModule, MatStepperModule } from '@angular/material';
+import { Step1Component } from './INDEX/signup/step1/step1.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { MatFormFieldModule, MatStepperModule } from '@angular/material';
     MultistepComponent,
     InformationGernalComponent,
     Step1Component,
+   
     Step2Component,
     Step3Component,
     Step4Component,
