@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { SettingsComponent } from './components/settings/settings.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { ResultsComponent } from './components/results/results.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
     UsersComponent,
     QuestionsComponent,
     SettingsComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    ResultsComponent
   ],
   imports: [
     CommonModule,

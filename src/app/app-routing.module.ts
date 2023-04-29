@@ -33,6 +33,7 @@ import { QuestionsComponent } from './dashboard/components/questions/questions.c
 import { SettingsComponent } from './dashboard/components/settings/settings.component';
 import { AdminHomeComponent } from './dashboard/components/admin-home/admin-home.component';
 import { Step1Component } from './INDEX/signup/step1/step1.component';
+import { ResultsComponent } from './dashboard/components/results/results.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -53,6 +54,9 @@ const routes: Routes = [
       },
       {
         path : 'settings', component : SettingsComponent
+      },
+      {
+        path : 'results', component : ResultsComponent
       }
     ]
   },
