@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'src/Models/User';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { societe } from 'src/Models/societe';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,10 +12,11 @@ export class UserServiceService {
   //api = "localhost:8084/api/user/";
   constructor(private http : HttpClient) { }
 
- 
-
   getUsers(): Observable <User[]>{
     return this.http.get<User[]>(this.api+'all');
+  }
+  getoneUser(id:any): Observable <User[]>{
+    return this.http.get<User[]>(this.api+id);
   }
 
   addUser(user:User) {
@@ -28,5 +30,21 @@ export class UserServiceService {
   getUserCount(): Observable<number> {    
       return this.http.get<number>(this.api+'count');
     };
+   
+    getsociete(): Observable <societe[]>{
+      return this.http.get<societe[]>(this.api+'all');
+    }
+    getonesociete(id:any): Observable <societe[]>{
+      return this.http.get<societe[]>(this.api+id);
+    }
+   
+    deletesociete(societe: societe): Observable<societe> {
+      return this.http.delete<societe>(this.api+societe.id);
+    }
+    addsociete(societe:societe) {
+      return this.http.post<societe>(this.api,societe);
+    }
+   
+    
   }
 
