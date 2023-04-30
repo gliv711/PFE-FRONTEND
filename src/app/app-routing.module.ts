@@ -33,6 +33,8 @@ import { QuestionsComponent } from './dashboard/components/questions/questions.c
 import { SettingsComponent } from './dashboard/components/settings/settings.component';
 import { AdminHomeComponent } from './dashboard/components/admin-home/admin-home.component';
 import { Step1Component } from './INDEX/signup/step1/step1.component';
+import { ResultsComponent } from './dashboard/components/results/results.component';
+import { ForgetPasswordComponent } from './INDEX/landing/login/forget-password/forget-password.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},

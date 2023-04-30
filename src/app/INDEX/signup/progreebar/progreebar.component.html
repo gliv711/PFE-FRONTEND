@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                <h2 id="heading" style="color: #007bff;">Sign Up Your User Account</h2>
+                <h2 id="heading">Sign Up Your User Account</h2>
                 <p>Fill all form field to go to next step</p>
                 <form id="msform" [formGroup]="myform">
                     <!-- progressbar -->
@@ -78,8 +78,6 @@
                                           <div  *ngIf=" myform.get('confpassword').hasError('minlength')" style="margin-top: 0px">
                                             <span style="color: red;display: flex"> au moin 8 caracteres</span>
                                             <br></div>
-                                            
-
                              
                         </div> <input type="button" name="next" class="next action-button" value="Next"  />
                     </fieldset>
@@ -160,9 +158,9 @@
                                 <span style="color: red;display: flex"> remplir le champs</span>
                                 <br></div>
                              <label class="fieldlabels">date de début: *</label> 
-                              <input type="date" value="data-bs-target" name="lname"  />
-                              <label class="fieldlabels">date de fin: *</label> 
-                              <input type="date" value="data-bs-target" name="lname"  />
+                              <input type="date" formControlName="dateDeFinEtude" value="data-bs-target" name="lname"  />
+                              <label class="fieldlabels" >date de fin: *</label> 
+                              <input type="date" formControlName="dateDeEtude" value="data-bs-target" name="lname"  />
                         </div> <input type="button" name="next" class="next action-button" value="Submit" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                     </fieldset>
                     <fieldset>
@@ -177,14 +175,14 @@
                             </div> 
                             <label class="fieldlabels">societe:</label>
                             
-                            <input type="text" name="fname" placeholder="votre societe" />
+                            <input type="text" formControlName="mondesocite" name="fname"  placeholder="votre societe" />
                             <label class="fieldlabels">poste:</label>
-                             <input type="text" name="fname" placeholder="votre poste" />
+                             <input type="text" formControlName="role" name="fname" placeholder="votre poste" />
                              <label class="fieldlabels">date de début: *</label> 
-                              <input type="date" value="data-bs-target" name="lname"  />
+                              <input type="date" formControlName="dateDebutPoste" value="data-bs-target" name="lname"  />
                               <label class="fieldlabels">date de fin: *</label> 
-                              <input type="date" value="data-bs-target" name="lname"  />
-                        </div> <input type="button" name="next" class="next action-button" value="Submit" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                              <input type="date" formControlName="dateFinPoste" value="data-bs-target" name="lname"  />
+                        </div> <input type="button"  name="next" class="next action-button" value="Submit" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                     </fieldset>
                     <fieldset>
                         <div class="form-card">
