@@ -10,7 +10,7 @@ export interface User{
     role?:String;
     image?:String;
     domaine?:String;
-    universite?:String;
+    university?:String;
     mondesocite?:String;
     dateDeNaissance?:Date ;
     phone_number?:String;
