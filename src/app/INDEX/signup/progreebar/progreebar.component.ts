@@ -161,10 +161,10 @@ export class ProgreebarComponent implements OnInit {
             role: this.myform.value.role,
             
             domaine:this.myform.value.domaine,
-            universite: this.myform.value.universite,
+            university: this.myform.value.university,
             mondesocite: this.myform.value.mondesocite,
             dateDeNaissance: this.myform.value.dateDeNaissance,
-            telephone: this.myform.value.telephone,
+            phone_number: this.myform.value.phone_number,
             region: this.myform.value.region,
             
             dateDeEtude:this.myform.value.dateDeEtude,
