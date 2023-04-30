@@ -34,6 +34,7 @@ import { SettingsComponent } from './dashboard/components/settings/settings.comp
 import { AdminHomeComponent } from './dashboard/components/admin-home/admin-home.component';
 import { Step1Component } from './INDEX/signup/step1/step1.component';
 import { ResultsComponent } from './dashboard/components/results/results.component';
+import { ForgetPasswordComponent } from './INDEX/landing/login/forget-password/forget-password.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -78,7 +79,7 @@ const routes: Routes = [
   { path: 'tables-data', component: TablesDataComponent },
   { path: 'tables-general', component: TablesGeneralComponent },
   { path: 'tabs', component: TabsComponent },
-  
+  {path : 'forget',component:ForgetPasswordComponent},
   { path: 'pages-contact', component: PagesContactComponent },
 
   { path: '*', component: PagesError404Component },

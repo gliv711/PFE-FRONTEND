@@ -22,6 +22,7 @@ import { HeaderComponent } from './INDEX/landing/Landing-Components/header/heade
 import { DashboardModule } from './dashboard/dashboard.module';
 import { MatFormFieldModule, MatStepperModule } from '@angular/material';
 import { Step1Component } from './INDEX/signup/step1/step1.component';
+import { ForgetPasswordComponent } from './INDEX/landing/login/forget-password/forget-password.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { Step1Component } from './INDEX/signup/step1/step1.component';
     ProgreebarComponent,
 
     FooterComponent,
+      ForgetPasswordComponent,
     
     ],
   imports: [

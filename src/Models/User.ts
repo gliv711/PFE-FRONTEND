@@ -10,11 +10,17 @@ export interface User{
     role?:String;
     image?:String;
     domaine?:String;
-    university?:String;
+    universite?:String;
+    mondesocite?:String;
     dateDeNaissance?:Date ;
     phone_number?:String;
     region?:String;
     address?:String;
     confpassword? :String;
+    dateDeEtude?:Date ;
+    dateDeDebuNaissance?:Date ;
+    dateDeFinEtude?:Date ;
+    dateDebutPoste?:Date ;
+    dateFinPoste?:Date ;
 
 }

@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/Models/User';
+import { UserServiceService } from 'src/Services/user-service/user-service.service';
 
 
 @Component({
@@ -20,8 +22,9 @@ export class ProgreebarComponent implements OnInit {
   steps!: number;
   progressBarWidth!: number;
   myform : any 
+  user!: User;
 
-  constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder) {
+  constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder , private userservice :UserServiceService) {
     this.myform = this.formbuilder.group({
       email: ['', [Validators.required, Validators.email]],
       name: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
@@ -34,6 +37,12 @@ export class ProgreebarComponent implements OnInit {
       dateDeNaissance:["",Validators.required],
       universite :["",Validators.required],
       domaine : ["",Validators.required],
+      mondesocite:new FormControl(),
+      dateFinPoste:new FormControl(),
+      dateDebutPoste:new FormControl(),
+      dateDeFinEtude:new FormControl(),
+      dateDedebutEtude: new FormControl(),
+      role: new FormControl()
 
       
 
@@ -143,6 +152,32 @@ export class ProgreebarComponent implements OnInit {
           this.setProgressBar(++this.current);
         } 
         else if( nextButtons.item(3)== button) {
+          let user: User = {
+     
+            lastName: this.myform.value.prenom,
+            name: this.myform.value.name,
+            email:this.myform.value.email,
+            password: this.myform.value.password,
+            role: this.myform.value.role,
+            
+            domaine:this.myform.value.domaine,
+            universite: this.myform.value.universite,
+            mondesocite: this.myform.value.mondesocite,
+            dateDeNaissance: this.myform.value.dateDeNaissance,
+            telephone: this.myform.value.telephone,
+            region: this.myform.value.region,
+            
+            dateDeEtude:this.myform.value.dateDeEtude,
+            
+            dateDeFinEtude: this.myform.value.dateDeFinEtude,
+            dateDebutPoste:this.myform.value.dateDebutPoste,
+            dateFinPoste: this.myform.value.dateFinPoste,
+        };
+        console.log(user)
+        this.userservice.addUser(user).subscribe(user=>{
+          console.log(user)
+        })
+        
           console.log("success form");
           const current_fs = button.parentNode;
           const next_fs = current_fs.nextElementSibling;
