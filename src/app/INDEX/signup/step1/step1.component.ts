@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { societe } from 'src/Models/societe';
+import { UserServiceService } from 'src/Services/user-service/user-service.service';
 
 @Component({
   selector: 'app-step1',
@@ -19,8 +21,9 @@ export class Step1Component implements OnInit {
   steps!: number;
   progressBarWidth!: number;
   isform : any 
+  societe!: societe;
 
-  constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder) {
+  constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder ,private societeservice:UserServiceService ) {
     this.isform = this.formbuilder.group({
       email: ['', [Validators.required, Validators.email]],
       name: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
@@ -30,7 +33,7 @@ export class Step1Component implements OnInit {
       telephone :['',[Validators.required,Validators.minLength(8),Validators.maxLength(8),Validators.pattern('[0-9]*')]],
       raisonSociel: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
       domaine: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
-      lien :['',Validators.required],
+      lien :new FormControl(),
       nomReasponsable:['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
 
       
@@ -87,6 +90,21 @@ export class Step1Component implements OnInit {
           this.setProgressBar(++this.current);
         }
         else if(this.isform.controls.telephone.valid &&this.isform.controls.raisonSociel.valid  &&this.isform.controls.domaine.valid &&this.isform.controls.nomReasponsable.valid &&this.isform.controls.adresse.valid   &&  nextButtons.item(1)== button) {
+         
+         let societe : societe={
+          
+          nameSociete:this.isform.value.name,
+          email:this.isform.value.email,
+          Password :this.isform.value.password,
+          telephone:this.isform.value.telephone,
+          domaineActivite:this.isform.value.domaine,
+          nameResponsable:this.isform.value.nomReasponsable,
+          raisionSocial:this.isform.value.raisonSociel,
+          adresse:this.isform.value.adresse,
+          lien:this.isform.value.lien,}
+          console.log(societe)
+         
+         
           console.log("success form");
           const current_fs = button.parentNode;
           const next_fs = current_fs.nextElementSibling;
