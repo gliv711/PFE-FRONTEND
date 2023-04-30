@@ -91,8 +91,8 @@
                                     <h2 class="steps">Step 2 - 5</h2>
                                 </div>
                             </div> 
-                            <input type="text" name="fname" formControlName="telephone" placeholder="votre telephone" required />
-                            <div  *ngIf=" myform.get('telephone').hasError('maxlength')" style="margin-top: 18px">
+                            <input type="text" name="fname" formControlName="phone_number" placeholder="votre telephone " required />
+                            <div  *ngIf=" myform.get('phone_number').hasError('maxlength')" style="margin-top: 18px">
                                <span style="color: red;display: flex"> if faut 8 caracteres</span>
                                <br></div>
                              <div  *ngIf=" myform.get('telephone').hasError('minlength')" style="margin-top: 18px">
@@ -148,8 +148,8 @@
                                     <h2 class="steps">Step 3 - 5</h2>
                                 </div>
                             </div> 
-                            <input type="text" formControlName="universite" name="fname" placeholder="votre unversite" />
-                            <div  *ngIf="myform.get('universite').touched && myform.get('universite').hasError('required')" style="margin-top: 18px">
+                            <input type="text" formControlName="university" name="fname" placeholder="votre unversite" />
+                            <div  *ngIf="myform.get('university').touched && myform.get('university').hasError('required')" style="margin-top: 18px">
                                 <span style="color: red;display: flex"> remplir le champs</span>
                                 <br></div>
                             <label class="fieldlabels">domaine:</label>

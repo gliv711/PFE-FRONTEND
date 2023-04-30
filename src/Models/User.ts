@@ -10,13 +10,12 @@ export interface User{
     role?:String;
     image?:String;
     domaine?:String;
-    universite?:String;
+    university?:String;
     mondesocite?:String;
-    
     dateDeNaissance?:Date ;
-    telephone?:String;
+    phone_number?:String;
     region?:String;
-    adresse?:String;
+    address?:String;
     confpassword? :String;
     dateDeEtude?:Date ;
     dateDeDebuNaissance?:Date ;
