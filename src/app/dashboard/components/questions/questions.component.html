@@ -57,20 +57,21 @@ Erreur     </div>
     <thead>
       <tr>
         <th scope="col">Id</th>
-        <th scope="col">Field</th>
         <th scope="col">Question</th>
+        <th scope="col">Field</th>
+        
         <th scope="col"></th>
         <th scope="col"><button type="button" class="btn btn-secondary" data-bs-target="#update-add-Modal" data-bs-toggle="modal" >Ajouter</button>
         
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let survey of Surveys | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
-        <th scope="row">{{survey.id}}</th>
-        <td>{{survey?.field}}</td>
-        <td>{{survey?.question}}</td>
+      <tr *ngFor="let question of questions | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+        <th scope="row">{{question?.question_id}}</th>
+        <td>{{question?.question}}</td>
+        <td>{{question?.field}}</td>
         <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal"  (click)="setCurrentSurvey(survey)">Supprimer</button></td>
-        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" (click)="setCurrentSurvey(survey)" data-bs-target="#update-add-Modal" > 
+        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" (click)="setCurrentQuestion(question)" data-bs-target="#update-add-Modal" > 
             Modifier
           </button>
           </td>
@@ -103,6 +104,7 @@ Erreur     </div>
 
     
     </div>
+    </div>
 
     <div class="modal fade" id="are-you-sure-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -132,25 +134,32 @@ Erreur     </div>
           <div class="modal-body">
             <div class="mb-3">
               <label for="id" class="form-label">ID</label>
-              <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.id">
+              <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="question.question_id">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Text</label>
+              <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="question.question">
+
             </div>
            
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Field</label>
-              <select class="form-select" id="Field" [(ngModel)]="survey.field" >
-                <option *ngFor="let field of fields" [value]="field">{{ field }}</option>
-              </select>
+              <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="question.field">
+              
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Answers</label>
+              <div *ngFor="let answer of question.answers">
+                <input type="text" class="form-control" id="answer{{ answer.answer_id }}" [(ngModel)]="answer.answer">
+              </div>
             </div>
   
-            <div class="mb-3">
-              <label for="question" class="form-label">Question</label>
-              <input type="text" class="form-control" id="question" placeholder="" [(ngModel)]="survey.question">
-            </div>
+          
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
-            <button type="button" class="btn btn-primary" (click)="addSurvey(survey)" data-bs-dismiss="modal" >Enregistrer</button>
+            <button type="button" class="btn btn-primary" (click)="addSurvey(survey)" data-bs-dismiss="modal" (click)="addQuestions(question)">Enregistrer</button>
           </div>
         </div>
       </div>
-    </div>
+    </div> 

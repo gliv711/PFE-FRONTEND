@@ -148,6 +148,31 @@
               </div>
             </div>
             <div class="card mt-3">
+              
+
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                  
+                  <ng-container *ngIf="user.role === 'Administrateur'; else utilisateurOrEntreprise">
+                    Administrateur
+                    <img src="assets/img/Roles/admin.png" alt="Administrateur" width="50px" height="50px" />
+                  </ng-container>
+                  <ng-template #utilisateurOrEntreprise>
+                    <ng-container *ngIf="user.role === 'Utilisateur'">
+                      Utilisateur
+                      <img src="assets/img/Roles/User.png" alt="Utilisateur"  width="50px" height="50px"/>
+                    </ng-container>
+                    <ng-container *ngIf="user.role === 'Entreprise'">
+                      Entreprise
+                      <img src="assets/img/Roles/company.jpg" alt="Entreprise" width="50px" height="50px" />
+                    </ng-container>
+                  </ng-template>
+                </li>
+              </ul>
+              
+
+
+
               <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                   <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>
@@ -171,6 +196,7 @@
                 </li>
               </ul>
             </div>
+            
           </div>
           <div class="col-md-7">
             <div class="card mb-3">
@@ -201,15 +227,25 @@
                     {{user.phone_number}}
                   </div>
                 </div>
+
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Région</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{user.region}}
+                  </div>
+                </div>
                 <hr>
                 
                 
                 <div class="row">
                   <div class="col-sm-3">
-                    <h6 class="mb-0">Address</h6>
+                    <h6 class="mb-0">Adresse</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    {{user.address}} et  Region : {{user.region}}
+                    {{user.address}}
                   </div>
                 </div>
                 <hr>
@@ -222,7 +258,7 @@
                     {{user.university}}
                   </div>
                 </div>
-                <hr>
+                
 
 
                 
@@ -230,57 +266,52 @@
             </div>
 
             <div class="row gutters-sm">
-              <div class="col-sm-6 mb-3">
+              
+              <div class="col-sm-12 mb-3">
                 <div class="card h-100">
                   <div class="card-body">
-                    <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                    <small>Web Design</small>
-                    <div class="progress mb-3" style="height: 5px">
-                      <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small>Website Markup</small>
-                    <div class="progress mb-3" style="height: 5px">
-                      <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small>One Page</small>
-                    <div class="progress mb-3" style="height: 5px">
-                      <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small>Mobile Template</small>
-                    <div class="progress mb-3" style="height: 5px">
-                      <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small>Backend API</small>
-                    <div class="progress mb-3" style="height: 5px">
-                      <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 mb-3">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                    <small>Web Design</small>
-                    <div class="progress mb-3" style="height: 5px">
-                      <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small>Website Markup</small>
-                    <div class="progress mb-3" style="height: 5px">
-                      <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small>One Page</small>
-                    <div class="progress mb-3" style="height: 5px">
-                      <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small>Mobile Template</small>
-                    <div class="progress mb-3" style="height: 5px">
-                      <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small>Backend API</small>
-                    <div class="progress mb-3" style="height: 5px">
-                      <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+                    <section class="section gray-bg" id="resume">
+                                <div class="container">
+                                    <div class="row">
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 m-15px-tb">
+                                            <div class="resume-box">
+                                                <ul>
+                                                    <li>
+                                                        <div class="icon">
+                                                            <i class="fas fa-user-graduate"></i>
+                                                        </div>
+                                                        <span class="time">Start date: {{user.StartofStudy |date:'yyyy/MM/dd'}} - End date: {{user.EndofStudy | date:'yyyy/MM/dd'}}</span>
+                                                        <h6>{{user.university}}</h6>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                    </li>
+                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 m-15px-tb">
+                                            <div class="resume-box">
+                                                <ul>
+                                                    <li>
+                                                        <div class="icon">
+                                                            <i class="fas fa-briefcase"></i>
+                                                        </div>
+                                                        <span class="time">Start date:{{user.StartofWork | date:'yyyy/MM/dd'}} - End date: {{user.EndofWork | date:'yyyy/MM/dd'}}</span>
+                                                        <h5>Art Director - Facebook Inc</h5>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                    </li>
+                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+
                   </div>
                 </div>
               </div>

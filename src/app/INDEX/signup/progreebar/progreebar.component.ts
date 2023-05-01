@@ -37,11 +37,11 @@ export class ProgreebarComponent implements OnInit {
       dateDeNaissance:["",Validators.required],
       university :["",Validators.required],
       domaine : ["",Validators.required],
-      nomdesocite:new FormControl(),
+      mondesocite:new FormControl(),
       dateFinPoste:new FormControl(),
       dateDebutPoste:new FormControl(),
       dateDeFinEtude:new FormControl(),
-      dateDeEtude: new FormControl(),
+      dateDedebutEtude: new FormControl(),
       role: new FormControl()
 
       
@@ -182,15 +182,11 @@ export class ProgreebarComponent implements OnInit {
             phone_number: this.myform.value.telephone,
             region: this.myform.value.region,
             
-            dateDedebutEtude
+            dateDeEtude:this.myform.value.dateDeEtude,
             
-            
-            
-            :this.myform.value.dateDeEtude,
-            
-            dateDeFinEtude: this.myform.value.dateDeFinEtude,
-            dateDebutPoste:this.myform.value.dateDebutPoste,
-            dateFinPoste: this.myform.value.dateFinPoste,
+            EndofStudy: this.myform.value.EndofStudy,
+            StartofWork:this.myform.value.StartofWork,
+            EndofWork: this.myform.value.EndofWork,
         };
         console.log(user)
         this.userservice.addUser(user).subscribe(user=>{

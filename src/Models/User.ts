@@ -18,10 +18,10 @@ export interface User   {
     region?:String;
     address?:String;
     confpassword? :String;
-    dateDedebutEtude?:Date ;
+    StartofStudy?:Date ;
     dateDeDebuNaissance?:Date ;
-    dateDeFinEtude?:Date ;
-    dateDebutPoste?:Date ;
-    dateFinPoste?:Date ;
+    EndofStudy?:Date ;
+    StartofWork?:Date ;
+    EndofWork?:Date ;
 
 }

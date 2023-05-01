@@ -1,7 +1,9 @@
+import { Questions } from "./Questions";
 
 
 export interface Survey{
-    id?: String ;
-    question?: String;
-    field? : String ;
+    id?: number;
+    title?: string;
+    description?: string;
+    questions?: Questions[];
 }
