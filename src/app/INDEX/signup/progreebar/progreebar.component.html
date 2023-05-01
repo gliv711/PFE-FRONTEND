@@ -152,13 +152,13 @@
                             <div  *ngIf="myform.get('university').touched && myform.get('university').hasError('required')" style="margin-top: 18px">
                                 <span style="color: red;display: flex"> remplir le champs</span>
                                 <br></div>
-                            <label class="fieldlabels">domaine:</label>
-                            <input type="text" formControlName="domaine" name="fname" placeholder="votre domaine de etude" />
-                            <div  *ngIf="myform.get('domaine').touched && myform.get('domaine').hasError('required')" style="margin-top: 18px">
+                            <label class="fieldlabels">domain:</label>
+                            <input type="text" formControlName="domain" name="fname" placeholder="votre domain de etude" />
+                            <div  *ngIf="myform.get('domain').touched && myform.get('domain').hasError('required')" style="margin-top: 18px">
                                 <span style="color: red;display: flex"> remplir le champs</span>
                                 <br></div>
                              <label class="fieldlabels">date de début: *</label> 
-                              <input type="date" formControlName="EndofStudy" value="data-bs-target" name="lname"  />
+                              <input type="date" formControlName="endofStudy" value="data-bs-target" name="lname"  />
                               <label class="fieldlabels" >date de fin: *</label> 
                               <input type="date" formControlName="startofStudy" value="data-bs-target" name="lname"  />
                         </div> <input type="button" name="next" class="next action-button" value="Submit" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
@@ -179,9 +179,9 @@
                             <label class="fieldlabels">poste:</label>
                              <input type="text" formControlName="role" name="fname" placeholder="votre poste" />
                              <label class="fieldlabels">date de début: *</label> 
-                              <input type="date" formControlName="StartofWork" value="data-bs-target" name="lname"  />
+                              <input type="date" formControlName="startofWork" value="data-bs-target" name="lname"  />
                               <label class="fieldlabels">date de fin: *</label> 
-                              <input type="date" formControlName="EndofWork" value="data-bs-target" name="lname"  />
+                              <input type="date" formControlName="endofWork" value="data-bs-target" name="lname"  />
                         </div> <input type="button"  name="next" class="next action-button" value="Submit" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                     </fieldset>
                     <fieldset>

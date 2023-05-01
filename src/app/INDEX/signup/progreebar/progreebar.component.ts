@@ -36,7 +36,7 @@ export class ProgreebarComponent implements OnInit {
       telephone :['',[Validators.required,Validators.minLength(8),Validators.maxLength(8),Validators.pattern('[0-9]*')]],
       dateDeNaissance:["",Validators.required],
       university :["",Validators.required],
-      domaine : ["",Validators.required],
+      domain : ["",Validators.required],
       mondesocite:new FormControl(),
       dateFinPoste:new FormControl(),
       dateDebutPoste:new FormControl(),
@@ -138,7 +138,7 @@ export class ProgreebarComponent implements OnInit {
           }, 50);
           this.setProgressBar(++this.current);
         }
-        else if(this.myform.controls.domaine.valid   && this.myform.controls.university.valid&&  nextButtons.item(2)== button) {
+        else if(this.myform.controls.domain.valid   && this.myform.controls.university.valid&&  nextButtons.item(2)== button) {
           console.log("success form");
           const current_fs = button.parentNode;
           const next_fs = current_fs.nextElementSibling;
@@ -175,7 +175,7 @@ export class ProgreebarComponent implements OnInit {
             password: this.myform.value.password,
             role: this.myform.value.role,
             
-            domaine:this.myform.value.domaine,
+            domain:this.myform.value.domain,
             university: this.myform.value.university,
             nomdesocite: this.myform.value.nomdesocite,
             dateDeNaissance: this.myform.value.dateDeNaissance,
@@ -184,9 +184,9 @@ export class ProgreebarComponent implements OnInit {
             
             startofStudy:this.myform.value.startofStudy,
             
-            EndofStudy: this.myform.value.EndofStudy,
-            StartofWork:this.myform.value.StartofWork,
-            EndofWork: this.myform.value.EndofWork,
+            endofStudy: this.myform.value.endofStudy,
+            startofWork:this.myform.value.startofWork,
+            endofWork: this.myform.value.endofWork,
         };
         console.log(user)
         this.userservice.addUser(user).subscribe(user=>{

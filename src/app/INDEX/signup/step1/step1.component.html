@@ -90,18 +90,18 @@
                              <div  *ngIf=" isform.get('telephone').hasError('pattern')" style="margin-top: 18px">
                                <span style="color: red;display: flex"> accepte juste number</span>
                                <br></div>
-                          <label class="fieldlabels">  domaine d'activité: *</label> 
-                          <input type="text" name="fname" formControlName="domaine" placeholder="votre telephone" required />
-                          <div  *ngIf=" isform.get('domaine').hasError('maxlength')" style="margin-top: 18px">
+                          <label class="fieldlabels">  domain d'activité: *</label> 
+                          <input type="text" name="fname" formControlName="domain" placeholder="votre telephone" required />
+                          <div  *ngIf=" isform.get('domain').hasError('maxlength')" style="margin-top: 18px">
                             <span style="color: red;display: flex"> max 30 caracteres</span>
                             <br></div>
-                          <div  *ngIf=" isform.get('domaine').hasError('minlength')" style="margin-top: 18px">
+                          <div  *ngIf=" isform.get('domain').hasError('minlength')" style="margin-top: 18px">
                             <span style="color: red;display: flex"> au moin 3 caracteres</span>
                             <br></div>
-                          <div  *ngIf="isform.get('domaine').touched && isform.get('domaine').hasError('required')" style="margin-top: 18px">
+                          <div  *ngIf="isform.get('domain').touched && isform.get('domain').hasError('required')" style="margin-top: 18px">
                             <span style="color: red;display: flex"> remplir le champs</span>
                             <br></div>
-                            <div  *ngIf=" isform.get('domaine').hasError('pattern')" style="margin-top: 18px">
+                            <div  *ngIf=" isform.get('domain').hasError('pattern')" style="margin-top: 18px">
                               <span style="color: red;display: flex"> accepte juste alaphab</span>
                               <br></div>
                                

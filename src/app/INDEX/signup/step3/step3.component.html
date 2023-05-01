@@ -23,18 +23,18 @@
           <br></div>  </div>
     
     <div class="input_container">
-      <label class="input_label" for="email_field">domaine d'etude</label>
-     <input title="Inpit title" formControlName="domaine" name="input-name" type="text" class="input_field" id="email_field">
-     <div  *ngIf=" myform.get('domaine').hasError('domaine')" style="margin-top: 18px">
+      <label class="input_label" for="email_field">domain d'etude</label>
+     <input title="Inpit title" formControlName="domain" name="input-name" type="text" class="input_field" id="email_field">
+     <div  *ngIf=" myform.get('domain').hasError('domain')" style="margin-top: 18px">
         <span style="color: red;display: flex"> max 30 caracteres</span>
         <br></div>
-      <div  *ngIf=" myform.get('domaine').hasError('minlength')" style="margin-top: 18px">
+      <div  *ngIf=" myform.get('domain').hasError('minlength')" style="margin-top: 18px">
         <span style="color: red;display: flex"> min 3 caracteres</span>
         <br></div>
-      <div  *ngIf="myform.get('domaine').touched && myform.get('domaine').hasError('required')" style="margin-top: 18px">
+      <div  *ngIf="myform.get('domain').touched && myform.get('domain').hasError('required')" style="margin-top: 18px">
         <span style="color: red;display: flex"> remplir le champs</span>
         <br></div>
-        <div  *ngIf=" myform.get('domaine').hasError('pattern')" style="margin-top: 18px">
+        <div  *ngIf=" myform.get('domain').hasError('pattern')" style="margin-top: 18px">
           <span style="color: red;display: flex"> accepte juste alaphab</span>
           <br></div>  </div>
     

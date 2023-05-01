@@ -10,7 +10,7 @@ export interface User   {
     password?:String;
     role?:String;
     image?:String;
-    domaine?:String;
+    domain?:String;
     university?:String;
     nomdesocite?:String;
     dateDeNaissance?:Date ;
@@ -20,8 +20,8 @@ export interface User   {
     confpassword? :String;
     startofStudy?:Date ;
     dateDeDebuNaissance?:Date ;
-    EndofStudy?:Date ;
-    StartofWork?:Date ;
-    EndofWork?:Date ;
+    endofStudy?:Date ;
+    startofWork?:Date ;
+    endofWork?:Date ;
 
 }

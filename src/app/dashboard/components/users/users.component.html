@@ -139,8 +139,8 @@
                 <div class="d-flex flex-column align-items-center text-center">
                   <img *ngIf="!user?.image" src="assets/img/Placeholder/me.jpg" width="245px" height="245px" alt="" class="circular_image"/>                  <div class="mt-3">
                     <h4>{{user.name}} {{user.lastName}}</h4>
-                    <p class="text-secondary mb-1">{{user.domaine}}</p>
-                    <p class="text-muted font-size-sm">{{user.address}}</p>
+                    
+                    <p class="text-muted font-size-sm">{{user.domain}}</p>
                    
                     <button class="btn btn-outline-primary">Contacter</button>
                   </div>
@@ -248,16 +248,9 @@
                     {{user.address}}
                   </div>
                 </div>
-                <hr>
+                
 
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">Université</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">
-                    {{user.university}}
-                  </div>
-                </div>
+                
                 
 
 
@@ -284,9 +277,8 @@
                                                         <div class="icon">
                                                             <i class="fas fa-user-graduate"></i>
                                                         </div>
-                                                        <span class="time">Start date: {{user.startofStudy | date:'yyyy/MM/dd'}} - End date: {{user.EndofStudy | date:'yyyy/MM/dd'}}</span>
+                                                        <span class="time"> {{user.startofStudy | date:'yyyy/MM/dd'}} -  {{user.endofStudy | date:'yyyy/MM/dd'}}</span>
                                                         <h6>{{user.university}}</h6>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                                     </li>
                                                     
                                                 </ul>
@@ -299,9 +291,8 @@
                                                         <div class="icon">
                                                             <i class="fas fa-briefcase"></i>
                                                         </div>
-                                                        <span class="time">Start date:{{user.StartofWork | date:'yyyy/MM/dd'}} - End date: {{user.EndofWork | date:'yyyy/MM/dd'}}</span>
+                                                        <span class="time">{{user.startofWork | date:'yyyy/MM/dd'}} -  {{user.endofWork | date:'yyyy/MM/dd'}}</span>
                                                         <h5>Art Director - Facebook Inc</h5>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                                     </li>
                                                     
                                                 </ul>

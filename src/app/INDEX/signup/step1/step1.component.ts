@@ -32,7 +32,7 @@ export class Step1Component implements OnInit {
       adresse: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9 ]*'), Validators.maxLength(30)]],
       telephone :['',[Validators.required,Validators.minLength(8),Validators.maxLength(8),Validators.pattern('[0-9]*')]],
       raisonSociel: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
-      domaine: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
+      domain: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
       lien :new FormControl(),
       nomReasponsable:['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
 
@@ -89,7 +89,7 @@ export class Step1Component implements OnInit {
           }, 50);
           this.setProgressBar(++this.current);
         }
-        else if(this.isform.controls.telephone.valid &&this.isform.controls.raisonSociel.valid  &&this.isform.controls.domaine.valid &&this.isform.controls.nomReasponsable.valid &&this.isform.controls.adresse.valid   &&  nextButtons.item(1)== button) {
+        else if(this.isform.controls.telephone.valid &&this.isform.controls.raisonSociel.valid  &&this.isform.controls.domain.valid &&this.isform.controls.nomReasponsable.valid &&this.isform.controls.adresse.valid   &&  nextButtons.item(1)== button) {
          
          let societe : societe={
           
@@ -97,7 +97,7 @@ export class Step1Component implements OnInit {
           email:this.isform.value.email,
           Password :this.isform.value.password,
           telephone:this.isform.value.telephone,
-          domaineActivite:this.isform.value.domaine,
+          domaineActivite:this.isform.value.domain,
           nameResponsable:this.isform.value.nomReasponsable,
           raisionSocial:this.isform.value.raisonSociel,
           adresse:this.isform.value.adresse,
