@@ -18,7 +18,7 @@ export interface User   {
     region?:String;
     address?:String;
     confpassword? :String;
-    StartofStudy?:Date ;
+    startofStudy?:Date ;
     dateDeDebuNaissance?:Date ;
     EndofStudy?:Date ;
     StartofWork?:Date ;
