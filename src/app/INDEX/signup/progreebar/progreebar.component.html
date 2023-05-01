@@ -91,8 +91,8 @@
                                     <h2 class="steps">Step 2 - 5</h2>
                                 </div>
                             </div> 
-                            <input type="text" name="fname" formControlName="phone_number" placeholder="votre telephone " required />
-                            <div  *ngIf=" myform.get('phone_number').hasError('maxlength')" style="margin-top: 18px">
+                            <input type="text" name="fname" formControlName="telephone" placeholder="votre telephone" required />
+                            <div  *ngIf=" myform.get('telephone').hasError('maxlength')" style="margin-top: 18px">
                                <span style="color: red;display: flex"> if faut 8 caracteres</span>
                                <br></div>
                              <div  *ngIf=" myform.get('telephone').hasError('minlength')" style="margin-top: 18px">
@@ -175,7 +175,7 @@
                             </div> 
                             <label class="fieldlabels">societe:</label>
                             
-                            <input type="text" formControlName="mondesocite" name="fname"  placeholder="votre societe" />
+                            <input type="text" formControlName="nomdesocite" name="fname"  placeholder="votre societe" />
                             <label class="fieldlabels">poste:</label>
                              <input type="text" formControlName="role" name="fname" placeholder="votre poste" />
                              <label class="fieldlabels">date de début: *</label> 
@@ -200,7 +200,7 @@
                             </div> <br><br>
                             <div class="row justify-content-center">
                                 <div class="col-7 text-center">
-                                    <h5 class="purple-text text-center">Enregistrement avec succées</h5>
+                                    <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
                                 </div>
                             </div>
                         </div>

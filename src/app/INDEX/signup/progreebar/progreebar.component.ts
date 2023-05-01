@@ -24,7 +24,7 @@ export class ProgreebarComponent implements OnInit {
   myform : any 
   user!: User;
 
-  constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder , private userservice :UserServiceService) {
+  constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder  ,private userservice:UserServiceService) {
     this.myform = this.formbuilder.group({
       email: ['', [Validators.required, Validators.email]],
       name: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
@@ -35,20 +35,24 @@ export class ProgreebarComponent implements OnInit {
       region: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
       telephone :['',[Validators.required,Validators.minLength(8),Validators.maxLength(8),Validators.pattern('[0-9]*')]],
       dateDeNaissance:["",Validators.required],
-      universite :["",Validators.required],
+      university :["",Validators.required],
       domaine : ["",Validators.required],
-      mondesocite:new FormControl(),
+      nomdesocite:new FormControl(),
       dateFinPoste:new FormControl(),
       dateDebutPoste:new FormControl(),
       dateDeFinEtude:new FormControl(),
-      dateDedebutEtude: new FormControl(),
+      dateDeEtude: new FormControl(),
       role: new FormControl()
+
+      
+      
 
       
 
 
 
     }) 
+    
     const n :number=0}
     matchPasswords(control: FormControl) {
       const password = control.parent?.get('password');
@@ -65,10 +69,19 @@ export class ProgreebarComponent implements OnInit {
     this.setProgressBar(this.current);
 
     const nextButtons = this.elementRef.nativeElement.querySelectorAll('.next');
+   
     nextButtons.forEach((button: { addEventListener: (arg0: string, arg1: () => void) => void; parentNode: any; }) => {
+    
       button.addEventListener('click', () => {
-        if(this.myform.controls.email.valid && this.myform.controls.name.valid && this.myform.controls.prenom.valid  && this.myform.controls.password.valid && this.myform.controls. confpassword.valid  && nextButtons.item(0)== button) {
+  if(this.myform.controls.email.valid && this.myform.controls.name.valid && this.myform.controls.prenom.valid  && this.myform.controls.password.valid && this.myform.controls. confpassword.valid  && nextButtons.item(0)== button) {
+         
+       
+    
+        
           console.log("success form");
+          console.log(this.myform.value.email)
+
+
           const current_fs = button.parentNode;
           const next_fs = current_fs.nextElementSibling;
   
@@ -96,6 +109,8 @@ export class ProgreebarComponent implements OnInit {
           this.setProgressBar(++this.current);
         }
         else if(this.myform.controls.telephone.valid &&this.myform.controls.region.valid  &&this.myform.controls.dateDeNaissance.valid&&this.myform.controls.adresse.valid  &&  nextButtons.item(1)== button) {
+         
+         
           console.log("success form");
           const current_fs = button.parentNode;
           const next_fs = current_fs.nextElementSibling;
@@ -123,7 +138,7 @@ export class ProgreebarComponent implements OnInit {
           }, 50);
           this.setProgressBar(++this.current);
         }
-        else if(this.myform.controls.domaine.valid   && this.myform.controls.universite.valid&&  nextButtons.item(2)== button) {
+        else if(this.myform.controls.domaine.valid   && this.myform.controls.university.valid&&  nextButtons.item(2)== button) {
           console.log("success form");
           const current_fs = button.parentNode;
           const next_fs = current_fs.nextElementSibling;
@@ -162,12 +177,16 @@ export class ProgreebarComponent implements OnInit {
             
             domaine:this.myform.value.domaine,
             university: this.myform.value.university,
-            mondesocite: this.myform.value.mondesocite,
+            nomdesocite: this.myform.value.nomdesocite,
             dateDeNaissance: this.myform.value.dateDeNaissance,
-            phone_number: this.myform.value.phone_number,
+            phone_number: this.myform.value.telephone,
             region: this.myform.value.region,
             
-            dateDeEtude:this.myform.value.dateDeEtude,
+            dateDedebutEtude
+            
+            
+            
+            :this.myform.value.dateDeEtude,
             
             dateDeFinEtude: this.myform.value.dateDeFinEtude,
             dateDebutPoste:this.myform.value.dateDebutPoste,
@@ -250,5 +269,5 @@ export class ProgreebarComponent implements OnInit {
   onSubmit() {
     return false;
   }
-
+ 
 }

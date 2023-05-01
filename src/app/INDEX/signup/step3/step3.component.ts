@@ -12,7 +12,7 @@ export class Step3Component implements OnInit {
 
   constructor(private router: Router ,private formbuilder : FormBuilder) { 
     this.myform = this.formbuilder.group({
-      universite :['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
+      university :['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
       domaine:['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]]
 
     })

@@ -6,19 +6,19 @@
     </div>
     <br>
    <div class="input_container">
-        <label class="input_label" for="email_field">universite  </label>
+        <label class="input_label" for="email_field">university  </label>
         
-        <input title="Inpit title" formControlName="universite" name="universite" type="text" class="input_field" id="universite">
-        <div  *ngIf=" myform.get('universite').hasError('universite')" style="margin-top: 18px">
+        <input title="Inpit title" formControlName="university" name="university" type="text" class="input_field" id="university">
+        <div  *ngIf=" myform.get('university').hasError('university')" style="margin-top: 18px">
         <span style="color: red;display: flex"> max 30 caracteres</span>
         <br></div>
-      <div  *ngIf=" myform.get('universite').hasError('minlength')" style="margin-top: 18px">
+      <div  *ngIf=" myform.get('university').hasError('minlength')" style="margin-top: 18px">
         <span style="color: red;display: flex"> min 3 caracteres</span>
         <br></div>
-      <div  *ngIf="myform.get('universite').touched && myform.get('universite').hasError('required')" style="margin-top: 18px">
+      <div  *ngIf="myform.get('university').touched && myform.get('university').hasError('required')" style="margin-top: 18px">
         <span style="color: red;display: flex"> remplir le champs</span>
         <br></div>
-        <div  *ngIf=" myform.get('universite').hasError('pattern')" style="margin-top: 18px">
+        <div  *ngIf=" myform.get('university').hasError('pattern')" style="margin-top: 18px">
           <span style="color: red;display: flex"> accepte juste alaphab</span>
           <br></div>  </div>
     

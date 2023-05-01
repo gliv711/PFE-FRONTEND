@@ -1,7 +1,8 @@
 
 
 
-export interface User{
+
+export interface User   {
     id?:number;
     lastName?:String;
     name?:String;
@@ -11,13 +12,13 @@ export interface User{
     image?:String;
     domaine?:String;
     university?:String;
-    mondesocite?:String;
+    nomdesocite?:String;
     dateDeNaissance?:Date ;
     phone_number?:String;
     region?:String;
     address?:String;
     confpassword? :String;
-    dateDeEtude?:Date ;
+    dateDedebutEtude?:Date ;
     dateDeDebuNaissance?:Date ;
     dateDeFinEtude?:Date ;
     dateDebutPoste?:Date ;
