@@ -35,6 +35,7 @@ import { AdminHomeComponent } from './dashboard/components/admin-home/admin-home
 import { Step1Component } from './INDEX/signup/step1/step1.component';
 import { ResultsComponent } from './dashboard/components/results/results.component';
 import { ForgetPasswordComponent } from './INDEX/landing/login/forget-password/forget-password.component';
+import { AnswersComponent } from './dashboard/components/answers/answers.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -58,6 +59,9 @@ const routes: Routes = [
       },
       {
         path : 'results', component : ResultsComponent
+      },
+      {
+        path : 'answers', component : AnswersComponent
       }
     ]
   },

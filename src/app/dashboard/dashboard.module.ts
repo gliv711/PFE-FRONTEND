@@ -11,6 +11,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { ResultsComponent } from './components/results/results.component';
+import { AnswersComponent } from './components/answers/answers.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ResultsComponent } from './components/results/results.component';
     QuestionsComponent,
     SettingsComponent,
     AdminHomeComponent,
-    ResultsComponent
+    ResultsComponent,
+    AnswersComponent
   ],
   imports: [
     CommonModule,

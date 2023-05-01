@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { User } from 'src/Models/User';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
 import { Role } from 'src/enums/role.enum';
-
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  providers: [DatePipe],
+  styleUrls: ['./users.component.css'],
+
 })
 export class UsersComponent implements OnInit {
 
@@ -26,7 +28,7 @@ export class UsersComponent implements OnInit {
       this.UserService.getUsers().subscribe({
         next: (response: User[]) => {
           this.Users = response;
-          
+          console.log(this.Users);
         },
         error: (e) =>  {console.log(e),this.error=true;},
         complete: () => {}

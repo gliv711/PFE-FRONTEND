@@ -47,6 +47,7 @@ import { ForgetPasswordComponent } from './INDEX/landing/login/forget-password/f
 
     FooterComponent,
       ForgetPasswordComponent,
+      
     
     ],
   imports: [
