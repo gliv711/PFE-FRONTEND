@@ -182,7 +182,7 @@ export class ProgreebarComponent implements OnInit {
             phone_number: this.myform.value.telephone,
             region: this.myform.value.region,
             
-            dateDeEtude:this.myform.value.dateDeEtude,
+            StartofStudy:this.myform.value.StartofStudy,
             
             EndofStudy: this.myform.value.EndofStudy,
             StartofWork:this.myform.value.StartofWork,
