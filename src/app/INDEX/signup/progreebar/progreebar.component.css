@@ -22,7 +22,13 @@ p {
     position: relative;
     margin-top: 20px
 }
+#msform input.ng-touched {
+    border-right: 2px solid red;
 
+  }
+#msform input.ng-valid {
+    border-right:  2px solid green;
+  }
 #msform fieldset {
     background: white;
     border: 0 none;

@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                             <label class="fieldlabels">Nom: *</label>
-                            <input type="text" name="uname" formControlName="name" placeholder="UserName"  required/>
+                            <input  type="text" name="uname" formControlName="name" placeholder="UserName"  required/>
                             <div  *ngIf=" myform.get('name').hasError('maxlength')" style="margin-top: 18px">
                                <span style="color: red;display: flex"> max 30 caracteres</span>
                                <br></div>
