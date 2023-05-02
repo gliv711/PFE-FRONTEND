@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Answer } from 'src/Models/Answer';
+import { AnswerService } from 'src/Services/answer-service/answer.service';
 
 @Component({
   selector: 'app-answers',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnswersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private answerService : AnswerService,private http: HttpClient ) { }
 
   ngOnInit(): void {
+    this.getAnswers();
+  }
+
+
+  answer : Answer={};
+  answers : Answer[] = [];
+
+  getAnswers(){
+    this.answers=[];
+    this.answerService.getAllAnswers().subscribe({
+      next: (response: Answer[]) => {
+        this.answers = response;
+      },
+      error: (e) =>  {console.log(e);},
+      complete: () => {}
+    })
+  }
+
+  setCurrentAnswer(answer :Answer){
+    this.getAnswers();
   }
 
 }

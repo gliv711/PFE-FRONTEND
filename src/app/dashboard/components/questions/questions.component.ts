@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Answer } from 'src/Models/Answer';
 import { Questions } from 'src/Models/Questions';
 import { Survey } from 'src/Models/Survey';
+import { AnswerService } from 'src/Services/answer-service/answer.service';
 import { QuestionsService } from 'src/Services/question-service/questions.service';
 import { SurveyServiceService } from 'src/Services/survey-service/survey-service.service';
 import { Field } from 'src/enums/field.enum';
@@ -13,13 +14,21 @@ import { Field } from 'src/enums/field.enum';
   styleUrls: ['./questions.component.css']
 })
 export class QuestionsComponent implements OnInit {
+  constructor(private SurveyService : SurveyServiceService, private http: HttpClient, private questionsService : QuestionsService,private answerService : AnswerService) {
+    this.getSurvey();
+    this.getQuestions();
+   }
+  ngOnInit(): void {
+  }
 
   Surveys : Survey[] = [];
   survey : Survey ={} ;
 
   questions : Questions[]=[] ;
   question : Questions= {};
-  
+  answer : Answer={};
+  answers : Answer[] = [];
+
 
   chargement =false ;
   mise_a_jour=false ;
@@ -30,15 +39,21 @@ export class QuestionsComponent implements OnInit {
   itemsPerPage = 10;
   currentPage = 1;
     
-
-  constructor(private SurveyService : SurveyServiceService, private http: HttpClient, private questionsService : QuestionsService) {
-    this.getSurvey();
-    this.getQuestions();
-   }
-  ngOnInit(): void {
+  getAnswers(){
+    this.answers=[];
+    this.answerService.getAllAnswers().subscribe({
+      next: (response: Answer[]) => {
+        this.answers = response;
+      },
+      error: (e) =>  {console.log(e),this.error=true;},
+      complete: () => {}
+    })
   }
 
+  
+
   setCurrentQuestion(question :Questions){
+    this.getAnswers();
     this.question=question;
   }
 

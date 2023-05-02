@@ -70,11 +70,12 @@ Erreur     </div>
         <th scope="row">{{question?.question_id}}</th>
         <td>{{question?.question}}</td>
         <td>{{question?.field}}</td>
-        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal"  (click)="setCurrentSurvey(survey)">Supprimer</button></td>
         <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" (click)="setCurrentQuestion(question)" data-bs-target="#update-add-Modal" > 
-            Modifier
-          </button>
-          </td>
+          Modifier
+        </button>
+        </td>
+        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal"  (click)="setCurrentSurvey(survey)">Supprimer</button></td>
+        
 
          
 
@@ -149,8 +150,8 @@ Erreur     </div>
             </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Answers</label>
-              <div *ngFor="let answer of question.answers">
-                <input type="text" class="form-control" id="answer{{ answer.answer_id }}" [(ngModel)]="answer.answer">
+              <div *ngFor="let answer of answers">
+                <button type="button" class="btn btn-primary"  >{{answer.answer}}</button>
               </div>
             </div>
   
