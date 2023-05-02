@@ -125,8 +125,8 @@ Erreur     </div>
       </div>
     </div>
   
-    <div class="modal fade" id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+    <div class="modal fade " id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog ">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
@@ -149,17 +149,30 @@ Erreur     </div>
               
             </div>
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Answers</label>
-              <div *ngFor="let answer of answers">
-                <button type="button" class="btn btn-primary"  >{{answer.answer}}</button>
-              </div>
+
+           <input type="text" [(ngModel)]="selectedOption" [matAutocomplete]="auto" >
+                <mat-autocomplete #auto="matAutocomplete"  >
+                  <mat-option *ngFor="let answer of answers" [value]="answer.answer" >
+                    {{answer.answer}}
+                              </mat-option>
+                  </mat-autocomplete> 
+
+
+           <!-- <label for="exampleFormControlInput1" class="form-label">Answers</label>
+              <ul *ngFor="let answer of answers">
+                <li>
+                <button type="button" class="btn btn-primary" >{{answer.answer}}</button>
+              </li>
+              </ul>  -->
+
+
             </div>
   
           
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
-            <button type="button" class="btn btn-primary" (click)="addSurvey(survey)" data-bs-dismiss="modal" (click)="addQuestions(question)">Enregistrer</button>
+            <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" (click)="addQuestions(question)">Enregistrer</button>
           </div>
         </div>
       </div>

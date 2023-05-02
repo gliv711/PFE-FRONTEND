@@ -15,11 +15,16 @@ export class AnswersComponent implements OnInit {
   ngOnInit(): void {
     this.getAnswers();
   }
+/////
+  chargement =false ;
+  mise_a_jour=false ;
+  supprimer=false ;
+  error = false ;
 
-
+  ////
   answer : Answer={};
   answers : Answer[] = [];
-
+// get answer
   getAnswers(){
     this.answers=[];
     this.answerService.getAllAnswers().subscribe({
@@ -30,9 +35,36 @@ export class AnswersComponent implements OnInit {
       complete: () => {}
     })
   }
+  ////////////////
+
+// add answer
+  
+addAnswer(answer:Answer){
+  this.answerService.addAnswer(this.answer).subscribe({
+    next: () => {
+      this.getAnswers();
+      this.close();
+      this.mise_a_jour=true;
+      setTimeout(() => {
+        this.mise_a_jour = false;
+      }, 3000); 
+    },
+    error: (e) =>  {console.log(e),this.error=true;},
+    complete: () => {
+      
+
+    }
+  })
+}
+////////
+
 
   setCurrentAnswer(answer :Answer){
-    this.getAnswers();
+    this.answer=answer ;
+  }
+
+  close(){
+    this.answer={};
   }
 
 }

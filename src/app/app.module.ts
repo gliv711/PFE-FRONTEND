@@ -19,7 +19,7 @@ import { ProgreebarComponent } from './INDEX/signup/progreebar/progreebar.compon
 import { FooterComponent } from './INDEX/landing/Landing-Components/footer/footer.component';
 import { LoginComponent } from './INDEX/landing/login/login.component';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { MatFormFieldModule, MatStepperModule } from '@angular/material';
+import { MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatStepperModule } from '@angular/material';
 import { Step1Component } from './INDEX/signup/step1/step1.component';
 import { ForgetPasswordComponent } from './INDEX/landing/login/forget-password/forget-password.component';
 import { HeaderComponent } from './INDEX/landing/Landing-Components/header/header.component';
@@ -36,7 +36,7 @@ import { HeaderComponent } from './INDEX/landing/Landing-Components/header/heade
     MultistepComponent,
     InformationGernalComponent,
     Step1Component,
-   
+
     Step2Component,
     Step3Component,
     Step4Component,

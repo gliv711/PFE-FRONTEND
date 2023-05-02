@@ -13,6 +13,9 @@ export class AnswerService {
 
   getAllAnswers(){
     return this.http.get<Answer[]>(this.api+'/all');
+  }
 
+  addAnswer(answer:Answer){
+    return this.http.post<Answer>(this.api,answer);
   }
 }

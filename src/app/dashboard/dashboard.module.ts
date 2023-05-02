@@ -12,7 +12,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { ResultsComponent } from './components/results/results.component';
 import { AnswersComponent } from './components/answers/answers.component';
-
+import { MatInputModule, MatAutocompleteModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,10 @@ import { AnswersComponent } from './components/answers/answers.component';
     CommonModule,
     AppRoutingModule,
     FormsModule,
-    NgxPaginationModule
+    MatInputModule,
+    MatAutocompleteModule,
+    NgxPaginationModule,
+    
   ],
   exports : [DashboardComponent]
 })
