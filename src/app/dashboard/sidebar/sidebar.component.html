@@ -1,53 +1,16 @@
-<div class="wrapper">
+
+<ul>
+  <li><a routerLink="/dashboard">  <i class="fa-solid fa-house-user"></i> Acceuil</a></li>
+  <li><a routerLink="/dashboard/users"> <i class="fa-solid fa-users"></i> Utilisateurs</a></li>
+  <li>
+    <a routerLink="/dashboard/questions"> <i class="fa-solid fa-clipboard-question"></i> Question &#x25BE;</a>
+    <ul class="dropdown">
      
-    <!--Top menu -->
-  
-    <div class="sidebar">
-       <!--profile image & text-->
-       <div class="profile">
-        <img src="assets/img/khalil.jpg" alt="profile_picture">
-        <h3>hedhli khalil</h3>
-        <p>Designer</p>
-    </div>
-    
-    <ul>
-    
-        <li>
-            <a routerLink="/dashboard/">
-                <span ><i class="fas fa-user-friends" routerLink="/dashboard/"></i></span>
-                <span style="margin-left  :8%" class="item" routerLink="/dashboard/">Acceuil</span>
-            </a>
-        </li>
-     <li>
-         <a routerLink="/dashboard/users">
-             <span ><i class="fas fa-user-friends" routerLink="/dashboard/users"></i></span>
-             <span style="margin-left  :8%" class="item" routerLink="/dashboard/users">Utilisateurs</span>
-         </a>
-     </li>
-     <li>        
-        <a  routerLink="/dashboard/questions">
-
-         
-             <span ><i class="fas fa-tachometer-alt" routerLink="/dashboard/questions"></i></span>
-             <span style="margin-left  :8%" class="item"  routerLink="/dashboard/questions">Questions</span>
-             </a>
-     </li>
-
-     <li>
-        <a routerLink="/dashboard/results">
-            <span ><i class="fas fa-user-friends" routerLink="/dashboard/results"></i></span>
-            <span style="margin-left  :8%" class="item" routerLink="/dashboard/results">Résultat</span>
-        </a>
+     <li><a  href="#"> surveys</a></li>
+     <li><a href="#">questions</a></li>
+     <li><a href="#">answers</a></li>
+    </ul>
     </li>
-     
-    
-
-     <li>
-         <a routerLink="/dashboard/settings">
-             <span ><i class="fas fa-cog"></i></span>
-             <span style="margin-left  :8%" class="item" >Settings</span>
-         </a>
-     </li>
- </ul>
-</div>
-    </div>
+    <li><a routerLink="/dashboard/results"> <i class="fa-solid fa-square-poll-vertical"></i>Resultat</a></li>
+  <li><a routerLink="/dashboard/settings"> <i class="fa-solid fa-gears"></i> Setting</a></li>
+</ul>

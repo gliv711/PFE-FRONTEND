@@ -36,6 +36,7 @@ import { Step1Component } from './INDEX/signup/step1/step1.component';
 import { ResultsComponent } from './dashboard/components/results/results.component';
 import { ForgetPasswordComponent } from './INDEX/landing/login/forget-password/forget-password.component';
 import { AnswersComponent } from './dashboard/components/answers/answers.component';
+import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -91,7 +92,8 @@ const routes: Routes = [
   {path : 'information-general',component:InformationGernalComponent},
   {path :'progressbar', component: ProgreebarComponent},
   {path :'home' , component:HomeComponent},
-  {path :'signup',component:Step1Component}
+  {path :'signup',component:Step1Component},
+  {path:'sidebar',component:SidebarComponent}
  
 
 ];
