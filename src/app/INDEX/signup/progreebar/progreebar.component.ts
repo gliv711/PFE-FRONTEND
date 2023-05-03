@@ -172,7 +172,7 @@ export class ProgreebarComponent implements OnInit {
             lastName: this.myform.value.prenom,
             name: this.myform.value.name,
             email:this.myform.value.email,
-            password: this.myform.value.password,
+            Password: this.myform.value.password,
             role: this.myform.value.role,
             
             domain:this.myform.value.domain,

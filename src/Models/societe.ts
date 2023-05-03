@@ -1,16 +1,17 @@
+import { lamba } from "./Lamba";
 
 
 
-export interface societe {
-    id?:String;
-    nameSociete?:String;
-    email?:String;
-    Password?:String;
-    telephone?:String;
+export class societe extends lamba {
+    nameSociete?:string;
     domaineActivite?:String;
     nameResponsable?:String;
     raisionSocial?:String;
     adresse?:String;
     lien?:String;
+  
+    constructor(id: string, email: string, Password: string,phone_number: string,address:String) {
+        super( id,email,Password,phone_number,address);
+    }
 
 }

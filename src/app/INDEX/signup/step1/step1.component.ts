@@ -96,7 +96,7 @@ export class Step1Component implements OnInit {
           nameSociete:this.isform.value.name,
           email:this.isform.value.email,
           Password :this.isform.value.password,
-          telephone:this.isform.value.telephone,
+          phone_number:this.isform.value.telephone,
           domaineActivite:this.isform.value.domain,
           nameResponsable:this.isform.value.nomReasponsable,
           raisionSocial:this.isform.value.raisonSociel,
