@@ -105,9 +105,9 @@
                                <div  *ngIf=" myform.get('telephone').hasError('pattern')" style="margin-top: 18px">
                                  <span style="color: red;display: flex"> accepte juste number</span>
                                  <br></div>
-                                 <label class="fieldlabels">dateDeNaissance: *</label>
-                                 <input type="date"  formControlName="dateDeNaissance" value="data-bs-target" name="lname"  />
-                                 <div  *ngIf="myform.get('dateDeNaissance').touched && myform.get('telephone').hasError('required')" style="margin-top: 18px">
+                                 <label class="fieldlabels">BirthDate: *</label>
+                                 <input type="date"  formControlName="BirthDate" value="data-bs-target" name="lname"  />
+                                 <div  *ngIf="myform.get('BirthDate').touched && myform.get('telephone').hasError('required')" style="margin-top: 18px">
                                    <span style="color: red;display: flex"> remplir le champs</span>
                                    <br></div>
                                    <label class="fieldlabels">adresse: *</label>

@@ -11,13 +11,10 @@ export class User extends lamba   {
     image?:String;
     domain?:String;
     university?:String;
-    nomdesocite?:String;
-    dateDeNaissance?:Date ;
-    
+    NameofCompany?:String;
+    BirthDate?:Date ;
     region?:String;
-    confpassword? :String;
     startofStudy?:Date ;
-    dateDeDebuNaissance?:Date ;
     endofStudy?:Date ;
     startofWork?:Date ;
     endofWork?:Date ;

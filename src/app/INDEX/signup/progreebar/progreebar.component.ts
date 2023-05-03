@@ -34,7 +34,7 @@ export class ProgreebarComponent implements OnInit {
       adresse: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9 ]*'), Validators.maxLength(30)]],
       region: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
       telephone :['',[Validators.required,Validators.minLength(8),Validators.maxLength(8),Validators.pattern('[0-9]*')]],
-      dateDeNaissance:["",Validators.required],
+      BirthDate:["",Validators.required],
       university :["",Validators.required],
       domain : ["",Validators.required],
       mondesocite:new FormControl(),
@@ -108,7 +108,7 @@ export class ProgreebarComponent implements OnInit {
           }, 50);
           this.setProgressBar(++this.current);
         }
-        else if(this.myform.controls.telephone.valid &&this.myform.controls.region.valid  &&this.myform.controls.dateDeNaissance.valid&&this.myform.controls.adresse.valid  &&  nextButtons.item(1)== button) {
+        else if(this.myform.controls.telephone.valid &&this.myform.controls.region.valid  &&this.myform.controls.BirthDate.valid&&this.myform.controls.adresse.valid  &&  nextButtons.item(1)== button) {
          
          
           console.log("success form");
@@ -177,8 +177,8 @@ export class ProgreebarComponent implements OnInit {
             
             domain:this.myform.value.domain,
             university: this.myform.value.university,
-            nomdesocite: this.myform.value.mondesocite,
-            dateDeNaissance: this.myform.value.dateDeNaissance,
+            NameofCompany: this.myform.value.mondesocite,
+            BirthDate: this.myform.value.BirthDate,
             phone_number: this.myform.value.telephone,
             region: this.myform.value.region,
             
@@ -187,6 +187,7 @@ export class ProgreebarComponent implements OnInit {
             endofStudy: this.myform.value.dateDeFinEtude,
             startofWork:this.myform.value.dateDebutPoste,
             endofWork: this.myform.value.dateFinPoste,
+
         };
         console.log(user)
         this.userservice.addUser(user).subscribe(user=>{
