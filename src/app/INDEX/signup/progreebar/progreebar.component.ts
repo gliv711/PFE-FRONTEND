@@ -177,16 +177,16 @@ export class ProgreebarComponent implements OnInit {
             
             domain:this.myform.value.domain,
             university: this.myform.value.university,
-            nomdesocite: this.myform.value.nomdesocite,
+            nomdesocite: this.myform.value.mondesocite,
             dateDeNaissance: this.myform.value.dateDeNaissance,
             phone_number: this.myform.value.telephone,
             region: this.myform.value.region,
             
-            startofStudy:this.myform.value.startofStudy,
+            startofStudy:this.myform.value.dateDedebutEtude,
             
-            endofStudy: this.myform.value.endofStudy,
-            startofWork:this.myform.value.startofWork,
-            endofWork: this.myform.value.endofWork,
+            endofStudy: this.myform.value.dateDeFinEtude,
+            startofWork:this.myform.value.dateDebutPoste,
+            endofWork: this.myform.value.dateFinPoste,
         };
         console.log(user)
         this.userservice.addUser(user).subscribe(user=>{
