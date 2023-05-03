@@ -148,22 +148,22 @@ Erreur     </div>
               <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="question.field">
               
             </div>
-            <div class="mb-3">
+            <div >
+<!-- to repair -->
+              <input type="text" [(ngModel)]="selectedOption" [matAutocomplete]="auto" >
+              <mat-autocomplete #auto="matAutocomplete"  >
+                <mat-option *ngFor="let answer of answers" [value]="answer.answer" >
+                  {{answer.answer}}
+                            </mat-option>
+                </mat-autocomplete> 
 
-           <input type="text" [(ngModel)]="selectedOption" [matAutocomplete]="auto" >
-                <mat-autocomplete #auto="matAutocomplete"  >
-                  <mat-option *ngFor="let answer of answers" [value]="answer.answer" >
-                    {{answer.answer}}
-                              </mat-option>
-                  </mat-autocomplete> 
-
-
-           <!-- <label for="exampleFormControlInput1" class="form-label">Answers</label>
+                <!-- buttons of answers -->
+           <label for="exampleFormControlInput1" class="form-label">Answers</label>
               <ul *ngFor="let answer of answers">
                 <li>
                 <button type="button" class="btn btn-primary" >{{answer.answer}}</button>
               </li>
-              </ul>  -->
+              </ul> 
 
 
             </div>
