@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InformationGernalComponent } from './INDEX/information global/information-gernal/information-gernal.component';
 import { LandingComponent } from './INDEX/landing/landing.component';
-import { MultistepComponent } from './INDEX/register/multistep/multistep.component';
-import { RegisterComponent } from './INDEX/register/register.component';
+
 import { AccordionComponent } from './Platform/dashboard/addons/accordion/accordion.component';
 import { AlertsComponent } from './Platform/dashboard/addons/alerts/alerts.component';
 import { BadgesComponent } from './Platform/dashboard/addons/badges/badges.component';
@@ -41,7 +40,6 @@ import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 const routes: Routes = [
   {path:'',component:LandingComponent},
   {path:'login',component:LoginComponent},
-  {path:'register',component:RegisterComponent},
   {
     path : 'dashboard', component : DashboardComponent,
     
@@ -88,7 +86,6 @@ const routes: Routes = [
   { path: 'pages-contact', component: PagesContactComponent },
 
   { path: '*', component: PagesError404Component },
-  { path : 'multistep', component:MultistepComponent},
   {path : 'information-general',component:InformationGernalComponent},
   {path :'progressbar', component: ProgreebarComponent},
   {path :'home' , component:HomeComponent},
