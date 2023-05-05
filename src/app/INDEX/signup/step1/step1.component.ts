@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { societe } from 'src/Models/societe';
+import { Company } from 'src/Models/Company';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
 
 @Component({
@@ -21,15 +21,15 @@ export class Step1Component implements OnInit {
   steps!: number;
   progressBarWidth!: number;
   isform : any 
-  societe!: societe;
+  company!: Company;
 
-  constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder ,private societeservice:UserServiceService ) {
+  constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder ,private companyservice:UserServiceService ) {
     this.isform = this.formbuilder.group({
       email: ['', [Validators.required, Validators.email]],
       name: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confpassword: ['', [Validators.required, Validators.minLength(8), this.matchPasswords.bind(this)]],
-      adresse: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9 ]*'), Validators.maxLength(30)]],
+      address: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9 ]*'), Validators.maxLength(30)]],
       telephone :['',[Validators.required,Validators.minLength(8),Validators.maxLength(8),Validators.pattern('[0-9]*')]],
       raisonSociel: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
       domain: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
@@ -89,20 +89,20 @@ export class Step1Component implements OnInit {
           }, 50);
           this.setProgressBar(++this.current);
         }
-        else if(this.isform.controls.telephone.valid &&this.isform.controls.raisonSociel.valid  &&this.isform.controls.domain.valid &&this.isform.controls.nomReasponsable.valid &&this.isform.controls.adresse.valid   &&  nextButtons.item(1)== button) {
+        else if(this.isform.controls.telephone.valid &&this.isform.controls.raisonSociel.valid  &&this.isform.controls.domain.valid &&this.isform.controls.nomReasponsable.valid &&this.isform.controls.address.valid   &&  nextButtons.item(1)== button) {
          
-         let societe : societe={
+         let company : Company={
           
-          nameSociete:this.isform.value.name,
+          NameofCompany:this.isform.value.name,
           email:this.isform.value.email,
           Password :this.isform.value.password,
           phone_number:this.isform.value.telephone,
-          domaineActivite:this.isform.value.domain,
-          nameResponsable:this.isform.value.nomReasponsable,
-          raisionSocial:this.isform.value.raisonSociel,
-          adresse:this.isform.value.adresse,
+          DomaineofActivite:this.isform.value.domain,
+          NameofResponsible:this.isform.value.nomReasponsable,
+          SocialReason:this.isform.value.raisonSociel,
+          address:this.isform.value.address,
           lien:this.isform.value.lien,}
-          console.log(societe)
+          console.log(company)
          
          
           console.log("success form");

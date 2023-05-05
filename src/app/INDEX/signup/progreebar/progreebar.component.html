@@ -110,19 +110,19 @@
                                  <div  *ngIf="myform.get('BirthDate').touched && myform.get('telephone').hasError('required')" style="margin-top: 18px">
                                    <span style="color: red;display: flex"> remplir le champs</span>
                                    <br></div>
-                                   <label class="fieldlabels">adresse: *</label>
+                                   <label class="fieldlabels">address: *</label>
                                   
-                                  <input type="text" formControlName="adresse" name="phno" placeholder="votre adresse." />
-                                  <div  *ngIf=" myform.get('adresse').hasError('maxlength')" style="margin-top: 0px">
+                                  <input type="text" formControlName="address" name="phno" placeholder="votre address." />
+                                  <div  *ngIf=" myform.get('address').hasError('maxlength')" style="margin-top: 0px">
                                    <span style="color: red;display: flex"> max 30 caracteres</span>
                                    <br></div>
-                                 <div  *ngIf=" myform.get('adresse').hasError('minlength')" style="margin-top: 0px">
+                                 <div  *ngIf=" myform.get('address').hasError('minlength')" style="margin-top: 0px">
                                    <span style="color: red;display: flex"> au moin 3 caracteres</span>
                                    <br></div>
-                                 <div  *ngIf="myform.get('adresse').touched && myform.get('adresse').hasError('required')" style="margin-top: 0px">
+                                 <div  *ngIf="myform.get('address').touched && myform.get('address').hasError('required')" style="margin-top: 0px">
                                    <span style="color: red;display: flex"> remplir le champs</span>
                                    <br></div>
-                                   <div  *ngIf=" myform.get('adresse').hasError('pattern')" style="margin-top: 0px">
+                                   <div  *ngIf=" myform.get('address').hasError('pattern')" style="margin-top: 0px">
                                      <span style="color: red;display: flex"> accepte juste alaphab et number</span>
                                      <br></div> 
                                   <label class="fieldlabels">region *</label> 
@@ -177,9 +177,9 @@
                                     <h2 class="steps">Step 4 - 5</h2>
                                 </div>
                             </div> 
-                            <label class="fieldlabels">societe:</label>
+                            <label class="fieldlabels">company:</label>
                             
-                            <input type="text" formControlName="mondesocite" name="fname"  placeholder="votre societe" />
+                            <input type="text" formControlName="mondesocite" name="fname"  placeholder="votre company" />
                             <label class="fieldlabels">poste:</label>
                              <input type="text" formControlName="role" name="fname" placeholder="votre poste" />
                              <label class="fieldlabels">date de début: *</label> 
@@ -198,6 +198,7 @@
                                     <h2 class="steps">Step 5 - 5</h2>
                                 </div>
                             </div> <br><br>
+                            <div *ngIf="success ===true">
                             <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
                             <div class="row justify-content-center">
                                 <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
@@ -207,6 +208,16 @@
                                     <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
                                 </div>
                             </div>
+                        </div>
+                        <div *ngIf="success ===false">
+                            <h2 class="purple-text text-center"><strong>Error</strong></h2> <br>
+                            
+                            <div class="row justify-content-center">
+                                <div class="col-7 text-center">
+                                    <h5 class="purple-text text-center">Une erreur est survenue, veuillez réessayez</h5>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                     </fieldset>
                 </form>

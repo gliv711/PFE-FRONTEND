@@ -8,7 +8,7 @@
                   <!-- progressbar -->
                   <ul id="progressbar">
                       <li class="active" id="account"><strong>Account</strong></li>
-                      <li id="personal"><strong>Information de la societe</strong></li>
+                      <li id="personal"><strong>Information de la company</strong></li>
                       <li id="confirm"><strong>Finish</strong></li>
                   </ul>
                   <div class="progress">
@@ -24,7 +24,7 @@
                                   <h2 class="steps">Step 1 - 3</h2>
                               </div>
                           </div>
-                          <label class="fieldlabels">Nom de societe: *</label>
+                          <label class="fieldlabels">Nom de company: *</label>
                           <input type="text" name="uname" formControlName="name" placeholder="UserName"  required/>
                           <div  *ngIf=" isform.get('name').hasError('maxlength')" style="margin-top: 18px">
                              <span style="color: red;display: flex"> max 30 caracteres</span>
@@ -105,18 +105,18 @@
                               <span style="color: red;display: flex"> accepte juste alaphab</span>
                               <br></div>
                                
-                                <label class="fieldlabels">  adresse: *</label> 
-                                <input type="text" formControlName="adresse" name="phno" placeholder="votre adresse." />
-                                <div  *ngIf=" isform.get('adresse').hasError('maxlength')" style="margin-top: 0px">
+                                <label class="fieldlabels">  address: *</label> 
+                                <input type="text" formControlName="address" name="phno" placeholder="votre address." />
+                                <div  *ngIf=" isform.get('address').hasError('maxlength')" style="margin-top: 0px">
                                  <span style="color: red;display: flex"> max 30 caracteres</span>
                                  <br></div>
-                               <div  *ngIf=" isform.get('adresse').hasError('minlength')" style="margin-top: 0px">
+                               <div  *ngIf=" isform.get('address').hasError('minlength')" style="margin-top: 0px">
                                  <span style="color: red;display: flex"> au moin 3 caracteres</span>
                                  <br></div>
-                               <div  *ngIf="isform.get('adresse').touched && isform.get('adresse').hasError('required')" style="margin-top: 0px">
+                               <div  *ngIf="isform.get('address').touched && isform.get('address').hasError('required')" style="margin-top: 0px">
                                  <span style="color: red;display: flex"> remplir le champs</span>
                                  <br></div>
-                                 <div  *ngIf=" isform.get('adresse').hasError('pattern')" style="margin-top: 0px">
+                                 <div  *ngIf=" isform.get('address').hasError('pattern')" style="margin-top: 0px">
                                    <span style="color: red;display: flex"> accepte juste alaphab et number</span>
                                    <br></div> 
                                 <label class="fieldlabels">raision social *</label> 

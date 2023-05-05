@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'src/Models/User';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { societe } from 'src/Models/societe';
+import { Company } from 'src/Models/Company';
 @Injectable({
   providedIn: 'root'
 })
@@ -31,18 +31,18 @@ export class UserServiceService {
       return this.http.get<number>(this.api+'count');
     };
    
-    getsociete(): Observable <societe[]>{
-      return this.http.get<societe[]>(this.api+'all');
+    getsociete(): Observable <Company[]>{
+      return this.http.get<Company[]>(this.api+'all');
     }
-    getonesociete(id:any): Observable <societe[]>{
-      return this.http.get<societe[]>(this.api+id);
+    getoneCompany(id:any): Observable <Company[]>{
+      return this.http.get<Company[]>(this.api+id);
     }
    
-    deletesociete(societe: societe): Observable<societe> {
-      return this.http.delete<societe>(this.api+societe.id);
+    deletesociete(Company: Company): Observable<Company> {
+      return this.http.delete<Company>(this.api+Company.id);
     }
-    addsociete(societe:societe) {
-      return this.http.post<societe>(this.api,societe);
+    addCompany(Company:Company) {
+      return this.http.post<Company>(this.api,Company);
     }
    
     

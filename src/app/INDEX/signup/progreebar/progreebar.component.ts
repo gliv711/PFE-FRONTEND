@@ -17,6 +17,7 @@ export class ProgreebarComponent implements OnInit {
   secondFormGroup = this.formbuilder.group({
     secondCtrl: ['', Validators.required],
   });
+  success : boolean = false ;
   isEditable = false;
   current: number = 1;
   steps!: number;
@@ -31,7 +32,7 @@ export class ProgreebarComponent implements OnInit {
       prenom: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confpassword: ['', [Validators.required, Validators.minLength(8), this.matchPasswords.bind(this)]],
-      adresse: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9 ]*'), Validators.maxLength(30)]],
+      address: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9 ]*'), Validators.maxLength(30)]],
       region: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
       telephone :['',[Validators.required,Validators.minLength(8),Validators.maxLength(8),Validators.pattern('[0-9]*')]],
       BirthDate:["",Validators.required],
@@ -108,7 +109,7 @@ export class ProgreebarComponent implements OnInit {
           }, 50);
           this.setProgressBar(++this.current);
         }
-        else if(this.myform.controls.telephone.valid &&this.myform.controls.region.valid  &&this.myform.controls.BirthDate.valid&&this.myform.controls.adresse.valid  &&  nextButtons.item(1)== button) {
+        else if(this.myform.controls.telephone.valid &&this.myform.controls.region.valid  &&this.myform.controls.BirthDate.valid&&this.myform.controls.address.valid  &&  nextButtons.item(1)== button) {
          
          
           console.log("success form");
@@ -189,12 +190,13 @@ export class ProgreebarComponent implements OnInit {
             endofWork: this.myform.value.dateFinPoste,
 
         };
-        console.log(user)
+     
         this.userservice.addUser(user).subscribe(user=>{
-          console.log(user)
+          ;this.success=true ;
+          console.log("success form");
         })
         
-          console.log("success form");
+         
           const current_fs = button.parentNode;
           const next_fs = current_fs.nextElementSibling;
   

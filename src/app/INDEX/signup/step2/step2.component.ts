@@ -12,7 +12,7 @@ export class Step2Component implements OnInit {
   constructor(private router: Router ,private formbuilder : FormBuilder) { 
     this.myform = this.formbuilder.group({
       emplayeuractuel:['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
-      nomsociete:['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]]
+      nomcompany:['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]]
     })
 
 

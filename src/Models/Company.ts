@@ -2,12 +2,11 @@ import { lamba } from "./Lamba";
 
 
 
-export class societe extends lamba {
-    nameSociete?:string;
-    domaineActivite?:String;
-    nameResponsable?:String;
-    raisionSocial?:String;
-    adresse?:String;
+export class Company extends lamba {
+    NameofCompany?:string;
+    DomaineofActivite?:String;
+    NameofResponsible?:String;
+    SocialReason?:String;
     lien?:String;
   
     constructor(id: string, email: string, Password: string,phone_number: string,address:String) {
