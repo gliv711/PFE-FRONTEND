@@ -36,10 +36,17 @@ import { ResultsComponent } from './dashboard/components/results/results.compone
 import { ForgetPasswordComponent } from './INDEX/landing/login/forget-password/forget-password.component';
 import { AnswersComponent } from './dashboard/components/answers/answers.component';
 import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
+import { SurveyFormComponent } from './Inside/survey-form/survey-form.component';
+import { SurveysComponent } from './dashboard/components/surveys/surveys.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
   {path:'login',component:LoginComponent},
+<<<<<<< Updated upstream
+=======
+  {path:'register',component:RegisterComponent},
+  {path:'surveyform',component:SurveyFormComponent},
+>>>>>>> Stashed changes
   {
     path : 'dashboard', component : DashboardComponent,
     
@@ -61,7 +68,11 @@ const routes: Routes = [
       },
       {
         path : 'answers', component : AnswersComponent
+      },
+      { 
+        path : 'surveys', component : SurveysComponent
       }
+
     ]
   },
   { path: 'alerts', component: AlertsComponent },
