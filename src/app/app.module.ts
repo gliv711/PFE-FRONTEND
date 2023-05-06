@@ -18,6 +18,7 @@ import { MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatStepperMo
 import { Step1Component } from './INDEX/signup/step1/step1.component';
 import { ForgetPasswordComponent } from './INDEX/landing/login/forget-password/forget-password.component';
 import { HeaderComponent } from './INDEX/landing/Landing-Components/header/header.component';
+import { SurveyFormComponent } from './Inside/survey-form/survey-form.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { HeaderComponent } from './INDEX/landing/Landing-Components/header/heade
 
     FooterComponent,
       ForgetPasswordComponent,
+      SurveyFormComponent,
       
     
     ],

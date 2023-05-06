@@ -13,6 +13,8 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
 import { ResultsComponent } from './components/results/results.component';
 import { AnswersComponent } from './components/answers/answers.component';
 import { MatInputModule, MatAutocompleteModule } from '@angular/material';
+import { SurveysComponent } from './components/surveys/surveys.component';
+import { AddquestionInsideSurveyformComponent } from './components/surveys/addquestion-inside-surveyform/addquestion-inside-surveyform.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { MatInputModule, MatAutocompleteModule } from '@angular/material';
     SettingsComponent,
     AdminHomeComponent,
     ResultsComponent,
-    AnswersComponent
+    AnswersComponent,
+    SurveysComponent,
+    AddquestionInsideSurveyformComponent
   ],
   imports: [
     CommonModule,
