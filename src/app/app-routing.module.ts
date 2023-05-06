@@ -36,6 +36,7 @@ import { ResultsComponent } from './dashboard/components/results/results.compone
 import { ForgetPasswordComponent } from './INDEX/landing/login/forget-password/forget-password.component';
 import { AnswersComponent } from './dashboard/components/answers/answers.component';
 import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
+import { ProfilComponent } from './INDEX/profil/profil.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -84,12 +85,12 @@ const routes: Routes = [
   { path: 'tabs', component: TabsComponent },
   {path : 'forget',component:ForgetPasswordComponent},
   { path: 'pages-contact', component: PagesContactComponent },
-
+  {path:'profil',component:ProfilComponent},
   { path: '*', component: PagesError404Component },
   {path : 'information-general',component:InformationGernalComponent},
-  {path :'progressbar', component: ProgreebarComponent},
+  {path :'signup-user', component: ProgreebarComponent},
   {path :'home' , component:HomeComponent},
-  {path :'signup',component:Step1Component},
+  {path :'signup-societe',component:Step1Component},
   {path:'sidebar',component:SidebarComponent}
  
 
