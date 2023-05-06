@@ -46,9 +46,13 @@ const routes: Routes = [
   {path:'',component:LandingComponent},
   {path:'login',component:LoginComponent},
 
+<<<<<<< Updated upstream
   {path:'register',component:RegisterComponent},
   {path:'surveyform',component:SurveyFormComponent},
 
+=======
+  {path:'surveyform',component:SurveyFormComponent},
+>>>>>>> Stashed changes
   {
     path : 'dashboard', component : DashboardComponent,
     
