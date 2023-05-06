@@ -36,11 +36,19 @@ import { ResultsComponent } from './dashboard/components/results/results.compone
 import { ForgetPasswordComponent } from './INDEX/landing/login/forget-password/forget-password.component';
 import { AnswersComponent } from './dashboard/components/answers/answers.component';
 import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
+
 import { ProfilComponent } from './INDEX/profil/profil.component';
+
+import { SurveyFormComponent } from './Inside/survey-form/survey-form.component';
+import { SurveysComponent } from './dashboard/components/surveys/surveys.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
   {path:'login',component:LoginComponent},
+
+  {path:'register',component:RegisterComponent},
+  {path:'surveyform',component:SurveyFormComponent},
+
   {
     path : 'dashboard', component : DashboardComponent,
     
@@ -62,7 +70,11 @@ const routes: Routes = [
       },
       {
         path : 'answers', component : AnswersComponent
+      },
+      { 
+        path : 'surveys', component : SurveysComponent
       }
+
     ]
   },
   { path: 'alerts', component: AlertsComponent },

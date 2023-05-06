@@ -19,5 +19,9 @@ export class QuestionsService {
   addQuestions(question:Questions){
       return this.http.post<Questions>(this.api,question);
     }
+
+    getQuestionCount(){
+      return this.http.get<number>(this.api+'count');
+    }
   
 }

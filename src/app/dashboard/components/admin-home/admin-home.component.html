@@ -15,8 +15,9 @@
     <div class="col-md-3">
       <div class="card-counter danger">
         <i class="fa fa-ticket"></i>
-        <span *ngIf="survey_count>0" class="count-numbers">{{survey_count}}</span>
-        <span *ngIf="survey_count===0 " class="count-numbers">None</span>
+        <span *ngIf="question_count>0" class="count-numbers">{{question_count}}</span>
+        <span *ngIf="question_count<0 " class="count-numbers">None</span>
+        <span *ngIf="question_count===0 " class="count-numbers">Zero</span>
 
         <span class="count-name">Questions</span>
       </div>
@@ -25,9 +26,11 @@
     <div class="col-md-3">
       <div class="card-counter success">
         <i class="fa fa-database"></i>
-        <span *ngIf="results_count>0" class="count-numbers">{{results_count}}</span>
-        <span *ngIf="results_count===0 " class="count-numbers">None</span>
-        <span class="count-name">Data</span>
+        <span *ngIf="survey_count>0" class="count-numbers">{{survey_count}}</span>
+        <span *ngIf="survey_count<0 " class="count-numbers">None</span>
+        <span *ngIf="survey_count===0 " class="count-numbers">Zero</span>
+
+        <span class="count-name">Surveys</span>
       </div>
     </div>
 
@@ -35,7 +38,9 @@
       <div class="card-counter info">
         <i class="fa fa-users"></i>
         <span *ngIf="user_count>0" class="count-numbers">{{user_count}}</span>
-        <span *ngIf="user_count===0 " class="count-numbers">None</span>
+        <span *ngIf="user_count<0 " class="count-numbers">None</span>
+        <span *ngIf="user_count===0 " class="count-numbers">Zero</span>
+
 
         <span class="count-name">Utilisateurs</span>
       </div>

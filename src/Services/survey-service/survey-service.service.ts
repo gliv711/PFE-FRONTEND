@@ -32,10 +32,6 @@ export class SurveyServiceService {
     return this.http.delete<Survey>(this.api+survey.id);
   }
 
-  uploadSurveys(surveys: Survey[]): Observable<void> {
-    const url = `${this.api}/survey/upload`;
-    return this.http.post<void>(url, surveys);
-  }
 
   getSurveyCount(): Observable<number> {    
     return this.http.get<number>(this.api+'count');
