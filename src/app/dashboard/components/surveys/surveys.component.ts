@@ -26,7 +26,11 @@ export class SurveysComponent implements OnInit {
   currentPage = 1;
 
   survey : Survey = {} ;
+  
   questions : Questions[] =[];
+
+
+
 
   setCurrentSurvey(survey :Survey){
     this.survey=survey;
