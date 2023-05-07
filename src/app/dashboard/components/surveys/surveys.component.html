@@ -100,7 +100,7 @@
   </div>
 
 
-  <div class="modal fade " id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade " id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog ">
       <div class="modal-content">
         <div class="modal-header">
@@ -139,10 +139,10 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let question of questions | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
-                    <th scope="row">{{question?.question_id}}</th>
-                    <td>{{question?.question}}</td>
-                    <td>{{question?.field}}</td>
+                  <tr *ngFor="let question of survey.questions | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+                    <th scope="row">{{survey?.question_id}}</th>
+                    <td>{{survey?.question}}</td>
+                    <td>{{survey?.field}}</td>
                     <td><button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#update-add-Modal" > 
                       Modifier
                     </button>
@@ -175,7 +175,7 @@
         </div>
       </div>
     </div>
-  </div> 
+  </div>  -->
 
 
 
