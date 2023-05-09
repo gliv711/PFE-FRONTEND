@@ -75,6 +75,7 @@ const routes: Routes = [
 
     ]
   },
+  { path : 'register',component: ProgreebarComponent},
   { path: 'alerts', component: AlertsComponent },
   { path: 'accordion', component: AccordionComponent },
   { path: 'badges', component: BadgesComponent },
