@@ -66,3 +66,56 @@
           </div>
         </div>
       </div> 
+      <div class="modal fade" id="are-you-sure-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Êtes Vous Sûr ?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Annuler</button>
+              <button type="button" class="btn btn-primary"  (click)="deleteAnswer(answer)" data-bs-dismiss="modal">Je confirme</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="modal fade " id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="id" class="form-label">ID</label>
+                <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="answer.answer_id">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">answer</label>
+                <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="answer.answer">
+  
+              </div>
+             
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">status</label>
+                <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="answer.status">
+                
+              </div>
+              <div >
+  
+    
+            
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
+              <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" (click)="addAnswer(answer)">Enregistrer</button>
+            </div>
+          </div>
+        </div>
+      </div> 
