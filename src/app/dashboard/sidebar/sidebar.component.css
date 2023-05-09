@@ -1,6 +1,6 @@
 ul {
     list-style: none;
-    background: #333;
+    background: #416DB8;
     text-align: center;
     }
     ul li {
@@ -29,7 +29,7 @@ ul {
     display: none;
     }
     ul li a:hover {
-    background: #222;
+    background: #b5afaf;
     }
     ul li:hover ul.dropdown{
     display: block;
