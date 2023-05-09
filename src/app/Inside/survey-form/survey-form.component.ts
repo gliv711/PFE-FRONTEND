@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Answer } from 'src/Models/Answer';
+import { Questions } from 'src/Models/Questions';
+import { Survey } from 'src/Models/Survey';
+import { AnswerService } from 'src/Services/answer-service/answer.service';
+import { QuestionsService } from 'src/Services/question-service/questions.service';
+import { SurveyServiceService } from 'src/Services/survey-service/survey-service.service';
 
 @Component({
   selector: 'app-survey-form',
@@ -7,9 +13,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SurveyFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private SurveyService : SurveyServiceService,private questionsService : QuestionsService,private answerService : AnswerService) { }
 
   ngOnInit(): void {
+   
+    this.getSurveyGeneral();
+  
+  }
+  Surveys : Survey[] = [] ;
+  survey : Survey = {};
+
+  getSurveys(){
+  
+    this.SurveyService.getSurvey().subscribe({
+      next: (response: Survey[]) => {
+        this.Surveys = response;
+      },
+      error: (e) =>  {console.log(e)},
+      complete: () => {}
+    })
   }
 
+    getSurveyGeneral(){
+  
+      this.SurveyService.getSurveyGeneral().subscribe({
+        next: (response: Survey) => {
+          this.survey = response;
+        },
+        error: (e) =>  {console.log(e)},
+        complete: () => {}
+      })
+  
+    }
+  
+
+
+
+
+
+
+  
 }
