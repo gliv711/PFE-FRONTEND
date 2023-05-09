@@ -5,4 +5,5 @@ export interface Questions {
     question?: string;
     field?: string;
     answers?: Answer[];
+    questions?:Questions[];
   }
