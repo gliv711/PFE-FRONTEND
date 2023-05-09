@@ -74,7 +74,7 @@ Erreur     </div>
           Modifier
         </button>
         </td>
-        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal"  (click)="setCurrentSurvey(survey)">Supprimer</button></td>
+        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal"  (click)="setCurrentQuestion(question)">Supprimer</button></td>
         
 
          
@@ -119,7 +119,7 @@ Erreur     </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Annuler</button>
-            <button type="button" class="btn btn-primary"  (click)="deleteSurvey(survey)" data-bs-dismiss="modal">Je confirme</button>
+            <button type="button" class="btn btn-primary"  (click)="deleteQuestion(question)" data-bs-dismiss="modal">Je confirme</button>
           </div>
         </div>
       </div>
