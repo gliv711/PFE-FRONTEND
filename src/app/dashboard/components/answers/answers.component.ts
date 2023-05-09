@@ -56,8 +56,31 @@ addAnswer(answer:Answer){
     }
   })
 }
-////////
+//////// delete answer
 
+deleteAnswer(answer :Answer){
+  this.answerService.deleteAnswer(answer).subscribe({
+    next: () => {
+      this.getAnswers();
+      this.close();
+      this.mise_a_jour=true;
+      setTimeout(() => {
+        this.mise_a_jour = false;
+      }, 3000); 
+    },
+    error: (e) =>  {console.log(e),this.error=true;},
+    complete: () => {
+      
+
+    }
+  })
+}
+
+
+
+
+
+////
 
   setCurrentAnswer(answer :Answer){
     this.answer=answer ;
