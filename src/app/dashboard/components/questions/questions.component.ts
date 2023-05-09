@@ -61,9 +61,12 @@ export class QuestionsComponent implements OnInit {
   
 
   setCurrentQuestion(question :Questions){
-    this.getAnswers();
     this.question=question;
+    this.getAnswers();
+    
   }
+
+  
 
 
 
@@ -104,17 +107,18 @@ export class QuestionsComponent implements OnInit {
     this.survey=survey;
   }
   
-  deleteSurvey(survey : Survey){
-    this.SurveyService.deleteSurvey(survey).subscribe({
+  deleteQuestion(question : Questions){
+    
+    this.questionsService.deleteQuestion(question).subscribe({
       next: () => {
-        this.getSurvey();
-        console.log(survey);
+        this.getQuestions();
+        console.log(question);
         this.supprimer=true;
         setTimeout(() => {
           this.supprimer = false;
         }, 3000); 
       },
-        error: (e) =>  {console.log(e),this.error=true;},
+        error: (e) =>  {console.log(e),this.error=true;console.log(question.question_id)},
       
       complete: () => {
         console.log("Deleted ! ")
