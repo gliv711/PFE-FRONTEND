@@ -136,17 +136,7 @@ export class QuestionsComponent implements OnInit {
     })
 
   }
-  getSurveyGeneral(){
-    this.Surveys=[];
-    this.SurveyService.getSurveyGeneral().subscribe({
-      next: (response: Survey[]) => {
-        this.Surveys = response;
-      },
-      error: (e) =>  {console.log(e),this.error=true;},
-      complete: () => {}
-    })
-
-  }
+ 
   getSurveyFinances(){
     this.Surveys=[];
     this.SurveyService.getSurveyFinances().subscribe({
