@@ -7,15 +7,19 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AnswerService {
-  api = environment.baseUrl+'8085/api/answers';
+  api = environment.baseUrl+'8085/api/answers/';
 
   constructor(private http : HttpClient) { }
 
   getAllAnswers(){
-    return this.http.get<Answer[]>(this.api+'/all');
+    return this.http.get<Answer[]>(this.api+'all');
   }
 
   addAnswer(answer:Answer){
     return this.http.post<Answer>(this.api,answer);
+  }
+
+  deleteAnswer(answer :Answer){
+    return this.http.delete<Answer>(this.api+answer.answer_id)
   }
 }
