@@ -22,6 +22,7 @@ import { HeaderComponent } from './INDEX/landing/Landing-Components/header/heade
 import { ProfilComponent } from './INDEX/profil/profil.component';
 
 import { SurveyFormComponent } from './Inside/survey-form/survey-form.component';
+import { PayementFormComponent } from './INDEX/payement-form/payement-form.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { SurveyFormComponent } from './Inside/survey-form/survey-form.component'
     FooterComponent,
       ForgetPasswordComponent,
       SurveyFormComponent,
+      PayementFormComponent,
       
     
     ],

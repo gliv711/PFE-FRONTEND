@@ -41,6 +41,7 @@ import { ProfilComponent } from './INDEX/profil/profil.component';
 
 import { SurveyFormComponent } from './Inside/survey-form/survey-form.component';
 import { SurveysComponent } from './dashboard/components/surveys/surveys.component';
+import { PayementFormComponent } from './INDEX/payement-form/payement-form.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -94,16 +95,16 @@ const routes: Routes = [
   { path: 'tables-data', component: TablesDataComponent },
   { path: 'tables-general', component: TablesGeneralComponent },
   { path: 'tabs', component: TabsComponent },
-  {path : 'forget',component:ForgetPasswordComponent},
+  { path : 'forget',component:ForgetPasswordComponent},
   { path: 'pages-contact', component: PagesContactComponent },
-  {path:'profil',component:ProfilComponent},
+  { path:'profil',component:ProfilComponent},
   { path: '*', component: PagesError404Component },
-  {path : 'information-general',component:InformationGernalComponent},
-  {path :'signup-user', component: ProgreebarComponent},
-  {path :'home' , component:HomeComponent},
-  {path :'signup-societe',component:Step1Component},
-  {path:'sidebar',component:SidebarComponent}
- 
+  { path : 'information-general',component:InformationGernalComponent},
+  { path :'home' , component:HomeComponent},
+  { path :'signup-societe',component:Step1Component},
+  { path:'sidebar',component:SidebarComponent},
+  { path:'pay',component:PayementFormComponent}
+  
 
 ];
 
