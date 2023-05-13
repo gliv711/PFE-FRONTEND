@@ -38,7 +38,7 @@ export class SurveysComponent implements OnInit {
 
   getSurveys(){
   
-      this.surveyService.getSurvey().subscribe({
+      this.surveyService.getSurveys().subscribe({
         next: (response: Survey[]) => {
           this.surveys = response;
         },
