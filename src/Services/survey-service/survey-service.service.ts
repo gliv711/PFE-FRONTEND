@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Survey } from 'src/Models/Survey';
 import { Observable } from 'rxjs';
+import { Questions } from 'src/Models/Questions';
+
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,7 +16,7 @@ export class SurveyServiceService {
     return this.http.post<Survey>(this.api,survey);
   }
   constructor(private http : HttpClient) { }
-  getSurvey(): Observable <Survey[]>{
+  getSurveys(): Observable <Survey[]>{
     return this.http.get<Survey[]>(this.api+'all');
   }
 
@@ -37,5 +39,11 @@ export class SurveyServiceService {
   getSurveyCount(): Observable<number> {    
     return this.http.get<number>(this.api+'count');
   };
+
+  getQuestionsBySurveyId(surveyId: number): Observable<Questions[]> {
+    return this.http.get<Questions[]>(`${this.api}${surveyId}/questions`);
+  }
+
+
 
 }
