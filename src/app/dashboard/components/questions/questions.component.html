@@ -1,7 +1,7 @@
 
 <div class="card" style="width: 100% ">
     <div class="card-body">
-<h2 class="text-center">Tout les Questions </h2>
+<h2 class="text-center">Toutes les Questions </h2>
 
 <pagination-controls (pageChange)="currentPage = $event">
 </pagination-controls>
@@ -51,50 +51,117 @@ Erreur     </div>
   </div>
 
   <!--end of alerts-->
-  <div class="mb-3">
-    <label for="surveySelect" class="form-label">Select Survey</label>
-    <select class="form-select" id="surveySelect" [(ngModel)]="selectedSurvey" (change)="filterQuestionsBySurvey()">
+
+
+  
+  <div class="btn-group">
+
+    <select id="surveySelect"  class="btn btn-primary" [(ngModel)]="selectedSurveyId" (change)="getQuestionsBySurvey()">
       <option value="">All Surveys</option>
       <option *ngFor="let survey of Surveys" [value]="survey.id">{{ survey.title }}</option>
     </select>
   </div>
-<table class="table table-striped border-primary">
-    
+  
+  
+
+  <div *ngIf="filteredQuestions.length === 0">
+    <p>No questions found.</p>
+  </div>
+  
+  
+  <table class="table table-striped border-primary">
     <thead>
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Question</th>
         <th scope="col">Field</th>
-        
-        <th scope="col"></th>
-        <th scope="col"><button type="button" class="btn btn-secondary" data-bs-target="#update-add-Modal" data-bs-toggle="modal" >Ajouter</button>
-        
+        <th> <button type="button" class="btn btn-secondary" data-bs-target="#update-add-Modal" data-bs-toggle="modal" >Ajouter</button> </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let question of questions | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
-        <th scope="row">{{question?.question_id}}</th>
-        <td>{{question?.question}}</td>
-        <td>{{question?.field}}</td>
-        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" (click)="setCurrentQuestion(question)" data-bs-target="#update-add-Modal" > 
-          Modifier
-        </button>
+      <tr *ngFor="let question of filteredQuestions">
+        <th scope="row">{{ question?.question_id }}</th>
+        <td>{{ question?.question }}</td>
+        <td>{{ question?.field }}</td>
+        <td>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" (click)="setCurrentQuestion(question)" data-bs-target="#update-add-Modal">Modifier</button>
         </td>
-        <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal"  (click)="setCurrentQuestion(question)">Supprimer</button></td>
-        
-
-         
-
-  
-
-       
+        <td>
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal" (click)="setCurrentQuestion(question)">Supprimer</button>
+        </td>
       </tr>
-    
     </tbody>
   </table>
   
+  
+
+</div>
+
+</div>
+</div>
 
 
+   
+<div class="modal fade" id="are-you-sure-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Êtes Vous Sûr ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteQuestion(question)">Je confirme</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    
+      
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="id" class="form-label">Question</label>
+          <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="question.question">
+        </div>
+     
+    <div class="modal-body">
+
+
+
+
+      <div class="mb-3" *ngFor="let answer of question.answers; let i = index;">
+        <button type="button" class="btn btn-danger"  (click)="removeAnswer(i)">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+        <label for="answer" class="form-label">Answer {{ i + 1 }}</label>
+        <input type="text" class="form-control" id="answer" placeholder="Enter answer" [(ngModel)]="answer.answer"> 
+        <div class="btn-group" role="group">
+          <button type="button" class="btn bg-light" [ngClass]="{ 'active': answer.status === true }" (click)="answer.status = true">✔️</button>
+          <button type="button" class="btn bg-light" [ngClass]="{ 'active': answer.status === false }" (click)="answer.status = false">❌</button>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="addAnswer()">Add Answer</button>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Cancel</button>
+      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addQuestions(question)">Submit Answers</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
  
   
 
@@ -105,71 +172,12 @@ Erreur     </div>
 
 
 
-        </div>
+      
     
       
 
     
-    </div>
-    </div>
-
-    <div class="modal fade" id="are-you-sure-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Êtes Vous Sûr ?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Annuler</button>
-            <button type="button" class="btn btn-primary"  (click)="deleteQuestion(question)" data-bs-dismiss="modal">Je confirme</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-
-<div class="modal fade" id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      
-        </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label for="id" class="form-label">Question</label>
-            <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="question.question">
-          </div>
-       
-      <div class="modal-body">
-
-
-
-
-        <div class="mb-3" *ngFor="let answer of question.answers; let i = index;">
-          <label for="answer" class="form-label">Answer {{ i + 1 }}</label>
-          <input type="text" class="form-control" id="answer" placeholder="Enter answer" [(ngModel)]="answer.answer">
-          <div class="btn-group" role="group">
-            <button type="button" class="btn btn-primary" [ngClass]="{ 'active': answer.status === true }" (click)="answer.status = true">True</button>
-            <button type="button" class="btn btn-primary" [ngClass]="{ 'active': answer.status === false }" (click)="answer.status = false">False</button>
-          </div>
-          <button type="button" class="btn btn-danger" (click)="removeAnswer(i)">Remove Answer</button>
-        </div>
-        <button type="button" class="btn btn-primary" (click)="addAnswer()">Add Answer</button>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Cancel</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addQuestions(question)">Submit Answers</button>
-      </div>
-    </div>
-  </div>
-</div>
+ 
 
 
 
