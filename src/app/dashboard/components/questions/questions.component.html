@@ -51,7 +51,13 @@ Erreur     </div>
   </div>
 
   <!--end of alerts-->
-
+  <div class="mb-3">
+    <label for="surveySelect" class="form-label">Select Survey</label>
+    <select class="form-select" id="surveySelect" [(ngModel)]="selectedSurvey" (change)="filterQuestionsBySurvey()">
+      <option value="">All Surveys</option>
+      <option *ngFor="let survey of Surveys" [value]="survey.id">{{ survey.title }}</option>
+    </select>
+  </div>
 <table class="table table-striped border-primary">
     
     <thead>
@@ -125,55 +131,46 @@ Erreur     </div>
       </div>
     </div>
   
-    <div class="modal fade " id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog ">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <label for="id" class="form-label">ID</label>
-              <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="question.question_id">
-            </div>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Text</label>
-              <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="question.question">
 
-            </div>
-           
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Field</label>
-              <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="question.field">
-              
-            </div>
-            <div >
-<!-- to repair -->
-              <input type="text" [(ngModel)]="selectedOption" [matAutocomplete]="auto" >
-              <mat-autocomplete #auto="matAutocomplete"  >
-                <mat-option *ngFor="let answer of answers" [value]="answer.answer" >
-                  {{answer.answer}}
-                            </mat-option>
-                </mat-autocomplete> 
-
-                <!-- buttons of answers -->
-           <label for="exampleFormControlInput1" class="form-label">Answers</label>
-              <ul *ngFor="let answer of answers">
-                <li>
-                <button type="button" class="btn btn-primary" >{{answer.answer}}</button>
-              </li>
-              </ul> 
-
-
-            </div>
-  
-          
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
-            <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" (click)="addQuestions(question)">Enregistrer</button>
-          </div>
-        </div>
+<div class="modal fade" id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-    </div> 
+      
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="id" class="form-label">Question</label>
+            <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="question.question">
+          </div>
+       
+      <div class="modal-body">
+
+
+
+
+        <div class="mb-3" *ngFor="let answer of question.answers; let i = index;">
+          <label for="answer" class="form-label">Answer {{ i + 1 }}</label>
+          <input type="text" class="form-control" id="answer" placeholder="Enter answer" [(ngModel)]="answer.answer">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary" [ngClass]="{ 'active': answer.status === true }" (click)="answer.status = true">True</button>
+            <button type="button" class="btn btn-primary" [ngClass]="{ 'active': answer.status === false }" (click)="answer.status = false">False</button>
+          </div>
+          <button type="button" class="btn btn-danger" (click)="removeAnswer(i)">Remove Answer</button>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="addAnswer()">Add Answer</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addQuestions(question)">Submit Answers</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
