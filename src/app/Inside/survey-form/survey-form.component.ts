@@ -25,7 +25,7 @@ export class SurveyFormComponent implements OnInit {
 
   getSurveys(){
   
-    this.SurveyService.getSurvey().subscribe({
+    this.SurveyService.getSurveys().subscribe({
       next: (response: Survey[]) => {
         this.Surveys = response;
       },
