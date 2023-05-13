@@ -8,7 +8,7 @@ import { Company } from 'src/Models/Company';
   providedIn: 'root'
 })
 export class UserServiceService {
-   api = environment.baseUrl+'8084/USER-MANAGEMENT/api/user/';
+   api = environment.baseUrl+'/USER-MANAGEMENT/api/user/';
   //api = "localhost:8084/api/user/";
   constructor(private http : HttpClient) { }
 

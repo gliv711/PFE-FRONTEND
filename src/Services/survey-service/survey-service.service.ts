@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class SurveyServiceService {
-  api = environment.baseUrl+'8085/api/survey/';
+  api = environment.baseUrl+'/SURVEY-MANAGEMENT/api/survey/';
 
   addSurvey(survey:Survey) {
     return this.http.post<Survey>(this.api,survey);

@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class QuestionsService {
-  api = environment.baseUrl+'8085/api/questions/';
+  api = environment.baseUrl+'/SURVEY-MANAGEMENT/api/questions/';
 
   constructor(private http : HttpClient) { }
 
