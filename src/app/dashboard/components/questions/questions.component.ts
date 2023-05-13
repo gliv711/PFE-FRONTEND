@@ -15,27 +15,28 @@ import { Field } from 'src/enums/field.enum';
 })
 export class QuestionsComponent implements OnInit {
   constructor(private SurveyService : SurveyServiceService, private http: HttpClient, private questionsService : QuestionsService,private answerService : AnswerService) {
-    this.getSurvey();
-    this.getQuestions();
+    
+    
    }
   ngOnInit(): void {
+    this.getSurvey();
+    this.getQuestions();
   }
 
-  options = [
-    'Option 1',
-    'Option 2',
-    'Option 3',
-    'Option 4'
-  ];
+
+  
+
+  status: boolean[] = [];
   selectedOption: string = '';
 
   Surveys : Survey[] = [];
-  survey : Survey ={} ;
+  surveys : Survey ={} ;
 
   questions : Questions[]=[] ;
   question : Questions= {};
+
   answer : Answer={};
-  answers : Answer[] = [];
+  Answers : Answer[] = [];
 
 
   chargement =false ;
@@ -46,12 +47,72 @@ export class QuestionsComponent implements OnInit {
   fields = Object.values(Field);
   itemsPerPage = 10;
   currentPage = 1;
+
+
+  selectedSurvey: Survey | null | undefined;
+  filteredQuestions: Questions[] = [];
+  selectedSurveyId: number | null = null; // Add selectedSurveyId property
+
+  getQuestionsBySurvey(): void {
+    if (this.selectedSurveyId) {
+     
+        this.SurveyService.getQuestionsBySurveyId(this.selectedSurveyId).subscribe({
+           next: (questions: Questions[]) => {
+             this.filteredQuestions = questions;
+           },
+           error: (error) => {
+             console.log(error);
+           }
+         });
+     
+     
+     
+    } else {
+      
+      this.filteredQuestions = this.questions; // Reset the filtered questions if no survey is selected
+    }
+  }
+
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  removeAnswer(index: number): void {
+    if (this.question && this.question.answers && this.question.answers[index]) {
+      this.question.answers.splice(index, 1);
+      this.status.splice(index, 1);
+    }
+  }
     
+  addAnswer(): void {
+    if (this.question && this.question.answers) {
+      this.question.answers.push({ answer: '', status: false });
+    } else {
+      // Initialize the question object and answers array
+      this.question = { answers: [{ answer: '', status: false }] };
+    }
+  }
+
+  submitAnswers(){
+
+  }
+
+
+
   getAnswers(){
-    this.answers=[];
+    this.Answers=[];
     this.answerService.getAllAnswers().subscribe({
       next: (response: Answer[]) => {
-        this.answers = response;
+        this.Answers = response;
       },
       error: (e) =>  {console.log(e),this.error=true;},
       complete: () => {}
@@ -103,14 +164,14 @@ export class QuestionsComponent implements OnInit {
 
 
 
-  setCurrentSurvey(survey : Survey){
-    this.survey=survey;
-  }
+
   
   deleteQuestion(question : Questions){
     
     this.questionsService.deleteQuestion(question).subscribe({
       next: () => {
+        this.getSurvey();
+        this.getQuestionsBySurvey();
         this.getQuestions();
         console.log(question);
         this.supprimer=true;
@@ -131,7 +192,7 @@ export class QuestionsComponent implements OnInit {
 
 
   getSurvey(){
-    this.SurveyService.getSurvey().subscribe({
+    this.SurveyService.getSurveys().subscribe({
       next: (response: Survey[]) => {
         this.Surveys = response;
       },
@@ -167,28 +228,10 @@ export class QuestionsComponent implements OnInit {
   }
   
   close(){
-    this.survey={};
   }
   
 
-  addSurvey(survey:Survey){
-    this.SurveyService.addSurvey(this.survey).subscribe({
-      next: () => {
-        this.getSurvey();
-        this.close();
-        this.mise_a_jour=true;
-        setTimeout(() => {
-          this.mise_a_jour = false;
-        }, 3000); 
-      },
-      error: (e) =>  {console.log(e),this.error=true;},
-      complete: () => {
-        
-
-      }
-    })
-  }
-
+  
 
   ///
 
