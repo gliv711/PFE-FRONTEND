@@ -1,4 +1,5 @@
 import { Answer } from "./Answer";
+import { Survey } from "./Survey";
 
 export interface Questions {
   question_id?: number;
@@ -6,4 +7,5 @@ export interface Questions {
     field?: string;
     answers?: Answer[];
     questions?:Questions[];
+    surveys?:Survey[];
   }
