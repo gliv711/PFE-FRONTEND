@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Answer } from 'src/Models/Answer';
 import { Questions } from 'src/Models/Questions';
 import { Survey } from 'src/Models/Survey';
 import { SurveyServiceService } from 'src/Services/survey-service/survey-service.service';
@@ -29,7 +30,8 @@ export class SurveysComponent implements OnInit {
   
   questions : Questions[] =[];
 
-
+  question : Questions ={};
+  status: boolean[] = [];
 
 
   setCurrentSurvey(survey :Survey){
@@ -96,4 +98,44 @@ close(){
 }
 
 
+
+
+
+
+moreQuestion(): void {
+  const newQuestion: Questions = {
+    question: '',
+    answers: []
+  };
+  if (!this.survey.questions) {
+    this.survey.questions = [];
+  }
+  this.survey.questions.push(newQuestion);
+}
+
+removeQuestion(index: number) {
+  if (this.survey.questions) {
+    this.survey.questions.splice(index, 1);
+  }
+}
+
+
+
+
+addAnswer(question: Questions) {
+  if (!question.answers) {
+    question.answers = [];
+  }
+  const newAnswer: Answer = {
+    answer: '',
+    status: false
+  };
+  question.answers.push(newAnswer);
+}
+
+removeAnswer(question: Questions, index: number) {
+  if (question.answers) {
+    question.answers.splice(index, 1);
+  }
+}
 }

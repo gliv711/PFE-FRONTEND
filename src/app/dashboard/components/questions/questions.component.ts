@@ -102,9 +102,7 @@ export class QuestionsComponent implements OnInit {
     }
   }
 
-  submitAnswers(){
-
-  }
+  
 
 
 
@@ -161,6 +159,9 @@ export class QuestionsComponent implements OnInit {
     })
   }
 
+
+ 
+  
 
 
 
@@ -228,6 +229,7 @@ export class QuestionsComponent implements OnInit {
   }
   
   close(){
+    this.question={};
   }
   
 

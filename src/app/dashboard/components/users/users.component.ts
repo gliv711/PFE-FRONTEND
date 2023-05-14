@@ -14,6 +14,9 @@ export class UsersComponent implements OnInit {
 
   Users: User[] = [];
     user : User = {};
+
+
+
     chargement =false ;
     mise_a_jour=false ;
     supprimer=false ;
@@ -34,6 +37,10 @@ export class UsersComponent implements OnInit {
         complete: () => {}
       })
     }
+
+
+
+  
 
     deleteUser(user : User){
       this.UserService.deleteUser(user).subscribe({

@@ -51,7 +51,7 @@
             <th scope="col">Description</th>
             
             <th scope="col"></th>
-            <th scope="col"><button type="button" class="btn btn-secondary" data-bs-target="#update-add-Modal" data-bs-toggle="modal" >Ajouter</button>
+            <th scope="col"><button type="button" class="btn btn-secondary" data-bs-target="#update-add-Modal" data-bs-toggle="modal" (click)="close()">Ajouter</button>
             
           </tr>
         </thead>
@@ -100,74 +100,49 @@
   </div>
 
 
-  <!-- <div class="modal fade " id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog ">
+  <div class="modal fade" id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="mb-3">
-            <label for="id" class="form-label">Id</label>
-            <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.id">
-          </div>
+         
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Titre</label>
             <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.title">
-
           </div>
-         
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Description</label>
             <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.description">
           </div>
+          <button type="button" class="btn btn-primary" (click)="moreQuestion()">Ajouter une question</button>
 
-          <div class="mb-3">
-           
-            <table class="table table-striped border-primary">
-    
-                <thead>
-                  <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Question</th>
-                    <th scope="col">Field</th>
-                    
-                    <th scope="col"></th>
-                    <th scope="col"><button type="button" class="btn btn-secondary" data-bs-target="#update-add-Modal" data-bs-toggle="modal" >Ajouter</button>
-                    
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let question of survey.questions | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
-                    <th scope="row">{{survey?.question_id}}</th>
-                    <td>{{survey?.question}}</td>
-                    <td>{{survey?.field}}</td>
-                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#update-add-Modal" > 
-                      Modifier
-                    </button>
-                    </td>
-                    <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal"  (click)="setCurrentSurvey(survey)">Supprimer</button></td>
-                    
-            
-                     
-            
-              
-            
-                   
-                  </tr>
-                
-                </tbody>
-              </table>
-
-
-
-
+          <div *ngFor="let question of survey?.questions; let i = index">
+            <div class="mb-3">
+              <label for="id" class="form-label">Question</label>
+              <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="question.question">
+            </div>
+            <div class="modal-body">
+              <div class="mb-3" *ngFor="let answer of question?.answers; let j = index">
+                <button type="button" class="btn btn-danger" (click)="removeAnswer(question, j)">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+                <br>
+                <label for="answer" class="form-label">Answer {{ j + 1 }}</label>
+                <input type="text" class="form-control" id="answer" placeholder="Enter answer" [(ngModel)]="answer.answer">
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn bg-light" [ngClass]="{ 'active': answer.status === true }" (click)="answer.status = true">✔️</button>
+                  <button type="button" class="btn bg-light" [ngClass]="{ 'active': answer.status === false }" (click)="answer.status = false">❌</button>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary" (click)="addAnswer(question)">+1 réponse</button>
+            </div>
+            <button type="button" class="btn btn-danger" (click)="removeQuestion(i)">Supprimer la question</button>
+            <button type="button" class="btn btn-primary" (click)="moreQuestion()">+1 Question</button>
 
           </div>
-         
-
-        
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
@@ -175,7 +150,7 @@
         </div>
       </div>
     </div>
-  </div>  -->
+  </div>  
 
 
 
