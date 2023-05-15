@@ -1,68 +1,40 @@
-<div class="wrapper bg-white mt-sm-5">
-    <h4 class="pb-4 border-bottom">Parametre</h4>
-    <div class="d-flex align-items-start py-3 border-bottom">
-        <img src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-            class="img" alt="">
-        <div class="pl-sm-4 pl-2" id="img-section">
-            <b>Profile Photo</b>
-            <p>Accepted file type .png. Less than 1MB</p>
-            <button class="btn button border"><b>Upload</b></button>
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
         </div>
-    </div>
-    <div class="py-2">
-        <div class="row py-2">
-            <div class="col-md-6">
-                <label for="firstname">First Name</label>
-                <input type="text" class="bg-light form-control" placeholder="">
-            </div>
-            <div class="col-md-6 pt-md-0 pt-3">
-                <label for="lastname">Last Name</label>
-                <input type="text" class="bg-light form-control" placeholder="">
-            </div>
-        </div>
-        <div class="row py-2">
-            <div class="col-md-6">
-                <label for="email">Email Address</label>
-                <input type="text" class="bg-light form-control" placeholder="">
-            </div>
-            <div class="col-md-6 pt-md-0 pt-3">
-                <label for="phone">Phone Number</label>
-                <input type="tel" class="bg-light form-control" placeholder="">
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Nom</label><input type="text" class="form-control" placeholder="Nom" value=""></div>
+                    <div class="col-md-6"><label class="labels">Prénom</label><input type="text" class="form-control" value="" placeholder="Prénom"></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value=""></div>
+                    <div class="col-md-12"><label class="labels">Téléphone</label><input type="text" class="form-control" placeholder="Votre Téléphone SVP" value=""></div>
+                    <div class="col-md-12"><label class="labels">Address  </label><input type="text" class="form-control" placeholder="Votre Address SVP" value=""></div>
+                    <div class="col-md-12"><label class="labels">Région</label><input type="text" class="form-control" placeholder="Votre région SVP" value=""></div>
+                    <div class="col-md-12"><label class="labels">Université</label><input type="text" class="form-control" placeholder="Votre Université SVP" value=""></div>
+                    <div class="col-md-12"><label class="labels">Domaine d'étude</label><input type="text" class="form-control" placeholder="Votre Domaine d'étude SVP" value=""></div>
+                    <div class="col-md-12"><label class="labels">date de debut des études</label><input type="date" class="form-control" placeholder="date de debut des études" value="data-bs-target"></div>
+                    <div class="col-md-12"><label class="labels">date de fin des études</label><input type="date" class="form-control" placeholder="date de fin des études" value="data-bs-target"></div>
+
+                </div>
+
+               
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
             </div>
         </div>
-        <div class="row py-2">
-            <div class="col-md-6">
-                <label for="country">Country</label>
-                <select name="country" id="country" class="bg-light">
-                    <option value="india">TUNISIA</option>
-                    <option value="usa">FRANCE</option>
-                    <option value="uk">ALGERE</option>
-                    <option value="uae">MARROCO</option>
-                </select>
-            </div>
-            <div class="col-md-6 pt-md-0 pt-3" id="lang">
-                <label for="language">Language</label>
-                <div class="arrow">
-                    <select name="language" id="language" class="bg-light">
-                        <option value="english">FRANCE</option>
-                        <option value="english_us">English (United States)</option>
-                        <option value="enguk">English UK</option>
-                        <option value="arab">Arabic</option>
-                    </select>
-                </div> 
-            </div>
-        </div>
-        <div class="py-3 pb-4 border-bottom">
-            <button class="btn btn-primary mr-3">Save Changes</button>
-            <button class="btn border button">Cancel</button>
-        </div>
-        <div class="d-sm-flex align-items-center pt-3" id="deactivate">
-            <div>
-                <b>Deactivate your account</b>
-                <p>Details about your company account and password</p>
-            </div>
-            <div class="ml-auto">
-                <button class="btn danger">Deactivate</button>
+        <div class="col-md-4">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
+                <div class="col-md-12"><label class="labels">Nom d'entreprise</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
+                <div class="col-md-12"><label class="labels">Poste</label><input type="text" class="form-control" placeholder="additional details" value=""></div> <br>
+                <div class="col-md-12"><label class="labels">date de debut de Poste</label><input type="date" class="form-control"  value="data-bs-target"></div>
+                <div class="col-md-12"><label class="labels">date de fin des Poste</label><input type="date" class="form-control"  value="data-bs-target"></div>
             </div>
         </div>
     </div>
