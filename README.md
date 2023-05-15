@@ -13,5 +13,11 @@ Pages that ready add '/' before every title here (example : "/landing") :
 landing Ready! 
 login Ready !
 register Ready !
-all-users Ready! 
-all-questions Ready! 
+userPage Ready! 
+questionPage Ready! 
+answerPage Ready !
+surveyForm 50%
+
+security not yet :(
+results not yet :(
+
