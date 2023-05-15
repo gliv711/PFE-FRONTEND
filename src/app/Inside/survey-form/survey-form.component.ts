@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Answer } from 'src/Models/Answer';
-import { Questions } from 'src/Models/Questions';
+
 import { Survey } from 'src/Models/Survey';
 import { AnswerService } from 'src/Services/answer-service/answer.service';
 import { QuestionsService } from 'src/Services/question-service/questions.service';
@@ -15,6 +14,7 @@ import { SurveyServiceService } from 'src/Services/survey-service/survey-service
 export class SurveyFormComponent implements OnInit {
   selectedField: string='';
 
+  questionsPerStep = 1; // Change this variable to adjust the number of questions per step
 
   constructor( private route: ActivatedRoute,private SurveyService : SurveyServiceService,private questionsService : QuestionsService,private answerService : AnswerService) { }
   
@@ -42,8 +42,13 @@ export class SurveyFormComponent implements OnInit {
   
   
   }
+
+  
+
+  
   Surveys : Survey[] = [] ;
   survey : Survey = {};
+  currentStep: number = 1; // Track the current step of the survey
 
   selectedSurvey: Survey = {}; 
 
@@ -90,7 +95,8 @@ export class SurveyFormComponent implements OnInit {
       );
   
     }
-
+  
+    
     getRandomSurveyInformatique(){
   
       this.SurveyService.getSurveyInformatique().subscribe(
@@ -109,8 +115,30 @@ export class SurveyFormComponent implements OnInit {
     }
   
 
+    
 
-
+    getCurrentStepQuestions(): any[] {
+      const startIndex = (this.currentStep - 1) * this.questionsPerStep;
+      const endIndex = Math.min(startIndex + this.questionsPerStep, this.selectedSurvey?.questions?.length || 0);
+      return this.selectedSurvey?.questions?.slice(startIndex, endIndex) || [];
+    }
+  
+    get totalSteps(): number {
+      const totalQuestions = this.selectedSurvey?.questions?.length || 0;
+      return Math.ceil(totalQuestions / this.questionsPerStep);
+    }
+  
+    previousStep(): void {
+      if (this.currentStep > 1) {
+        this.currentStep--;
+      }
+    }
+  
+    nextStep(): void {
+      if (this.currentStep < this.totalSteps) {
+        this.currentStep++;
+      }
+    }
 
 
 
