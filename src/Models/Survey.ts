@@ -5,6 +5,6 @@ export interface Survey{
     id?: number;
     title?: string;
     description?: string;
-    field_survey? : string ;
+    field? : string ;
     questions?: Questions[];
 }

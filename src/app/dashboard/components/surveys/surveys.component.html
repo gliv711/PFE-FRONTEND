@@ -49,7 +49,7 @@
             <th scope="col">Id</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
-            
+            <th scope="col">field</th>
             <th scope="col"></th>
             <th scope="col"><button type="button" class="btn btn-secondary" data-bs-target="#update-add-Modal" data-bs-toggle="modal" (click)="close()">Ajouter</button>
             
@@ -60,6 +60,7 @@
             <th scope="row">{{survey?.id}}</th>
             <td>{{survey?.title}}</td>
             <td>{{survey?.description}}</td>
+             <td>{{survey.field}}</td>
             <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" (click)="setCurrentSurvey(survey)" data-bs-target="#update-add-Modal" > 
               Modifier
             </button>
@@ -108,6 +109,11 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">ID de l'enquête</label>
+            <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.id">
+          </div>
          
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Titre de l'enquête</label>
@@ -116,6 +122,10 @@
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Description de l'enquête</label>
             <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.description">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Field de l'enquête</label>
+            <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.field">
           </div>
           <button type="button" class="btn btn-primary" (click)="moreQuestion()">Ajouter une question</button>
 

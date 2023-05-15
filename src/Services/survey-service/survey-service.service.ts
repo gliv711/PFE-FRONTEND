@@ -20,8 +20,8 @@ export class SurveyServiceService {
     return this.http.get<Survey[]>(this.api+'all');
   }
 
-  getSurveyGeneral(): Observable <Survey>{
-    return this.http.get<Survey>(this.api+'general');
+  getSurveyGeneral(): Observable <Survey[]>{
+    return this.http.get<Survey[]>(this.api+'general');
   }
 
   getSurveyFinances(): Observable <Survey[]>{

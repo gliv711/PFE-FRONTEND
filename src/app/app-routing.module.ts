@@ -47,7 +47,7 @@ const routes: Routes = [
   {path:'',component:LandingComponent},
   {path:'login',component:LoginComponent},
 
-  {path:'surveyform',component:SurveyFormComponent},
+  {path:'surveyform/:field',component:SurveyFormComponent},
   {
     path : 'dashboard', component : DashboardComponent,
     

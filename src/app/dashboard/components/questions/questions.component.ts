@@ -203,30 +203,8 @@ export class QuestionsComponent implements OnInit {
 
   }
  
-  getSurveyFinances(){
-    this.Surveys=[];
-    this.SurveyService.getSurveyFinances().subscribe({
-      next: (response: Survey[]) => {
-        this.Surveys = response;
-      },
-      error: (e) =>  {console.log(e),this.error=true;},
-      complete: () => {}
-    })
-
-  }
 
 
-  getSurveyInformatique(){
-    this.Surveys=[];
-    this.SurveyService.getSurveyInformatique().subscribe({
-      next: (response: Survey[]) => {
-        this.Surveys = response;
-      },
-      error: (e) =>  {console.log(e),this.error=true;},
-      complete: () => {}
-    })
-
-  }
   
   close(){
     this.question={};
