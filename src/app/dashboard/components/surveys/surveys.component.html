@@ -101,7 +101,7 @@
 
 
   <div class="modal fade" id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
@@ -110,11 +110,11 @@
         <div class="modal-body">
          
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Titre</label>
+            <label for="exampleFormControlInput1" class="form-label">Titre de l'enquête</label>
             <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.title">
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Description</label>
+            <label for="exampleFormControlInput1" class="form-label">Description de l'enquête</label>
             <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.description">
           </div>
           <button type="button" class="btn btn-primary" (click)="moreQuestion()">Ajouter une question</button>

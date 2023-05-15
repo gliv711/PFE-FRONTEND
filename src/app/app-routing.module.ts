@@ -101,7 +101,7 @@ const routes: Routes = [
   { path: '*', component: PagesError404Component },
   { path : 'information-general',component:InformationGernalComponent},
   { path :'home' , component:HomeComponent},
-  { path :'signup-societe',component:Step1Component},
+  { path :'register-c',component:Step1Component},
   { path:'sidebar',component:SidebarComponent},
   { path:'pay',component:PayementFormComponent}
   

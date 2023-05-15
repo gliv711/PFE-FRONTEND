@@ -1,9 +1,9 @@
-<div class="container-fluid" >
+<div class="container-fluid ml-2"style="background-color: #416DB8;background-size:cover;" >
     <div class="row justify-content-center">
         <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
-            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                <h2 id="heading">Sign Up Your User Account</h2>
-                <p>Fill all form field to go to next step</p>
+            <div class="card px-0 pt-4 pb-0 mt-4 mb-3 ">
+                <h2 id="heading">Crée un compte Client</h2>
+                <p>Veuillez remplir ce formulaire</p>
                 <form id="msform" [formGroup]="myform">
                     <!-- progressbar -->
                     <ul id="progressbar">
@@ -151,7 +151,7 @@
                                     <h2 class="steps">Step 3 - 5</h2>
                                 </div>
                             </div> 
-                            <label class="fieldlabels">unversite: *</label>
+                            <label class="fieldlabels">universite: *</label>
                             <input type="text" formControlName="university" name="fname" placeholder="votre unversite" />
                             <div  *ngIf="myform.get('university').touched && myform.get('university').hasError('required')" style="margin-top: 18px">
                                 <span style="color: red;display: flex"> remplir le champs</span>
@@ -201,6 +201,12 @@
                             <div *ngIf="success ===true">
                             <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
                             <div class="row justify-content-center">
+                                <!-- Call the redirectToPlay method to trigger the redirect -->
+                                                        <script>
+                                                            if (success) {
+                                                            redirectToPlay();
+                                                            }
+                                                        </script>
                                 <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
                             </div> <br><br>
                             <div class="row justify-content-center">

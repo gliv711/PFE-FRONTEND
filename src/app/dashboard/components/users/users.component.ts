@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { User } from 'src/Models/User';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
 import { Role } from 'src/enums/role.enum';
 import { DatePipe } from '@angular/common';
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -40,7 +41,6 @@ export class UsersComponent implements OnInit {
 
 
 
-  
 
     deleteUser(user : User){
       this.UserService.deleteUser(user).subscribe({

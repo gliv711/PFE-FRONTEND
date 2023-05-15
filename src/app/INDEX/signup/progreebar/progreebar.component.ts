@@ -64,6 +64,13 @@ export class ProgreebarComponent implements OnInit {
     
    }
 
+
+   redirectToPlay(): void {
+    this.router.navigateByUrl('/pay');
+    // or
+    // this.router.navigate(['/play']);
+  }
+
   ngOnInit() {
     const fieldsets = this.elementRef.nativeElement.querySelectorAll('fieldset');
     this.steps = fieldsets.length;

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 import { AppRoutingModule } from '../app-routing.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
