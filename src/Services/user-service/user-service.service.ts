@@ -48,6 +48,9 @@ export class UserServiceService {
     addCompany(Company:Company) {
       return this.http.post<Company>(this.api,Company);
     }
+
+
+    
    
     
   }

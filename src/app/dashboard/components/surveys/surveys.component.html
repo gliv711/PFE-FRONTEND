@@ -1,82 +1,93 @@
 <div class="card" style="width: 100% ">
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-        </symbol>
-        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-        </symbol>
-        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-        </symbol>
-      </svg>
-    
-      <div *ngIf="chargement" class="alert alert-success d-flex align-items-center" role="alert">
-        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path
+        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+    </symbol>
+    <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path
+        d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+    </symbol>
+    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path
+        d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+    </symbol>
+  </svg>
+
+    <div *ngIf="chargement" class="alert alert-success d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+      <use xlink:href="#check-circle-fill" />
+    </svg>
         <div>
-        chargement terminée   </div>
-      </div>
-    
-    
-      <div *ngIf="mise_a_jour" class="alert alert-success d-flex align-items-center" role="alert">
-        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+            chargement terminée </div>
+    </div>
+
+
+    <div *ngIf="mise_a_jour" class="alert alert-success d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+      <use xlink:href="#check-circle-fill" />
+    </svg>
         <div>
-          Mise a jour avec succées    </div>
-      </div>
-    
-    
-      <div *ngIf="supprimer" class="alert alert-primary d-flex align-items-center" role="alert">
-        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+            Mise a jour avec succées </div>
+    </div>
+
+
+    <div *ngIf="supprimer" class="alert alert-primary d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
+      <use xlink:href="#info-fill" />
+    </svg>
         <div>
-          Supprésion avec succées
+            Supprésion avec succées
         </div>
-      </div>
+    </div>
 
-      <div *ngIf="error" class="alert alert-danger d-flex align-items-center" role="alert">
-        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+    <div *ngIf="error" class="alert alert-danger d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+      <use xlink:href="#exclamation-triangle-fill" />
+    </svg>
         <div>
-    Erreur     </div>
-      </div>
-    
+            Erreur </div>
+    </div>
 
 
 
 
-      <table class="table table-striped border-primary">
-    
+
+    <table class="table table-striped border-primary">
+
         <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">field</th>
-            <th scope="col"></th>
-            <th scope="col"><button type="button" class="btn btn-secondary" data-bs-target="#update-add-Modal" data-bs-toggle="modal" (click)="close()">Ajouter</button>
-            
-          </tr>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Domaine</th>
+                <th scope="col"></th>
+                <th scope="col"><button type="button" class="btn btn-secondary" data-bs-target="#update-add-Modal" data-bs-toggle="modal" (click)="close()">Ajouter</button>
+
+            </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let survey of surveys | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
-            <th scope="row">{{survey?.id}}</th>
-            <td>{{survey?.title}}</td>
-            <td>{{survey?.description}}</td>
-             <td>{{survey.field}}</td>
-            <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" (click)="setCurrentSurvey(survey)" data-bs-target="#update-add-Modal" > 
-              Modifier
-            </button>
-            </td>
-            <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal"  (click)="setCurrentSurvey(survey)">Supprimer</button></td>
-            
-    
-             
-    
-      
-    
-           
-          </tr>
-        
+            <tr *ngFor="let survey of surveys | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+                <th scope="row">{{survey?.id}}</th>
+                <td>{{survey?.title}}</td>
+                <td>{{survey?.description}}</td>
+                <td>{{survey.field}}</td>
+                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" (click)="setCurrentSurvey(survey)" data-bs-target="#update-add-Modal">
+            Modifier
+          </button>
+                </td>
+                <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal" (click)="setCurrentSurvey(survey)">Supprimer</button></td>
+
+
+
+
+
+
+
+            </tr>
+
         </tbody>
-      </table>
+    </table>
 
 
 
@@ -84,85 +95,108 @@
 </div>
 <div class="modal fade" id="are-you-sure-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Êtes Vous Sûr ?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Annuler</button>
-          <button type="button" class="btn btn-primary"  (click)="deleteSurvey(survey)" data-bs-dismiss="modal">Je confirme</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="modal fade" id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">ID de l'enquête</label>
-            <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.id">
-          </div>
-         
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Titre de l'enquête</label>
-            <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.title">
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Description de l'enquête</label>
-            <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.description">
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Field de l'enquête</label>
-            <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.field">
-          </div>
-          <button type="button" class="btn btn-primary" (click)="moreQuestion()">Ajouter une question</button>
-
-          <div *ngFor="let question of survey?.questions; let i = index">
-            <div class="mb-3">
-              <label for="id" class="form-label">Question</label>
-              <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="question.question">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <div class="mb-3" *ngFor="let answer of question?.answers; let j = index">
-                <button type="button" class="btn btn-danger" (click)="removeAnswer(question, j)">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-                <br>
-                <label for="answer" class="form-label">Answer {{ j + 1 }}</label>
-                <input type="text" class="form-control" id="answer" placeholder="Enter answer" [(ngModel)]="answer.answer">
-                <div class="btn-group" role="group">
-                  <button type="button" class="btn bg-light" [ngClass]="{ 'active': answer.status === true }" (click)="answer.status = true">✔️</button>
-                  <button type="button" class="btn bg-light" [ngClass]="{ 'active': answer.status === false }" (click)="answer.status = false">❌</button>
-                </div>
-              </div>
-              <button type="button" class="btn btn-primary" (click)="addAnswer(question)">+1 réponse</button>
+                Êtes Vous Sûr ?
             </div>
-            <button type="button" class="btn btn-danger" (click)="removeQuestion(i)">Supprimer la question</button>
-            <button type="button" class="btn btn-primary" (click)="moreQuestion()">+1 Question</button>
-
-          </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" (click)="deleteSurvey(survey)" data-bs-dismiss="modal">Je
+          confirme</button>
+            </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
-          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" (click)="addSurvey(survey)">Enregistrer</button>
-        </div>
-      </div>
     </div>
-  </div>  
+</div>
+
+
+<div class="modal fade" id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-2"> <label for="exampleFormControlInput1" class="form-label">Identifiant de l'enquête</label></div>
+                        <div class="col"> <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.id"></div>
+
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-2"><label for="exampleFormControlInput1" class="form-label">Titre de l'enquête</label></div>
+                        <div class="col"><input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.title"></div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-2"> <label for="exampleFormControlInput1" class="form-label">Description</label></div>
+                        <div class="col"><input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.description"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-2"><label for="exampleFormControlInput1" class="form-label">Domaine de l'enquête</label></div>
+                        <div class="col"><input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="survey.field"></div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-info" (click)="moreQuestion()">Ajouter une question</button>
+                <br>
+                <br>
+                <div class="border mb-3" *ngFor="let question of survey?.questions; let i = index">
+
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="id" class="form-label">Question {{i + 1}}</label></div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="id" placeholder="" [(ngModel)]="question.question">
+                            </div>
+                            <div class="col-3">
+                                <button type="button" class="btn btn-danger btn-sm" (click)="removeQuestion(i)"><i class="fas fa-trash-alt"></i></button>
+                                <button type="button" class="btn btn-info btn-sm" (click)="moreQuestion()"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="mb-3" *ngFor="let answer of question?.answers; let j = index">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="answer" class="form-label">Réponse {{ j + 1 }}</label> </div>
+                                <div class="col-6"><input type="text" class="form-control" id="answer" placeholder="Enter answer" [(ngModel)]="answer.answer">
+                                </div>
+                                <div class="col">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn bg-light btn-sm" [ngClass]="{ 'active': answer.status === true }" (click)="answer.status = true">✔️</button>
+                                        <button type="button" class="btn bg-light btn-sm" [ngClass]="{ 'active': answer.status === false }" (click)="answer.status = false">❌</button>
+                                        <button type="button" class="btn btn-danger btn-sm" (click)="removeAnswer(question, j)">
+                                          <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-sm" (click)="addAnswer(question)"><i class="fas fa-plus	"> </i> Réponse</button>
+                    </div>
 
 
 
-
-  
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="close()">Annuler</button>
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="addSurvey(survey)">Enregistrer</button>
+            </div>
+        </div>
+    </div>
+</div>

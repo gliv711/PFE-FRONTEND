@@ -12,8 +12,9 @@ export class LoginComponent implements OnInit {
 
   api = environment.baseUrl+'8084/USER-MANAGEMENT/api';
 
-  email :String = '';
-  password : String ='' ;
+  email: string = '';
+  password: string = '';
+  result: string = '';
   constructor(private router: Router , private http: HttpClient) { }
    
   onSubmit(){
@@ -26,6 +27,16 @@ export class LoginComponent implements OnInit {
         console.log("you are not connected !");
       }
     );
+  }
+
+
+  checkEmailAndPassword(): void {
+    this.http.get(`/users/${this.email}/${this.password}`)
+      .subscribe((response: any) => {
+        this.result = response;
+      }, (error: any) => {
+        this.result = error.error;
+      });
   }
   ngOnInit(): void {
   }
