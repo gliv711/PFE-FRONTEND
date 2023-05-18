@@ -69,7 +69,7 @@
 <div class="modal fade" id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="background-color: #DDE0BD;background-size:cover;">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -101,7 +101,7 @@
                 </div>
                 <div class="mb-3">
                     <div class="row">
-                        <div class="col-1">
+                        <div class="col-3">
                             <label for="exampleFormControlInput1" class="form-label">Type de Contrat</label>
                         </div>
                         <div class="col">
@@ -112,8 +112,11 @@
                             </select>
                         </div>
                     </div>
+                </div>
+                <div class="mb-3">
+
                     <div class="row">
-                        <div class="col-1">
+                        <div class="col-2">
                             <label for="exampleFormControlInput1" class="form-label">Expérience</label>
                         </div>
                         <div class="col">
@@ -124,61 +127,64 @@
                             </select>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <div class="row">
-                            <div class="col-1">
-                                <label for="exampleFormControlInput1" class="form-label">Emplacement </label>
-                            </div>
-                            <div class="col">
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="exampleFormControlInput1" class="form-label">Emplacement </label>
+                        </div>
+                        <div class="col">
 
-                                <select class="form-select" [(ngModel)]="demand.place" id="place">
+                            <select class="form-select" [(ngModel)]="demand.place" id="place">
                                     <option value="Non Fournie">Non Fournie</option>
                                     <option *ngFor="let place of placeOptions" [value]="place">{{ place }}</option>
                                 </select> </div>
-                        </div>
                     </div>
+                </div>
 
-                    <div class="mb-3">
-                        <div class="row">
-                            <div class="col-1">
-                                <label for="exampleFormControlInput1" class="form-label">Salaire </label>
-                            </div>
-                            <div class="col">
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-1">
+                            <label for="exampleFormControlInput1" class="form-label">Salaire </label>
+                        </div>
+                        <div class="col">
 
-                                <select class="form-select" [(ngModel)]="demand.salary" id="salary">
+                            <select class="form-select" [(ngModel)]="demand.salary" id="salary">
                                 <option value="Non Fournie">Non Fournie</option>
                                 <option *ngFor="let option of salaryOptions" [value]="option">{{ option }}</option>
                               </select>
-                            </div>
                         </div>
-
-                        <div class="mb-3">
-                            <div class="row">
-                                <div class="col-1">
-                                    <label for="exampleFormControlInput1" class="form-label">Détail de l'offre </label>
-                                </div>
-                                <div class="col">
-
-                                    <input type="text" class="form-control" id="details" placeholder="" [(ngModel)]="demand.details">
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addDemand(demand)">Enregistrer</button>
                     </div>
                 </div>
+
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-3">
+                            <label for="exampleFormControlInput1" class="form-label">Détail de l'offre </label>
+                        </div>
+                        <div class="col">
+
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="demand.details"></textarea>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addDemand(demand)">Enregistrer</button>
             </div>
         </div>
+    </div>
+</div>
 
-        <!-- 
+<!-- 
 
 <div class="modal fade " id="more-info-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
@@ -383,8 +389,8 @@
 
 
 
-        <!-- alers !-->
-        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+<!-- alers !-->
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
       <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
     </symbol>
@@ -396,31 +402,31 @@
     </symbol>
   </svg>
 
-        <div *ngIf="chargement" class="alert alert-success d-flex align-items-center" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-            <div>
-                chargement terminée </div>
-        </div>
+<div *ngIf="chargement" class="alert alert-success d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+    <div>
+        chargement terminée </div>
+</div>
 
 
-        <div *ngIf="mise_a_jour" class="alert alert-success d-flex align-items-center" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-            <div>
-                Mise a jour avec succées </div>
-        </div>
+<div *ngIf="mise_a_jour" class="alert alert-success d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+    <div>
+        Mise a jour avec succées </div>
+</div>
 
 
-        <div *ngIf="supprimer" class="alert alert-primary d-flex align-items-center" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
-            <div>
-                Supprésion avec succées
-            </div>
-        </div>
+<div *ngIf="supprimer" class="alert alert-primary d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+    <div>
+        Supprésion avec succées
+    </div>
+</div>
 
 
 
-        <div *ngIf="error" class="alert alert-danger d-flex align-items-center" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-            <div>
-                Erreur </div>
-        </div>
+<div *ngIf="error" class="alert alert-danger d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+    <div>
+        Erreur </div>
+</div>
