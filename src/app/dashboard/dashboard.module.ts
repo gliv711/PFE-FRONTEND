@@ -16,6 +16,7 @@ import { AnswersComponent } from './components/answers/answers.component';
 import { MatInputModule, MatAutocompleteModule } from '@angular/material';
 import { SurveysComponent } from './components/surveys/surveys.component';
 import { AddquestionInsideSurveyformComponent } from './components/surveys/addquestion-inside-surveyform/addquestion-inside-surveyform.component';
+import { DemandsComponent } from './components/demands/demands.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AddquestionInsideSurveyformComponent } from './components/surveys/addqu
     ResultsComponent,
     AnswersComponent,
     SurveysComponent,
-    AddquestionInsideSurveyformComponent
+    AddquestionInsideSurveyformComponent,
+    DemandsComponent
   ],
   imports: [
     CommonModule,

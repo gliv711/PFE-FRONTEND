@@ -1,187 +1,186 @@
-<div class="container-fluid" >
-  <div class="row justify-content-center">
-      <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
-          <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-              <h2 id="heading">Sign Up Your User Account</h2>
-              <p>Fill all form field to go to next step</p>
-              <form id="msform" [formGroup]="isform">
-                  <!-- progressbar -->
-                  <ul id="progressbar">
-                      <li class="active" id="account"><strong>Account</strong></li>
-                      <li id="personal"><strong>Information de la company</strong></li>
-                      <li id="confirm"><strong>Finish</strong></li>
-                  </ul>
-                  <div class="progress">
-                      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div> <br> <!-- fieldsets -->
-                  <fieldset>
-                      <div class="form-card">
-                          <div class="row">
-                              <div class="col-7">
-                                  <h2 class="fs-title">Informations du compte:</h2>
-                              </div>
-                              <div class="col-5">
-                                  <h2 class="steps">Step 1 - 3</h2>
-                              </div>
-                          </div>
-                          <label class="fieldlabels">Nom de company: *</label>
-                          <input type="text" name="uname" formControlName="name" placeholder="UserName"  required/>
-                          <div  *ngIf=" isform.get('name').hasError('maxlength')" style="margin-top: 18px">
-                             <span style="color: red;display: flex"> max 30 caracteres</span>
-                             <br></div>
-                           <div  *ngIf=" isform.get('name').hasError('minlength')" style="margin-top: 18px">
-                             <span style="color: red;display: flex"> au moin 3 caracteres</span>
-                             <br></div>
-                           <div  *ngIf="isform.get('name').touched && isform.get('name').hasError('required')" style="margin-top: 18px">
-                             <span style="color: red;display: flex"> remplir le champs</span>
-                             <br></div>
-                             <div  *ngIf=" isform.get('name').hasError('pattern')" style="margin-top: 18px">
-                               <span style="color: red;display: flex"> accepte juste alaphab</span>
-                               <br></div>
-                              
-                                    <label class="fieldlabels">Email: *</label>
-                                    <input type="email" name="email" formControlName="email" placeholder="Email Id" required />
-                                    <div  *ngIf="isform.get('email').touched && isform.get('email').hasError('required')" style="margin-top: -10px">
-                                      <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
-                                      <br></div>
-                                    <div  *ngIf="isform.get('email').hasError('email')" style="margin-top: 0px">
-                                      <span style="color: red;display: flex"> mail invalid </span>
-                                      <br></div>
-                                      <label class="fieldlabels">Mot de passe: *</label> 
-                                      <input type="password"  formControlName="password" name="pwd" placeholder="Password" />
-                                      <div  *ngIf="isform.get('password').touched && isform.get('password').hasError('required')" style="margin-top: 0px">
-                                        <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
-                                        <br></div>
-                                        <div  *ngIf=" isform.get('password').hasError('minlength')" style="margin-top: 0px">
-                                          <span style="color: red;display: flex"> au moin 8 caracteres</span>
-                                          <br></div>
-                                       <label class="fieldlabels">Confirmer le mot de passe: *</label> 
-                                       <input type="password"  formControlName="confpassword" name="cpwd" placeholder="Confirm Password" />
-                                       <div  *ngIf="isform.get('confpassword').touched && isform.get('confpassword').hasError('required')" style="margin-top: 0px">
-                                        <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
-                                        <br></div>
-                                        <div  *ngIf=" isform.get('confpassword').hasError('minlength')" style="margin-top: 0px">
-                                          <span style="color: red;display: flex"> au moin 8 caracteres</span>
-                                          <br></div>
-                           
-                      </div> <input type="button" name="next" class="next action-button" value="Next"  />
-                  </fieldset>
-                  <fieldset>
-                      <div class="form-card">
-                          <div class="row">
-                              <div class="col-7">
-                                  <h2 class="fs-title">Personal Information:</h2>
-                              </div>
-                              <div class="col-5">
-                                  <h2 class="steps">Step 2 - 3</h2>
-                              </div>
-                          </div> 
-                          <label class="fieldlabels">  telephone: *</label> 
-                          <input type="text" name="fname" formControlName="telephone" placeholder="votre telephone" required />
-                          <div  *ngIf=" isform.get('telephone').hasError('maxlength')" style="margin-top: 18px">
-                             <span style="color: red;display: flex"> if faut 8 caracteres</span>
-                             <br></div>
-                           <div  *ngIf=" isform.get('telephone').hasError('minlength')" style="margin-top: 18px">
-                             <span style="color: red;display: flex"> if faut 8 caracteres</span>
-                             <br></div>
-                           <div  *ngIf="isform.get('telephone').touched && isform.get('telephone').hasError('required')" style="margin-top: 18px">
-                             <span style="color: red;display: flex"> remplir le champs</span>
-                             <br></div>
-                             <div  *ngIf=" isform.get('telephone').hasError('pattern')" style="margin-top: 18px">
-                               <span style="color: red;display: flex"> accepte juste number</span>
-                               <br></div>
-                          <label class="fieldlabels">  domain d'activité: *</label> 
-                          <input type="text" name="fname" formControlName="domain" placeholder="votre telephone" required />
-                          <div  *ngIf=" isform.get('domain').hasError('maxlength')" style="margin-top: 18px">
-                            <span style="color: red;display: flex"> max 30 caracteres</span>
-                            <br></div>
-                          <div  *ngIf=" isform.get('domain').hasError('minlength')" style="margin-top: 18px">
-                            <span style="color: red;display: flex"> au moin 3 caracteres</span>
-                            <br></div>
-                          <div  *ngIf="isform.get('domain').touched && isform.get('domain').hasError('required')" style="margin-top: 18px">
-                            <span style="color: red;display: flex"> remplir le champs</span>
-                            <br></div>
-                            <div  *ngIf=" isform.get('domain').hasError('pattern')" style="margin-top: 18px">
-                              <span style="color: red;display: flex"> accepte juste alaphab</span>
-                              <br></div>
-                               
-                                <label class="fieldlabels">  address: *</label> 
-                                <input type="text" formControlName="address" name="phno" placeholder="votre address." />
-                                <div  *ngIf=" isform.get('address').hasError('maxlength')" style="margin-top: 0px">
-                                 <span style="color: red;display: flex"> max 30 caracteres</span>
-                                 <br></div>
-                               <div  *ngIf=" isform.get('address').hasError('minlength')" style="margin-top: 0px">
-                                 <span style="color: red;display: flex"> au moin 3 caracteres</span>
-                                 <br></div>
-                               <div  *ngIf="isform.get('address').touched && isform.get('address').hasError('required')" style="margin-top: 0px">
-                                 <span style="color: red;display: flex"> remplir le champs</span>
-                                 <br></div>
-                                 <div  *ngIf=" isform.get('address').hasError('pattern')" style="margin-top: 0px">
-                                   <span style="color: red;display: flex"> accepte juste alaphab et number</span>
-                                   <br></div> 
-                                <label class="fieldlabels">raision social *</label> 
-                                <input type="text" name="phno_2" formControlName="raisonSociel" placeholder="region" />
-                                <div  *ngIf=" isform.get('raisonSociel').hasError('maxlength')" style="margin-top: 0px">
-                                 <span style="color: red;display: flex"> max 30 caracteres</span>
-                                 <br></div>
-                               <div  *ngIf=" isform.get('raisonSociel').hasError('minlength')" style="margin-top: 0px">
-                                 <span style="color: red;display: flex"> au moin 3 caracteres</span>
-                                 <br></div>
-                               <div  *ngIf="isform.get('raisonSociel').touched && isform.get('raisonSociel').hasError('required')" style="margin-top: 0px">
-                                 <span style="color: red;display: flex"> remplir le champs</span>
-                                 <br></div>
-                                 <div  *ngIf=" isform.get('raisonSociel').hasError('pattern')" style="margin-top: 0px">
-                                   <span style="color: red;display: flex"> accepte juste alaphab</span>
-                                   <br></div>
-                                     <label class="fieldlabels">Nom de responsable: *</label>
-                          <input type="text" name="uname" formControlName="nomReasponsable" placeholder="UserName"  required/>
-                          <div  *ngIf=" isform.get('nomReasponsable').hasError('maxlength')" style="margin-top: 18px">
-                             <span style="color: red;display: flex"> max 30 caracteres</span>
-                             <br></div>
-                           <div  *ngIf=" isform.get('nomReasponsable').hasError('minlength')" style="margin-top: 18px">
-                             <span style="color: red;display: flex"> au moin 3 caracteres</span>
-                             <br></div>
-                           <div  *ngIf="isform.get('nomReasponsable').touched && isform.get('nomReasponsable').hasError('required')" style="margin-top: 18px">
-                             <span style="color: red;display: flex"> remplir le champs</span>
-                             <br></div>
-                             <div  *ngIf=" isform.get('nomReasponsable').hasError('pattern')" style="margin-top: 18px">
-                               <span style="color: red;display: flex"> accepte juste alaphab</span>
-                               <br></div>
-                               <label class="fieldlabels">lien</label>
-                               <input type="text" name="uname" formControlName="lien" placeholder="UserName"  required/>
-                               <div  *ngIf="isform.get('lien').touched && isform.get('lien').hasError('required')" style="margin-top: 18px">
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <h2 id="heading">Sign Up Your User Account</h2>
+                <p>Fill all form field to go to next step</p>
+                <form id="msform" [formGroup]="isform">
+                    <!-- progressbar -->
+                    <ul id="progressbar">
+                        <li class="active" id="account"><strong>Account</strong></li>
+                        <li id="personal"><strong>Information de la company</strong></li>
+                        <li id="confirm"><strong>Finish</strong></li>
+                    </ul>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div> <br>
+                    <!-- fieldsets -->
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Informations du compte:</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">Step 1 - 3</h2>
+                                </div>
+                            </div>
+                            <label class="fieldlabels">Nom de company: *</label>
+                            <input type="text" name="uname" formControlName="name" placeholder="UserName" required/>
+                            <div *ngIf=" isform.get('name').hasError('maxlength')" style="margin-top: 18px">
+                                <span style="color: red;display: flex"> max 30 caracteres</span>
+                                <br></div>
+                            <div *ngIf=" isform.get('name').hasError('minlength')" style="margin-top: 18px">
+                                <span style="color: red;display: flex"> au moin 3 caracteres</span>
+                                <br></div>
+                            <div *ngIf="isform.get('name').touched && isform.get('name').hasError('required')" style="margin-top: 18px">
                                 <span style="color: red;display: flex"> remplir le champs</span>
                                 <br></div>
-                                   
-                                   
-                             
-                      </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                  </fieldset>
-                  
-                <fieldset>
-                      <div class="form-card">
-                          <div class="row">
-                              <div class="col-7">
-                                  <h2 class="fs-title">Finish:</h2>
-                              </div>
-                              <div class="col-5">
-                                  <h2 class="steps">Step 3 - 3</h2>
-                              </div>
-                          </div> <br><br>
-                          <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
-                          <div class="row justify-content-center">
-                              <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
-                          </div> <br><br>
-                          <div class="row justify-content-center">
-                              <div class="col-7 text-center">
-                                  <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
-                              </div>
-                          </div>
-                      </div>
-                  </fieldset>
-              </form>
-          </div>
-      </div>
-  </div>
+                            <div *ngIf=" isform.get('name').hasError('pattern')" style="margin-top: 18px">
+                                <span style="color: red;display: flex"> accepte juste alaphab</span>
+                                <br></div>
+
+                            <label class="fieldlabels">Email: *</label>
+                            <input type="email" name="email" formControlName="email" placeholder="Email Id" required />
+                            <div *ngIf="isform.get('email').touched && isform.get('email').hasError('required')" style="margin-top: -10px">
+                                <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
+                                <br></div>
+                            <div *ngIf="isform.get('email').hasError('email')" style="margin-top: 0px">
+                                <span style="color: red;display: flex"> mail invalid </span>
+                                <br></div>
+                            <label class="fieldlabels">Mot de passe: *</label>
+                            <input type="password" formControlName="password" name="pwd" placeholder="Password" />
+                            <div *ngIf="isform.get('password').touched && isform.get('password').hasError('required')" style="margin-top: 0px">
+                                <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
+                                <br></div>
+                            <div *ngIf=" isform.get('password').hasError('minlength')" style="margin-top: 0px">
+                                <span style="color: red;display: flex"> au moin 8 caracteres</span>
+                                <br></div>
+                            <label class="fieldlabels">Confirmer le mot de passe: *</label>
+                            <input type="password" formControlName="confpassword" name="cpwd" placeholder="Confirm Password" />
+                            <div *ngIf="isform.get('confpassword').touched && isform.get('confpassword').hasError('required')" style="margin-top: 0px">
+                                <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
+                                <br></div>
+                            <div *ngIf=" isform.get('confpassword').hasError('minlength')" style="margin-top: 0px">
+                                <span style="color: red;display: flex"> au moin 8 caracteres</span>
+                                <br></div>
+
+                        </div> <input type="button" name="next" class="next action-button" value="Next" />
+                    </fieldset>
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Personal Information:</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">Step 2 - 3</h2>
+                                </div>
+                            </div>
+                            <label class="fieldlabels">  telephone: *</label>
+                            <input type="text" name="fname" formControlName="telephone" placeholder="votre telephone" required />
+                            <div *ngIf=" isform.get('telephone').hasError('maxlength')" style="margin-top: 18px">
+                                <span style="color: red;display: flex"> if faut 8 caracteres</span>
+                                <br></div>
+                            <div *ngIf=" isform.get('telephone').hasError('minlength')" style="margin-top: 18px">
+                                <span style="color: red;display: flex"> if faut 8 caracteres</span>
+                                <br></div>
+                            <div *ngIf="isform.get('telephone').touched && isform.get('telephone').hasError('required')" style="margin-top: 18px">
+                                <span style="color: red;display: flex"> remplir le champs</span>
+                                <br></div>
+                            <div *ngIf=" isform.get('telephone').hasError('pattern')" style="margin-top: 18px">
+                                <span style="color: red;display: flex"> accepte juste number</span>
+                                <br></div>
+                            <label class="fieldlabels">  domain d'activité: *</label>
+                            <input type="text" name="fname" formControlName="domain" placeholder="votre telephone" required />
+                            <div *ngIf=" isform.get('domain').hasError('maxlength')" style="margin-top: 18px">
+                                <span style="color: red;display: flex"> max 30 caracteres</span>
+                                <br></div>
+                            <div *ngIf=" isform.get('domain').hasError('minlength')" style="margin-top: 18px">
+                                <span style="color: red;display: flex"> au moin 3 caracteres</span>
+                                <br></div>
+                            <div *ngIf="isform.get('domain').touched && isform.get('domain').hasError('required')" style="margin-top: 18px">
+                                <span style="color: red;display: flex"> remplir le champs</span>
+                                <br></div>
+                            <div *ngIf=" isform.get('domain').hasError('pattern')" style="margin-top: 18px">
+                                <span style="color: red;display: flex"> accepte juste alaphab</span>
+                                <br></div>
+
+                            <label class="fieldlabels">  address: *</label>
+                            <input type="text" formControlName="address" name="phno" placeholder="votre address." />
+                            <div *ngIf=" isform.get('address').hasError('maxlength')" style="margin-top: 0px">
+                                <span style="color: red;display: flex"> max 30 caracteres</span>
+                                <br></div>
+                            <div *ngIf=" isform.get('address').hasError('minlength')" style="margin-top: 0px">
+                                <span style="color: red;display: flex"> au moin 3 caracteres</span>
+                                <br></div>
+                            <div *ngIf="isform.get('address').touched && isform.get('address').hasError('required')" style="margin-top: 0px">
+                                <span style="color: red;display: flex"> remplir le champs</span>
+                                <br></div>
+                            <div *ngIf=" isform.get('address').hasError('pattern')" style="margin-top: 0px">
+                                <span style="color: red;display: flex"> accepte juste alaphab et number</span>
+                                <br></div>
+                            <label class="fieldlabels">raision social *</label>
+                            <input type="text" name="phno_2" formControlName="raisonSociel" placeholder="region" />
+                            <div *ngIf=" isform.get('raisonSociel').hasError('maxlength')" style="margin-top: 0px">
+                                <span style="color: red;display: flex"> max 30 caracteres</span>
+                                <br></div>
+                            <div *ngIf=" isform.get('raisonSociel').hasError('minlength')" style="margin-top: 0px">
+                                <span style="color: red;display: flex"> au moin 3 caracteres</span>
+                                <br></div>
+                            <div *ngIf="isform.get('raisonSociel').touched && isform.get('raisonSociel').hasError('required')" style="margin-top: 0px">
+                                <span style="color: red;display: flex"> remplir le champs</span>
+                                <br></div>
+                            <div *ngIf=" isform.get('raisonSociel').hasError('pattern')" style="margin-top: 0px">
+                                <span style="color: red;display: flex"> accepte juste alaphab</span>
+                                <br></div>
+                            <label class="fieldlabels">Nom de responsable: *</label>
+                            <input type="text" name="uname" formControlName="nomReasponsable" placeholder="UserName" required/>
+                            <div *ngIf=" isform.get('nomReasponsable').hasError('maxlength')" style="margin-top: 18px">
+                                <span style="color: red;display: flex"> max 30 caracteres</span>
+                                <br></div>
+                            <div *ngIf=" isform.get('nomReasponsable').hasError('minlength')" style="margin-top: 18px">
+                                <span style="color: red;display: flex"> au moin 3 caracteres</span>
+                                <br></div>
+                            <div *ngIf="isform.get('nomReasponsable').touched && isform.get('nomReasponsable').hasError('required')" style="margin-top: 18px">
+                                <span style="color: red;display: flex"> remplir le champs</span>
+                                <br></div>
+                            <div *ngIf=" isform.get('nomReasponsable').hasError('pattern')" style="margin-top: 18px">
+                                <span style="color: red;display: flex"> accepte juste alaphab</span>
+                                <br></div>
+                            <label class="fieldlabels">lien</label>
+                            <input type="text" name="uname" formControlName="link" placeholder="UserName" required/>
+                            <div *ngIf="isform.get('link').touched && isform.get('link').hasError('required')" style="margin-top: 18px">
+                                <span style="color: red;display: flex"> remplir le champs</span>
+                                <br></div>
 
 
+
+                        </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Finish:</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">Step 3 - 3</h2>
+                                </div>
+                            </div> <br><br>
+                            <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
+                            <div class="row justify-content-center">
+                                <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
+                            </div> <br><br>
+                            <div class="row justify-content-center">
+                                <div class="col-7 text-center">
+                                    <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>

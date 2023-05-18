@@ -23,10 +23,11 @@ export class SurveysComponent implements OnInit {
   error = false ;
 
   surveys : Survey[] = [] ;
+  survey : Survey = {} ;
   itemsPerPage = 10;
   currentPage = 1;
 
-  survey : Survey = {} ;
+
   
   questions : Questions[] =[];
 
@@ -138,4 +139,7 @@ removeAnswer(question: Questions, index: number) {
     question.answers.splice(index, 1);
   }
 }
+
+
+
 }

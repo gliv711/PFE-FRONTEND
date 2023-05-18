@@ -4,7 +4,7 @@
 
 
     <div class="card-body">
-        <h2 class="text-center">Tout les Utilisateurs </h2>
+        <h2 class="text-center">Tout les demandes </h2>
         <pagination-controls (pageChange)="currentPage = $event">
         </pagination-controls>
         <div class="table-responsive">
@@ -12,29 +12,24 @@
                 <thead class="table-dark" style="background-color: aqua;">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Image</th>
+                        <th scope="col">Titre</th>
 
-                        <th scope="col">Prénom</th>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Type</th>
+                        <th scope="col">Emplacement</th>
+
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of Users">
-                        <th scope="row">{{user.id}}</th>
-                        <td> <img *ngIf="!user?.image" src="assets/img/Placeholder/me.jpg" width="40px" height="40px" alt="" class="circular_image" /></td>
+                    <tr *ngFor="let demand of demands">
+                        <th scope="row">{{demand.id}}</th>
 
 
-                        <td>{{user?.name}}</td>
-                        <td>{{user?.lastName}}</td>
-                        <td>{{user?.email}}</td>
-                        <td>{{user?.role}}</td>
+                        <td>{{demand?.title}}</td>
+                        <td>{{demand?.place}}</td>
+
                         <td class="d-flex justify-content-around">
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal" (click)="setCurrentUser(user)">Supprimer</button>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-add-Modal" (click)="setCurrentUser(user)">Update</button>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#more-info-Modal" (click)="setCurrentUser(user)">Plus d'informations</button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal" (click)="setCurrentDemand(demand)">Supprimer</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-add-Modal" (click)="setCurrentDemand(demand)">Update</button>
                         </td>
                     </tr>
                 </tbody>
@@ -52,7 +47,6 @@
 
 
 
-<!-- Modal -->
 <div class="modal fade" id="are-you-sure-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -65,7 +59,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteUser(user)">Je confirme</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteDemand(demand)">Je confirme</button>
             </div>
         </div>
     </div>
@@ -81,33 +75,26 @@
             </div>
             <div class="modal-body">
 
-                <div *ngIf="user.image">
-                    <img [src]="user.image" alt="User profile picture" class="image-preview" />
-                </div>
-                <!-- Input field for image upload -->
-                <div class="mb-3">
-                    <input type="file">
 
-                </div>
 
 
                 <div class="mb-3">
                     <div class="row">
                         <div class="col-1">
-                            <label for="exampleFormControlInput1" class="form-label">Nom</label>
+                            <label for="exampleFormControlInput1" class="form-label">Titre</label>
                         </div>
                         <div class="col">
-                            <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="user.lastName">
+                            <input type="text" class="form-control" id="name" placeholder="" [(ngModel)]="demand.title">
                         </div>
 
 
 
                         <div class="col-1">
-                            <label for="exampleFormControlInput1" class="form-label">Prénom</label>
+                            <label for="exampleFormControlInput1" class="form-label">Poste</label>
                         </div>
                         <div class="col">
 
-                            <input type="email" class="form-control" id="LastName" placeholder="" [(ngModel)]="user.name">
+                            <input type="text" class="form-control" id="LastName" placeholder="" [(ngModel)]="demand.jobTitle">
                         </div>
 
                     </div>
@@ -115,57 +102,90 @@
                 <div class="mb-3">
                     <div class="row">
                         <div class="col-1">
-                            <label for="exampleFormControlInput1" class="form-label">Email</label>
+                            <label for="exampleFormControlInput1" class="form-label">Type de Contrat</label>
                         </div>
                         <div class="col">
 
-                            <input type="email" class="form-control" id="email" placeholder="" [(ngModel)]="user.email">
+                            <select class="form-select" [(ngModel)]="demand.contractType" id="contract">
+                                <option value="Non Fournie">Non Fournie</option>
+                                <option *ngFor="let contract of contractTypeOptions" [value]="contract">{{ contract }}</option>
+                            </select>
                         </div>
                     </div>
-                </div>
-
-                <div class="mb-3">
                     <div class="row">
-                        <div class="col-2">
-                            <label for="exampleFormControlInput1" class="form-label">Mot de passe </label>
+                        <div class="col-1">
+                            <label for="exampleFormControlInput1" class="form-label">Expérience</label>
                         </div>
                         <div class="col">
-                            <input type="email" class="form-control" id="password" placeholder="" [(ngModel)]="user.Password"></div>
-                    </div>
-                </div>
 
-                <div class="mb-3">
-                    <div class="row">
-                        <div class="col-2">
-                            <label for="exampleFormControlInput1" class="form-label">Role</label>
-                        </div>
-                        <div class="col">
-                            <select class="form-select" id="Role" [(ngModel)]="user.role">
-                        
-                  <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
-                </select>
+                            <select class="form-select" [(ngModel)]="demand.experience" id="experience">
+                                <option value="Non Fournie">Non Fournie</option>
+                                <option *ngFor="let experience of experienceTypeOptions" [value]="experience">{{ experience }}</option>
+                            </select>
                         </div>
                     </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-1">
+                                <label for="exampleFormControlInput1" class="form-label">Emplacement </label>
+                            </div>
+                            <div class="col">
+
+                                <select class="form-select" [(ngModel)]="demand.place" id="place">
+                                    <option value="Non Fournie">Non Fournie</option>
+                                    <option *ngFor="let place of placeOptions" [value]="place">{{ place }}</option>
+                                </select> </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-1">
+                                <label for="exampleFormControlInput1" class="form-label">Salaire </label>
+                            </div>
+                            <div class="col">
+
+                                <select class="form-select" [(ngModel)]="demand.salary" id="salary">
+                                <option value="Non Fournie">Non Fournie</option>
+                                <option *ngFor="let option of salaryOptions" [value]="option">{{ option }}</option>
+                              </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-1">
+                                    <label for="exampleFormControlInput1" class="form-label">Détail de l'offre </label>
+                                </div>
+                                <div class="col">
+
+                                    <input type="text" class="form-control" id="details" placeholder="" [(ngModel)]="demand.details">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addDemand(demand)">Enregistrer</button>
+                    </div>
                 </div>
-
-
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addUser(user)">Enregistrer</button>
             </div>
         </div>
-    </div>
-</div>
+
+        <!-- 
 
 <div class="modal fade " id="more-info-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
 
 
-            <!-- /Breadcrumb -->
+            
 
             <div class="row gutters-sm">
                 <div class="col-md-4 mb-3 ml-3">
@@ -358,13 +378,13 @@
 
         </div>
     </div>
-</div>
+</div> -->
 
 
 
 
-<!-- alers !-->
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <!-- alers !-->
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
       <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
     </symbol>
@@ -376,31 +396,31 @@
     </symbol>
   </svg>
 
-<div *ngIf="chargement" class="alert alert-success d-flex align-items-center" role="alert">
-    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-    <div>
-        chargement terminée </div>
-</div>
+        <div *ngIf="chargement" class="alert alert-success d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+            <div>
+                chargement terminée </div>
+        </div>
 
 
-<div *ngIf="mise_a_jour" class="alert alert-success d-flex align-items-center" role="alert">
-    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-    <div>
-        Mise a jour avec succées </div>
-</div>
+        <div *ngIf="mise_a_jour" class="alert alert-success d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+            <div>
+                Mise a jour avec succées </div>
+        </div>
 
 
-<div *ngIf="supprimer" class="alert alert-primary d-flex align-items-center" role="alert">
-    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
-    <div>
-        Supprésion avec succées
-    </div>
-</div>
+        <div *ngIf="supprimer" class="alert alert-primary d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+            <div>
+                Supprésion avec succées
+            </div>
+        </div>
 
 
 
-<div *ngIf="error" class="alert alert-danger d-flex align-items-center" role="alert">
-    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-    <div>
-        Erreur </div>
-</div>
+        <div *ngIf="error" class="alert alert-danger d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <div>
+                Erreur </div>
+        </div>

@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Company } from 'src/Models/Company';
+import { Company } from 'src/Models/Users/Company';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
 
 @Component({
@@ -101,7 +101,7 @@ export class Step1Component implements OnInit {
           NameofResponsible:this.isform.value.nomReasponsable,
           SocialReason:this.isform.value.raisonSociel,
           address:this.isform.value.address,
-          lien:this.isform.value.lien,}
+          link:this.isform.value.link,}
           console.log(company)
          
          

@@ -42,6 +42,7 @@ import { ProfilComponent } from './INDEX/profil/profil.component';
 import { SurveyFormComponent } from './Inside/survey-form/survey-form.component';
 import { SurveysComponent } from './dashboard/components/surveys/surveys.component';
 import { PayementFormComponent } from './INDEX/payement-form/payement-form.component';
+import { DemandsComponent } from './dashboard/components/demands/demands.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -72,7 +73,8 @@ const routes: Routes = [
       },
       { 
         path : 'surveys', component : SurveysComponent
-      }
+      },
+      { path : 'demands', component : DemandsComponent}
 
     ]
   },

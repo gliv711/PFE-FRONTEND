@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { User } from 'src/Models/User';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from 'src/Models/Users/User';
 import { Observable } from 'rxjs';
-import { Company } from 'src/Models/Company';
+import { Company } from 'src/Models/Users/Company';
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,10 @@ export class UserServiceService {
   api = environment.baseUrl+'/USER-MANAGEMENT/api/user/';
 
   //api = "localhost:8084/api/user/";
-
-
+  image : any ;
+  postResponse: any;
+  dbImage: any;
+ 
   constructor(private http : HttpClient) { }
 
   getUsers(): Observable <User[]>{
@@ -49,9 +51,14 @@ export class UserServiceService {
       return this.http.post<Company>(this.api,Company);
     }
 
+ 
+    uploadImage(formData: FormData): Observable<any> {
+      return this.http.post<any>(this.api + 'upload', formData);
+    }
+    addUserWithImage(formData: FormData) {
+      return this.http.post(this.api, formData);
+    }
+    
 
-    
-   
-    
   }
 

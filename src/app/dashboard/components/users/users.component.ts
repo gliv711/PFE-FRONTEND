@@ -1,5 +1,5 @@
 import {  Component, OnInit } from '@angular/core';
-import { User } from 'src/Models/User';
+import { User } from 'src/Models/Users/User';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
 import { Role } from 'src/enums/role.enum';
 import { DatePipe } from '@angular/common';
@@ -86,7 +86,13 @@ export class UsersComponent implements OnInit {
       })
     }
 
-  
+ 
+    
+    
+    
+    
+    
+    
 
 
     
