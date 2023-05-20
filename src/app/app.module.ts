@@ -9,7 +9,7 @@ import { InformationGernalComponent } from './INDEX/information global/informati
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ProgreebarComponent } from './INDEX/signup/progreebar/progreebar.component';
+import { SignupComponent } from './INDEX/signup/signup/signup.component';
 
 import { FooterComponent } from './INDEX/landing/Landing-Components/footer/footer.component';
 import { LoginComponent } from './INDEX/landing/login/login.component';
@@ -41,7 +41,7 @@ import { PayementFormComponent } from './INDEX/payement-form/payement-form.compo
     ProfilComponent,
 
     
-    ProgreebarComponent,
+    SignupComponent,
 
     FooterComponent,
       ForgetPasswordComponent,

@@ -6,11 +6,11 @@ import { UserServiceService } from 'src/Services/user-service/user-service.servi
 
 
 @Component({
-  selector: 'app-progreebar',
-  templateUrl: './progreebar.component.html',
-  styleUrls: ['./progreebar.component.css']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
-export class ProgreebarComponent implements OnInit {
+export class SignupComponent implements OnInit {
   firstFormGroup = this.formbuilder.group({
     firstCtrl: ['', Validators.required],
   });

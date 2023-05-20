@@ -23,7 +23,7 @@ import { TablesGeneralComponent } from './Platform/dashboard/addons/tables-gener
 import { TabsComponent } from './Platform/dashboard/addons/tabs/tabs.component';
 import { PagesContactComponent } from './Platform/dashboard/pages-contact/pages-contact.component';
 import { PagesError404Component } from './Platform/dashboard/pages-error404/pages-error404.component';
-import { ProgreebarComponent } from './INDEX/signup/progreebar/progreebar.component';
+import { SignupComponent } from './INDEX/signup/signup/signup.component';
 import { LoginComponent } from './INDEX/landing/login/login.component';
 import { HomeComponent } from './INDEX/landing/Landing-Components/home/home.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
@@ -78,7 +78,7 @@ const routes: Routes = [
 
     ]
   },
-  { path : 'register',component: ProgreebarComponent},
+  { path : 'register',component: SignupComponent},
   { path: 'alerts', component: AlertsComponent },
   { path: 'accordion', component: AccordionComponent },
   { path: 'badges', component: BadgesComponent },

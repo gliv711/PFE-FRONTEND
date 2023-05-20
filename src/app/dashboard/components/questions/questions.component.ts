@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Answer } from 'src/Models/Answer';
-import { Questions } from 'src/Models/Questions';
-import { Survey } from 'src/Models/Survey';
+import { Answer } from 'src/Models/Form/Answer';
+import { Questions } from 'src/Models/Form/Questions';
+import { Survey } from 'src/Models/Form/Survey';
 import { AnswerService } from 'src/Services/answer-service/answer.service';
 import { QuestionsService } from 'src/Services/question-service/questions.service';
 import { SurveyServiceService } from 'src/Services/survey-service/survey-service.service';

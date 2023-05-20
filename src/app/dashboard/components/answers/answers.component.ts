@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Answer } from 'src/Models/Answer';
+import { Answer } from 'src/Models/Form/Answer';
 import { AnswerService } from 'src/Services/answer-service/answer.service';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Survey } from 'src/Models/Survey';
+import { Survey } from 'src/Models/Form/Survey';
 import { AnswerService } from 'src/Services/answer-service/answer.service';
 import { QuestionsService } from 'src/Services/question-service/questions.service';
 import { SurveyServiceService } from 'src/Services/survey-service/survey-service.service';

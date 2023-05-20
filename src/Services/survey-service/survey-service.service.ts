@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Survey } from 'src/Models/Survey';
+import { Survey } from 'src/Models/Form/Survey';
 import { Observable } from 'rxjs';
-import { Questions } from 'src/Models/Questions';
+import { Questions } from 'src/Models/Form/Questions';
 
 import { environment } from 'src/environments/environment';
 

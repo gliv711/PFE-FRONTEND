@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Answer } from 'src/Models/Answer';
-import { Questions } from 'src/Models/Questions';
-import { Survey } from 'src/Models/Survey';
+import { Answer } from 'src/Models/Form/Answer';
+import { Questions } from 'src/Models/Form/Questions';
+import { Survey } from 'src/Models/Form/Survey';
 import { SurveyServiceService } from 'src/Services/survey-service/survey-service.service';
 
 @Component({
