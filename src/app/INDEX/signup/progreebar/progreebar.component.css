@@ -13,14 +13,14 @@ p {
 
 #heading {
     text-transform: uppercase;
-    color: #1814eb;
+    
     font-weight: normal
 }
 
 #msform {
     text-align: center;
     position: relative;
-    margin-top: 20px
+    margin-top: 20px;
 }
 #msform input.ng-touched {
     border-right: 2px solid red;
@@ -110,7 +110,7 @@ p {
 }
 
 .card {
-    z-index: 0;
+    
     border: none;
     position: relative
 }
@@ -164,15 +164,18 @@ p {
     font-family: FontAwesome;
     content: "\f13e"
 }
-
+#progressbar #ecole:before {
+    font-family: FontAwesome;
+    content: "\f549";
+  }
 #progressbar #personal:before {
     font-family: FontAwesome;
     content: "\f007"
 }
 
-#progressbar #payment:before {
-    font-family: fa-solid fa-school;
-    content: "\f030"
+#progressbar #professionnel:before {
+    font-family: FontAwesome;
+    content: "\f0b1"
 }
 
 #progressbar #confirm:before {
