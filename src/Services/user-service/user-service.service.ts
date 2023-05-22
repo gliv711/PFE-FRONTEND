@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class UserServiceService {
   api = environment.baseUrl+'/USER-MANAGEMENT/api/user/';
+  //api = environment.baseUrl+'/api/user/';
 
   //api = "localhost:8084/api/user/";
   image : any ;
