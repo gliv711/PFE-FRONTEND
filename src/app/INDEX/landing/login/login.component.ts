@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   result: string = '';
   datarecieved:any
   constructor(private activateRoute:ActivatedRoute,private router: Router , private http: HttpClient,private authservice:AuthService) { 
+  constructor(private router: Router , private http: HttpClient,private authservice:AuthService) { 
   }
    
   // onSubmit(){
@@ -74,9 +75,16 @@ export class LoginComponent implements OnInit {
         
 
       );  
+
        this.router.navigate([this.url])
         
      
+
+       this.router.navigate(['/dashboard'])
+        
+      console.log(this.datarecieved.access_token);
+      console.log(this.datarecieved.refresh_token);
+      console.log(this.datarecieved);
     }, error => console.log(error));
   }
 
