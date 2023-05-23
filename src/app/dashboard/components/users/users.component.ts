@@ -3,6 +3,7 @@ import { User } from 'src/Models/Users/User';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
 import { Role } from 'src/enums/role.enum';
 import { DatePipe } from '@angular/common';
+import { AuthService } from 'src/Services/auth-service/auth.service';
 
 @Component({
   selector: 'app-users',
@@ -12,6 +13,7 @@ import { DatePipe } from '@angular/common';
 
 })
 export class UsersComponent implements OnInit {
+  
 
   Users: User[] = [];
     user : User = {};
@@ -22,7 +24,10 @@ export class UsersComponent implements OnInit {
     mise_a_jour=false ;
     supprimer=false ;
     error = false ;
-    constructor(private UserService : UserServiceService) {this.getUsers(); }
+    constructor(private UserService : UserServiceService ,private authservice :AuthService) {this.getUsers(); 
+    
+    this.authservice.loggedIn
+    }
 
     roles = Object.values(Role);
     itemsPerPage = 10;

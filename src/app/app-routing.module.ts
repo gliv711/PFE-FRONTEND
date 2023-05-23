@@ -43,6 +43,7 @@ import { SurveyFormComponent } from './Inside/survey-form/survey-form.component'
 import { SurveysComponent } from './dashboard/components/surveys/surveys.component';
 import { PayementFormComponent } from './INDEX/payement-form/payement-form.component';
 import { DemandsComponent } from './dashboard/components/demands/demands.component';
+import { AuthguardsGuard } from 'src/guards/authguards.guard';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -50,7 +51,7 @@ const routes: Routes = [
 
   {path:'surveyform/:field',component:SurveyFormComponent},
   {
-    path : 'dashboard', component : DashboardComponent,
+    path : 'dashboard', component : DashboardComponent, canActivate:[AuthguardsGuard],
     
     children : [
       {
