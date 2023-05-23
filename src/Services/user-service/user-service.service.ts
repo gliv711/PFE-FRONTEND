@@ -27,30 +27,11 @@ export class UserServiceService {
     
     
    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
-      let decodeaccesToken= this.helper.decodeToken(accessToken)
-      if (this.helper.isTokenExpired(decodeaccesToken)) {
-        this.refreshToken().subscribe(
-          (response) => {
-            const newAccessToken = response.access_token;
-            const newRefreshToken = response.refresh_token;
-      
-            localStorage.setItem('accesstoken', newAccessToken);
-            localStorage.setItem('refreshtoken', newRefreshToken);
-      
-            headers = new HttpHeaders().set('Authorization', 'Bearer ' + newAccessToken);
-          },
-          (error) => {
-            console.log('tahcheee')
-          }
-        );
-      }
+     
 
 
       
-      // const headers = {
-      //   Authorization: `Bearer ${accessToken},
-      //   ${refreshToken}`
-      // };
+      
       
 
     return this.http.get<User[]>(this.api + 'all', { headers });
