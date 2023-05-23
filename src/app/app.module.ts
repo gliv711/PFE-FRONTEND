@@ -7,7 +7,7 @@ import { LandingComponent } from './INDEX/landing/landing.component';
 
 import { InformationGernalComponent } from './INDEX/information global/information-gernal/information-gernal.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormGroup, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SignupComponent } from './INDEX/signup/signup/signup.component';
 
@@ -58,11 +58,7 @@ import { PayementFormComponent } from './INDEX/payement-form/payement-form.compo
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    DashboardModule,
-    NgModule,
-    FormGroup
-    
-    
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

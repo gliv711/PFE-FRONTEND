@@ -1,5 +1,3 @@
-import { FileHandle } from "../FileHandle";
-
 export class lambda{
     id?:number;
     email?:String;

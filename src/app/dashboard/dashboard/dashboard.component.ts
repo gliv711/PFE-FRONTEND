@@ -9,7 +9,13 @@ import { AuthService } from 'src/Services/auth-service/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authservice:AuthService , router:Router) {
+  //  
+  //   
+    authservice.loggedIn()==true
+     
+  
+   }
 
   ngOnInit(): void {
   }
