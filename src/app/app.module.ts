@@ -23,6 +23,7 @@ import { ProfilComponent } from './INDEX/profil/profil.component';
 
 import { SurveyFormComponent } from './Inside/survey-form/survey-form.component';
 import { PayementFormComponent } from './INDEX/payement-form/payement-form.component';
+import { NewPasswordFormComponent } from './INDEX/landing/login/new-password-form/new-password-form/new-password-form.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { PayementFormComponent } from './INDEX/payement-form/payement-form.compo
       ForgetPasswordComponent,
       SurveyFormComponent,
       PayementFormComponent,
+      NewPasswordFormComponent,
       
     
     ],

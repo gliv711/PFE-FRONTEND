@@ -44,6 +44,7 @@ import { SurveysComponent } from './dashboard/components/surveys/surveys.compone
 import { PayementFormComponent } from './INDEX/payement-form/payement-form.component';
 import { DemandsComponent } from './dashboard/components/demands/demands.component';
 import { AuthguardsGuard } from 'src/guards/authguards.guard';
+import { NewPasswordFormComponent } from './INDEX/landing/login/new-password-form/new-password-form/new-password-form.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -80,6 +81,7 @@ const routes: Routes = [
     ]
   },
   { path : 'register',component: SignupComponent},
+  { path : 'reset-password',component: NewPasswordFormComponent},
   { path: 'alerts', component: AlertsComponent },
   { path: 'accordion', component: AccordionComponent },
   { path: 'badges', component: BadgesComponent },
