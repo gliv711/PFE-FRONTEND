@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -16,7 +17,7 @@ export class SurveyFormComponent implements OnInit {
 
   questionsPerStep = 1; // Change this variable to adjust the number of questions per step
 
-  constructor( private route: ActivatedRoute,private SurveyService : SurveyServiceService,private questionsService : QuestionsService,private answerService : AnswerService) { }
+  constructor( private route: ActivatedRoute,private SurveyService : SurveyServiceService,private questionsService : QuestionsService,private answerService : AnswerService,private http: HttpClient) { }
   
 
   ngOnInit(): void {
@@ -139,6 +140,49 @@ export class SurveyFormComponent implements OnInit {
         this.currentStep++;
       }
     }
+
+
+
+
+    submitSurvey(): void {
+      const apiUrl = 'http://localhost:8888/RESULTAT-MANAGEMENT/api/results/';
+      const surveyId = this.selectedSurvey?.id;
+      const userId = 123; // Replace with the actual user ID
+    
+      if (!surveyId) {
+        console.error('No survey selected');
+        return;
+      }
+    
+      // Collect the selected answers
+      const answers: { questionId: number; answerId: number }[] = [];
+      this.getCurrentStepQuestions().forEach(question => {
+        const selectedAnswerElement = document.querySelector(`input[name="${question.question_id}"]:checked`) as HTMLInputElement;
+        if (selectedAnswerElement) {
+          const selectedAnswerId = parseInt(selectedAnswerElement.value, 10);
+          const answer = { questionId: question.question_id, answerId: selectedAnswerId };
+          answers.push(answer);
+        }
+      });
+    
+      const body = {
+        surveyId: surveyId,
+        userId: userId,
+        x: answers
+      };
+    
+      this.http.post(apiUrl, body).subscribe(
+        (response: any) => {
+          console.log('Survey submitted successfully', response);
+          // Handle success response
+        },
+        (error: any) => {
+          console.error('Error submitting survey', error);
+          // Handle error response
+        }
+      );
+    }
+    
 
 
 
