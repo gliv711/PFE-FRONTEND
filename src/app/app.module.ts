@@ -27,6 +27,7 @@ import { NewPasswordFormComponent } from './INDEX/landing/login/new-password-for
 import { LoginUserComponent } from './INDEX/landing/login-user/login-user/login-user.component';
 import { AcceuilUserComponent } from './INDEX/profil/acceuil-user/acceuil-user.component';
 import { NavbarUserComponent } from './INDEX/profil/navbar-user/navbar-user.component';
+import { SettingsUserComponent } from './INDEX/profil/settings-user/settings-user.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { NavbarUserComponent } from './INDEX/profil/navbar-user/navbar-user.comp
       LoginUserComponent,
       AcceuilUserComponent,
       NavbarUserComponent,
+      SettingsUserComponent,
       
     
     ],

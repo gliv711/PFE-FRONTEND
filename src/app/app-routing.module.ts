@@ -47,12 +47,14 @@ import { AuthguardsGuard } from 'src/guards/authguards.guard';
 import { NewPasswordFormComponent } from './INDEX/landing/login/new-password-form/new-password-form/new-password-form.component';
 import { LoginUserComponent } from './INDEX/landing/login-user/login-user/login-user.component';
 import { AcceuilUserComponent } from './INDEX/profil/acceuil-user/acceuil-user.component';
+import { SettingsUserComponent } from './INDEX/profil/settings-user/settings-user.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
   {path:'login',component:LoginComponent},
   {path:'loginuser',component:LoginUserComponent},
   {path:"acceuil",component:AcceuilUserComponent},
+  {path:"setting",component:SettingsUserComponent},
 
   {path:'surveyform/:field',component:SurveyFormComponent},
   {
