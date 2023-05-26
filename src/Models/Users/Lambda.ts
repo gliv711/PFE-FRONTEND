@@ -1,11 +1,11 @@
 export class lambda{
     id?:number;
-    email?:String;
-    Password?:String;
-    phone_number?:String;
-    address?:String;
+    email?:string;
+    Password?:string;
+    phone_number?:string;
+    address?:string;
     image?:string;
-    constructor(id: number, email: string, Password: string,telephone: string,address:String,image : string) {
+    constructor(id: number, email: string, Password: string,telephone: string,address:string,image : string) {
        this.id=id;
        this.email=email ;
        this.Password=Password;

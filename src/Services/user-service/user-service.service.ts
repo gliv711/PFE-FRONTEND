@@ -41,6 +41,9 @@ export class UserServiceService {
   getoneUser(id:any): Observable <User[]>{
     return this.http.get<User[]>(this.api+id);
   }
+  getUserByEmail(email: string): Observable<User> {
+    return this.http.get<User>(`${this.api}/email/${email}`);
+  }
 
   addUser(user:User) {
     return this.http.post<User>(this.api,user);

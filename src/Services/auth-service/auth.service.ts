@@ -8,8 +8,7 @@ import { Token } from '@angular/compiler';
   providedIn: 'root'
 })
 export class AuthService {
-  //api = environment.baseUrl+'/USER-MANAGEMENT/api/user/';
-  api = 'http://localhost:8084/api/login';
+  api = environment.baseUrl+'/USER-MANAGEMENT/api/login';
  
 
 
