@@ -24,6 +24,9 @@ import { ProfilComponent } from './INDEX/profil/profil.component';
 import { SurveyFormComponent } from './Inside/survey-form/survey-form.component';
 import { PayementFormComponent } from './INDEX/payement-form/payement-form.component';
 import { NewPasswordFormComponent } from './INDEX/landing/login/new-password-form/new-password-form/new-password-form.component';
+import { LoginUserComponent } from './INDEX/landing/login-user/login-user/login-user.component';
+import { AcceuilUserComponent } from './INDEX/profil/acceuil-user/acceuil-user.component';
+import { NavbarUserComponent } from './INDEX/profil/navbar-user/navbar-user.component';
 
 
 @NgModule({
@@ -49,6 +52,9 @@ import { NewPasswordFormComponent } from './INDEX/landing/login/new-password-for
       SurveyFormComponent,
       PayementFormComponent,
       NewPasswordFormComponent,
+      LoginUserComponent,
+      AcceuilUserComponent,
+      NavbarUserComponent,
       
     
     ],

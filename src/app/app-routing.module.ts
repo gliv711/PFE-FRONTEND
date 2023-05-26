@@ -45,10 +45,14 @@ import { PayementFormComponent } from './INDEX/payement-form/payement-form.compo
 import { DemandsComponent } from './dashboard/components/demands/demands.component';
 import { AuthguardsGuard } from 'src/guards/authguards.guard';
 import { NewPasswordFormComponent } from './INDEX/landing/login/new-password-form/new-password-form/new-password-form.component';
+import { LoginUserComponent } from './INDEX/landing/login-user/login-user/login-user.component';
+import { AcceuilUserComponent } from './INDEX/profil/acceuil-user/acceuil-user.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
   {path:'login',component:LoginComponent},
+  {path:'loginuser',component:LoginUserComponent},
+  {path:"acceuil",component:AcceuilUserComponent},
 
   {path:'surveyform/:field',component:SurveyFormComponent},
   {
