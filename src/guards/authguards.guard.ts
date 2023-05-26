@@ -18,6 +18,7 @@ export class AuthguardsGuard implements CanActivate {
       this.router.navigate(['/login'],{queryParams:{saveUrl:state.url}})
       localStorage.removeItem("accesstoken")
        localStorage.removeItem("refreshtoken");
+       localStorage.removeItem("role")
 
 
       resolve(false)}
