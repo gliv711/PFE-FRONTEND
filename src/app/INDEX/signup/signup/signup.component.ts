@@ -180,28 +180,30 @@ export class SignupComponent implements OnInit {
             lastName: this.myform.value.prenom,
             name: this.myform.value.name,
             email:this.myform.value.email,
-            Password: this.myform.value.password,
+            password: this.myform.value.password,
             role: this.myform.value.role,
-            
+            address:this.myform.value.address,
             domain:this.myform.value.domain,
             university: this.myform.value.university,
             NameofCompany: this.myform.value.mondesocite,
-            BirthDate: this.myform.value.BirthDate,
+            BirthDate: new Date (this.myform.value.BirthDate),
             phone_number: this.myform.value.telephone,
             region: this.myform.value.region,
             
-            startofStudy:this.myform.value.dateDedebutEtude,
+            startofStudy: new Date (this.myform.value.dateDedebutEtude),
             
-            endofStudy: this.myform.value.dateDeFinEtude,
-            startofWork:this.myform.value.dateDebutPoste,
-            endofWork: this.myform.value.dateFinPoste,
+            endofStudy:new Date(this.myform.value.dateDeFinEtude), 
+            startofWork:new Date(this.myform.value.dateDebutPoste),
+            endofWork: new Date (this.myform.value.dateFinPoste),
 
         };
      
         this.userservice.addUser(user).subscribe(user=>{
-          ;this.success=true ;
+          this.success=true ;
           console.log("success form");
+         
         })
+         console.log(user)
         
          
           const current_fs = button.parentNode;

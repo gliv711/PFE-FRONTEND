@@ -18,5 +18,24 @@ SaveDataProfil(accesstoken:string,refreshtoken:string){
  localStorage.setItem('accesstoken',accesstoken);
  localStorage.setItem('refreshtoken',refreshtoken);
 }
+loggedIn(){
+  let accesstoken:any=localStorage.getItem('accesstoken')
+  let decodeaccesToken= this.helper.decodeToken(accesstoken)
+  let refreshtoken:any=localStorage.getItem('refreshtoken')
+  let decoderefreshToken= this.helper.decodeToken(refreshtoken)
 
+  localStorage.setItem("role",decodeaccesToken.roles)
+  let role=decodeaccesToken.roles
+  
+  // if(!localStorage.getItem(accesstoken)){
+  //   return false
+  // }
+  if(role!=="user"){
+    return false}
+  if(this.helper.isTokenExpired(refreshtoken)){
+    return false
+  }
+  return true
+   
+}
 }

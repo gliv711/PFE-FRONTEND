@@ -28,7 +28,6 @@ import { LoginUserComponent } from './INDEX/landing/login-user/login-user/login-
 import { AcceuilUserComponent } from './INDEX/profil/acceuil-user/acceuil-user.component';
 import { NavbarUserComponent } from './INDEX/profil/navbar-user/navbar-user.component';
 import { SettingsUserComponent } from './INDEX/profil/settings-user/settings-user.component';
-import { ProfileUserModule } from './profile-user/profile-user.module';
 
 
 @NgModule({
@@ -70,6 +69,8 @@ import { ProfileUserModule } from './profile-user/profile-user.module';
     FormsModule,
     ReactiveFormsModule,
     DashboardModule,
+    
+    
     
   ],
   providers: [],

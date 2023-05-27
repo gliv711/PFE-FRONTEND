@@ -48,12 +48,13 @@ import { NewPasswordFormComponent } from './INDEX/landing/login/new-password-for
 import { LoginUserComponent } from './INDEX/landing/login-user/login-user/login-user.component';
 import { AcceuilUserComponent } from './INDEX/profil/acceuil-user/acceuil-user.component';
 import { SettingsUserComponent } from './INDEX/profil/settings-user/settings-user.component';
+import { UserGuard } from 'src/guards/userguard/user.guard';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
   {path:'login',component:LoginComponent},
   {path:'loginuser',component:LoginUserComponent},
-  {path:"acceuil",component:AcceuilUserComponent},
+  {path:"acceuil",component:AcceuilUserComponent,canActivate:[UserGuard]},
   {path:"setting",component:SettingsUserComponent},
 
   {path:'surveyform/:field',component:SurveyFormComponent},
