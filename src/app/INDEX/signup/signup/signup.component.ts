@@ -186,7 +186,7 @@ export class SignupComponent implements OnInit {
             domain:this.myform.value.domain,
             university: this.myform.value.university,
             NameofCompany: this.myform.value.mondesocite,
-            BirthDate: new Date (this.myform.value.BirthDate),
+            birthDate: new Date (this.myform.value.BirthDate),
             phone_number: this.myform.value.telephone,
             region: this.myform.value.region,
             

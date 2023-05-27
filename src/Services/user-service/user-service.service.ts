@@ -48,7 +48,9 @@ export class UserServiceService {
   }
 
   addUser(user:User) {
+    console.log(user)
     return this.http.post<User>(this.api,user);
+
   }
 
   deleteUser(user: User): Observable<User> {

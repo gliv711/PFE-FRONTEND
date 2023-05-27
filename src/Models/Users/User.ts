@@ -11,7 +11,7 @@ export class User extends lambda   {
     domain?:string;
     university?:string;
     NameofCompany?:string;
-    BirthDate?:Date ;
+    birthDate?:Date ;
     region?:string;
     startofStudy?:Date ;
     endofStudy?:Date ;
@@ -21,7 +21,7 @@ export class User extends lambda   {
     constructor(id: number, email: string, Password: string,
         phone_number: string,address:string, lastName:string | undefined,name:string | undefined, role:string | undefined, 
         image : string,  domain:string | undefined,  university:string | undefined,NameofCompany:string,
-         dateDeNaissance:Date , region :string,confpassword  :string, startofStudy:Date , 
+        birthDate:Date , region :string,confpassword  :string, startofStudy:Date , 
          dateDeDebuNaissance:Date ,endofStudy:Date ,startofWork:Date, endofWork:Date )
 
 
