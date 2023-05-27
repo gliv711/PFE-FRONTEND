@@ -13,7 +13,9 @@ import { AuthguardsGuard } from 'src/guards/authguards.guard';
 })
 export class LoginComponent implements OnInit {
    url :any
-  api = environment.baseUrl+'8084/USER-MANAGEMENT/api';
+  // api = environment.baseUrl+'8084/USER-MANAGEMENT/api';
+  api = 'http://localhost:8084/api/login';
+
 
   email: string = '';
   password: string = '';

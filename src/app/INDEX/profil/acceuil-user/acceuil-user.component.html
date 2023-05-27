@@ -1,4 +1,33 @@
-<div>
+<div >
+<app-navbar-user> </app-navbar-user>
 
-    <app-navbar-user> </app-navbar-user>
+<div style="height: 100%; width: auto; margin-top: 5%;" >
+    <div class="profile-info"  >
+        <div class="info-col">
+            <div class="profile-intro" style="background-color: whitesmoke;">
+                <a href=""><h3> À propos</h3></a>
+                <p>Believe in yourself my brother we are together </p>
+                <hr>
+                <ul>
+                    <li>
+                        <a style="color: black;">  <i class="fa-solid fa-file-signature"></i> ::{{ user.name }}</a>
+                    </li>
+                    <li>
+                        <a style="color: black;">  <i class="fa-solid fa-file-signature"></i> ::{{ user.lastName }}</a>
+                    </li>
+                    <li>
+                        <a style="color: black;" >  <i class="fa-solid fa-at"></i> ::{{ user.email }}</a>
+                    </li>
+                    <li>
+                        <a style="color: black;" >  <i class="fa-solid fa-phone"></i> ::{{ user.phone_number }}</a>
+                    </li>
+                    <li>                        
+                    <a style="color: black;">  <i class="fa-solid fa-map-location-dot"></i> ::{{ user.address }}</a>
+                        .</li>
+                    <li> <a style="color: black;"> <i class="fa-solid fa-school"></i>  ::{{ user.university}}</a> </li>
+                    <li>  <a style="color: black;"> <i class="fa-solid fa-building"></i> ::{{ user.NameofCompany }} </a></li>
+                  
+                </ul>
+            </div>
+</div>
 </div>

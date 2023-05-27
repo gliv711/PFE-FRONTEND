@@ -9,7 +9,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class UserServiceService {
-  api = environment.baseUrl+'/USER-MANAGEMENT/api/user/';
+  // api = environment.baseUrl+'/USER-MANAGEMENT/api/user/';
+  api = 'http://localhost:8084/api/user';
+
 
 
 
