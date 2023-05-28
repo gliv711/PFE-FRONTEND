@@ -24,35 +24,44 @@ export class SignupComponent implements OnInit {
   progressBarWidth!: number;
   myform : any 
   user!: User;
+  aujourdHui(): string {
+    const today = new Date();
+    return today.toISOString().split('T')[0];
+  }
+
 
   constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder  ,private userservice:UserServiceService) {
     this.myform = this.formbuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      name: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
-      prenom: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      name: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9À-ÿ ]*'), Validators.maxLength(30)]],
+      prenom: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9À-ÿ ]*'), Validators.maxLength(30)]],
+      password: ['', [Validators.required, Validators.minLength(8),Validators.pattern('^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
       confpassword: ['', [Validators.required, Validators.minLength(8), this.matchPasswords.bind(this)]],
-      address: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9 ]*'), Validators.maxLength(30)]],
-      region: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
+      address: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9À-ÿ ]*'), Validators.maxLength(30)]],
+      region: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9À-ÿ ]*'), Validators.maxLength(30)]],
       telephone :['',[Validators.required,Validators.minLength(8),Validators.maxLength(8),Validators.pattern('[0-9]*')]],
       BirthDate:["",Validators.required],
-      university :["",Validators.required],
-      domain : ["",Validators.required],
+      university :["",[Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9À-ÿ ]*'), Validators.maxLength(30)]],
+      domain : ["",[Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9À-ÿ ]*'), Validators.maxLength(30)]],
       mondesocite:new FormControl(),
       dateFinPoste:new FormControl(),
       dateDebutPoste:new FormControl(),
-      dateDeFinEtude:new FormControl(),
-      dateDedebutEtude: new FormControl(),
-      role: new FormControl()
-
+      dateDeFinEtude:["",[Validators.required,this.dateComparisonValidator.bind(this)]],
+      dateDedebutEtude: ["",Validators.required, ],
+      role: new FormControl() }) 
       
       
-
+      
+     
+      
+      
+      
+      
+      
+      
       
 
-
-
-    }) 
+      
     
     const n :number=0}
     matchPasswords(control: FormControl) {
@@ -63,6 +72,16 @@ export class SignupComponent implements OnInit {
       return null;
     
    }
+   dateComparisonValidator(formGroup: FormGroup) {
+    const dateDebutEtudeControl = formGroup.get('dateDebutEtude');
+    const dateFinEtudeControl = formGroup.get('dateFinEtude');
+  
+    if (dateDebutEtudeControl && dateFinEtudeControl &&
+        dateDebutEtudeControl.value && dateFinEtudeControl.value &&
+        dateDebutEtudeControl.value < dateFinEtudeControl.value) {
+      dateFinEtudeControl.setErrors({ dateComparison: true });
+    } 
+  }
 
 
    redirectToPlay(): void {
@@ -146,7 +165,7 @@ export class SignupComponent implements OnInit {
           }, 50);
           this.setProgressBar(++this.current);
         }
-        else if(this.myform.controls.domain.valid   && this.myform.controls.university.valid&&  nextButtons.item(2)== button) {
+        else if(this.myform.controls.domain.valid   && this.myform.controls.university.valid&& this.myform.controls.dateDedebutEtude&&  nextButtons.item(2)== button) {
           console.log("success form");
           const current_fs = button.parentNode;
           const next_fs = current_fs.nextElementSibling;
@@ -277,5 +296,6 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     return false;
   }
+ 
  
 }

@@ -26,15 +26,15 @@ export class Step1Component implements OnInit {
   constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder ,private companyservice:UserServiceService ) {
     this.isform = this.formbuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      name: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      name: ['', [Validators.required, Validators.minLength(3), Validators.pattern(('[a-zA-Z0-9À-ÿ ]*')), Validators.maxLength(30)]],
+      password: ['', [Validators.required, Validators.minLength(8),Validators.pattern('^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
       confpassword: ['', [Validators.required, Validators.minLength(8), this.matchPasswords.bind(this)]],
       address: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9 ]*'), Validators.maxLength(30)]],
       telephone :['',[Validators.required,Validators.minLength(8),Validators.maxLength(8),Validators.pattern('[0-9]*')]],
       raisonSociel: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
       domain: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
       lien :new FormControl(),
-      nomReasponsable:['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*'), Validators.maxLength(30)]],
+      nomReasponsable:['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9À-ÿ ]*'), Validators.maxLength(30)]],
 
       
 
