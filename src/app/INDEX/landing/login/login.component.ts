@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/Services/auth-service/auth.service';
 import { AuthguardsGuard } from 'src/guards/authguards.guard';
+import { JwtHelperService } from '@auth0/angular-jwt';
 // import { AuthService } from 'src/Services/auth-service/auth.service';
 
 @Component({
@@ -13,6 +14,7 @@ import { AuthguardsGuard } from 'src/guards/authguards.guard';
 })
 export class LoginComponent implements OnInit {
    url :any
+   helper=new JwtHelperService()
   // api = environment.baseUrl+'8084/USER-MANAGEMENT/api';
   api = 'http://localhost:8084/api/login';
 
@@ -23,48 +25,23 @@ export class LoginComponent implements OnInit {
   datarecieved:any
   constructor(private activateRoute:ActivatedRoute,private router: Router , private http: HttpClient,private authservice:AuthService) { 
   }
-   
-  // onSubmit(){
-  //   const credentials = {email : this.email,password:this.password};
-  //   this.http.post(this.api+'/login', credentials).subscribe(
-  //     (response: any) => {
-  //       this.router.navigate(['/dashboard']);
-  //     },
-  //     (error: any) => {
-  //       console.log("you are not connected !");
-  //     }
-  //   );
-  // }
-
-
-  //checkEmailAndPassword(): void {
-  //  this.http.get(`/users/${this.email}/${this.password}`)
-    //  .subscribe((response: any) => {
-      //  this.result = response;
-      //}, (error: any) => {
-        //this.result = error.error;
-      //});
-  //}
-  ngOnInit(): void {
-    this.url=this.activateRoute.snapshot.queryParams["saveUrl"]||'/dashboard'
+  
+  getrole(){
+    let accesstoken:any=localStorage.getItem('accesstoken')
+    let decodeaccesToken= this.helper.decodeToken(accesstoken)
+    let role=decodeaccesToken.roles
+    return role
   }
+  
+  ngOnInit(): void {
+    
+    this.url=this.activateRoute.snapshot.queryParams["saveUrl"]||'/dashboard'}
+    
+    
+  
 
-  //  login(f:any) {
-  //    let data=f.value
-  //    this.authservice.login(data.email,data.password).subscribe(Response =>{
-  //      this.datarecieved=Response
-  //     this.authservice.SaveDataProfil(
-    // this.datarecieved.accesstoken,
-    // this.datarecieved.refreshtoken);
-      
-  //     console.log(this.datarecieved);
-      
-  //    },err=>console.log(err));
-     
-     
-  //  }
-
-
+  
+    
   login(f: any) {
     let data = f.value;
     this.authservice.login(data.email, data.password).subscribe(Response => {
@@ -76,7 +53,18 @@ export class LoginComponent implements OnInit {
         
 
       );  
-       this.router.navigate([this.url])
+      let accesstoken:any=localStorage.getItem('accesstoken')
+      let decodeaccesToken= this.helper.decodeToken(accesstoken)
+      let role=decodeaccesToken.roles
+      if(role=="admin"||role=='superAdmin'){
+      this.router.navigate([this.url])}
+      if(role=="user"){
+        this.router.navigate(['/acceuil'])
+
+      }
+      if(role=="company"){
+        this.router.navigate(["/"])
+      }
         
      
     }, error => console.log(error));

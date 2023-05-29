@@ -26,6 +26,8 @@ export class UserServiceService {
   getUsers(): Observable <User[]>{
     const accessToken:any = localStorage.getItem('accesstoken');
     const refreshToken=localStorage.getItem('refreshtoken')
+    console.log(User);
+    
     
     
    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
@@ -36,7 +38,7 @@ export class UserServiceService {
       
       
 
-    return this.http.get<User[]>(this.api + 'all', { headers });
+    return this.http.get<User[]>(this.api + '/all', { headers });
     } 
   
   

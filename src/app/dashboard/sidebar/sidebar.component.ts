@@ -15,6 +15,7 @@ export class SidebarComponent implements OnInit {
   logout(){
     localStorage.removeItem("accesstoken")
     localStorage.removeItem("refreshtoken");
+    localStorage.removeItem('role');
     this.route.navigate(['/login'])
   }
 }
