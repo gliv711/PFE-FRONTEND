@@ -49,6 +49,10 @@ import { LoginUserComponent } from './INDEX/landing/login-user/login-user/login-
 import { AcceuilUserComponent } from './INDEX/profil/acceuil-user/acceuil-user.component';
 import { SettingsUserComponent } from './INDEX/profil/settings-user/settings-user.component';
 import { UserGuard } from 'src/guards/userguard/user.guard';
+import { ProfilCompanyComponent } from './profil-company/profil-company/profil-company.component';
+import { AcceuilCompanyComponent } from './profil-company/acceuil-company/acceuil-company.component';
+import { SettingsCompanyComponent } from './profil-company/settings-company/settings-company.component';
+import { DemandeOffreCompanyComponent } from './profil-company/demande-offre-company/demande-offre-company.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -87,6 +91,13 @@ const routes: Routes = [
 
     ]
   },
+  {path:"company",component:ProfilCompanyComponent,
+  children:[
+  {path:"acceuil",component:AcceuilCompanyComponent},
+  {path:"setting",component:SettingsCompanyComponent},
+  {path:"demande",component:DemandeOffreCompanyComponent},
+
+  ],},
   { path : 'register',component: SignupComponent},
   { path : 'reset-password',component: NewPasswordFormComponent},
   { path: 'alerts', component: AlertsComponent },
