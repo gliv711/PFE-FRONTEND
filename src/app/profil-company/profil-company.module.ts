@@ -6,6 +6,7 @@ import { AcceuilCompanyComponent } from './acceuil-company/acceuil-company.compo
 import { SettingsCompanyComponent } from './settings-company/settings-company.component';
 import { DemandeOffreCompanyComponent } from './demande-offre-company/demande-offre-company.component';
 
+import { AppRoutingModule } from '../app-routing.module';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { DemandeOffreCompanyComponent } from './demande-offre-company/demande-of
     DemandeOffreCompanyComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule,
+
   ],
   exports : [ProfilCompanyComponent]
 
