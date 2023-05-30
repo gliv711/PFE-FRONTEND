@@ -59,10 +59,10 @@ const routes: Routes = [
   {path:'',component:LandingComponent},
   {path:'login',component:LoginComponent},
   {path:'loginuser',component:LoginUserComponent},
-  {path:"acceuil",component:AcceuilUserComponent,canActivate:[UserGuard]},
   {path:"setting",component:SettingsUserComponent},
 
-  {path:'surveyform/:field',component:SurveyFormComponent},
+
+  { path: 'surveyform', redirectTo: '/acceuil', pathMatch: 'full' },
   {
     path : 'dashboard', component : DashboardComponent, canActivate:[AuthguardsGuard],
     
@@ -92,13 +92,46 @@ const routes: Routes = [
 
     ]
   },
+<<<<<<< Updated upstream
   {path:"company",component:ProfilCompanyComponent,canActivate:[CompanyGuard],
   children:[
   {path:"acceuil",component:AcceuilCompanyComponent},
   {path:"setting",component:SettingsCompanyComponent},
   {path:"demande",component:DemandeOffreCompanyComponent},
+=======
+>>>>>>> Stashed changes
 
-  ],},
+
+  {path:"company",component:ProfilCompanyComponent,
+
+  children:[
+  {
+    path:"",component:AcceuilCompanyComponent
+  },
+  {
+    path:"setting",component:SettingsCompanyComponent
+  },
+
+  {
+    path:'demande',component:DemandeOffreCompanyComponent
+  },
+  { 
+    path: 'surveyform/:field', component: SurveyFormComponent 
+  }
+
+
+  ]},
+
+    {
+        path: 'user',
+        component: AcceuilUserComponent,
+      
+        children: [
+            { path: '', component: AcceuilCompanyComponent },
+            { path: 'setting', component: SettingsUserComponent },
+            { path: 'surveyform/:field', component: SurveyFormComponent },
+        ]
+    },
   { path : 'register',component: SignupComponent},
   { path : 'reset-password',component: NewPasswordFormComponent},
   { path: 'alerts', component: AlertsComponent },
