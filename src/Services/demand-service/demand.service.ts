@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class DemandService {
-  api = environment.baseUrl+'/DEMANDS-MANAGEMENT/api/demands/';
+  api = environment.baseUrl+'/OFFER-MANAGEMENT/api/demands/';
 
   constructor(private http : HttpClient) { }
 

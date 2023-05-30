@@ -7,6 +7,7 @@ import { SettingsCompanyComponent } from './settings-company/settings-company.co
 import { DemandeOffreCompanyComponent } from './demande-offre-company/demande-offre-company.component';
 
 import { AppRoutingModule } from '../app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { AppRoutingModule } from '../app-routing.module';
   imports: [
     CommonModule,
     AppRoutingModule,
+    FormsModule
 
   ],
   exports : [ProfilCompanyComponent]

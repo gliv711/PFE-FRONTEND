@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Company } from 'src/Models/Users/Company';
 import { User } from 'src/Models/Users/User';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
 
@@ -13,26 +14,24 @@ export class SettingsCompanyComponent implements OnInit {
   constructor(private userService : UserServiceService) { }
 
   ngOnInit(): void {
-    const email: string = this.getemail(); // Assuming 'getemail()' returns a string
-    this.getUserByEmail(email); // Passing the 'email' variable instead of 'this.email'
+    const email: string = this.getemail(); 
+    this.getUserByEmail(email); 
   }
 
-  user: User = {
-    name: '',
-    lastName: '',
-    email: '',
+  company: Company = {
+    nameofCompany: '',
+    domaineofActivity: '',
+    nameofResponsible: '',
     phone_number: '',
     address: '',
-    region: '',
-    university: '',
-    domain: ''
+    socialReason: '',
+    email: ''
   };
 
   getUserByEmail(email: string): void {
     this.userService.getUserByEmail(email).subscribe({
-      next: (user: User) => {
-        this.user = user;
-        this.user.domain = user.domain;
+      next: (company: Company) => {
+        this.company = company;
       },
       error: (error) => {
         console.log(error);
