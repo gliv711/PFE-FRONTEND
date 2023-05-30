@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
 import { Company } from 'src/Models/Users/Company';
 import { User } from 'src/Models/Users/User';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
@@ -15,7 +16,14 @@ export class SettingsCompanyComponent implements OnInit {
 
   ngOnInit(): void {
     const email: string = this.getemail(); 
-    this.getUserByEmail(email); 
+    this.getCompanyByEmail(email).subscribe(
+      (company: Company) => {
+        this.company = company;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   company: Company = {
@@ -28,15 +36,8 @@ export class SettingsCompanyComponent implements OnInit {
     email: ''
   };
 
-  getUserByEmail(email: string): void {
-    this.userService.getUserByEmail(email).subscribe({
-      next: (company: Company) => {
-        this.company = company;
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    });
+  getCompanyByEmail(email: string): Observable<Company> {
+    return this.userService.getCompany(email);
   }
 
   helper = new JwtHelperService();

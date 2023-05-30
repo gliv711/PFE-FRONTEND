@@ -9,9 +9,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class UserServiceService {
-  // api = environment.baseUrl+'/USER-MANAGEMENT/api/user/';
-  api = 'http://localhost:8084/api/user';
-  apicompany=" http://localhost:8084/api"
+api = environment.baseUrl+'/USER-MANAGEMENT/api/user/';
+  apicompany=" http://localhost:8888/USER-MANAGEMENT/api/company/";
 
 
 
@@ -75,7 +74,7 @@ export class UserServiceService {
       return this.http.delete<Company>(this.api+Company.id);
     }
     addCompany(Company:Company) {
-      return this.http.post<Company>(this.apicompany+"/company",Company);
+      return this.http.post<Company>(this.apicompany,Company);
     }
 
  
@@ -93,6 +92,11 @@ export class UserServiceService {
       };
   
       return this.http.post<any>(this.api+"refreshtoken", {}, { headers });
+    }
+
+    getCompany(email: string) : Observable<Company>{
+      return this.http.get<Company>(`${this.apicompany}email/${email}`);
+
     }
   
     
