@@ -33,7 +33,7 @@ export class DemandsComponent implements OnInit {
       next: (response: Demand[]) => {
         this.demands = response;
       },
-      error: (e) =>  {console.log(e),this.error=true;},
+      error: (e) =>  {console.log(e)},
       complete: () => {}
     })
   }
