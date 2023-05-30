@@ -14,6 +14,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class LoginComponent implements OnInit {
    url :any
+   urlcompany:any
    helper=new JwtHelperService()
   // api = environment.baseUrl+'8084/USER-MANAGEMENT/api';
   api = 'http://localhost:8084/api/login';
@@ -34,8 +35,10 @@ export class LoginComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.urlcompany=this.activateRoute.snapshot.queryParams["saveUrl"]||'/company'
     
     this.url=this.activateRoute.snapshot.queryParams["saveUrl"]||'/dashboard'}
+    
     
     
   
@@ -63,7 +66,7 @@ export class LoginComponent implements OnInit {
 
       }
       if(role=="company"){
-        this.router.navigate(["/"])
+        this.router.navigate([this.urlcompany])
       }
         
      

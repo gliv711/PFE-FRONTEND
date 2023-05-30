@@ -53,6 +53,7 @@ import { ProfilCompanyComponent } from './profil-company/profil-company/profil-c
 import { AcceuilCompanyComponent } from './profil-company/acceuil-company/acceuil-company.component';
 import { SettingsCompanyComponent } from './profil-company/settings-company/settings-company.component';
 import { DemandeOffreCompanyComponent } from './profil-company/demande-offre-company/demande-offre-company.component';
+import { CompanyGuard } from 'src/guards/companyguard/company.guard';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -91,7 +92,7 @@ const routes: Routes = [
 
     ]
   },
-  {path:"company",component:ProfilCompanyComponent,
+  {path:"company",component:ProfilCompanyComponent,canActivate:[CompanyGuard],
   children:[
   {path:"acceuil",component:AcceuilCompanyComponent},
   {path:"setting",component:SettingsCompanyComponent},

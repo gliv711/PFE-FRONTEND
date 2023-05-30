@@ -16,6 +16,8 @@ export class Step1Component implements OnInit {
   secondFormGroup = this.formbuilder.group({
     secondCtrl: ['', Validators.required],
   });
+  success : boolean = false ;
+
   isEditable = false;
   current: number = 1;
   steps!: number;
@@ -23,7 +25,7 @@ export class Step1Component implements OnInit {
   isform : any 
   company!: Company;
 
-  constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder ,private companyservice:UserServiceService ) {
+  constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder ,private userservice:UserServiceService ) {
     this.isform = this.formbuilder.group({
       email: ['', [Validators.required, Validators.email]],
       name: ['', [Validators.required, Validators.minLength(3), Validators.pattern(('[a-zA-Z0-9À-ÿ ]*')), Validators.maxLength(30)]],
@@ -106,6 +108,11 @@ export class Step1Component implements OnInit {
          
          
           console.log("success form");
+          this.userservice.addCompany(company).subscribe(company=>{
+            this.success=true ;
+            console.log("success form");
+           
+          })
           const current_fs = button.parentNode;
           const next_fs = current_fs.nextElementSibling;
   
