@@ -1,3 +1,5 @@
+
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InformationGernalComponent } from './INDEX/information global/information-gernal/information-gernal.component';
@@ -54,6 +56,8 @@ import { AcceuilCompanyComponent } from './profil-company/acceuil-company/acceui
 import { SettingsCompanyComponent } from './profil-company/settings-company/settings-company.component';
 import { DemandeOffreCompanyComponent } from './profil-company/demande-offre-company/demande-offre-company.component';
 import { CompanyGuard } from 'src/guards/companyguard/company.guard';
+import { NavbarUserComponent } from './INDEX/profil/navbar-user/navbar-user.component';
+import { ProfilCompanyModule } from './profil-company/profil-company.module';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -61,8 +65,7 @@ const routes: Routes = [
   {path:'loginuser',component:LoginUserComponent},
   {path:"setting",component:SettingsUserComponent},
 
-
-  { path: 'surveyform', redirectTo: '/acceuil', pathMatch: 'full' },
+  {path:'surveyform/:field',component:SurveyFormComponent},
   {
     path : 'dashboard', component : DashboardComponent, canActivate:[AuthguardsGuard],
     
@@ -92,46 +95,13 @@ const routes: Routes = [
 
     ]
   },
-<<<<<<< Updated upstream
   {path:"company",component:ProfilCompanyComponent,canActivate:[CompanyGuard],
   children:[
   {path:"acceuil",component:AcceuilCompanyComponent},
   {path:"setting",component:SettingsCompanyComponent},
   {path:"demande",component:DemandeOffreCompanyComponent},
-=======
->>>>>>> Stashed changes
 
-
-  {path:"company",component:ProfilCompanyComponent,
-
-  children:[
-  {
-    path:"",component:AcceuilCompanyComponent
-  },
-  {
-    path:"setting",component:SettingsCompanyComponent
-  },
-
-  {
-    path:'demande',component:DemandeOffreCompanyComponent
-  },
-  { 
-    path: 'surveyform/:field', component: SurveyFormComponent 
-  }
-
-
-  ]},
-
-    {
-        path: 'user',
-        component: AcceuilUserComponent,
-      
-        children: [
-            { path: '', component: AcceuilCompanyComponent },
-            { path: 'setting', component: SettingsUserComponent },
-            { path: 'surveyform/:field', component: SurveyFormComponent },
-        ]
-    },
+  ],},
   { path : 'register',component: SignupComponent},
   { path : 'reset-password',component: NewPasswordFormComponent},
   { path: 'alerts', component: AlertsComponent },
@@ -160,11 +130,18 @@ const routes: Routes = [
   { path :'home' , component:HomeComponent},
   { path :'register-c',component:Step1Component},
   { path:'sidebar',component:SidebarComponent},
-  { path:'pay',component:PayementFormComponent}
+  { path:'pay',component:PayementFormComponent},
+  {
+    path: 'user',
+    component:ProfilCompanyComponent ,canActivate:[UserGuard],
   
-
-];
-
+    children: [
+        { path: '', component: AcceuilCompanyComponent },
+        { path: 'setting', component: SettingsUserComponent },
+        { path: 'surveyform/:field', component: SurveyFormComponent },
+    ]
+},
+]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

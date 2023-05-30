@@ -14,11 +14,11 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class LoginComponent implements OnInit {
    url :any
-<<<<<<< Updated upstream
+
    urlcompany:any
-=======
+
    urluser:any
->>>>>>> Stashed changes
+
    helper=new JwtHelperService()
   // api = environment.baseUrl+'8084/USER-MANAGEMENT/api';
   api = 'http://localhost:8084/api/login';
