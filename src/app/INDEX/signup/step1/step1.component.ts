@@ -95,13 +95,13 @@ export class Step1Component implements OnInit {
          
          let company : Company={
           
-          NameofCompany:this.isform.value.name,
+          nameofCompany:this.isform.value.name,
           email:this.isform.value.email,
           password :this.isform.value.password,
           phone_number:this.isform.value.telephone,
-          DomaineofActivite:this.isform.value.domain,
-          NameofResponsible:this.isform.value.nomReasponsable,
-          SocialReason:this.isform.value.raisonSociel,
+          domaineofActivity:this.isform.value.domain,
+          nameofResponsible:this.isform.value.nomReasponsable,
+          socialReason:this.isform.value.raisonSociel,
           address:this.isform.value.address,
           link:this.isform.value.link,}
           console.log(company)

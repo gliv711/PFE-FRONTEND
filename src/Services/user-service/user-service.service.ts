@@ -11,6 +11,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class UserServiceService {
   // api = environment.baseUrl+'/USER-MANAGEMENT/api/user/';
   api = 'http://localhost:8084/api/user';
+  apicompany=" http://localhost:8084/api"
 
 
 
@@ -74,7 +75,7 @@ export class UserServiceService {
       return this.http.delete<Company>(this.api+Company.id);
     }
     addCompany(Company:Company) {
-      return this.http.post<Company>(this.api,Company);
+      return this.http.post<Company>(this.apicompany+"/company",Company);
     }
 
  
