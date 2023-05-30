@@ -14,7 +14,11 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class LoginComponent implements OnInit {
    url :any
+<<<<<<< Updated upstream
    urlcompany:any
+=======
+   urluser:any
+>>>>>>> Stashed changes
    helper=new JwtHelperService()
   // api = environment.baseUrl+'8084/USER-MANAGEMENT/api';
   api = 'http://localhost:8084/api/login';
@@ -37,7 +41,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.urlcompany=this.activateRoute.snapshot.queryParams["saveUrl"]||'/company'
     
-    this.url=this.activateRoute.snapshot.queryParams["saveUrl"]||'/dashboard'}
+    this.url=this.activateRoute.snapshot.queryParams["saveUrl"]||'/dashboard'
+    this.urluser=this.activateRoute.snapshot.queryParams["saveUrl"]||'/user'}
     
     
     
@@ -62,7 +67,7 @@ export class LoginComponent implements OnInit {
       if(role=="admin"||role=='superAdmin'){
       this.router.navigate([this.url])}
       if(role=="user"){
-        this.router.navigate(['/acceuil'])
+        this.router.navigate([this.urluser])
 
       }
       if(role=="company"){
