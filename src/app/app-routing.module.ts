@@ -63,7 +63,6 @@ const routes: Routes = [
   {path:'',component:LandingComponent},
   {path:'login',component:LoginComponent},
   {path:'loginuser',component:LoginUserComponent},
-  {path:"setting",component:SettingsUserComponent},
 
   {path:'surveyform/:field',component:SurveyFormComponent},
   {
@@ -133,10 +132,10 @@ const routes: Routes = [
   { path:'pay',component:PayementFormComponent},
   {
     path: 'user',
-    component:ProfilCompanyComponent ,canActivate:[UserGuard],
+    component:ProfilComponent,canActivate:[UserGuard],
   
     children: [
-        { path: '', component: AcceuilCompanyComponent },
+        { path: '', component: AcceuilUserComponent },
         { path: 'setting', component: SettingsUserComponent },
         { path: 'surveyform/:field', component: SurveyFormComponent },
     ]
