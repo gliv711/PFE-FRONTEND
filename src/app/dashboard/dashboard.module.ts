@@ -7,7 +7,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './components/users/users.component';
 import { QuestionsComponent } from './components/questions/questions.component';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule } from '@angular/forms';
 import { SettingsComponent } from './components/settings/settings.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
@@ -18,6 +18,7 @@ import { SurveysComponent } from './components/surveys/surveys.component';
 import { AddquestionInsideSurveyformComponent } from './components/surveys/addquestion-inside-surveyform/addquestion-inside-surveyform.component';
 import { DemandsComponent } from './components/demands/demands.component';
 import { CompanysComponent } from './components/companys/companys.component';
+import { AdminsComponent } from './components/admins/admins.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CompanysComponent } from './components/companys/companys.component';
     SurveysComponent,
     AddquestionInsideSurveyformComponent,
     DemandsComponent,
-    CompanysComponent
+    CompanysComponent,
+    AdminsComponent
   ],
   imports: [
     CommonModule,

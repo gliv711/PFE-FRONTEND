@@ -59,6 +59,7 @@ import { CompanyGuard } from 'src/guards/companyguard/company.guard';
 import { NavbarUserComponent } from './INDEX/profil/navbar-user/navbar-user.component';
 import { ProfilCompanyModule } from './profil-company/profil-company.module';
 import { CompanysComponent } from './dashboard/components/companys/companys.component';
+import { AdminsComponent } from './dashboard/components/admins/admins.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -92,7 +93,8 @@ const routes: Routes = [
         path : 'surveys', component : SurveysComponent
       },
       { path : 'demands', component : DemandsComponent},
-      {path:"companys",component:CompanysComponent}
+      {path:"companys",component:CompanysComponent},
+      {path :"admins",component:AdminsComponent},
 
     ]
   },

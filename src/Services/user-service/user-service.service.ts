@@ -31,13 +31,14 @@ apiadmin=environment.baseUrl+'/USER-MANAGEMENT/api/admin';
     var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
    return this.http.get<User[]>(this.api + '/all', { headers });
     }
+   
     
     
     getAdmins() : Observable<admin[]>{
       const accessToken:any = localStorage.getItem('accesstoken');
     const refreshToken=localStorage.getItem('refreshtoken')
     var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
-   return this.http.get<User[]>(this.api + '/all', { headers });
+   return this.http.get<User[]>(this.apiadmin + '/all', { headers });
     }
 
     getAdminbyEmail(email : string ):Observable<admin>{
@@ -49,9 +50,11 @@ apiadmin=environment.baseUrl+'/USER-MANAGEMENT/api/admin';
      return this.http.get<admin>(this.apiadmin + '/email/'+email, { headers });
 
     }
+    
   
   
   getoneUser(id:any): Observable <User[]>{
+
     return this.http.get<User[]>(this.api+id);
   }
   getUserByEmail(email: string): Observable<User> {
@@ -63,12 +66,25 @@ apiadmin=environment.baseUrl+'/USER-MANAGEMENT/api/admin';
     return this.http.post<User>(this.api,user);
 
   }
+  addadmin(user:admin) {
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+    return this.http.post<admin>(this.apiadmin,user,{headers});
+
+  }
 
   deleteUser(user: User): Observable<User> {
     const accessToken:any = localStorage.getItem('accesstoken');
     const refreshToken=localStorage.getItem('refreshtoken')
     var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
     return this.http.delete<User>(this.api+"/"+user.id,{headers});
+  }
+  deleteAdmin(user: admin): Observable<User> {
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+    return this.http.delete<User>(this.apiadmin+"/"+user.id,{headers});
   }
 
   getUserCount(): Observable<number> {    

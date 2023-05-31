@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Demand } from 'src/Models/Demand';
@@ -14,19 +14,31 @@ export class DemandService {
 
 
   getDemand(): Observable <Demand[]>{
-    return this.http.get<Demand[]>(this.api+'all');
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+    return this.http.get<Demand[]>(this.api+'all',{headers});
   }
 
   addDemand(demand:Demand) {
-    return this.http.post<Demand>(this.api,demand);
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+    return this.http.post<Demand>(this.api,{headers});
   }
 
   deleteDemand(demand: Demand): Observable<Demand> {
-    return this.http.delete<Demand>(this.api+demand.id);
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+    return this.http.delete<Demand>(this.api+demand.id,{headers});
   }
 
-  getDemandCount(): Observable<number> {    
-    return this.http.get<number>(this.api+'count');
+  getDemandCount(): Observable<number> { 
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;   
+    return this.http.get<number>(this.api+'count',{headers});
   };
 
   
