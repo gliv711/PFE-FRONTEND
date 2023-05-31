@@ -60,14 +60,23 @@ apicompany=environment.baseUrl+'8084/USER-MANAGEMENT/api/company';
     };
    
     getsociete(): Observable <Company[]>{
-      return this.http.get<Company[]>(this.api+'all');
+      const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+      return this.http.get<Company[]>(this.api+'all',{headers});
     }
     getoneCompany(id:any): Observable <Company[]>{
-      return this.http.get<Company[]>(this.api+id);
+      const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+      return this.http.get<Company[]>(this.api+id,{headers})
     }
    
     deletesociete(Company: Company): Observable<Company> {
-      return this.http.delete<Company>(this.api+Company.id);
+      const accessToken:any = localStorage.getItem('accesstoken');
+      const refreshToken=localStorage.getItem('refreshtoken')
+      var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+      return this.http.delete<Company>(this.api+Company.id,{headers});
     }
     addCompany(Company:Company) {
       return this.http.post<Company>(this.apicompany,Company);
