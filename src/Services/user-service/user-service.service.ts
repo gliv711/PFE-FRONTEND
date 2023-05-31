@@ -10,7 +10,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class UserServiceService {
 api = environment.baseUrl+'/USER-MANAGEMENT/api/user';
-  apicompany=" http://localhost:8888/USER-MANAGEMENT/api/company/";
+apicompany=environment.baseUrl+'8084/USER-MANAGEMENT/api/company';
+
 
 
 
@@ -26,19 +27,8 @@ api = environment.baseUrl+'/USER-MANAGEMENT/api/user';
   getUsers(): Observable <User[]>{
     const accessToken:any = localStorage.getItem('accesstoken');
     const refreshToken=localStorage.getItem('refreshtoken')
-    console.log(User);
-    
-    
-    
-   var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
-     
-
-
-      
-      
-      
-
-    return this.http.get<User[]>(this.api + '/all', { headers });
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+   return this.http.get<User[]>(this.api + '/all', { headers });
     } 
   
   
@@ -56,11 +46,17 @@ api = environment.baseUrl+'/USER-MANAGEMENT/api/user';
   }
 
   deleteUser(user: User): Observable<User> {
-    return this.http.delete<User>(this.api+user.id);
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+    return this.http.delete<User>(this.api+"/"+user.id,{headers});
   }
 
   getUserCount(): Observable<number> {    
-      return this.http.get<number>(this.api+'count');
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+      return this.http.get<number>(this.api+'/count',{headers});
     };
    
     getsociete(): Observable <Company[]>{

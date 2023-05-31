@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Questions } from 'src/Models/Form/Questions';
@@ -13,19 +13,33 @@ export class QuestionsService {
   constructor(private http : HttpClient) { }
 
   getQuestions(): Observable <Questions[]>{
-    return this.http.get<Questions[]>(this.api+'all');
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+    return this.http.get<Questions[]>(this.api+'all',{headers});
   }
 
   addQuestions(question:Questions){
-    return this.http.post<Questions>(this.api,question);
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+    return this.http.post<Questions>(this.api,question,{headers});
   }
 
   getQuestionCount(){
-    return this.http.get<number>(this.api+'count');
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+    return this.http.get<number>(this.api+'count',{headers});
   }
 
   deleteQuestion(question:Questions){
-    return this.http.delete<Questions>(this.api+question.question_id);
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+    return this.http.delete<Questions>(this.api+question.question_id,{headers});
   }
 
   

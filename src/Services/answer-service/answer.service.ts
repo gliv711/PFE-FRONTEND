@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Answer } from 'src/Models/Form/Answer';
 import { environment } from 'src/environments/environment';
@@ -12,14 +12,23 @@ export class AnswerService {
   constructor(private http : HttpClient) { }
 
   getAllAnswers(){
-    return this.http.get<Answer[]>(this.api+'all');
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+    return this.http.get<Answer[]>(this.api+'all',{headers});
   }
 
   addAnswer(answer:Answer){
-    return this.http.post<Answer>(this.api,answer);
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+    return this.http.post<Answer>(this.api,answer,{headers});
   }
 
   deleteAnswer(answer :Answer){
-    return this.http.delete<Answer>(this.api+answer.answer_id)
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+    return this.http.delete<Answer>(this.api+answer.answer_id,{headers})
   }
 }
