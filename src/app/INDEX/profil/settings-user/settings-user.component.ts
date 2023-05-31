@@ -22,8 +22,8 @@ export class SettingsUserComponent implements OnInit {
     domain: ''
   }; 
   ngOnInit(): void {
-    const email: string = this.getemail(); // Assuming 'getemail()' returns a string
-    this.getUserByEmail(email); // Passing the 'email' variable instead of 'this.email'
+    const email: string = this.getemail(); 
+    this.getUserByEmail(email);
   }
   
 

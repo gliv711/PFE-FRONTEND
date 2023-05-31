@@ -9,7 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class UserServiceService {
-api = environment.baseUrl+'/USER-MANAGEMENT/api/user/';
+api = environment.baseUrl+'/USER-MANAGEMENT/api/user';
   apicompany=" http://localhost:8888/USER-MANAGEMENT/api/company/";
 
 
@@ -94,11 +94,9 @@ api = environment.baseUrl+'/USER-MANAGEMENT/api/user/';
       return this.http.post<any>(this.api+"refreshtoken", {}, { headers });
     }
 
-    getCompany(email: string) : Observable<Company>{
-      return this.http.get<Company>(`${this.apicompany}email/${email}`);
-
+    getCompanyByEmail(email: string) : Observable<Company> {
+      return this.http.get<Company>(`${this.apicompany}/email/${email}`);
     }
-  
     
 
   }

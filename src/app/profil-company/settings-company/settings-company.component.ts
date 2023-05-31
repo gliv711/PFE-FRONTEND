@@ -18,12 +18,15 @@ export class SettingsCompanyComponent implements OnInit {
     const email: string = this.getemail(); 
     this.getCompanyByEmail(email).subscribe(
       (company: Company) => {
+        console.log(company);
         this.company = company;
+
       },
-      (error) => {
-        console.log(error);
+      (error: any) => {
+        console.error(error);
       }
     );
+
   }
 
   company: Company = {
@@ -37,7 +40,7 @@ export class SettingsCompanyComponent implements OnInit {
   };
 
   getCompanyByEmail(email: string): Observable<Company> {
-    return this.userService.getCompany(email);
+    return this.userService.getCompanyByEmail(email);
   }
 
   helper = new JwtHelperService();
