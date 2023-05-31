@@ -7,6 +7,7 @@ export interface Demand {
     salary?:string ;
     details?:string;
     experience?:string ;
+    email?:string ;
     
 
 

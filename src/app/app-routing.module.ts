@@ -96,7 +96,8 @@ const routes: Routes = [
   },
   {path:"company",component:ProfilCompanyComponent,canActivate:[CompanyGuard],
   children:[
-    {path:"",component:AcceuilCompanyComponent},
+
+  {path:"",component:AcceuilCompanyComponent},
   {path:"acceuil",component:AcceuilCompanyComponent},
   {path:"setting",component:SettingsCompanyComponent},
   {path:"demande",component:DemandeOffreCompanyComponent},

@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Demand } from 'src/Models/Demand';
 import { DemandService } from 'src/Services/demand-service/demand.service';
 import { FormsModule } from '@angular/forms';
+import { Company } from 'src/Models/Users/Company';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
+import { UserServiceService } from 'src/Services/user-service/user-service.service';
 
 @Component({
   selector: 'app-demande-offre-company',
@@ -11,19 +15,43 @@ import { FormsModule } from '@angular/forms';
 export class DemandeOffreCompanyComponent implements OnInit {
 
   demands : Demand[] =[];
-  demand : Demand = {}
+  demand : Demand = {};
   itemsPerPage = 10;
   currentPage = 1;
+
+  company : Company = {};
 
   chargement =false ;
   mise_a_jour=false ;
   supprimer=false ;
   error = false ;
-  constructor(private demandService :DemandService) { }
+  constructor(private demandService :DemandService,private userService : UserServiceService) { }
 
 
   ngOnInit(): void {
     this.getDemand();
+    const email: string = this.getemail(); 
+    this.getCompanyByEmail(email).subscribe(
+      (company: Company) => {
+        console.log(company);
+        this.company = company;
+
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+  }
+  getCompanyByEmail(email: string): Observable<Company> {
+    return this.userService.getCompanyByEmail(email);
+  }
+
+  helper = new JwtHelperService();
+
+  getemail(): string {
+    const accessToken: any = localStorage.getItem('accesstoken');
+    const decodeAccessToken = this.helper.decodeToken(accessToken);
+    return decodeAccessToken.sub;
   }
 
   
@@ -39,6 +67,7 @@ export class DemandeOffreCompanyComponent implements OnInit {
   }
 
   addDemand(demand:Demand){
+    demand.email=this.getemail();
     this.demandService.addDemand(demand).subscribe({
       next: () => {
         this.getDemand();
