@@ -61,9 +61,9 @@ apiadmin=environment.baseUrl+'/USER-MANAGEMENT/api/admin';
     return this.http.get<User>(`${this.api}/email/${email}`);
   }
 
-  addUser(user:User) {
-    console.log(user)
-    return this.http.post<User>(this.api,user);
+  addUser(formData : FormData) {
+    console.log(formData)
+    return this.http.post<User>(this.api,formData);
 
   }
   addadmin(user:admin) {
@@ -73,6 +73,11 @@ apiadmin=environment.baseUrl+'/USER-MANAGEMENT/api/admin';
     return this.http.post<admin>(this.apiadmin,user,{headers});
 
   }
+
+  registrationAddUser(user : User) {
+    return this.http.post<User>(environment.baseUrl+'/USER-MANAGEMENT/api/register/user', user);
+  }
+  
 
   deleteUser(user: User): Observable<User> {
     const accessToken:any = localStorage.getItem('accesstoken');
