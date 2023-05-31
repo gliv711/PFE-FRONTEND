@@ -10,7 +10,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class UserServiceService {
 api = environment.baseUrl+'/USER-MANAGEMENT/api/user';
-apicompany=environment.baseUrl+'8084/USER-MANAGEMENT/api/company';
+apicompany=environment.baseUrl+'/USER-MANAGEMENT/api/company';
 
 
 
@@ -63,20 +63,20 @@ apicompany=environment.baseUrl+'8084/USER-MANAGEMENT/api/company';
       const accessToken:any = localStorage.getItem('accesstoken');
     const refreshToken=localStorage.getItem('refreshtoken')
     var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
-      return this.http.get<Company[]>(this.api+'all',{headers});
+      return this.http.get<Company[]>(this.apicompany+'/all',{headers});
     }
     getoneCompany(id:any): Observable <Company[]>{
       const accessToken:any = localStorage.getItem('accesstoken');
     const refreshToken=localStorage.getItem('refreshtoken')
     var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
-      return this.http.get<Company[]>(this.api+id,{headers})
+      return this.http.get<Company[]>(this.apicompany+"/"+id,{headers})
     }
    
     deletesociete(Company: Company): Observable<Company> {
       const accessToken:any = localStorage.getItem('accesstoken');
       const refreshToken=localStorage.getItem('refreshtoken')
       var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
-      return this.http.delete<Company>(this.api+Company.id,{headers});
+      return this.http.delete<Company>(this.apicompany+"/"+Company.id,{headers});
     }
     addCompany(Company:Company) {
       return this.http.post<Company>(this.apicompany,Company);
