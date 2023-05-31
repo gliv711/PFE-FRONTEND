@@ -39,11 +39,16 @@ apicompany=environment.baseUrl+'8084/USER-MANAGEMENT/api/company';
     return this.http.get<User>(`${this.api}/email/${email}`);
   }
 
-  addUser(user:User) {
-    console.log(user)
-    return this.http.post<User>(this.api,user);
+  addUser(formData : FormData) {
+    console.log(formData)
+    return this.http.post<User>(this.api,formData);
 
   }
+
+  registrationAddUser(user : User) {
+    return this.http.post<User>(environment.baseUrl+'/USER-MANAGEMENT/api/register/user', user);
+  }
+  
 
   deleteUser(user: User): Observable<User> {
     const accessToken:any = localStorage.getItem('accesstoken');

@@ -2,7 +2,6 @@
 
 
 
-
     <div class="card-body">
         <h2 class="text-center">Tout les Utilisateurs </h2>
         <pagination-controls (pageChange)="currentPage = $event">
@@ -24,7 +23,11 @@
                 <tbody>
                     <tr *ngFor="let user of Users">
                         <th scope="row">{{user.id}}</th>
-                        <td> <img *ngIf="!user?.image" src="assets/img/Placeholder/me.jpg" width="40px" height="40px" alt="" class="circular_image" /></td>
+                        <td> 
+                            <img *ngIf="!user?.picture" src="assets/img/Placeholder/me.jpg" width="40px" height="40px" alt="" class="circular_image" />
+                            <img *ngIf="user?.picture" [src]="getSrcFromCustomFile(user)" width="40px" height="40px" alt="" class="circular_image" />
+                            
+                        </td>
 
 
                         <td>{{user?.name}}</td>
@@ -86,7 +89,7 @@
                 </div>
                 <!-- Input field for image upload -->
                 <div class="mb-3">
-                    <input type="file">
+                    <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
 
                 </div>
 

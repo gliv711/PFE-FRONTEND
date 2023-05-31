@@ -1,3 +1,4 @@
+import { CustomFile } from "../CustomFile";
 import { lambda } from "./Lambda";
 
 
@@ -17,6 +18,7 @@ export class User extends lambda   {
     endofStudy?:Date ;
     startofWork?:Date ;
     endofWork?:Date ;
+    picture?:CustomFile;
 
     constructor(id: number, email: string, Password: string,
         phone_number: string,address:string, lastName:string | undefined,name:string | undefined, role:string | undefined, 

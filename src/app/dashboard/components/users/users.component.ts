@@ -4,6 +4,7 @@ import { UserServiceService } from 'src/Services/user-service/user-service.servi
 import { Role } from 'src/enums/role.enum';
 import { DatePipe } from '@angular/common';
 import { AuthService } from 'src/Services/auth-service/auth.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-users',
@@ -18,15 +19,15 @@ export class UsersComponent implements OnInit {
   Users: User[] = [];
     user : User = {};
 
-
+    currentFile : File;
 
     chargement =false ;
     mise_a_jour=false ;
     supprimer=false ;
     error = false ;
-    constructor(private UserService : UserServiceService ,private authservice :AuthService) {this.getUsers(); 
-    
-    this.authservice.loggedIn
+    constructor(private UserService : UserServiceService ,private authservice :AuthService, private sanitizer: DomSanitizer) {
+      this.getUsers(); 
+      this.authservice.loggedIn()
     }
 
     roles = Object.values(Role);
@@ -42,6 +43,12 @@ export class UsersComponent implements OnInit {
         error: (e) =>  {console.log(e),this.error=true;},
         complete: () => {}
       })
+    }
+
+    getSrcFromCustomFile(user : User) {
+      let uint8Array = new Uint8Array(atob(user.picture.data).split("").map(char => char.charCodeAt(0)));
+      let dwn = new Blob([uint8Array])
+      return this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(dwn));
     }
 
 
@@ -74,8 +81,25 @@ export class UsersComponent implements OnInit {
     }
 
 
+    onFileSelected(event : any) {
+
+      this.currentFile = event.target.files[0];
+      console.log("file selected")
+  }
+
     addUser(user:User){
-      this.UserService.addUser(this.user).subscribe({
+      const formData: FormData = new FormData();
+      formData.append('id', user.id+"");
+      formData.append('name', user.name+"");
+      formData.append('lastName', user.lastName+"");
+      formData.append('email', user.email+"");
+      formData.append('appRoles', "model have no app roles");
+      formData.append('password', user.password+"");
+
+      if (this.currentFile != null) {
+        formData.append('picture_file',this.currentFile,this.currentFile?.name);
+      }
+      this.UserService.addUser(formData).subscribe({
         next: () => {
           this.getUsers();
           this.mise_a_jour=true; 

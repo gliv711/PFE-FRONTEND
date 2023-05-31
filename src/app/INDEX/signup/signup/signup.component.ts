@@ -217,7 +217,7 @@ export class SignupComponent implements OnInit {
 
         };
      
-        this.userservice.addUser(user).subscribe(user=>{
+        this.userservice. registrationAddUser(user).subscribe(user=>{
           this.success=true ;
           console.log("success form");
          
