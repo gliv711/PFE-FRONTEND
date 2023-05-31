@@ -3,7 +3,13 @@
         <a routerLink="/dashboard"> <i class="fa-solid fa-house-user"></i> Acceuil</a>
     </li>
     <li>
-        <a routerLink="/dashboard/users"> <i class="fa-solid fa-users"></i> Utilisateurs</a>
+        <a > <i class="fa-solid fa-users"></i> Utilisateurs &#x25BE;</a>
+        <ul class="dropdown">
+
+            <li><a routerLink="/dashboard/users"> Client</a></li>
+            <li><a routerLink="/dashboard/companys"> Societe</a></li>
+            <li><a routerLink="/dashboard/answers">Admin</a></li>
+        </ul>
     </li>
     <li>
         <a> <i class="fa-solid fa-clipboard-question"></i> Base de données &#x25BE;</a>

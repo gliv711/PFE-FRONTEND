@@ -58,6 +58,7 @@ import { DemandeOffreCompanyComponent } from './profil-company/demande-offre-com
 import { CompanyGuard } from 'src/guards/companyguard/company.guard';
 import { NavbarUserComponent } from './INDEX/profil/navbar-user/navbar-user.component';
 import { ProfilCompanyModule } from './profil-company/profil-company.module';
+import { CompanysComponent } from './dashboard/components/companys/companys.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -90,13 +91,15 @@ const routes: Routes = [
       { 
         path : 'surveys', component : SurveysComponent
       },
-      { path : 'demands', component : DemandsComponent}
+      { path : 'demands', component : DemandsComponent},
+      {path:"companys",component:CompanysComponent}
 
     ]
   },
   {path:"company",component:ProfilCompanyComponent,canActivate:[CompanyGuard],
   children:[
-    {path:"",component:AcceuilCompanyComponent},
+
+  {path:"",component:AcceuilCompanyComponent},
   {path:"acceuil",component:AcceuilCompanyComponent},
   {path:"setting",component:SettingsCompanyComponent},
   {path:"demande",component:DemandeOffreCompanyComponent},

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/Models/Users/User';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { admin } from 'src/Models/Users/admin';
 
 @Component({
   selector: 'app-settings',
@@ -10,26 +11,23 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class SettingsComponent implements OnInit {
   constructor(private userService : UserServiceService) { }
-  user: User = {
-    name: '',
-    lastName: '',
+  admin: admin = {
+    
     email: '',
     phone_number: '',
     address: '',
-    region: '',
-    university: '',
-    domain: ''
+    image:''
   }; 
   ngOnInit(): void {
     const email: string = this.getemail(); // Assuming 'getemail()' returns a string
-    this.getUserByEmail(email); // Passing the 'email' variable instead of 'this.email'
+    this.getAdminByEmail(email); // Passing the 'email' variable instead of 'this.email'
   }
   
 
-  getUserByEmail(email: string): void {
-    this.userService.getUserByEmail(email).subscribe({
-      next: (user: User) => {
-        this.user = user;
+  getAdminByEmail(email: string): void {
+    this.userService.getAdminbyEmail(email).subscribe({
+      next: (admin: admin) => {
+        this.admin = admin;
       },
       error: (error) => {
         console.log(error);

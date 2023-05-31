@@ -19,7 +19,13 @@ export class SettingsUserComponent implements OnInit {
     address: '',
     region: '',
     university: '',
-    domain: ''
+    domain: '',
+    birthDate:new Date ,
+    startofStudy :new Date ,
+    endofStudy : new Date ,
+    startofWork : new Date ,
+    endofWork : new Date 
+    
   }; 
   ngOnInit(): void {
     const email: string = this.getemail(); 

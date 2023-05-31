@@ -1,0 +1,299 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+<section class="section">
+    <div class="container">
+        <div class="justify-content-center row">
+            <div class="col-lg-12">
+                <div class="candidate-list-widgets mb-4">
+                    <form action="#" class="">
+                        <div class="g-2 row">
+                            <div class="col-lg-3">
+                                <div class="filler-job-form">
+                                    <i class="uil uil-briefcase-alt"></i><input id="exampleFormControlInput1" placeholder="Job, Company name... " type="search" class="form-control filler-job-input-box form-control" />
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="filler-job-form">
+                                    <i class="uil uil-location-point"></i>
+                                    <select class="form-select selectForm__inner" data-trigger="true" name="choices-single-location" id="choices-single-location" aria-label="Default select example">
+                                        <option value="AF">Afghanistan</option>
+                                        <option value="AX">Åland Islands</option>
+                                        <option value="AL">Albania</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="filler-job-form">
+                                    <i class="uil uil-clipboard-notes"></i>
+                                    <select class="form-select selectForm__inner" data-trigger="true" name="choices-single-categories" id="choices-single-categories" aria-label="Default select example">
+                                        <option value="4">Accounting</option>
+                                        <option value="1">IT &amp; Software</option>
+                                        <option value="3">Marketing</option>
+                                        <option value="5">Banking</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div>
+                                    <button type="button" style="background-color: rgb(5, 68, 104);" class="btn btn-secondary float-end" data-bs-target="#update-add-Modal" data-bs-toggle="modal">Nouvelle Offre</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="align-items-center row">
+
+                    <div class="col-lg-4">
+                        <div class="candidate-list-widgets">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="selection-widget">
+                                        <select class="form-select" data-trigger="true" name="choices-single-filter-orderby" id="choices-single-filter-orderby" aria-label="Default select example">
+                                            <option value="df">Default</option>
+                                            <option value="ne">Newest</option>
+                                            <option value="od">Oldest</option>
+                                            <option value="rd">Random</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="selection-widget mt-2 mt-lg-0">
+                                        <select class="form-select" data-trigger="true" name="choices-candidate-page" id="choices-candidate-page" aria-label="Default select example">
+                                            <option value="df">All</option>
+                                            <option value="ne">8 per Page</option>
+                                            <option value="ne">12 per Page</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="candidate-list">
+                    <div class="candidate-list-box card mt-4">
+                        <div class="p-4 card-body">
+                            <div *ngFor="let demand of demands" class="align-items-center row mb-5">
+                                <div class="col-auto">
+                                    <div class="candidate-list-images">
+                                        <a><img src="assets/img/Placeholder/me.jpg" alt="" class="avatar-md img-thumbnail rounded-circle" /></a>
+
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="candidate-list-content mt-3 mt-lg-0">
+                                        <h5 class="fs-19 mb-0">
+                                            <a class="primary-link">{{demand.title}}</a><span class="badge bg-success ms-1"><i class="mdi mdi-star align-middle"></i>      </span>
+                                        </h5>
+                                        <p class="text-muted mb-2">{{demand.jobTitle}}</p>
+
+                                        <p class="text-muted mb-2">{{demand.email}}</p>
+
+                                        <ul class="list-inline mb-0 text-muted">
+                                            <li class="list-inline-item"><i class="mdi mdi-map-marker"></i> {{demand.place}}</li>
+                                            <li class="list-inline-item"><i class="mdi mdi-wallet"></i> {{demand.salary}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mt-2 mt-lg-0 d-flex flex-wrap align-items-start gap-1">
+                                        <span class="badge bg-soft-secondary fs-14 mt-1">{{demand.contractType}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="mt-2 mt-lg-0 d-flex flex-wrap align-items-start gap-1">
+                                        <button type="button" class="btn btn-danger">Supprimer</button>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="favorite-icon">
+                                <a><i class="mdi mdi-heart fs-18"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+<div class="modal fade" id="are-you-sure-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Êtes Vous Sûr ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteDemand(demand)">Je confirme</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #DDE0BD;background-size:cover;">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+
+
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-1">
+                            <label for="exampleFormControlInput1" class="form-label">Email</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="name" [placeholder]='getemail()'>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <label for="exampleFormControlInput1" class="form-label">Titre</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="name" placeholder="" [(ngModel)]="demand.title">
+                        </div>
+
+
+
+                        <div class="col-1">
+                            <label for="exampleFormControlInput1" class="form-label">Poste</label>
+                        </div>
+                        <div class="col">
+
+                            <input type="text" class="form-control" id="LastName" placeholder="" [(ngModel)]="demand.jobTitle">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-3">
+                            <label for="exampleFormControlInput1" class="form-label">Type de Contrat</label>
+                        </div>
+                        <div class="col">
+
+                            <select class="form-select" [(ngModel)]="demand.contractType" id="contract">
+                                <option value="Non Fournie">Non Fournie</option>
+                                <option *ngFor="let contract of contractTypeOptions" [value]="contract">{{ contract }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="exampleFormControlInput1" class="form-label">Expérience</label>
+                        </div>
+                        <div class="col">
+
+                            <select class="form-select" [(ngModel)]="demand.experience" id="experience">
+                                <option value="Non Fournie">Non Fournie</option>
+                                <option *ngFor="let experience of experienceTypeOptions" [value]="experience">{{ experience }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="exampleFormControlInput1" class="form-label">Emplacement </label>
+                        </div>
+                        <div class="col">
+
+                            <select class="form-select" [(ngModel)]="demand.place" id="place">
+                                    <option value="Non Fournie">Non Fournie</option>
+                                    <option *ngFor="let place of placeOptions" [value]="place">{{ place }}</option>
+                                </select> </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-1">
+                            <label for="exampleFormControlInput1" class="form-label">Salaire </label>
+                        </div>
+                        <div class="col">
+
+                            <select class="form-select" [(ngModel)]="demand.salary" id="salary">
+                                <option value="Non Fournie">Non Fournie</option>
+                                <option *ngFor="let option of salaryOptions" [value]="option">{{ option }}</option>
+                              </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-3">
+                            <label for="exampleFormControlInput1" class="form-label">Détail de l'offre </label>
+                        </div>
+                        <div class="col">
+
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="demand.details"></textarea>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addDemand(demand)">Enregistrer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="are-you-sure-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Êtes Vous Sûr ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteDemand(demand)">Je confirme</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,13 +5,14 @@ import { Observable } from 'rxjs';
 import { Company } from 'src/Models/Users/Company';
 import { environment } from 'src/environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { admin } from 'src/Models/Users/admin';
 @Injectable({
   providedIn: 'root'
 })
 export class UserServiceService {
 api = environment.baseUrl+'/USER-MANAGEMENT/api/user';
-apicompany=environment.baseUrl+'8084/USER-MANAGEMENT/api/company';
-
+apicompany=environment.baseUrl+'/USER-MANAGEMENT/api/company';
+apiadmin=environment.baseUrl+'/USER-MANAGEMENT/api/admin';
 
 
 
@@ -29,7 +30,25 @@ apicompany=environment.baseUrl+'8084/USER-MANAGEMENT/api/company';
     const refreshToken=localStorage.getItem('refreshtoken')
     var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
    return this.http.get<User[]>(this.api + '/all', { headers });
-    } 
+    }
+    
+    
+    getAdmins() : Observable<admin[]>{
+      const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+   return this.http.get<User[]>(this.api + '/all', { headers });
+    }
+
+    getAdminbyEmail(email : string ):Observable<admin>{
+      const accessToken:any = localStorage.getItem('accesstoken');
+      const refreshToken=localStorage.getItem('refreshtoken')
+
+      var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+
+     return this.http.get<admin>(this.apiadmin + '/email/'+email, { headers });
+
+    }
   
   
   getoneUser(id:any): Observable <User[]>{
@@ -68,20 +87,20 @@ apicompany=environment.baseUrl+'8084/USER-MANAGEMENT/api/company';
       const accessToken:any = localStorage.getItem('accesstoken');
     const refreshToken=localStorage.getItem('refreshtoken')
     var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
-      return this.http.get<Company[]>(this.api+'all',{headers});
+      return this.http.get<Company[]>(this.apicompany+'/all',{headers});
     }
     getoneCompany(id:any): Observable <Company[]>{
       const accessToken:any = localStorage.getItem('accesstoken');
     const refreshToken=localStorage.getItem('refreshtoken')
     var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
-      return this.http.get<Company[]>(this.api+id,{headers})
+      return this.http.get<Company[]>(this.apicompany+"/"+id,{headers})
     }
    
     deletesociete(Company: Company): Observable<Company> {
       const accessToken:any = localStorage.getItem('accesstoken');
       const refreshToken=localStorage.getItem('refreshtoken')
       var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
-      return this.http.delete<Company>(this.api+Company.id,{headers});
+      return this.http.delete<Company>(this.apicompany+"/"+Company.id,{headers});
     }
     addCompany(Company:Company) {
       return this.http.post<Company>(this.apicompany,Company);
