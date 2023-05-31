@@ -5,12 +5,13 @@ import { Observable } from 'rxjs';
 import { Company } from 'src/Models/Users/Company';
 import { environment } from 'src/environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { admin } from 'src/Models/Users/admin';
 @Injectable({
   providedIn: 'root'
 })
 export class UserServiceService {
 api = environment.baseUrl+'/USER-MANAGEMENT/api/user';
-apicompany=environment.baseUrl+'/USER-MANAGEMENT/api/company';
+apicompany=environment.baseUrl+'8084/USER-MANAGEMENT/api/company';
 
 
 
@@ -28,8 +29,26 @@ apicompany=environment.baseUrl+'/USER-MANAGEMENT/api/company';
     const accessToken:any = localStorage.getItem('accesstoken');
     const refreshToken=localStorage.getItem('refreshtoken')
     var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+   return this.http.get<User[]>(this.apiadmin + '/all', { headers });
+    }
+    
+    
+    getAdmins() : Observable<admin[]>{
+      const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
    return this.http.get<User[]>(this.api + '/all', { headers });
-    } 
+    }
+
+    getAdminbyEmail(email : string ):Observable<admin>{
+      const accessToken:any = localStorage.getItem('accesstoken');
+      const refreshToken=localStorage.getItem('refreshtoken')
+
+      var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+
+     return this.http.get<admin>(this.apiadmin + '/email/'+email, { headers });
+
+    }
   
   
   getoneUser(id:any): Observable <User[]>{
