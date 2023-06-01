@@ -15,9 +15,9 @@
                         <th scope="col">Email</th>
 
                         <th scope="col">Titre</th>
-
+                        <th scope="col">Poste</th>
                         <th scope="col">Emplacement</th>
-
+                        <th scope="col">Type de contrat</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -27,11 +27,12 @@
 
                         <td>{{demand?.email}}</td>
                         <td>{{demand?.title}}</td>
+                        <td>{{demand?.jobTitle}}</td>
                         <td>{{demand?.place}}</td>
-
+                        <td>{{demand?.contractType}}</td>
                         <td class="d-flex justify-content-around">
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal" (click)="setCurrentDemand(demand)">Supprimer</button>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-add-Modal" (click)="setCurrentDemand(demand)">Update</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-add-Modal" (click)="setCurrentDemand(demand)">Modifier</button>
                         </td>
                     </tr>
                 </tbody>
