@@ -42,7 +42,7 @@ export class DemandService {
   };
 
   getDemandByEmail(email:string):Observable<Demand[]>{
-    return this.http.delete<Demand[]>(this.api+email);
+    return this.http.get<Demand[]>(this.api+'email/'+email);
 
 
   }
