@@ -41,9 +41,15 @@ export class DemandeOffreCompanyComponent implements OnInit {
         console.error(error);
       }
     );
+
+
   }
   getCompanyByEmail(email: string): Observable<Company> {
     return this.userService.getCompanyByEmail(email);
+  }
+
+  getDemandsByCompany(email:string) : Observable<Demand[]>{
+    return this.demandService.getDemandByEmail(email);
   }
 
   helper = new JwtHelperService();
@@ -83,6 +89,8 @@ export class DemandeOffreCompanyComponent implements OnInit {
       }
     })
   }
+
+  
 
   deleteDemand(demand : Demand){
     

@@ -12,6 +12,8 @@
                 <thead class="table-dark" style="background-color: aqua;">
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col">Email</th>
+
                         <th scope="col">Titre</th>
 
                         <th scope="col">Emplacement</th>
@@ -23,7 +25,7 @@
                     <tr *ngFor="let demand of demands">
                         <th scope="row">{{demand.id}}</th>
 
-
+                        <td>{{demand?.email}}</td>
                         <td>{{demand?.title}}</td>
                         <td>{{demand?.place}}</td>
 
@@ -79,6 +81,16 @@
 
 
                 <div class="mb-3">
+                    <div class="row">
+                        <div class="col-3">
+                            <label for="exampleFormControlInput1" class="form-label">Email</label>
+                        </div>
+                        <div class="col">
+
+                            <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="demand.email" disabled>
+
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-1">
                             <label for="exampleFormControlInput1" class="form-label">Titre</label>

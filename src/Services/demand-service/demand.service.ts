@@ -41,6 +41,12 @@ export class DemandService {
     return this.http.get<number>(this.api+'count',{headers});
   };
 
+  getDemandByEmail(email:string):Observable<Demand[]>{
+    return this.http.delete<Demand[]>(this.api+email);
+
+
+  }
+
   
 
 
