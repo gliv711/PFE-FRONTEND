@@ -29,6 +29,7 @@ import { AcceuilUserComponent } from './INDEX/profil/acceuil-user/acceuil-user.c
 import { NavbarUserComponent } from './INDEX/profil/navbar-user/navbar-user.component';
 import { SettingsUserComponent } from './INDEX/profil/settings-user/settings-user.component';
 import { ProfilCompanyModule } from './profil-company/profil-company.module';
+import { OffreUserComponent } from './INDEX/profil/offre-user/offre-user.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { ProfilCompanyModule } from './profil-company/profil-company.module';
       AcceuilUserComponent,
       NavbarUserComponent,
       SettingsUserComponent,
+      OffreUserComponent,
       
     
     ],

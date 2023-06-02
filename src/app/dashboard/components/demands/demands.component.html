@@ -13,7 +13,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Email</th>
-
+                        <th scope="col">Régime horaire</th>
                         <th scope="col">Titre</th>
                         <th scope="col">Poste</th>
                         <th scope="col">Emplacement</th>
@@ -26,6 +26,7 @@
                         <th scope="row">{{demand.id}}</th>
 
                         <td>{{demand?.email}}</td>
+                        <td>{{demand?.regime}}</td>
                         <td>{{demand?.title}}</td>
                         <td>{{demand?.jobTitle}}</td>
                         <td>{{demand?.place}}</td>
@@ -122,6 +123,13 @@
                             <select class="form-select" [(ngModel)]="demand.contractType" id="contract">
                                 <option value="Non Fournie">Non Fournie</option>
                                 <option *ngFor="let contract of contractTypeOptions" [value]="contract">{{ contract }}</option>
+                            </select>
+                        </div>
+                        <div class="col">
+
+                            <select class="form-select" [(ngModel)]="demand.regime" id="regime">
+                                <option value="Non Fournie">Non Fournie</option>
+                                <option *ngFor="let regime of regimeTypeOptions" [value]="regime">{{ regime }}</option>
                             </select>
                         </div>
                     </div>

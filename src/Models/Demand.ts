@@ -8,6 +8,7 @@ export interface Demand {
     details?:string;
     experience?:string ;
     email?:string ;
+    regime?:string;
     
 
 

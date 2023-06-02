@@ -60,6 +60,7 @@ import { NavbarUserComponent } from './INDEX/profil/navbar-user/navbar-user.comp
 import { ProfilCompanyModule } from './profil-company/profil-company.module';
 import { CompanysComponent } from './dashboard/components/companys/companys.component';
 import { AdminsComponent } from './dashboard/components/admins/admins.component';
+import { OffreUserComponent } from './INDEX/profil/offre-user/offre-user.component';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -144,6 +145,8 @@ const routes: Routes = [
         { path: '', component: AcceuilUserComponent },
         { path: 'setting', component: SettingsUserComponent },
         { path: 'surveyform/:field', component: SurveyFormComponent },
+        { path: 'offresUser', component: OffreUserComponent },
+        
     ]
 },
 ]

@@ -125,6 +125,7 @@ export class DemandeOffreCompanyComponent implements OnInit {
 
  salaryOptions: string[] = ['+500 dt par mois', '+1500 dt par mois', '+2500 dt par mois '];
  contractTypeOptions = ['CDD', 'CDI','Stage'];
+ regimeTypeOptions = ['Temps Partiel', 'Temps Plein'];
  placeOptions: string[] = [
   'Béja',
   'Ben Arous',

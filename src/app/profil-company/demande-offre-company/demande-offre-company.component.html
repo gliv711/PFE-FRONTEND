@@ -148,6 +148,13 @@
                                 <option *ngFor="let contract of contractTypeOptions" [value]="contract">{{ contract }}</option>
                             </select>
                         </div>
+                        <div class="col">
+
+                            <select class="form-select" [(ngModel)]="demand.regime" id="regime">
+                                <option value="Non Fournie">Non Fournie</option>
+                                <option *ngFor="let regime of regimeTypeOptions" [value]="regime">{{ regime }}</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="mb-3">
