@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { DemandService } from 'src/Services/demand-service/demand.service';
 import { QuestionsService } from 'src/Services/question-service/questions.service';
 import { ResultService } from 'src/Services/result-service/result.service';
@@ -22,6 +23,7 @@ export class AdminHomeComponent implements OnInit {
   answers_count : number = 0 ;
   demand_count : number = 0 ;
   result_count : number = 0 ;
+  admin_name: string = '';
 
 
   apicompany=environment.baseUrl+'/USER-MANAGEMENT/api/company';
@@ -38,6 +40,7 @@ export class AdminHomeComponent implements OnInit {
     this.AnswersCount();
     this.DemandCount();
     this.ResultCount();
+    this.getAdminName();
   }
 
   ResultCount(){
@@ -51,6 +54,22 @@ export class AdminHomeComponent implements OnInit {
       this.demand_count = demand_count;
     });
   }
+  helper=new JwtHelperService()
+
+  getemail(){
+    let accesstoken:any= localStorage.getItem('accesstoken')
+    let decodeaccesToken= this.helper.decodeToken(accesstoken)
+    console.log(decodeaccesToken.sub)
+    return decodeaccesToken.sub
+
+}
+getAdminName() {
+  const email = this.getemail();
+  this.UserService.getAdminbyEmail(email).subscribe((admin) => {
+    this.admin_name = admin.email;
+  });
+}
+  
 
 
   Usercount(){
