@@ -34,6 +34,7 @@ export class SettingsComponent implements OnInit {
       }
     });
   }
+  
   helper=new JwtHelperService()
 
   getemail(){
