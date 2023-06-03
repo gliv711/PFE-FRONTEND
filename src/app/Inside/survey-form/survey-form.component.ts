@@ -144,40 +144,6 @@ export class SurveyFormComponent implements OnInit {
 
 
 
-    // submitSurvey(): void {
-    //   const apiUrl = 'http://localhost:8888/RESULT-MANAGEMENT/api/results/';
-    
-    //   // Collect the selected answers
-    //   const answers: { questionId: number; answerId: number }[] = [];
-    //   this.getCurrentStepQuestions().forEach((question: any) => {
-    //     const selectedAnswerElement = document.querySelector(`input[name="${question.question_id}"]:checked`) as HTMLInputElement;
-    //     if (selectedAnswerElement) {
-    //       const selectedAnswerId = parseInt(selectedAnswerElement.value, 10);
-    //       const answer = { questionId: question.question_id, answerId: selectedAnswerId };
-    //       answers.push(answer);
-    //     }
-    //   });
-    
-    //   const body = {
-    //     questions: answers.map(answer => ({
-    //       question: { question_id: answer.questionId },
-    //       answers: [{ answer_id: answer.answerId }]
-    //     })),
-    //     email: this.helper.decodeToken(localStorage.getItem('accesstoken') || '')?.sub,
-    //     domain: this.selectedField
-    //   };
-    
-    //   this.http.post(apiUrl, body).subscribe(
-    //     (response: any) => {
-    //       console.log('Survey submitted successfully', response);
-    //       // Handle success response
-    //     },
-    //     (error: any) => {
-    //       console.error('Error submitting survey', error);
-    //       // Handle error response
-    //     }
-    //   );
-    // }
 
     submitSurvey(): void {
       const selectedAnswers: { questionId: number; answerId: number }[] = [];
