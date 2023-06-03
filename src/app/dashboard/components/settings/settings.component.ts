@@ -3,6 +3,7 @@ import { User } from 'src/Models/Users/User';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { admin } from 'src/Models/Users/admin';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-settings',
@@ -10,7 +11,15 @@ import { admin } from 'src/Models/Users/admin';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-  constructor(private userService : UserServiceService) { }
+  profileForm: FormGroup;
+
+  constructor(private userService : UserServiceService,private formBuilder: FormBuilder) { 
+    this.profileForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      address: ['', Validators.required],
+      phone_number: ['', Validators.required]
+    });
+  }
   admin: admin = {
     
     email: '',
@@ -43,4 +52,13 @@ export class SettingsComponent implements OnInit {
     return decodeaccesToken.sub
 
 }
+saveProfile() {
+  if (this.profileForm.invalid) {
+    return;
+    // Logic to save the profile
+  } else {
+    this.profileForm.markAllAsTouched();
+  }
 }
+}
+

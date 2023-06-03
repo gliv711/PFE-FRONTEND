@@ -7,11 +7,11 @@
                 <form id="msform" [formGroup]="myform">
                     <!-- progressbar -->
                     <ul id="progressbar">
-                        <li class="active" id="account"><strong>Account</strong></li>
-                        <li id="personal"><strong>Personal</strong></li>
+                        <li class="active" id="account"><strong>Compte</strong></li>
+                        <li id="personal"><strong>Informations personnelles</strong></li>
                         <li id="ecole"><strong>ecole</strong></li>
                         <li id="professionnel"><strong>professionnel</strong></li>
-                        <li id="confirm"><strong>Finish</strong></li>
+                        <li id="confirm"><strong>Terminé</strong></li>
                     </ul>
                     <br>
                     <!-- fieldsets -->
@@ -19,55 +19,60 @@
                         <div class="form-card">
                             <div class="row">
                                 <div class="col-7">
-                                    <h2 class="fs-title">Account Information:</h2>
+                                    <h2 class="fs-title">Informations du compte:</h2>
                                 </div>
                                 <div class="col-5">
-                                    <h2 class="steps">Step 1 - 5</h2>
+                                    <h2 class="steps">Etape 1 - 5</h2>
                                 </div>
                             </div>
                             <label class="fieldlabels">Nom: *</label>
                             <input type="text" name="uname" formControlName="name" placeholder="UserName" required/>
                             <div *ngIf=" myform.get('name').hasError('maxlength')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> max 30 caracteres</span>
+                                <span style="color: red;display: flex"> Maximum 30 caractères</span>
                                 <br></div>
                             <div *ngIf=" myform.get('name').hasError('minlength')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> au moin 3 caracteres</span>
+                                <span style="color: red;display: flex"> Minimum 3 caractères</span>
                                 <br></div>
                             <div *ngIf="myform.get('name').touched && myform.get('name').hasError('required')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> remplir le champs</span>
+                                <span style="color: red;display: flex"> Ce champ est requis</span>
                                 <br></div>
                             <div *ngIf=" myform.get('name').hasError('pattern')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> accepte juste alaphab</span>
+                                <span style="color: red;display: flex"> Accepte uniquement des lettres</span>
                                 <br></div>
                             <label class="fieldlabels">Prénom: *</label>
                             <input type="text" name="uname" formControlName="prenom" placeholder="UserName" required />
                             <div *ngIf=" myform.get('prenom').hasError('maxlength')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> max 30 caracteres</span>
+                                <span style="color: red;display: flex"> Maximum 30 caractères</span>
                                 <br></div>
                             <div *ngIf=" myform.get('prenom').hasError('minlength')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> au moin 3 caracteres</span>
+                                <span style="color: red;display: flex"> Minimum 3 caractères</span>
                                 <br></div>
                             <div *ngIf="myform.get('prenom').touched && myform.get('prenom').hasError('required')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> remplir le champs</span>
+                                <span style="color: red;display: flex"> Ce champ est requis</span>
                                 <br></div>
                             <div *ngIf=" myform.get('prenom').hasError('pattern')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> accepte juste alaphab</span>
+                                <span style="color: red;display: flex"> Accepte uniquement des lettres</span>
                                 <br></div>
+                                
                             <label class="fieldlabels">Email: *</label>
                             <input type="email" name="email" formControlName="email" placeholder="Email Id" required />
                             <div *ngIf="myform.get('email').touched && myform.get('email').hasError('required')" style="margin-top: -10px">
-                                <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
+                                <span style="color: rgb(190, 4, 4);display: flex">  L'email est requis.</span>
                                 <br></div>
+                                <div *ngIf="myform.get('email').errors?.emailExists" style="margin-top: 0px">
+                                    <span style="color: red;display: flex">  L'email existe déjà dans la base de données. </span>
+
+                                  </div>
                             <div *ngIf="myform.get('email').hasError('email')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> mail invalid </span>
+                                <span style="color: red;display: flex"> Format d'email invalide.</span>
                                 <br></div>
                             <label class="fieldlabels">Mot de passe: *</label>
                             <input type="password" formControlName="password" name="pwd" placeholder="Le mot de passe doit contenir au moins une lettre, un chiffre et un caractère spécial." />
                             <div *ngIf="myform.get('password').touched && myform.get('password').hasError('required')" style="margin-top: 0px">
-                                <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
+                                <span style="color: rgb(190, 4, 4);display: flex"> Ce champ est requis</span>
                                 <br></div>
                             <div *ngIf=" myform.get('password').hasError('minlength')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> au moin 8 caracteres</span>
+                                <span style="color: red;display: flex"> Minimum 8 caractères</span>
                                 <br></div>
                                 <div *ngIf=" myform.get('password').hasError('pattern')" style="margin-top: 0px">
                                     <span style="color: red;display: flex"> Le mot de passe doit contenir au moins une lettre, un chiffre et un caractère spécial. </span>
@@ -78,7 +83,7 @@
                             <label class="fieldlabels">Confirmer le mot de passe: *</label>
                             <input type="password" formControlName="confpassword" name="cpwd" placeholder="Confirm Password" />
                             <div *ngIf="myform.get('confpassword').touched && myform.get('confpassword').hasError('required')" style="margin-top: 0px">
-                                <span style="color: rgb(190, 4, 4);display: flex"> remplir le champs</span>
+                                <span style="color: rgb(190, 4, 4);display: flex"> Ce champ est requis</span>
                                 <br></div>
                             <div *ngIf=" myform.get('confpassword').hasError('minlength')" style="margin-top: 0px">
                                 <span style="color: red;display: flex"> au moin 8 caracteres</span>
@@ -95,7 +100,7 @@
                         <div class="form-card">
                             <div class="row">
                                 <div class="col-7">
-                                    <h2 class="fs-title">Personal Information:</h2>
+                                    <h2 class="fs-title">Informations personnelles:</h2>
                                 </div>
                                 <div class="col-5">
                                     <h2 class="steps">Step 2 - 5</h2>
@@ -104,50 +109,50 @@
                             <label class="fieldlabels">telephone: *</label>
                             <input type="text" name="fname" formControlName="telephone" placeholder="votre telephone" required />
                             <div *ngIf=" myform.get('telephone').hasError('maxlength')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> if faut 8 caracteres</span>
+                                <span style="color: red;display: flex"> Il faut 8 Chiffres</span>
                                 <br></div>
                             <div *ngIf=" myform.get('telephone').hasError('minlength')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> if faut 8 caracteres</span>
+                                <span style="color: red;display: flex"> Il faut 8 Chiffres</span>
                                 <br></div>
                             <div *ngIf="myform.get('telephone').touched && myform.get('telephone').hasError('required')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> remplir le champs</span>
+                                <span style="color: red;display: flex"> Ce champ est requis</span>
                                 <br></div>
                             <div *ngIf=" myform.get('telephone').hasError('pattern')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> accepte juste number</span>
+                                <span style="color: red;display: flex"> aAccepte uniquement les chiffres</span>
                                 <br></div>
-                            <label class="fieldlabels">BirthDate: *</label>
+                            <label class="fieldlabels">Date de naissance: *</label>
                             <input type="date" formControlName="BirthDate" value="data-bs-target" max="2007-01-01" name="lname" />
                             <div *ngIf="myform.get('BirthDate').touched && myform.get('telephone').hasError('required')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> remplir le champs</span>
+                                <span style="color: red;display: flex"> Ce champ est requis</span>
                                 <br></div>
                             <label class="fieldlabels">address: *</label>
 
                             <input type="text" formControlName="address" name="phno" placeholder="votre address." />
                             <div *ngIf=" myform.get('address').hasError('maxlength')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> max 30 caracteres</span>
+                                <span style="color: red;display: flex"> Maximum 30 caractères</span>
                                 <br></div>
                             <div *ngIf=" myform.get('address').hasError('minlength')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> au moin 3 caracteres</span>
+                                <span style="color: red;display: flex"> Minimum 3 caractères</span>
                                 <br></div>
                             <div *ngIf="myform.get('address').touched && myform.get('address').hasError('required')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> remplir le champs</span>
+                                <span style="color: red;display: flex"> Ce champ est requis</span>
                                 <br></div>
                             <div *ngIf=" myform.get('address').hasError('pattern')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> accepte juste alaphab et number</span>
+                                <span style="color: red;display: flex"> Accepte uniquement les chiffres et des lettres</span>
                                 <br></div>
                             <label class="fieldlabels">region *</label>
                             <input type="text" name="phno_2" formControlName="region" placeholder="region" />
                             <div *ngIf=" myform.get('region').hasError('maxlength')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> max 30 caracteres</span>
+                                <span style="color: red;display: flex"> Maximum 30 caractères</span>
                                 <br></div>
                             <div *ngIf=" myform.get('region').hasError('minlength')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> au moin 3 caracteres</span>
+                                <span style="color: red;display: flex"> Minimum 3 caractères</span>
                                 <br></div>
                             <div *ngIf="myform.get('region').touched && myform.get('region').hasError('required')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> remplir le champs</span>
+                                <span style="color: red;display: flex"> Ce champ est requis</span>
                                 <br></div>
                             <div *ngIf=" myform.get('region').hasError('pattern')" style="margin-top: 0px">
-                                <span style="color: red;display: flex"> accepte juste alaphab</span>
+                                <span style="color: red;display: flex"> Accepte uniquement les chiffres </span>
                                 <br></div>
                         </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                     </fieldset>
@@ -158,21 +163,35 @@
                                     <h2 class="fs-title">Etude:</h2>
                                 </div>
                                 <div class="col-5">
-                                    <h2 class="steps">Step 3 - 5</h2>
+                                    <h2 class="steps">Etape 3 - 5</h2>
                                 </div>
                             </div>
                             <label class="fieldlabels">universite: *</label>
                             <input type="text" formControlName="university" name="fname" placeholder="votre unversite" />
                             <div *ngIf="myform.get('university').touched && myform.get('university').hasError('required')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> remplir le champs</span>
+                                <span style="color: red;display: flex"> Ce champ est requis</span>
                                 <br></div>
+                                <div *ngIf=" myform.get('university').hasError('minlength')" style="margin-top: 0px">
+                                    <span style="color: red;display: flex"> Minimum 3 caractères</span>
+                                    <br></div>
+                                
+                                <div *ngIf=" myform.get('university').hasError('pattern')" style="margin-top: 0px">
+                                    <span style="color: red;display: flex"> Accepte uniquement les chiffres  </span>
+                                    <br></div>
                             <label class="fieldlabels">domain:</label>
                             <input type="text" formControlName="domain" name="fname" placeholder="votre domain de etude" />
                             <div *ngIf="myform.get('domain').touched && myform.get('domain').hasError('required')" style="margin-top: 18px">
-                                <span style="color: red;display: flex"> remplir le champs</span>
+                                <span style="color: red;display: flex"> Ce champ est requis</span>
                                 <br></div>
+                                <div *ngIf=" myform.get('domain').hasError('minlength')" style="margin-top: 0px">
+                                    <span style="color: red;display: flex"> Minimum 3 caractères</span>
+                                    <br></div>
+                                     <div *ngIf=" myform.get('domain').hasError('pattern')" style="margin-top: 0px">
+                                    <span style="color: red;display: flex"> Accepte uniquement les chiffres  </span>
+                                    <br></div>
+
                             <label class="fieldlabels">date de début: *</label>
-                            <input type="date" formControlName="dateDedebutEtude" value="data-bs-target" name="lname"  [max]="aujourdHui()"/>
+                            <input type="date" formControlName="dateDebutEtude" value="data-bs-target" name="lname"  [max]="aujourdHui()"/>
                             <label class="fieldlabels">date de fin: *</label>
                             <input type="date" formControlName="dateDeFinEtude" value="data-bs-target" name="lname" [max]="aujourdHui()" />
                         </div> <input type="button" name="next" class="next action-button" value="Submit" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
@@ -184,7 +203,7 @@
                                     <h2 class="fs-title">Etude:</h2>
                                 </div>
                                 <div class="col-5">
-                                    <h2 class="steps">Step 4 - 5</h2>
+                                    <h2 class="steps">Etape 4 - 5</h2>
                                 </div>
                             </div>
                             <label class="fieldlabels">company:</label>
@@ -205,26 +224,30 @@
                                     <h2 class="fs-title">Finish:</h2>
                                 </div>
                                 <div class="col-5">
-                                    <h2 class="steps">Step 5 - 5</h2>
+                                    <h2 class="steps">Etape 5 - 5</h2>
                                 </div>
                             </div> <br><br>
-                            <div *ngIf="success ===true">
-                                <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
+                            <div *ngIf="success === true">
+                                <h2 class="purple-text text-center"><strong>SUCCÈS !</strong></h2>
+                                <br>
                                 <div class="row justify-content-center">
-                                    <!-- Call the redirectToPlay method to trigger the redirect -->
-                                    <script>
-                                        if (success) {
-                                            redirectToPlay();
-                                        }
-                                    </script>
-                                    <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
-                                </div> <br><br>
-                                <div class="row justify-content-center">
-                                    <div class="col-7 text-center">
-                                        <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
-                                    </div>
+                                  <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
                                 </div>
-                            </div>
+                                <br><br>
+                                <div class="row justify-content-center">
+                                  <div class="col-7 text-center">
+                                    <h5 class="purple-text text-center">Vous vous êtes inscrit(e) avec succès</h5>
+                                  </div>
+                                </div>
+                                
+                                <!-- Bouton de redirection vers la page de connexion -->
+                                <div class="row justify-content-center mt-4">
+                                  <div class="col-6 text-center">
+                                    <a routerLink="/login" class="btn btn-primary">Aller à la page de connexion</a>
+                                  </div>
+                                </div>
+                              </div>
+                              
                             <div *ngIf="success ===false">
                                 <h2 class="purple-text text-center"><strong>Error</strong></h2> <br>
 

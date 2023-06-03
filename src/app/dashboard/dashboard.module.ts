@@ -7,7 +7,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './components/users/users.component';
 import { QuestionsComponent } from './components/questions/questions.component';
-import { FormGroup, FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SettingsComponent } from './components/settings/settings.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
@@ -43,6 +43,7 @@ import { AdminsComponent } from './components/admins/admins.component';
     MatInputModule,
     MatAutocompleteModule,
     NgxPaginationModule,
+    ReactiveFormsModule
     
   ],
   exports : [DashboardComponent]

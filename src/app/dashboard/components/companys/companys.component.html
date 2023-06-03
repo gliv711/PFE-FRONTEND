@@ -13,11 +13,11 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Image</th>
-
-                        <th scope="col">Prénom</th>
-                        <th scope="col">Nom</th>
+                        <th scope="col">Nom de societe</th>
+                        <th scope="col">Nom de responsable</th>
+                       
                         <th scope="col">Email</th>
-                        <th scope="col">Type</th>
+                        <th scope="col">Domaine</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -74,91 +74,177 @@
 
 <div class="modal fade" id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <div *ngIf="user.image">
-                    <img [src]="user.image" alt="User profile picture" class="image-preview" />
-                </div>
-                <!-- Input field for image upload -->
-                <div class="mb-3">
-                    <input type="file">
-
-                </div>
-
-
-                <div class="mb-3">
-                    <div class="row">
-                        <div class="col-1">
-                            <label for="exampleFormControlInput1" class="form-label">Nom de societe</label>
-                        </div>
-                        <div class="col">
-                            <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="user.nameofCompany">
-                        </div>
-
-
-
-                        <div class="col-1">
-                            <label for="exampleFormControlInput1" class="form-label">Prénom</label>
-                        </div>
-                        <div class="col">
-
-                            <input type="email" class="form-control" id="LastName" placeholder="" [(ngModel)]="user.nameofResponsible">
-                        </div>
-
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <div class="row">
-                        <div class="col-1">
-                            <label for="exampleFormControlInput1" class="form-label">Email</label>
-                        </div>
-                        <div class="col">
-
-                            <input type="email" class="form-control" id="email" placeholder="" [(ngModel)]="user.email">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <div class="row">
-                        <div class="col-2">
-                            <label for="exampleFormControlInput1" class="form-label">Mot de passe </label>
-                        </div>
-                        <div class="col">
-                            <input type="email" class="form-control" id="password" placeholder="" [(ngModel)]="user.password"></div>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <div class="row">
-                        <div class="col-2">
-                            <label for="exampleFormControlInput1" class="form-label">domaine d'activite</label>
-                        </div>
-                        <div class="col">
-                            <select class="form-select" id="Role" [(ngModel)]="user.domaineofActivity">
-                        
-                  <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
-                </select>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addUser(user)">Enregistrer</button>
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
+          <div *ngIf="user.image">
+            <img [src]="user.image" alt="User profile picture" class="image-preview" />
+          </div>
+          <!-- Input field for image upload -->
+          <div class="mb-3">
+            <input type="file">
+          </div>
+  
+          <form [formGroup]="myForm" >
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-1">
+                  <label for="nameofCompany" class="form-label">Nom de société</label>
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" id="nameofCompany" placeholder="" formControlName="nameofCompany">
+                  <div *ngIf="myForm.get('nameofCompany').invalid && (myForm.get('nameofCompany').dirty || myForm.get('nameofCompany').touched)" class="text-danger">
+                    <div *ngIf="myForm.get('nameofCompany').errors.required">
+                      Le nom de la société est requis.
+                    </div>
+                    <div *ngIf="myForm.get('nameofCompany').errors.minlength">
+                      Le nom de la société doit contenir au moins 3 caractères.
+                    </div>
+                    <div *ngIf="myForm.get('nameofCompany').errors.pattern">
+                      Le nom de la société doit contenir uniquement des lettres.
+                    </div>
+                    <div *ngIf="myForm.get('nameofCompany').errors.maxlength">
+                      Le nom de la société ne doit pas dépasser 30 caractères.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-1">
+                  <label for="nameofResponsible" class="form-label">Nom du responsable</label>
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" id="nameofResponsible" placeholder="" formControlName="nameofResponsible">
+                  <div *ngIf="myForm.get('nameofResponsible').invalid && (myForm.get('nameofResponsible').dirty || myForm.get('nameofResponsible').touched)" class="text-danger">
+                    <div *ngIf="myForm.get('nameofResponsible').errors.required">
+                      Le nom du responsable est requis.
+                    </div>
+                    <div *ngIf="myForm.get('nameofResponsible').errors.minlength">
+                      Le nom du responsable doit contenir au moins 3 caractères.
+                    </div>
+                    <div *ngIf="myForm.get('nameofResponsible').errors.pattern">
+                      Le nom du responsable doit contenir uniquement des lettres.
+                    </div>
+                    <div *ngIf="myForm.get('nameofResponsible').errors.maxlength">
+                      Le nom du responsable ne doit pas dépasser 30 caractères.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-1">
+                  <label for="email" class="form-label">Email</label>
+                </div>
+                <div class="col">
+                  <input type="email" class="form-control" id="email" placeholder="" formControlName="email">
+                  <div *ngIf="myForm.get('email').invalid && (myForm.get('email').dirty || myForm.get('email').touched)" class="text-danger">
+                    <div *ngIf="myForm.get('email').errors.required">
+                      Veuillez saisir une adresse email valide.
+                    </div>
+                    <div *ngIf="myForm.get('email').errors.email">
+                      Veuillez saisir une adresse email valide.
+                    </div>
+                    <div *ngIf="myform.get('email').errors?.emailExists" style="margin-top: 0px">
+                        <span style="color: red;display: flex">  L'email existe déjà dans la base de données. </span>
+
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-2">
+                  <label for="password" class="form-label">Mot de passe</label>
+                </div>
+                <div class="col">
+                  <input type="password" class="form-control" id="password" placeholder="" formControlName="password">
+                  <div *ngIf="myForm.get('password').invalid && (myForm.get('password').dirty || myForm.get('password').touched)" class="text-danger">
+                    <div *ngIf="myForm.get('password').errors.required">
+                      Le mot de passe est requis.
+                    </div>
+                    <div *ngIf="myForm.get('password').errors.minlength">
+                      Le mot de passe doit contenir au moins 8 caractères.
+                    </div>
+                    <div *ngIf="myForm.get('password').errors.pattern">
+                      Le mot de passe doit contenir au moins une lettre, un chiffre et un caractère spécial.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-1">
+                  <label for="phone_number" class="form-label">Téléphone</label>
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" id="phone_number" placeholder="" formControlName="phone_number">
+                  <div *ngIf="myForm.get('phone_number').invalid && (myForm.get('phone_number').dirty || myForm.get('phone_number').touched)" class="text-danger">
+                    Le numéro de téléphone est requis.
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-1">
+                  <label for="address" class="form-label">Adresse</label>
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" id="address" placeholder="" formControlName="address">
+                  <div *ngIf="myForm.get('address').invalid && (myForm.get('address').dirty || myForm.get('address').touched)" class="text-danger">
+                    <div *ngIf="myForm.get('address').errors.required">
+                      L'adresse est requise.
+                    </div>
+                    <div *ngIf="myForm.get('address').errors.minlength">
+                      L'adresse doit contenir au moins 8 caractères.
+                    </div>
+                    <div *ngIf="myForm.get('address').errors.pattern">
+                      L'adresse est invalide.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-2">
+                  <label for="domaineofActivity" class="form-label">Domaine d'activité</label>
+                </div>
+                <div class="col">
+                  <select class="form-select" id="domaineofActivity" formControlName="domaineofActivity">
+                    <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+                  </select>
+                  
+                </div>
+              </div>
+            </div>
+  
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="myForm.invalid" (click)="AddUser()">Enregistrer</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+  
+  
 
 <div class="modal fade " id="more-info-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">

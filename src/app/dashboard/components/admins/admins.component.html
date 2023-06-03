@@ -72,79 +72,85 @@
 
 <div class="modal fade" id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <div *ngIf="user.image">
-                    <img [src]="user.image" alt="User profile picture" class="image-preview" />
-                </div>
-                <!-- Input field for image upload -->
-                <div class="mb-3">
-                    <input type="file">
-
-                </div>
-
-
-                <div class="mb-3">
-                    <div class="row">
-                        <div class="col-1">
-                            <label for="exampleFormControlInput1" class="form-label">email</label>
-                        </div>
-                        <div class="col">
-                            <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="user.email">
-                        </div>
-
-
-
-                        <div class="col-1">
-                            <label for="exampleFormControlInput1" class="form-label">Telephone</label>
-                        </div>
-                        <div class="col">
-
-                            <input type="email" class="form-control" id="LastName" placeholder="" [(ngModel)]="user.phone_number">
-                        </div>
-
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <div class="row">
-                        <div class="col-1">
-                            <label for="exampleFormControlInput1" class="form-label">Adresse</label>
-                        </div>
-                        <div class="col">
-
-                            <input type="email" class="form-control" id="email" placeholder="" [(ngModel)]="user.address">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <div class="row">
-                        <div class="col-2">
-                            <label for="exampleFormControlInput1" class="form-label">Mot de passe </label>
-                        </div>
-                        <div class="col">
-                            <input type="email" class="form-control" id="password" placeholder="" [(ngModel)]="user.password"></div>
-                    </div>
-                </div>
-
-              
-
-
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addUser(user)">Enregistrer</button>
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
+  
+          <div *ngIf="user.image">
+            <img [src]="user.image" alt="User profile picture" class="image-preview" />
+          </div>
+          <!-- Input field for image upload -->
+          <div class="mb-3">
+            <input type="file">
+          </div>
+  
+          <form [formGroup]="myForm" >
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-1">
+                  <label for="address" class="form-label">Adresse</label>
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" id="address" formControlName="address" placeholder="">
+                </div>
+                <div *ngIf="myForm.get('address').invalid && (myForm.get('address').dirty || myForm.get('address').touched)" style="margin-top: 0px">
+                  <span style="color: red;display: flex">Accepte uniquement des chiffres et des lettres.</span>
+                </div>
+  
+                <div class="col-1">
+                  <label for="phone" class="form-label">Téléphone</label>
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" id="phone" formControlName="phone_number" placeholder="">
+                </div>
+                <div *ngIf="myForm.get('phone_number').invalid && (myForm.get('phone_number').dirty || myForm.get('phone_number').touched)" style="margin-top: 0px">
+                  <span style="color: red;display: flex">Il faut 8 chiffres.</span>
+                </div>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-1">
+                  <label for="email" class="form-label">Email</label>
+                </div>
+                <div class="col">
+                  <input type="email" class="form-control" id="email" formControlName="email" placeholder="">
+                </div>
+                <div *ngIf="myForm.get('email').invalid && (myForm.get('email').dirty || myForm.get('email').touched)" style="margin-top: 0px">
+                  <span style="color: red;display: flex">Email invalide.</span>
+                </div>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-2">
+                  <label for="password" class="form-label">Mot de passe</label>
+                </div>
+                <div class="col">
+                  <input type="password" class="form-control" id="password" formControlName="password" placeholder="">
+                </div>
+                <div *ngIf="myForm.get('password').invalid && (myForm.get('password').dirty || myForm.get('password').touched)" style="margin-top: 0px">
+                  <span style="color: red;display: flex">Le mot de passe doit contenir au moins une lettre, un chiffre et un caractère spécial.</span>
+                </div>
+              </div>
+            </div>
+  
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="myForm.invalid" (click)="AddUser()">Enregistrer</button>
+            </div>
+          </form>
+  
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+  
 
 <div class="modal fade " id="more-info-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">

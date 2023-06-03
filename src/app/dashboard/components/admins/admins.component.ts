@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Company } from 'src/Models/Users/Company';
 import { admin } from 'src/Models/Users/admin';
 import { AuthService } from 'src/Services/auth-service/auth.service';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
 import { Role } from 'src/enums/role.enum';
-import {  } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admins',
@@ -12,8 +13,7 @@ import {  } from '@angular/forms';
   styleUrls: ['./admins.component.css']
 })
 export class AdminsComponent implements OnInit {
-  myform:any
-
+  myForm: FormGroup;
   Users: admin[] = [];
   user : admin = {};
 
@@ -23,9 +23,15 @@ export class AdminsComponent implements OnInit {
   mise_a_jour=false ;
   supprimer=false ;
   error = false ;
-  constructor(private UserService : UserServiceService ,private authservice :AuthService) {
+  constructor(private UserService : UserServiceService ,private authservice :AuthService,private router:Router,private formBuilder: FormBuilder) {
+    
+    this.myForm = this.formBuilder.group({
+      address: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]],
+      phone_number: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('[0-9]*')]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.pattern('^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]]
+    });
     this.getUsers(); 
-  
   this.authservice.loggedIn
   }
 
@@ -74,26 +80,9 @@ export class AdminsComponent implements OnInit {
   }
 
 
-  addUser(user:admin){
-    this.UserService.addadmin(this.user).subscribe({
-      next: () => {
-        this.getUsers();
-        this.mise_a_jour=true; 
-        setTimeout(() => {
-          this.mise_a_jour = false;
-        }, 3000); 
-      },
-      error: (e) =>  {console.log(e),this.error=true;},
-      complete: () => {
-        
-
-      }
-    })
-  }
 
 
-  
-  
+
   
   
   
@@ -103,6 +92,36 @@ export class AdminsComponent implements OnInit {
   
 
   ngOnInit(): void {
+    
   }
 
-}
+  AddUser() {
+    if (this.myForm.invalid) {
+      return;
+    }
+    const { phone_number, password, address, email } = this.myForm.value;
+    const user = { phone_number, password, address, email };
+    this.UserService.addadmin(user).subscribe({
+      
+      next: () => {
+       
+        this.getUsers();
+        this.mise_a_jour = true; 
+        setTimeout(() => {
+          this.mise_a_jour = false;
+        }, 3000); 
+      },
+      error: (e) => {
+        console.log(e);
+        this.error = true;
+      },
+      complete: () => {
+        this.close();
+      }
+    });
+    
+  }
+  
+  }
+
+

@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl,  FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable, catchError, map, of } from 'rxjs';
 import { User } from 'src/Models/Users/User';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
+import { EmailValidator } from 'src/email controle/EmailValidator';
 
 
 @Component({
@@ -30,40 +32,33 @@ export class SignupComponent implements OnInit {
   }
 
 
-  constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder  ,private userservice:UserServiceService) {
+  constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder  ,private userservice:UserServiceService,private emailValidator: EmailValidator) {
     this.myform = this.formbuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      name: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9À-ÿ ]*'), Validators.maxLength(30)]],
-      prenom: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9À-ÿ ]*'), Validators.maxLength(30)]],
+      email: [
+        '',
+        [Validators.required, Validators.email],
+        [emailValidator.validate.bind(emailValidator)],
+      ],
+      name: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-ZÀ-ÿ ]*'), Validators.maxLength(30)]],
+      prenom: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-ZÀ-ÿ ]*'), Validators.maxLength(30)]],
       password: ['', [Validators.required, Validators.minLength(8),Validators.pattern('^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
       confpassword: ['', [Validators.required, Validators.minLength(8), this.matchPasswords.bind(this)]],
       address: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9À-ÿ ]*'), Validators.maxLength(30)]],
       region: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9À-ÿ ]*'), Validators.maxLength(30)]],
       telephone :['',[Validators.required,Validators.minLength(8),Validators.maxLength(8),Validators.pattern('[0-9]*')]],
       BirthDate:["",Validators.required],
-      university :["",[Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9À-ÿ ]*'), Validators.maxLength(30)]],
-      domain : ["",[Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z0-9À-ÿ ]*'), Validators.maxLength(30)]],
+      university :["",[Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-ZÀ-ÿ ]*'), Validators.maxLength(30)]],
+      domain : ["",[Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-ZÀ-ÿ ]*'), Validators.maxLength(30)]],
       mondesocite:new FormControl(),
       dateFinPoste:new FormControl(),
       dateDebutPoste:new FormControl(),
-      dateDeFinEtude:["",[Validators.required,this.dateComparisonValidator.bind(this)]],
-      dateDedebutEtude: ["",Validators.required, ],
-      role: new FormControl() }) 
-      
-      
-      
-     
-      
-      
-      
-      
-      
-      
+      dateDebutEtude: ["", [Validators.required,]],
+      dateDeFinEtude: ["", [Validators.required, ]],
       
 
-      
-    
-    const n :number=0}
+
+      role: new FormControl() }) 
+       const n :number=0}
     matchPasswords(control: FormControl) {
       const password = control.parent?.get('password');
       if (password && control.value !== password.value) {
@@ -72,16 +67,15 @@ export class SignupComponent implements OnInit {
       return null;
     
    }
-   dateComparisonValidator(formGroup: FormGroup) {
-    const dateDebutEtudeControl = formGroup.get('dateDebutEtude');
-    const dateFinEtudeControl = formGroup.get('dateFinEtude');
   
-    if (dateDebutEtudeControl && dateFinEtudeControl &&
-        dateDebutEtudeControl.value && dateFinEtudeControl.value &&
-        dateDebutEtudeControl.value < dateFinEtudeControl.value) {
-      dateFinEtudeControl.setErrors({ dateComparison: true });
-    } 
+   
+
+  getemail(){
+    let email=this.myform.value.email
+    this.userservice.getUserByEmail(email)
   }
+  
+  
 
 
    redirectToPlay(): void {
@@ -106,7 +100,7 @@ export class SignupComponent implements OnInit {
     
         
           console.log("success form");
-          console.log(this.myform.value.email)
+          
 
 
           const current_fs = button.parentNode;
@@ -217,7 +211,7 @@ export class SignupComponent implements OnInit {
 
         };
      
-        this.userservice. registrationAddUser(user).subscribe(user=>{
+        this.userservice.AddUser(user).subscribe(user=>{
           this.success=true ;
           console.log("success form");
          

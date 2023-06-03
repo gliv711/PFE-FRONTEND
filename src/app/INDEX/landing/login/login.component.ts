@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/Services/auth-service/auth.service';
 import { AuthguardsGuard } from 'src/guards/authguards.guard';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { AuthService } from 'src/Services/auth-service/auth.service';
 
 @Component({
@@ -20,15 +21,21 @@ export class LoginComponent implements OnInit {
    urluser:any
 
    helper=new JwtHelperService()
-  // api = environment.baseUrl+'8084/USER-MANAGEMENT/api';
-  api = 'http://localhost:8084/api/login';
+  api = environment.baseUrl+'8084/USER-MANAGEMENT/api/login';
+  // api = 'http://localhost:8084/api/login';
 
+  myForm: FormGroup;
 
   email: string = '';
   password: string = '';
   result: string = '';
   datarecieved:any
-  constructor(private activateRoute:ActivatedRoute,private router: Router , private http: HttpClient,private authservice:AuthService) { 
+  constructor(private activateRoute:ActivatedRoute,private router: Router , private http: HttpClient,private authservice:AuthService,private formBuilder: FormBuilder) { 
+  
+    this.myForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.pattern('^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]]
+    })
   }
   
   getrole(){
@@ -49,7 +56,7 @@ export class LoginComponent implements OnInit {
   
 
   
-    
+    loginFailed:boolean=false
   login(f: any) {
     let data = f.value;
     this.authservice.login(data.email, data.password).subscribe(Response => {
@@ -75,7 +82,8 @@ export class LoginComponent implements OnInit {
       }
         
      
-    }, error => console.log(error));
+    }, error =>{
+    this.loginFailed = true})
   }
 
 

@@ -5,6 +5,7 @@ import { Role } from 'src/enums/role.enum';
 import { DatePipe } from '@angular/common';
 import { AuthService } from 'src/Services/auth-service/auth.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-users',
@@ -14,7 +15,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 })
 export class UsersComponent implements OnInit {
-  
+  myForm: FormGroup;
+
 
   Users: User[] = [];
     user : User = {};
