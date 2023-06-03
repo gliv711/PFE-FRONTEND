@@ -22,20 +22,18 @@
                                                     </td>
                                                     <td>
                                                         <div class="widget-26-job-title">
-                                                            <a href="#">{{result.email}}</a>
+                                                            <a href="#">{{user.name}} {{user.lastName}}</a>
                                                             <p class="m-0">
                                                                 <a class="employer-name"></a> <span class="text-muted time">1 days ago</span></p>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="widget-26-job-info">
-                                                            <p class="type m-0">Full-Time</p>
-                                                            <p class="text-muted m-0">in <span class="location">London, UK</span></p>
+                                                            <p class="type m-0">{{result.email}}</p>
+                                                            <p class="text-muted m-0">in <span class="location">{{user.region}}</span></p>
                                                         </div>
                                                     </td>
-                                                    <td>
-                                                        <div class="widget-26-job-salary">$ 50/hr</div>
-                                                    </td>
+
                                                     <td>
                                                         <i class="indicator bg-base"></i>
                                                         <button class="btn">

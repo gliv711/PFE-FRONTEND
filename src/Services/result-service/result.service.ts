@@ -18,5 +18,13 @@ export class ResultService {
    return this.http.get<Result[]>(this.api + '/all', { headers });
     }
 
+    getResultCount(): Observable <number>{
+      const accessToken:any = localStorage.getItem('accesstoken');
+      const refreshToken=localStorage.getItem('refreshtoken')
+      var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+     return this.http.get<number>(this.api + '/count', { headers });
+      
+    }
+
   
 }
