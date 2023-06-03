@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Company } from 'src/Models/Users/Company';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
+import { EmailCompanyValidator } from 'src/email controle/EmailCompanyValidator';
 
 @Component({
   selector: 'app-step1',
@@ -25,9 +26,13 @@ export class Step1Component implements OnInit {
   isform : any 
   company!: Company;
 
-  constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder ,private userservice:UserServiceService ) {
+  constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder ,private userservice:UserServiceService ,private emailValidator: EmailCompanyValidator) {
     this.isform = this.formbuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: [
+        '',
+        [Validators.required, Validators.email],
+        [emailValidator.validate.bind(emailValidator)],
+      ],
       name: ['', [Validators.required, Validators.minLength(3), Validators.pattern(('[a-zA-Z0-9À-ÿ ]*')), Validators.maxLength(30)]],
       password: ['', [Validators.required, Validators.minLength(8),Validators.pattern('^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
       confpassword: ['', [Validators.required, Validators.minLength(8), this.matchPasswords.bind(this)]],
@@ -107,10 +112,10 @@ export class Step1Component implements OnInit {
           console.log(company)
          
          
-          console.log("success form");
           this.userservice.addCompany(company).subscribe(company=>{
             this.success=true ;
-            console.log("success form");
+            console.log(this.success);
+            
            
           })
           const current_fs = button.parentNode;

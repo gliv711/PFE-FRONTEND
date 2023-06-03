@@ -66,6 +66,11 @@ apisurvey=environment.baseUrl+'/SURVEY-MANAGEMENT/api/';
     return this.http.post<User>(this.api,formData);
 
   }
+  AddUser(user : User) {
+    
+    return this.http.post<User>(this.api,user);
+
+  }
   addadmin(user:admin) {
     const accessToken:any = localStorage.getItem('accesstoken');
     const refreshToken=localStorage.getItem('refreshtoken')
@@ -156,6 +161,16 @@ apisurvey=environment.baseUrl+'/SURVEY-MANAGEMENT/api/';
 
     getCompanyByEmail(email: string) : Observable<Company> {
       return this.http.get<Company>(`${this.apicompany}/email/${email}`);
+    }
+    checkIfUserEmailExists(email: string) {
+      
+  
+      return this.http.get(this.api+"/check-email/"+email);
+    }
+    checkIfCompanyEmailExists(email: string) {
+      
+  
+      return this.http.get(this.apicompany+"/check-email/"+email);
     }
     
 
