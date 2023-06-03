@@ -13,7 +13,7 @@ export class UserServiceService {
 api = environment.baseUrl+'/USER-MANAGEMENT/api/user';
 apicompany=environment.baseUrl+'/USER-MANAGEMENT/api/company';
 apiadmin=environment.baseUrl+'/USER-MANAGEMENT/api/admin';
-
+apisurvey=environment.baseUrl+'/SURVEY-MANAGEMENT/api/';
 
 
 
@@ -98,6 +98,21 @@ apiadmin=environment.baseUrl+'/USER-MANAGEMENT/api/admin';
     var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
       return this.http.get<number>(this.api+'/count',{headers});
     };
+  
+
+  getAdminCount(): Observable<number>{
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+      return this.http.get<number>(this.apiadmin+'/count',{headers});
+  }
+  getCompanyCount(): Observable<number>{
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+      return this.http.get<number>(this.apicompany+'/count',{headers});
+  }
+    
    
     getsociete(): Observable <Company[]>{
       const accessToken:any = localStorage.getItem('accesstoken');

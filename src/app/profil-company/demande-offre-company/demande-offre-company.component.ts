@@ -29,8 +29,8 @@ export class DemandeOffreCompanyComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getDemand();
-    const email: string = this.getemail(); 
+    const email: string = this.getemail();
+    this.getDemand(email);
     this.getCompanyByEmail(email).subscribe(
       (company: Company) => {
         console.log(company);
@@ -41,9 +41,15 @@ export class DemandeOffreCompanyComponent implements OnInit {
         console.error(error);
       }
     );
+
+
   }
   getCompanyByEmail(email: string): Observable<Company> {
     return this.userService.getCompanyByEmail(email);
+  }
+
+  getDemandsByCompany(email:string) : Observable<Demand[]>{
+    return this.demandService.getDemandByEmail(email);
   }
 
   helper = new JwtHelperService();
@@ -54,23 +60,25 @@ export class DemandeOffreCompanyComponent implements OnInit {
     return decodeAccessToken.sub;
   }
 
-  
-  getDemand(){
-    this.demands=[];
-    this.demandService.getDemand().subscribe({
+  getDemand(email: string) {
+    this.demands = [];
+    this.demandService.getDemandByEmail(email).subscribe({
       next: (response: Demand[]) => {
         this.demands = response;
       },
-      error: (e) =>  {console.log(e),this.error=true;},
+      error: (e) => {
+        console.log(e);
+        this.error = true;
+      },
       complete: () => {}
-    })
+    });
   }
 
   addDemand(demand:Demand){
     demand.email=this.getemail();
     this.demandService.addDemand(demand).subscribe({
       next: () => {
-        this.getDemand();
+        this.getDemand(demand.email);
         this.mise_a_jour=true; 
         setTimeout(() => {
           this.mise_a_jour = false;
@@ -84,11 +92,14 @@ export class DemandeOffreCompanyComponent implements OnInit {
     })
   }
 
+  
+
   deleteDemand(demand : Demand){
-    
+    demand.email=this.getemail();
+
     this.demandService.deleteDemand(demand).subscribe({
       next: () => {
-        this.getDemand();
+        this.getDemand(demand.email);
       
         
         this.supprimer=true;
@@ -114,6 +125,7 @@ export class DemandeOffreCompanyComponent implements OnInit {
 
  salaryOptions: string[] = ['+500 dt par mois', '+1500 dt par mois', '+2500 dt par mois '];
  contractTypeOptions = ['CDD', 'CDI','Stage'];
+ regimeTypeOptions = ['Temps Partiel', 'Temps Plein'];
  placeOptions: string[] = [
   'Béja',
   'Ben Arous',

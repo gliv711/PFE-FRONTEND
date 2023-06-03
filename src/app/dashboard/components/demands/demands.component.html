@@ -12,10 +12,12 @@
                 <thead class="table-dark" style="background-color: aqua;">
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Régime horaire</th>
                         <th scope="col">Titre</th>
-
+                        <th scope="col">Poste</th>
                         <th scope="col">Emplacement</th>
-
+                        <th scope="col">Type de contrat</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -23,13 +25,15 @@
                     <tr *ngFor="let demand of demands">
                         <th scope="row">{{demand.id}}</th>
 
-
+                        <td>{{demand?.email}}</td>
+                        <td>{{demand?.regime}}</td>
                         <td>{{demand?.title}}</td>
+                        <td>{{demand?.jobTitle}}</td>
                         <td>{{demand?.place}}</td>
-
+                        <td>{{demand?.contractType}}</td>
                         <td class="d-flex justify-content-around">
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal" (click)="setCurrentDemand(demand)">Supprimer</button>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-add-Modal" (click)="setCurrentDemand(demand)">Update</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-add-Modal" (click)="setCurrentDemand(demand)">Modifier</button>
                         </td>
                     </tr>
                 </tbody>
@@ -80,6 +84,16 @@
 
                 <div class="mb-3">
                     <div class="row">
+                        <div class="col-3">
+                            <label for="exampleFormControlInput1" class="form-label">Email</label>
+                        </div>
+                        <div class="col">
+
+                            <input type="email" class="form-control" id="name" placeholder="" [(ngModel)]="demand.email" disabled>
+
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-1">
                             <label for="exampleFormControlInput1" class="form-label">Titre</label>
                         </div>
@@ -109,6 +123,13 @@
                             <select class="form-select" [(ngModel)]="demand.contractType" id="contract">
                                 <option value="Non Fournie">Non Fournie</option>
                                 <option *ngFor="let contract of contractTypeOptions" [value]="contract">{{ contract }}</option>
+                            </select>
+                        </div>
+                        <div class="col">
+
+                            <select class="form-select" [(ngModel)]="demand.regime" id="regime">
+                                <option value="Non Fournie">Non Fournie</option>
+                                <option *ngFor="let regime of regimeTypeOptions" [value]="regime">{{ regime }}</option>
                             </select>
                         </div>
                     </div>

@@ -33,6 +33,14 @@ export class SurveyServiceService {
     return this.http.get<Survey[]>(this.api+'general',{headers});
   }
 
+
+  getAnswersCount(): Observable<number>{
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+      return this.http.get<number>(environment.baseUrl+'/SURVEY-MANAGEMENT/api/answers/count',{headers});
+  }
+
   getSurveyFinances(): Observable <Survey[]>{
     const accessToken:any = localStorage.getItem('accesstoken');
     const refreshToken=localStorage.getItem('refreshtoken')

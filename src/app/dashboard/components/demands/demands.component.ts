@@ -8,6 +8,7 @@ import { DemandService } from 'src/Services/demand-service/demand.service';
   styleUrls: ['./demands.component.css']
 })
 export class DemandsComponent implements OnInit {
+  regimeTypeOptions = ['Temps Partiel', 'Temps Plein'];
 
 
   demands : Demand[] =[];

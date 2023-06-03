@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { Survey } from 'src/Models/Form/Survey';
 import { AnswerService } from 'src/Services/answer-service/answer.service';
@@ -145,36 +146,44 @@ export class SurveyFormComponent implements OnInit {
 
 
     submitSurvey(): void {
-      const apiUrl = 'http://localhost:8888/RESULTAT-MANAGEMENT/api/results/';
-      const surveyId = this.selectedSurvey?.id;
-      const userId = 123; // Replace with the actual user ID
-    
-      if (!surveyId) {
-        console.error('No survey selected');
-        return;
-      }
-    
-      // Collect the selected answers
-      const answers: { questionId: number; answerId: number }[] = [];
-      this.getCurrentStepQuestions().forEach(question => {
+      const selectedAnswers: { questionId: number; answerId: number }[] = [];
+      this.getCurrentStepQuestions().forEach((question: any) => {
         const selectedAnswerElement = document.querySelector(`input[name="${question.question_id}"]:checked`) as HTMLInputElement;
         if (selectedAnswerElement) {
           const selectedAnswerId = parseInt(selectedAnswerElement.value, 10);
           const answer = { questionId: question.question_id, answerId: selectedAnswerId };
-          answers.push(answer);
+          selectedAnswers.push(answer);
         }
       });
     
+      const resultList = selectedAnswers.map((answer: any) => {
+        const question = this.selectedSurvey.questions.find((q: any) => q.question_id === answer.questionId);
+        const selectedAnswer = question.answers.find((a: any) => a.answer_id === answer.answerId);
+        return {
+          question: question.question,
+          answer: selectedAnswer.answer
+        };
+      });
+    
+      this.selectedSurvey.questions.forEach((question: any) => {
+        question.field = this.selectedSurvey.field;
+      });
+    
+      const apiUrl = 'http://localhost:8888/RESULT-MANAGEMENT/api/results/';
+    
       const body = {
-        surveyId: surveyId,
-        userId: userId,
-        x: answers
+        email: this.helper.decodeToken(localStorage.getItem('accesstoken') || '')?.sub,
+        domain: this.selectedField,
+        resultList: resultList
       };
+
+      
     
       this.http.post(apiUrl, body).subscribe(
         (response: any) => {
           console.log('Survey submitted successfully', response);
-          // Handle success response
+          console.log(body);
+          console.log(response);
         },
         (error: any) => {
           console.error('Error submitting survey', error);
@@ -183,6 +192,25 @@ export class SurveyFormComponent implements OnInit {
       );
     }
     
+    
+    
+    
+    
+    
+    
+    
+ 
+    
+    helper=new JwtHelperService()
+
+    getemail(){
+      let accesstoken:any= localStorage.getItem('accesstoken')
+      let decodeaccesToken= this.helper.decodeToken(accesstoken)
+      console.log(decodeaccesToken.sub)
+      return decodeaccesToken.sub
+  
+  }
+
 
 
 

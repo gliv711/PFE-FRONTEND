@@ -24,7 +24,7 @@ export class DemandService {
     const accessToken:any = localStorage.getItem('accesstoken');
     const refreshToken=localStorage.getItem('refreshtoken')
     var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
-    return this.http.post<Demand>(this.api,{headers});
+    return this.http.post<Demand>(this.api,demand,{headers});
   }
 
   deleteDemand(demand: Demand): Observable<Demand> {
@@ -40,6 +40,12 @@ export class DemandService {
     var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;   
     return this.http.get<number>(this.api+'count',{headers});
   };
+
+  getDemandByEmail(email:string):Observable<Demand[]>{
+    return this.http.get<Demand[]>(this.api+'email/'+email);
+
+
+  }
 
   
 
