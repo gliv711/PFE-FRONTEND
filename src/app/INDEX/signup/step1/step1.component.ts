@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Company } from 'src/Models/Users/Company';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
 import { EmailCompanyValidator } from 'src/email controle/EmailCompanyValidator';
+import { EmailValidator } from 'src/email controle/EmailValidator';
 
 @Component({
   selector: 'app-step1',
@@ -26,7 +27,7 @@ export class Step1Component implements OnInit {
   isform : any 
   company!: Company;
 
-  constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder ,private userservice:UserServiceService ,private emailValidator: EmailCompanyValidator) {
+  constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder ,private userservice:UserServiceService ,private emailValidator: EmailValidator) {
     this.isform = this.formbuilder.group({
       email: [
         '',

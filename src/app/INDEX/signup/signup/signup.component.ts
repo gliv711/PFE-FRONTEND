@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { AbstractControl,  FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl,  FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, catchError, map, of } from 'rxjs';
 import { User } from 'src/Models/Users/User';
@@ -30,7 +30,7 @@ export class SignupComponent implements OnInit {
     const today = new Date();
     return today.toISOString().split('T')[0];
   }
-
+  
 
   constructor(private elementRef: ElementRef , private router: Router ,private formbuilder : FormBuilder  ,private userservice:UserServiceService,private emailValidator: EmailValidator) {
     this.myform = this.formbuilder.group({
@@ -52,12 +52,14 @@ export class SignupComponent implements OnInit {
       mondesocite:new FormControl(),
       dateFinPoste:new FormControl(),
       dateDebutPoste:new FormControl(),
-      dateDebutEtude: ["", [Validators.required,]],
-      dateDeFinEtude: ["", [Validators.required, ]],
+      dateDebutEtude: [new Date(), [Validators.required,]],
+      dateDeFinEtude: [new Date(), [Validators.required,]],
       
 
 
-      role: new FormControl() }) 
+      role: new FormControl() ,
+        });
+    
        const n :number=0}
     matchPasswords(control: FormControl) {
       const password = control.parent?.get('password');
@@ -95,7 +97,8 @@ export class SignupComponent implements OnInit {
     
       button.addEventListener('click', () => {
   if(this.myform.controls.email.valid && this.myform.controls.name.valid && this.myform.controls.prenom.valid  && this.myform.controls.password.valid && this.myform.controls. confpassword.valid  && nextButtons.item(0)== button) {
-         
+    // if(  nextButtons.item(0)== button) {
+
        
     
         
@@ -130,8 +133,10 @@ export class SignupComponent implements OnInit {
           this.setProgressBar(++this.current);
         }
         else if(this.myform.controls.telephone.valid &&this.myform.controls.region.valid  &&this.myform.controls.BirthDate.valid&&this.myform.controls.address.valid  &&  nextButtons.item(1)== button) {
-         
-         
+          // else if(  nextButtons.item(1)== button) {
+
+         console.log(this.myform.value)
+
           console.log("success form");
           const current_fs = button.parentNode;
           const next_fs = current_fs.nextElementSibling;
@@ -159,8 +164,10 @@ export class SignupComponent implements OnInit {
           }, 50);
           this.setProgressBar(++this.current);
         }
-        else if(this.myform.controls.domain.valid   && this.myform.controls.university.valid&& this.myform.controls.dateDedebutEtude&&  nextButtons.item(2)== button) {
+        else if(this.myform.controls.domain.valid&& this.myform.controls.university.valid&& this.myform.controls.dateDeFinEtude.valid&& this.myform.controls.dateDeFinEtude.valid&& nextButtons.item(2)== button) {
           console.log("success form");
+          console.log("jdhgdhdgh")
+          console.log(this.myform.value);
           const current_fs = button.parentNode;
           const next_fs = current_fs.nextElementSibling;
   
@@ -216,6 +223,7 @@ export class SignupComponent implements OnInit {
           console.log("success form");
          
         })
+
          console.log(user)
         
          
