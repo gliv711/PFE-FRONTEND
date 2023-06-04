@@ -5,6 +5,7 @@ import { User } from 'src/Models/Users/User';
 import { AuthService } from 'src/Services/auth-service/auth.service';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
 import { EmailCompanyValidator } from 'src/email controle/EmailCompanyValidator';
+import { EmailValidator } from 'src/email controle/EmailValidator';
 import { domaine } from 'src/enums/domaine';
 import { Role } from 'src/enums/role.enum';
 
@@ -24,7 +25,7 @@ export class CompanysComponent implements OnInit {
   mise_a_jour=false ;
   supprimer=false ;
   error = false ;
-  constructor(private UserService : UserServiceService ,private authservice :AuthService,private formBuilder: FormBuilder,private emailValidator: EmailCompanyValidator) {
+  constructor(private UserService : UserServiceService ,private authservice :AuthService,private formBuilder: FormBuilder,private emailValidator: EmailValidator) {
     this.getUsers(); 
   
     this.myForm = this.formBuilder.group({

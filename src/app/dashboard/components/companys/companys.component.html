@@ -148,19 +148,19 @@
                   <input type="email" class="form-control" id="email" placeholder="" formControlName="email">
                   <div *ngIf="myForm.get('email').invalid && (myForm.get('email').dirty || myForm.get('email').touched)" class="text-danger">
                     <div *ngIf="myForm.get('email').errors.required">
-                      Veuillez saisir une adresse email valide.
+                      Veuillez saisir une adresse email.
                     </div>
                     <div *ngIf="myForm.get('email').errors.email">
                       Veuillez saisir une adresse email valide.
                     </div>
-                    <div *ngIf="myform.get('email').errors?.emailExists" style="margin-top: 0px">
-                        <span style="color: red;display: flex">  L'email existe déjà dans la base de données. </span>
-
-                      </div>
+                    <div *ngIf="myForm.get('email').errors?.emailExists" style="margin-top: 0px">
+                      <span style="color: red;display: flex">L'email existe déjà dans la base de données.</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            
   
             <div class="mb-3">
               <div class="row">

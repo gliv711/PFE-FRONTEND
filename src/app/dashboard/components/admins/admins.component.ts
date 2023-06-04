@@ -6,6 +6,7 @@ import { UserServiceService } from 'src/Services/user-service/user-service.servi
 import { Role } from 'src/enums/role.enum';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EmailValidator } from 'src/email controle/EmailValidator';
 
 @Component({
   selector: 'app-admins',
@@ -23,12 +24,16 @@ export class AdminsComponent implements OnInit {
   mise_a_jour=false ;
   supprimer=false ;
   error = false ;
-  constructor(private UserService : UserServiceService ,private authservice :AuthService,private router:Router,private formBuilder: FormBuilder) {
+  constructor(private UserService : UserServiceService ,private authservice :AuthService,private router:Router,private formBuilder: FormBuilder,private emailValidator: EmailValidator) {
     
     this.myForm = this.formBuilder.group({
       address: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]],
       phone_number: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('[0-9]*')]],
-      email: ['', [Validators.required, Validators.email]],
+      email: [
+        '',
+        [Validators.required, Validators.email],
+        [emailValidator.validate.bind(emailValidator)],
+      ],
       password: ['', [Validators.required, Validators.pattern('^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]]
     });
     this.getUsers(); 

@@ -121,8 +121,11 @@
                   <input type="email" class="form-control" id="email" formControlName="email" placeholder="">
                 </div>
                 <div *ngIf="myForm.get('email').invalid && (myForm.get('email').dirty || myForm.get('email').touched)" style="margin-top: 0px">
-                  <span style="color: red;display: flex">Email invalide.</span>
+                  <span style="color: red;display: flex"> L'email existe déjà dans la base de données ou l'email Invalid. </span>
                 </div>
+                <div *ngIf="myForm.get('email').hasError('validate')">
+                    <span style="color: red;display: flex">Validation de l'email échouée.</span>
+                  </div>
               </div>
             </div>
   

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { timer } from 'rxjs';
 
 import { Survey } from 'src/Models/Form/Survey';
 import { AnswerService } from 'src/Services/answer-service/answer.service';
@@ -18,11 +19,33 @@ export class SurveyFormComponent implements OnInit {
 
   questionsPerStep = 1; // Change this variable to adjust the number of questions per step
 
-  constructor( private route: ActivatedRoute,private SurveyService : SurveyServiceService,private questionsService : QuestionsService,private answerService : AnswerService,private http: HttpClient) { }
+  constructor( private route: ActivatedRoute,private SurveyService : SurveyServiceService,private questionsService : QuestionsService,private answerService : AnswerService,private http: HttpClient ,private router: Router) {
+   
+  }
+  readonly DELAY_TIME = 1 * 60 * 1000; // 30 minutes en millisecondes
+
   
 
   ngOnInit(): void {
+    if ((performance.getEntriesByType('navigation')[1] as any).type === 'reload') {
+      this.router.navigate(['/user']); // Redirige vers la page utilisateur
+    }
+    // const lastRefreshTime = localStorage.getItem('lastRefreshTime');
+    // const currentTime = new Date().getTime();
+  
+    // if (lastRefreshTime) {
+    //   const elapsedTime = currentTime - Number(lastRefreshTime);
+    //   if (elapsedTime >= this.DELAY_TIME) {
+    //     this.router.navigate(['/user']); // Redirige vers la page de connexion
+    //   }
+    // }
+  
+    // localStorage.setItem('lastRefreshTime', String(currentTime));
+   
 
+    timer(this.DELAY_TIME).subscribe(() => {
+      this.router.navigate(['/user']); // Redirige vers la page de connexion
+    });
     const field = this.route.snapshot.paramMap.get('field');
     this.selectedField = field ? field : '';
 
@@ -213,6 +236,9 @@ export class SurveyFormComponent implements OnInit {
 
 
 
-
+  ngOnDestroy() {
+    localStorage.removeItem('lastRefreshTime');
+  }
+  
   
 }
