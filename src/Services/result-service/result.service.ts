@@ -18,6 +18,15 @@ export class ResultService {
    return this.http.get<Result[]>(this.api + '/all', { headers });
     }
 
+
+    getResultsPerDomain(domain : string): Observable <Result[]>{
+
+const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+   return this.http.get<Result[]>(this.api + '/domain/'+domain, { headers });
+    }
+
     getResultCount(): Observable <number>{
       const accessToken:any = localStorage.getItem('accesstoken');
       const refreshToken=localStorage.getItem('refreshtoken')

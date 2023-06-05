@@ -165,19 +165,13 @@ export class SurveyFormComponent implements OnInit {
         };
       });
     
-      this.selectedSurvey.questions.forEach((question: any) => {
-        question.field = this.selectedSurvey.field;
-      });
-    
       const apiUrl = 'http://localhost:8888/RESULT-MANAGEMENT/api/results/';
     
       const body = {
-        email: this.helper.decodeToken(localStorage.getItem('accesstoken') || '')?.sub,
+        email: this.getemail(), // Use the getemail() method to get the email
         domain: this.selectedField,
         resultList: resultList
       };
-
-      
     
       this.http.post(apiUrl, body).subscribe(
         (response: any) => {
@@ -191,6 +185,7 @@ export class SurveyFormComponent implements OnInit {
         }
       );
     }
+    
     
     
     

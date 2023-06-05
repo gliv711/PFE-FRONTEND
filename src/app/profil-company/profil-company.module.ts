@@ -8,6 +8,7 @@ import { DemandeOffreCompanyComponent } from './demande-offre-company/demande-of
 
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { UserListComponent } from './demande-offre-company/user-list/user-list/user-list.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     NavbarCompanyComponent,
     AcceuilCompanyComponent,
     SettingsCompanyComponent,
-    DemandeOffreCompanyComponent
+    DemandeOffreCompanyComponent,
+    UserListComponent
   ],
   imports: [
     CommonModule,
