@@ -39,7 +39,7 @@ import { ForgetPasswordComponent } from './INDEX/landing/login/forget-password/f
 import { AnswersComponent } from './dashboard/components/answers/answers.component';
 import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 
-import { ProfilComponent } from './INDEX/profil/profil.component';
+import { ProfilComponent } from './profil-user/profil/profil.component';
 
 import { SurveyFormComponent } from './Inside/survey-form/survey-form.component';
 import { SurveysComponent } from './dashboard/components/surveys/surveys.component';
@@ -48,19 +48,20 @@ import { DemandsComponent } from './dashboard/components/demands/demands.compone
 import { AuthguardsGuard } from 'src/guards/authguards.guard';
 import { NewPasswordFormComponent } from './INDEX/landing/login/new-password-form/new-password-form/new-password-form.component';
 import { LoginUserComponent } from './INDEX/landing/login-user/login-user/login-user.component';
-import { AcceuilUserComponent } from './INDEX/profil/acceuil-user/acceuil-user.component';
-import { SettingsUserComponent } from './INDEX/profil/settings-user/settings-user.component';
+import { AcceuilUserComponent } from './profil-user/acceuil-user/acceuil-user.component';
+import { SettingsUserComponent } from './profil-user/settings-user/settings-user.component';
 import { UserGuard } from 'src/guards/userguard/user.guard';
 import { ProfilCompanyComponent } from './profil-company/profil-company/profil-company.component';
 import { AcceuilCompanyComponent } from './profil-company/acceuil-company/acceuil-company.component';
 import { SettingsCompanyComponent } from './profil-company/settings-company/settings-company.component';
 import { DemandeOffreCompanyComponent } from './profil-company/demande-offre-company/demande-offre-company.component';
 import { CompanyGuard } from 'src/guards/companyguard/company.guard';
-import { NavbarUserComponent } from './INDEX/profil/navbar-user/navbar-user.component';
+import { NavbarUserComponent } from './profil-user/navbar-user/navbar-user.component';
 import { ProfilCompanyModule } from './profil-company/profil-company.module';
 import { CompanysComponent } from './dashboard/components/companys/companys.component';
 import { AdminsComponent } from './dashboard/components/admins/admins.component';
-import { OffreUserComponent } from './INDEX/profil/offre-user/offre-user.component';
+import { OffreUserComponent } from './profil-user/offre-user/offre-user.component';
+import { ProfilUserModule } from './profil-user/profil-user.module';
 
 const routes: Routes = [
   {path:'',component:LandingComponent},
@@ -137,17 +138,29 @@ const routes: Routes = [
   { path :'register-c',component:Step1Component},
   { path:'sidebar',component:SidebarComponent},
   { path:'pay',component:PayementFormComponent},
-  {
-    path: 'user',
-    component:ProfilComponent,canActivate:[UserGuard],
+//   {
+//     path: 'profil',
+//     component:ProfilComponent,canActivate:[UserGuard],
   
-    children: [
-        { path: '', component: AcceuilUserComponent },
-        { path: 'setting', component: SettingsUserComponent },
-        { path: 'surveyform/:field', component: SurveyFormComponent },
-        { path: 'offresUser', component: OffreUserComponent },
+//     children: [
+//         { path: '', component: AcceuilUserComponent },
+//         { path: 'setting', component: SettingsUserComponent },
+//         { path: 'surveyform/:field', component: SurveyFormComponent },
+//         { path: 'offresUser', component: OffreUserComponent },
         
-    ]
+//     ]
+// },
+{
+  path: 'user',
+  component:ProfilComponent,canActivate:[UserGuard],
+
+  children: [
+      { path: '', component: AcceuilUserComponent },
+      { path: 'setting', component: SettingsUserComponent },
+      { path: 'surveyform/:field', component: SurveyFormComponent },
+      { path: 'offresUser', component: OffreUserComponent },
+      
+  ]
 },
 ]
 @NgModule({

@@ -51,7 +51,7 @@ loggedIn(){
   // if(!localStorage.getItem(accesstoken)){
   //   return false
   // }
-  if(role!=="admin"&&role!=='superAdmin'){
+  if(role!=="admin"&&role!=='adminsuper'){
     return false}
   if(this.helper.isTokenExpired(refreshtoken)){
     return false

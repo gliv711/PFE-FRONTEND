@@ -25,11 +25,11 @@ import { SurveyFormComponent } from './Inside/survey-form/survey-form.component'
 import { PayementFormComponent } from './INDEX/payement-form/payement-form.component';
 import { NewPasswordFormComponent } from './INDEX/landing/login/new-password-form/new-password-form/new-password-form.component';
 import { LoginUserComponent } from './INDEX/landing/login-user/login-user/login-user.component';
-import { AcceuilUserComponent } from './INDEX/profil/acceuil-user/acceuil-user.component';
-import { NavbarUserComponent } from './INDEX/profil/navbar-user/navbar-user.component';
-import { SettingsUserComponent } from './INDEX/profil/settings-user/settings-user.component';
+import { AcceuilUserComponent } from './profil-user/acceuil-user/acceuil-user.component';
+import { NavbarUserComponent } from './profil-user/navbar-user/navbar-user.component';
+import { SettingsUserComponent } from './profil-user/settings-user/settings-user.component';
 import { ProfilCompanyModule } from './profil-company/profil-company.module';
-import { OffreUserComponent } from './INDEX/profil/offre-user/offre-user.component';
+import { OffreUserComponent } from './profil-user/offre-user/offre-user.component';
 
 
 @NgModule({
@@ -45,7 +45,7 @@ import { OffreUserComponent } from './INDEX/profil/offre-user/offre-user.compone
 
    
     LoginComponent,
-    ProfilComponent,
+   
 
     
     SignupComponent,
@@ -56,10 +56,7 @@ import { OffreUserComponent } from './INDEX/profil/offre-user/offre-user.compone
       PayementFormComponent,
       NewPasswordFormComponent,
       LoginUserComponent,
-      AcceuilUserComponent,
-      NavbarUserComponent,
-      SettingsUserComponent,
-      OffreUserComponent,
+      
       
     
     ],
