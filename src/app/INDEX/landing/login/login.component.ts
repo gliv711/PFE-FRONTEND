@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
       let accesstoken:any=localStorage.getItem('accesstoken')
       let decodeaccesToken= this.helper.decodeToken(accesstoken)
       let role=decodeaccesToken.roles
-      if(role=="admin"||role=='superAdmin'){
+      if(role=="admin"||role=='adminsuper'){
       this.router.navigate([this.url])}
       if(role=="user"){
         this.router.navigate([this.urluser])
