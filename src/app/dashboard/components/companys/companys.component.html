@@ -5,7 +5,7 @@
 
     <div class="card-body">
         <h2 class="text-center">Tout les Utilisateurs </h2>
-        <pagination-controls (pageChange)="currentPage = $event">
+        <pagination-controls (pageChange)="currentPage = $event">é
         </pagination-controls>
         <div class="table-responsive">
             <table class="table table-striped border-primary">
@@ -145,7 +145,7 @@
                   <label for="email" class="form-label">Email</label>
                 </div>
                 <div class="col">
-                  <input type="email" class="form-control" id="email" placeholder="" formControlName="email">
+                  <input type="email" class="form-control" id="email" placeholder="" formControlName="email" [(ngModel)]="user.email">
                   <div *ngIf="myForm.get('email').invalid && (myForm.get('email').dirty || myForm.get('email').touched)" class="text-danger">
                     <div *ngIf="myForm.get('email').errors.required">
                       Veuillez saisir une adresse email.

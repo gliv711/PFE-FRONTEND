@@ -59,5 +59,14 @@ loggedIn(){
   return true
    
 }
+getRole(){
+  let accesstoken:any=localStorage.getItem('accesstoken')
+  let decodeaccesToken= this.helper.decodeToken(accesstoken)
+  let role=decodeaccesToken.roles
+  if( role!=='adminsuper'){
+   return false
+  }
+  return true
+} 
 
 }

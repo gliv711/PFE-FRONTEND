@@ -8,8 +8,10 @@
 
             <li><a routerLink="/dashboard/users"> Client</a></li>
             <li><a routerLink="/dashboard/companys"> Societe</a></li>
-            <li><a routerLink="/dashboard/admins">Admin</a></li>
-        </ul>
+            <li *ngIf="test !== false">
+                <a routerLink="/dashboard/admins">Admin</a>
+              </li>
+                    </ul>
     </li>
     <li>
         <a> <i class="fa-solid fa-clipboard-question"></i> Base de données &#x25BE;</a>

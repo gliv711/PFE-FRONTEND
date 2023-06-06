@@ -121,6 +121,48 @@ export class CompanysComponent implements OnInit {
       }
     });
   }
+  updateUser() {
+    
+    if (this.myForm.invalid) {
+      return;
+    }
+  
+    const user = {
+      nameofCompany: this.myForm.value['nameofCompany'],
+      nameofResponsible: this.myForm.value['nameofResponsible'],
+      email: this.myForm.value['email'],
+      password: this.myForm.value['password'],
+      phone_number: this.myForm.value['phone_number'],
+      address: this.myForm.value['address'],
+      domaineofActivity: this.myForm.value['domaineofActivity']
+    };
+    if (
+      this.myForm.controls['nameofCompany'].valid &&
+      this.myForm.controls['nameofResponsible'].valid &&
+      this.myForm.controls['password'].valid &&
+      this.myForm.controls['phone_number'].valid &&
+      this.myForm.controls['address'] &&
+      this.myForm.controls['domaineofActivity'].valid
+    ){
+  
+    this.UserService.addCompany(user).subscribe({
+      next: () => {
+        this.getUsers();
+        this.mise_a_jour = true;
+        setTimeout(() => {
+          this.mise_a_jour = false;
+        }, 3000);
+      },
+      error: (e) => {
+        console.log(e);
+        this.error = true;
+      },
+      complete: () => {
+        this.close();
+      }
+    });
+  }
+}
   
 
 
