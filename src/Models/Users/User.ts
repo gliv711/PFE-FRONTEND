@@ -29,7 +29,7 @@ export class User extends lambda   {
 
          
          {
-        super( id ,email,Password,phone_number,address,image);
+        super( id ,email,Password,phone_number,address);
 
     }
 
