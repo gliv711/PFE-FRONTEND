@@ -58,6 +58,9 @@ apisurvey=environment.baseUrl+'/SURVEY-MANAGEMENT/api/';
     return this.http.get<User[]>(this.api+id);
   }
   getUserByEmail(email: string): Observable<User> {
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
     return this.http.get<User>(`${this.api}/email/${email}`);
   }
 
