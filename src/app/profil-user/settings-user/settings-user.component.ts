@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from 'src/Models/Users/User';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
@@ -10,7 +11,7 @@ import { UserServiceService } from 'src/Services/user-service/user-service.servi
 })
 export class SettingsUserComponent implements OnInit {
 
-  constructor(private userService : UserServiceService) { }
+  constructor(private userService : UserServiceService,private sanitizer: DomSanitizer) { }
   user: User = {
     name: '',
     lastName: '',
@@ -24,7 +25,8 @@ export class SettingsUserComponent implements OnInit {
     startofStudy :new Date ,
     endofStudy : new Date ,
     startofWork : new Date ,
-    endofWork : new Date 
+    endofWork : new Date,
+    picture : null
     
   }; 
   ngOnInit(): void {
@@ -37,6 +39,7 @@ export class SettingsUserComponent implements OnInit {
     this.userService.getUserByEmail(email).subscribe({
       next: (user: User) => {
         this.user = user;
+        console.log(user)
       },
       error: (error) => {
         console.log(error);
@@ -51,5 +54,11 @@ export class SettingsUserComponent implements OnInit {
     console.log(decodeaccesToken.sub)
     return decodeaccesToken.sub
 
+}
+
+getSrcFromCustomFile(user : User) {
+  let uint8Array = new Uint8Array(atob(user.picture.data).split("").map(char => char.charCodeAt(0)));
+  let dwn = new Blob([uint8Array])
+  return this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(dwn));
 }
 }
