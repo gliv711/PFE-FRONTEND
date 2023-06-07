@@ -24,12 +24,11 @@ export class SurveyFormComponent implements OnInit {
   }
   readonly DELAY_TIME = 1 * 60 * 1000; // 30 minutes en millisecondes
 
-  
+  isQuizCompleted : boolean = false; // wfaa
+
 
   ngOnInit(): void {
-    if ((performance.getEntriesByType('navigation')[1] as any).type === 'reload') {
-      this.router.navigate(['/user']); // Redirige vers la page utilisateur
-    }
+    this.startTimer();
     // const lastRefreshTime = localStorage.getItem('lastRefreshTime');
     // const currentTime = new Date().getTime();
   
@@ -43,9 +42,7 @@ export class SurveyFormComponent implements OnInit {
     // localStorage.setItem('lastRefreshTime', String(currentTime));
    
 
-    timer(this.DELAY_TIME).subscribe(() => {
-      this.router.navigate(['/user']); // Redirige vers la page de connexion
-    });
+  
     const field = this.route.snapshot.paramMap.get('field');
     this.selectedField = field ? field : '';
 
@@ -61,6 +58,12 @@ export class SurveyFormComponent implements OnInit {
       break;
     default:
       console.error('Invalid field selected');
+  }
+
+  const surveyCompleted = localStorage.getItem('surveyCompleted');
+  if (surveyCompleted) {
+    // Survey has been completed, hide the survey
+    this.selectedSurvey = null;
   }
 
 
@@ -163,6 +166,7 @@ export class SurveyFormComponent implements OnInit {
       if (this.currentStep < this.totalSteps) {
         this.currentStep++;
       }
+      
     }
 
 
@@ -201,6 +205,8 @@ export class SurveyFormComponent implements OnInit {
           console.log('Survey submitted successfully', response);
           console.log(body);
           console.log(response);
+          localStorage.setItem('surveyCompleted', 'true');
+
         },
         (error: any) => {
           console.error('Error submitting survey', error);
@@ -235,5 +241,21 @@ export class SurveyFormComponent implements OnInit {
     localStorage.removeItem('lastRefreshTime');
   }
   
+
+  // Declare the timer variable in your component
+// Declare the timer variable in your component
+timer: number = 5;
+timerExpired: boolean = false;
+
+// Add the timer logic
+startTimer() {
+  const interval = setInterval(() => {
+    this.timer--;
+    if (this.timer === 0) {
+      clearInterval(interval);
+      this.timerExpired = true;
+    }
+  }, 1000); // Update the timer every second
+}
   
 }

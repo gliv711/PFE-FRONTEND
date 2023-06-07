@@ -1,34 +1,43 @@
-<section style="background-color: #416DB8;">
-    <div class="card">
-        <div *ngIf="selectedSurvey">
-            <h2 class="my-3 text-center">{{selectedSurvey.title}}</h2>
-            <p class="lead text-center">{{selectedSurvey.description}}</p>
+<div class="card">
+    <div class="card-body" *ngIf="!timerExpired">
+        <h2 class="my-3 text-center">{{selectedSurvey.title}}</h2>
+        <p class="lead text-center">{{selectedSurvey.description}}</p>
 
-            <div *ngIf="currentStep <= totalSteps">
-                <!-- Display the current step questions -->
-                <ng-container *ngIf="selectedSurvey.questions">
-                    <div *ngFor="let question of getCurrentStepQuestions()">
-                        <h3 class="my-3">Question:</h3>
-                        <p class="lead">{{question.question}}</p>
+        <div *ngIf="currentStep <= totalSteps && !timerExpired">
+            <!-- Display the current step questions -->
+            <ng-container *ngIf="selectedSurvey.questions">
+                <div *ngFor="let question of getCurrentStepQuestions()" class="my-4">
+                    <h3 class="my-3">Question:</h3>
+                    <p class="lead">{{question.question}}</p>
 
-                        <ul class="list-unstyled">
-                            <li *ngFor="let answer of question.answers">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" [name]="question.question_id" [value]="answer.answer_id" id="{{answer.answer_id}}">
-                                    <label class="form-check-label" for="{{answer.answer_id}}">
+                    <ul class="list-unstyled">
+                        <li *ngFor="let answer of question.answers">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" [name]="question.question_id" [value]="answer.answer_id" id="{{answer.answer_id}}">
+                                <label class="form-check-label" for="{{answer.answer_id}}">
                     {{answer.answer}}
                   </label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </ng-container>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </ng-container>
 
+            <div class="text-center">
+                <div *ngIf="timer > 0" class="mb-3">
+                    <h5>{{ timer }} sec ⏱</h5>
+                </div>
+                <div *ngIf="timer === 0" class="mb-3">
+                    <h5>Temps terminé</h5>
+                </div>
                 <button class="btn btn-primary" (click)="previousStep()" *ngIf="currentStep > 1">Previous</button>
                 <button class="btn btn-primary" (click)="nextStep()" *ngIf="currentStep < totalSteps">Next</button>
                 <button class="btn btn-primary" (click)="submitSurvey()" *ngIf="currentStep === totalSteps">Submit</button>
-
             </div>
         </div>
     </div>
-</section>
+
+    <div *ngIf="timerExpired" class="card-footer text-center mt-3">
+        <h5>Temps terminé. Les questions ne sont plus disponibles.</h5>
+    </div>
+</div>
