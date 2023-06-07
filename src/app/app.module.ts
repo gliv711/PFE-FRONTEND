@@ -23,7 +23,6 @@ import { PayementFormComponent } from './INDEX/payement-form/payement-form.compo
 import { NewPasswordFormComponent } from './INDEX/landing/login/new-password-form/new-password-form/new-password-form.component';
 import { LoginUserComponent } from './INDEX/landing/login-user/login-user/login-user.component';
 import { ProfilCompanyModule } from './profil-company/profil-company.module';
-import { ChangeBgDirective } from './change-bg.directive';
 
 
 @NgModule({
@@ -50,7 +49,6 @@ import { ChangeBgDirective } from './change-bg.directive';
       PayementFormComponent,
       NewPasswordFormComponent,
       LoginUserComponent,
-      ChangeBgDirective,
       
       
     

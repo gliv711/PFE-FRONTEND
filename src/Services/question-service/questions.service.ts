@@ -42,11 +42,5 @@ export class QuestionsService {
     return this.http.delete<Questions>(this.api+question.question_id,{headers});
   }
 
-  // fonction takou les qutions mta3 vid 
-
-  getQuestionJson(){
-    return this.http.get<any>("assets/questions.json");
-  }
-
   
 }
