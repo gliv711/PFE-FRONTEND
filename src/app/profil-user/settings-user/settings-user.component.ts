@@ -11,7 +11,7 @@ import { UserServiceService } from 'src/Services/user-service/user-service.servi
 })
 export class SettingsUserComponent implements OnInit {
 
-  constructor(private userService : UserServiceService,private sanitizer: DomSanitizer) { }
+  constructor(private userService : UserServiceService,private sanitizer: DomSanitizer,private UserService:UserServiceService) { }
   user: User = {
     name: '',
     lastName: '',
@@ -56,9 +56,26 @@ export class SettingsUserComponent implements OnInit {
 
 }
 
+
 getSrcFromCustomFile(user : User) {
   let uint8Array = new Uint8Array(atob(user.picture.data).split("").map(char => char.charCodeAt(0)));
   let dwn = new Blob([uint8Array])
   return this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(dwn));
 }
+updateMessage: string;
+updateSuccess: boolean;
+
+updateProfile(user: User) {
+  this.UserService.updateUser(user).subscribe(
+    response => {
+      this.updateMessage = "Profile updated successfully.";
+      this.updateSuccess = true;
+    },
+    error => {
+      this.updateMessage = "Failed to update profile.";
+      this.updateSuccess = false;
+    }
+  );
 }
+}
+
