@@ -79,6 +79,11 @@ apisurvey=environment.baseUrl+'/SURVEY-MANAGEMENT/api/';
     return this.http.put<User>(this.api+"/update",user);
 
   }
+  updateCompany(user : Company) {
+    
+    return this.http.put<Company>(this.apicompany+"/update",user);
+
+  }
   addadmin(user:admin) {
     const accessToken:any = localStorage.getItem('accesstoken');
     const refreshToken=localStorage.getItem('refreshtoken')

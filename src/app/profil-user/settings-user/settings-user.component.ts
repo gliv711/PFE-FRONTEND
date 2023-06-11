@@ -70,10 +70,18 @@ updateProfile(user: User) {
     response => {
       this.updateMessage = "Profile updated successfully.";
       this.updateSuccess = true;
+      setTimeout(() => {
+        this.updateMessage = null;
+        this.updateSuccess = false;
+      }, 3000)
     },
     error => {
       this.updateMessage = "Failed to update profile.";
       this.updateSuccess = false;
+      setTimeout(() => {
+        this.updateMessage = null;
+        this.updateSuccess = false;
+      }, 3000)
     }
   );
 }

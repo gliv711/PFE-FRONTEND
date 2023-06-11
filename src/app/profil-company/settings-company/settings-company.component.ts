@@ -38,6 +38,28 @@ export class SettingsCompanyComponent implements OnInit {
     socialReason: '',
     email: ''
   };
+  updateMessage: string;
+  updateSuccess: boolean;  
+  updateProfile(company:Company) {
+    this.userService.updateCompany(company).subscribe(
+      response => {
+        this.updateMessage = "Profile updated successfully.";
+        this.updateSuccess = true;
+        setTimeout(() => {
+          this.updateMessage = null;
+          this.updateSuccess = false;
+        }, 3000)
+      },
+      error => {
+        this.updateMessage = "Failed to update profile.";
+        this.updateSuccess = false;
+        setTimeout(() => {
+          this.updateMessage = null;
+          this.updateSuccess = false;
+        }, 3000)
+      }
+    );
+  }
 
   getCompanyByEmail(email: string): Observable<Company> {
     return this.userService.getCompanyByEmail(email);
