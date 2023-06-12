@@ -31,6 +31,28 @@ export class SettingsComponent implements OnInit {
     const email: string = this.getemail(); // Assuming 'getemail()' returns a string
     this.getAdminByEmail(email); // Passing the 'email' variable instead of 'this.email'
   }
+  updateMessage: string;
+updateSuccess: boolean;
+  updateProfile(admin:admin) {
+    this.userService.updateAdmin(admin).subscribe(
+      response => {
+        this.updateMessage = "Profile updated successfully.";
+        this.updateSuccess = true;
+        setTimeout(() => {
+          this.updateMessage = null;
+          this.updateSuccess = false;
+        }, 3000)
+      },
+      error => {
+        this.updateMessage = "Failed to update profile.";
+        this.updateSuccess = false;
+        setTimeout(() => {
+          this.updateMessage = null;
+          this.updateSuccess = false;
+        }, 3000)
+      }
+    );
+  }
   
 
   getAdminByEmail(email: string): void {
