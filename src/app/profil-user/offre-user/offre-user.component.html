@@ -6,47 +6,31 @@
             </div>
         </div>
         <div class="row">
-            <div *ngFor="let demand of demands" class="col-sm-6 col-lg-4 m-15px-tb">
-                <div class="media box-shadow-only-hover hover-top border-all-1 border-color-gray p-15px">
-                    <a class="overlay-link"></a>
-                    <div class="icon-50 theme-bg white-color border-radius-50 d-inline-block">
-                        <i class="number">LD</i>
+            <ng-container *ngIf="demands.length > 0; else emptyList">
+                <div *ngFor="let demand of demands" class="col-sm-6 col-lg-4 m-15px-tb">
+                    <div class="media box-shadow-only-hover hover-top border-all-1 border-color-gray p-15px">
+                        <a class="overlay-link"></a>
+                        <div class="icon-50 theme-bg white-color border-radius-50 d-inline-block">
+                            <i class="number">LD</i>
+                        </div>
+                        <div class="p-20px-l media-body">
+                            <span class="theme2nd-bg white-color p-0px-tb p-10px-lr font-small border-radius-15">{{demand.regime}}</span>
+                            <h6 class="m-5px-tb">{{demand.jobTitle}}</h6>
+                            <p class="m-0px font-small">{{demand.place}}</p>
+                            <p class="m-0px font-small">{{demand.email}}</p>
+                        </div>
+                        <hr>
                     </div>
-                    <div class="p-20px-l media-body">
-                        <span class="theme2nd-bg white-color p-0px-tb p-10px-lr font-small border-radius-15">{{demand.regime}}</span>
-                        <h6 class="m-5px-tb">{{demand.jobTitle}}</h6>
-                        <p class="m-0px font-small">{{demand.place}}</p>
-                        <p class="m-0px font-small">{{demand.email}}</p>
-                    </div>
-                    <hr>
-
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Launch demo modal
+                    </button>
                 </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Launch demo modal
-                  </button>
-            </div>
-
-
+            </ng-container>
+            <ng-template #emptyList>
+                <div class="col-12 text-center">
+                    <p>Pas d'offre actuellement</p>
+                </div>
+            </ng-template>
         </div>
     </div>
 </section>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>

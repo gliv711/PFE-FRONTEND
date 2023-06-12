@@ -157,14 +157,31 @@ apisurvey=environment.baseUrl+'/SURVEY-MANAGEMENT/api/';
       return this.http.delete<Company>(this.apicompany+"/"+Company.id,{headers});
     }
     addCompany(Company:Company) {
+      const accessToken:any = localStorage.getItem('accesstoken');
+      const refreshToken=localStorage.getItem('refreshtoken')
+      var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
       return this.http.post<Company>(this.apicompany,Company);
     }
 
+    AddCompany(formData:FormData) {
+      const accessToken:any = localStorage.getItem('accesstoken');
+      const refreshToken=localStorage.getItem('refreshtoken')
+      var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+      return this.http.post<Company>(this.apicompany,formData);
+    }
+
+
  
     uploadImage(formData: FormData): Observable<any> {
+      const accessToken:any = localStorage.getItem('accesstoken');
+      const refreshToken=localStorage.getItem('refreshtoken')
+      var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
       return this.http.post<any>(this.api + 'upload', formData);
     }
     addUserWithImage(formData: FormData) {
+      const accessToken:any = localStorage.getItem('accesstoken');
+      const refreshToken=localStorage.getItem('refreshtoken')
+      var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
       return this.http.post(this.api, formData);
     }
     refreshToken() {
@@ -178,16 +195,23 @@ apisurvey=environment.baseUrl+'/SURVEY-MANAGEMENT/api/';
     }
 
     getCompanyByEmail(email: string) : Observable<Company> {
+      const accessToken:any = localStorage.getItem('accesstoken');
+      const refreshToken=localStorage.getItem('refreshtoken')
+      var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
       return this.http.get<Company>(`${this.apicompany}/email/${email}`);
     }
     checkIfUserEmailExists(email: string) {
       
-  
+      const accessToken:any = localStorage.getItem('accesstoken');
+      const refreshToken=localStorage.getItem('refreshtoken')
+      var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
       return this.http.get(this.api+"/check-email/"+email);
     }
     checkIfCompanyEmailExists(email: string) {
       
-  
+      const accessToken:any = localStorage.getItem('accesstoken');
+      const refreshToken=localStorage.getItem('refreshtoken')
+      var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
       return this.http.get(this.apicompany+"/check-email/"+email);
     }
     

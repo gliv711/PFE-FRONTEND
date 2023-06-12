@@ -244,7 +244,7 @@ export class SurveyFormComponent implements OnInit {
 
   // Declare the timer variable in your component
 // Declare the timer variable in your component
-timer: number = 5;
+timer: number = 60;
 timerExpired: boolean = false;
 
 // Add the timer logic
