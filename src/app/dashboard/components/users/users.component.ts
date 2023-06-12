@@ -91,6 +91,7 @@ export class UsersComponent implements OnInit {
 
     addUser(user:User){
       const formData: FormData = new FormData();
+      if(user.id!=null)
       formData.append('id', user.id+"");
       formData.append('name', user.name+"");
       formData.append('lastName', user.lastName+"");

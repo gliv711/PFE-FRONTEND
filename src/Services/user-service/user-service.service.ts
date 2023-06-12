@@ -66,7 +66,7 @@ apisurvey=environment.baseUrl+'/SURVEY-MANAGEMENT/api/';
 
   addUser(formData : FormData) {
     console.log(formData)
-    return this.http.post<User>(this.api,formData);
+    return this.http.post<User>(this.api+"/image",formData);
 
   }
   AddUser(user : User) {
