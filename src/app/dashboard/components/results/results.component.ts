@@ -17,6 +17,10 @@ export class ResultsComponent implements OnInit {
   result : Result = {}
   results: Result[] = [];
 
+  chargement =false ;
+  mise_a_jour=false ;
+  supprimer=false ;
+  error = false ;
   ngOnInit(): void {
     this.getAllResults();
   }
@@ -51,4 +55,25 @@ export class ResultsComponent implements OnInit {
     
   }
 
+
+close(){
+  this.result=null;
+}
+
+deleteResult(result){
+  this.resultService.deleteResult(result).subscribe({
+    next: () => {
+      this.getAllResults();
+      this.supprimer=true;
+      setTimeout(() => {
+        this.supprimer = false;
+      }, 3000); 
+    },
+    error: (e) =>  {console.log(e),this.error=true;},
+    
+    complete: () => {
+      console.log("Deleted ! ")
+    }
+  })
+}
 }

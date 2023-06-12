@@ -35,5 +35,13 @@ const accessToken:any = localStorage.getItem('accesstoken');
       
     }
 
+    deleteResult(result : Result){
+      const accessToken:any = localStorage.getItem('accesstoken');
+      const refreshToken=localStorage.getItem('refreshtoken')
+      var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+      return this.http.delete<Result>(this.api+"/"+result.id,{headers});
+
+    }
+
   
 }

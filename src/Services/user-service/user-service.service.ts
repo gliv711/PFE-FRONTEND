@@ -112,7 +112,7 @@ apisurvey=environment.baseUrl+'/SURVEY-MANAGEMENT/api/';
     const accessToken:any = localStorage.getItem('accesstoken');
     const refreshToken=localStorage.getItem('refreshtoken')
     var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
-    return this.http.delete<User>(this.apiadmin+"/"+user.id,{headers});
+    return this.http.delete<admin>(this.apiadmin+"/"+user.id,{headers});
   }
 
   getUserCount(): Observable<number> {    
