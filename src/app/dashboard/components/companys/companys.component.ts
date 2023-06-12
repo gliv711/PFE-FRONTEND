@@ -16,8 +16,8 @@ import { Role } from 'src/enums/role.enum';
 })
 export class CompanysComponent implements OnInit {
 
-  Users: Company[] = [];
-  user : Company = {};
+  companys: Company[] = [];
+  company : Company = {};
 
 
 
@@ -26,7 +26,7 @@ export class CompanysComponent implements OnInit {
   supprimer=false ;
   error = false ;
   constructor(private UserService : UserServiceService ,private authservice :AuthService,private formBuilder: FormBuilder,private emailValidator: EmailValidator) {
-    this.getUsers(); 
+    this.getCompanys(); 
   
     this.myForm = this.formBuilder.group({
       nameofCompany: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-ZÀ-ÿ ]*'), Validators.maxLength(30)]],
@@ -48,11 +48,11 @@ export class CompanysComponent implements OnInit {
   myForm: FormGroup;
 
 
-  getUsers(){
+  getCompanys(){
     this.UserService.getsociete().subscribe({
       next: (response: User[]) => {
-        this.Users = response;
-        console.log(this.Users);
+        this.companys = response;
+        console.log(this.companys);
       },
       error: (e) =>  {console.log(e),this.error=true;},
       complete: () => {}
@@ -62,10 +62,10 @@ export class CompanysComponent implements OnInit {
 
 
 
-  deleteUser(user : Company){
-    this.UserService.deletesociete(user).subscribe({
+  deleteCompany(company : Company){
+    this.UserService.deletesociete(company).subscribe({
       next: () => {
-        this.getUsers();
+        this.getCompanys();
         this.supprimer=true;
         setTimeout(() => {
           this.supprimer = false;
@@ -80,17 +80,17 @@ export class CompanysComponent implements OnInit {
   }
 
 
-  setCurrentUser(user : User){
-    this.user=user;
+  setCurrentCompany(company : User){
+    this.company=company;
   }
 
   close(){
-    this.user= {};
+    this.company= {};
   }
 
   currentFile : File;
 
-  addUser() {
+  addCompany() {
     if (this.myForm.invalid) {
       return;
     }
@@ -109,7 +109,7 @@ export class CompanysComponent implements OnInit {
     }
     this.UserService.AddCompany(formData).subscribe({
       next: () => {
-        this.getUsers();
+        this.getCompanys();
         this.mise_a_jour = true;
         setTimeout(() => {
           this.mise_a_jour = false;
@@ -124,13 +124,13 @@ export class CompanysComponent implements OnInit {
       }
     });
   }
-  updateUser() {
+  updateCompany() {
     
     if (this.myForm.invalid) {
       return;
     }
   
-    const user = {
+    const company = {
       nameofCompany: this.myForm.value['nameofCompany'],
       nameofResponsible: this.myForm.value['nameofResponsible'],
       email: this.myForm.value['email'],
@@ -148,9 +148,9 @@ export class CompanysComponent implements OnInit {
       this.myForm.controls['domaineofActivity'].valid
     ){
   
-    this.UserService.addCompany(user).subscribe({
+    this.UserService.addCompany(company).subscribe({
       next: () => {
-        this.getUsers();
+        this.getCompanys();
         this.mise_a_jour = true;
         setTimeout(() => {
           this.mise_a_jour = false;

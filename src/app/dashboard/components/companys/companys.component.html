@@ -22,19 +22,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of Users">
-                        <th scope="row">{{user.id}}</th>
-                        <td> <img *ngIf="!user?.image" src="assets/img/Placeholder/me.jpg" width="40px" height="40px" alt="" class="circular_image" /></td>
+                    <tr *ngFor="let company of companys">
+                        <th scope="row">{{company.id}}</th>
+                        <td> <img *ngIf="!company?.image" src="assets/img/Placeholder/me.jpg" width="40px" height="40px" alt="" class="circular_image" /></td>
 
 
-                        <td>{{user?.nameofCompany}}</td>
-                        <td>{{user?.nameofResponsible}}</td>
-                        <td>{{user?.email}}</td>
-                        <td>{{user?.domaineofActivity}}</td>
+                        <td>{{company?.nameofCompany}}</td>
+                        <td>{{company?.nameofResponsible}}</td>
+                        <td>{{company?.email}}</td>
+                        <td>{{company?.domaineofActivity}}</td>
                         <td class="d-flex justify-content-around">
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal" (click)="setCurrentUser(user)">Supprimer</button>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-add-Modal" (click)="setCurrentUser(user)">Update</button>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#more-info-Modal" (click)="setCurrentUser(user)">Plus d'informations</button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal" (click)="setCurrentCompany(company)">Supprimer</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-add-Modal" (click)="setCurrentCompany(company)">Update</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#more-info-Modal" (click)="setCurrentCompany(company)">Plus d'informations</button>
                         </td>
                     </tr>
                 </tbody>
@@ -65,7 +65,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteUser(user)">Je confirme</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteCompany(company)">Je confirme</button>
             </div>
         </div>
     </div>
@@ -80,8 +80,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div *ngIf="user.picture">
-                    <img [src]="user.picture" alt="User profile picture" class="image-preview" />
+                <div *ngIf="company.picture">
+                    <img [src]="company.picture" alt="User profile picture" class="image-preview" />
                 </div>
                 <!-- Input field for image upload -->
                 <div class="mb-3">
@@ -152,7 +152,7 @@
                                         <label for="email" class="form-label">Email</label>
                                     </div>
                                     <div class="col">
-                                        <input type="email" class="form-control" id="email" placeholder="" formControlName="email">
+                                        <input type="email" class="form-control" id="email" placeholder="" formControlName="email" [(ngModel)]="company.email">
                                         <div *ngIf="myForm.get('email').invalid && (myForm.get('email').dirty || myForm.get('email').touched)" class="text-danger">
                                             <div *ngIf="myForm.get('email').errors.required">
                                                 Veuillez saisir une adresse email.
@@ -243,7 +243,7 @@
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
-                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="myForm.invalid" (click)="addUser()">Enregistrer</button>
+                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="myForm.invalid" (click)="addCompany()">Enregistrer</button>
                             </div>
                         </form>
                     </div>
@@ -269,11 +269,11 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img *ngIf="!user?.picture" src="assets/img/Placeholder/me.jpg" width="245px" height="245px" alt="" class="circular_image" />
+                                <img *ngIf="!company?.picture" src="assets/img/Placeholder/me.jpg" width="245px" height="245px" alt="" class="circular_image" />
                                 <div class="mt-3">
-                                    <h4>{{user.nameofCompany}} </h4>
+                                    <h4>{{company.nameofCompany}} </h4>
 
-                                    <p class="text-muted font-size-sm">{{user.domaineofActivity}}</p>
+                                    <p class="text-muted font-size-sm">{{company.domaineofActivity}}</p>
 
                                     <button class="btn btn-outline-primary">Contacter</button>
                                 </div>
@@ -326,7 +326,7 @@
                                     <h6 class="mb-0">nom de la société </h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{user.nameofCompany}}
+                                    {{company.nameofCompany}}
                                 </div>
                             </div>
                             <hr>
@@ -335,7 +335,7 @@
                                     <h6 class="mb-0">Email</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{user.email}}
+                                    {{company.email}}
                                 </div>
                             </div>
                             <hr>
@@ -344,7 +344,7 @@
                                     <h6 class="mb-0">Phone</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{user.phone_number}}
+                                    {{company.phone_number}}
                                 </div>
                             </div>
 
@@ -354,7 +354,7 @@
                                     <h6 class="mb-0">domaine d'activite</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{user.domaineofActivity}}
+                                    {{company.domaineofActivity}}
                                 </div>
                             </div>
                             <hr>
@@ -365,7 +365,7 @@
                                     <h6 class="mb-0">address</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{user.address}}
+                                    {{company.address}}
                                 </div>
                             </div>
 
