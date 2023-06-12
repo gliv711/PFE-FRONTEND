@@ -23,18 +23,20 @@
                     <div class="col-md-12"><label class="labels">Région</label><input type="text" class="form-control" placeholder="Votre région SVP" value="" [(ngModel)]="user.region"></div>
                     <div class="col-md-12"><label class="labels">Université</label><input type="text" class="form-control" placeholder="Votre Université SVP" value="" [(ngModel)]="user.university"></div>
                     <div class="col-md-12"><label class="labels">Domaine d'étude</label><input type="text" class="form-control" placeholder="Votre Domaine d'étude SVP" value="" [(ngModel)]="user.domain"></div>
-                    <div class="col-md-12"><label class="labels">date de debut des études</label><input type="date" class="form-control" placeholder="date de debut des études" value="data-bs-target" [(ngModel)]="user.startofStudy"></div>
-                    <div class="col-md-12"><label class="labels">date de fin des études</label><input type="date" class="form-control" placeholder="date de fin des études" value="data-bs-target" [(ngModel)]="user.endofStudy"></div>
-
+                    <div class="col-md-12"><label class="labels">date de debut des études</label>
+                        <input type="date" class="form-control" placeholder="date de debut des études" [(ngModel)]="user.startofStudy" (input)="updateStartDate($event.target.value)">
+                    </div>
+                    <div class="col-md-12"><label class="labels">date de fin des études</label><input type="date" class="form-control" placeholder="date de fin des études" (input)="updateEndDate($event.target.value)" [(ngModel)]="user.endofStudy"></div>
                 </div>
 
 
                 <div class="mt-5 text-center">
                     <button class="btn btn-primary profile-button" type="button" (click)="updateProfile(user)">Save Profile</button>
-                  </div>
-                  <div class="mt-3 text-center" *ngIf="updateMessage">
+                </div>
+                <div class="mt-3 text-center" *ngIf="updateMessage">
                     <p [ngClass]="{'text-success': updateSuccess, 'text-danger': !updateSuccess}">{{ updateMessage }}</p>
-                  </div>            </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-4">
             <div class="p-3 py-5">

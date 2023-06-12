@@ -7,7 +7,7 @@ import { AcceuilUserComponent } from './acceuil-user/acceuil-user.component';
 import { NavbarUserComponent } from './navbar-user/navbar-user.component';
 import { OffreUserComponent } from './offre-user/offre-user.component';
 import { SettingsUserComponent } from './settings-user/settings-user.component';
-
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -16,8 +16,10 @@ import { SettingsUserComponent } from './settings-user/settings-user.component';
     AcceuilUserComponent,
     NavbarUserComponent,
     OffreUserComponent,
-    SettingsUserComponent
+    SettingsUserComponent,
+    
   ],
+  providers: [DatePipe],
   imports: [
     CommonModule,
     AppRoutingModule,

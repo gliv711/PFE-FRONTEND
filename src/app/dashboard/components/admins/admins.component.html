@@ -15,24 +15,24 @@
                         <th scope="col">Image</th>
                         <th scope="col">Telephone</th>
                         <th scope="col">address</th>
-                       
+
                         <th scope="col">Email</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of Users">
-                        <th scope="row">{{user.id}}</th>
-                        <td> <img *ngIf="!user?.image" src="assets/img/Placeholder/me.jpg" width="40px" height="40px" alt="" class="circular_image" /></td>
+                    <tr *ngFor="let admin of admins">
+                        <th scope="row">{{admin.id}}</th>
+                        <td> <img *ngIf="!admin?.image" src="assets/img/Placeholder/me.jpg" width="40px" height="40px" alt="" class="circular_image" /></td>
 
 
-                        <td>{{user?.phone_number}}</td>
-                        <td>{{user?.address}}</td>
-                        <td>{{user?.email}}</td>
+                        <td>{{admin?.phone_number}}</td>
+                        <td>{{admin?.address}}</td>
+                        <td>{{admin?.email}}</td>
                         <td class="d-flex justify-content-around">
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal" (click)="setCurrentUser(user)">Supprimer</button>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-add-Modal" (click)="setCurrentUser(user)">Update</button>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#more-info-Modal" (click)="setCurrentUser(user)">Plus d'informations</button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#are-you-sure-Modal" (click)="setCurrentAdmin(admin)">Supprimer</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-add-Modal" (click)="setCurrentAdmin(admin)">Update</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#more-info-Modal" (click)="setCurrentAdmin(admin)">Plus d'informations</button>
                         </td>
                     </tr>
                 </tbody>
@@ -63,7 +63,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteUser(user)">Je confirme</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteAdmin(admin)">Je confirme</button>
             </div>
         </div>
     </div>
@@ -72,88 +72,88 @@
 
 <div class="modal fade" id="update-add-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div *ngIf="admin.image">
+                    <img [src]="user.image" alt="User profile picture" class="image-preview" />
+                </div>
+                <!-- Input field for image upload -->
+                <div class="mb-3">
+                    <input type="file">
+                </div>
+
+                <form [formGroup]="myForm">
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-1">
+                                <label for="address" class="form-label">Adresse</label>
+                            </div>
+                            <div class="col">
+                                <input [(ngModel)]="admin.address" type="text" class="form-control" id="address" formControlName="address" placeholder="">
+                            </div>
+                            <div *ngIf="myForm.get('address').invalid && (myForm.get('address').dirty || myForm.get('address').touched)" style="margin-top: 0px">
+                                <span style="color: red;display: flex">Accepte uniquement des chiffres et des lettres.</span>
+                            </div>
+
+                            <div class="col">
+                                <label for="phone" class="form-label">Téléphone</label>
+                            </div>
+                            <div class="col">
+                                <input [(ngModel)]="admin.phone_number" type="text" class="form-control" id="phone" formControlName="phone_number" placeholder="">
+                            </div>
+                            <div *ngIf="myForm.get('phone_number').invalid && (myForm.get('phone_number').dirty || myForm.get('phone_number').touched)" style="margin-top: 0px">
+                                <span style="color: red;display: flex">Il faut 8 chiffres.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-1">
+                                <label for="email" class="form-label">Email</label>
+                            </div>
+                            <div class="col">
+                                <input [(ngModel)]="admin.email" type="email" class="form-control" id="email" formControlName="email" placeholder="">
+                            </div>
+                            <div *ngIf="myForm.get('email').invalid && (myForm.get('email').dirty || myForm.get('email').touched)" style="margin-top: 0px">
+                                <span style="color: red;display: flex"> L'email existe déjà dans la base de données ou l'email Invalid. </span>
+                            </div>
+                            <div *ngIf="myForm.get('email').hasError('validate')">
+                                <span style="color: red;display: flex">Validation de l'email échouée.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="password" class="form-label">Mot de passe</label>
+                            </div>
+                            <div class="col">
+                                <input type="password" class="form-control" id="password" formControlName="password" placeholder="" [(ngModel)]="admin.password">
+                            </div>
+                            <div *ngIf="myForm.get('password').invalid && (myForm.get('password').dirty || myForm.get('password').touched)" style="margin-top: 0px">
+                                <span style="color: red;display: flex">Le mot de passe doit contenir au moins une lettre, un chiffre et un caractère spécial.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="myForm.invalid" (click)="AddUser()">Enregistrer</button>
+                    </div>
+                </form>
+
+            </div>
         </div>
-        <div class="modal-body">
-  
-          <div *ngIf="user.image">
-            <img [src]="user.image" alt="User profile picture" class="image-preview" />
-          </div>
-          <!-- Input field for image upload -->
-          <div class="mb-3">
-            <input type="file">
-          </div>
-  
-          <form [formGroup]="myForm" >
-            <div class="mb-3">
-              <div class="row">
-                <div class="col-1">
-                  <label for="address" class="form-label">Adresse</label>
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" id="address" formControlName="address" placeholder="">
-                </div>
-                <div *ngIf="myForm.get('address').invalid && (myForm.get('address').dirty || myForm.get('address').touched)" style="margin-top: 0px">
-                  <span style="color: red;display: flex">Accepte uniquement des chiffres et des lettres.</span>
-                </div>
-  
-                <div class="col-1">
-                  <label for="phone" class="form-label">Téléphone</label>
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" id="phone" formControlName="phone_number" placeholder="">
-                </div>
-                <div *ngIf="myForm.get('phone_number').invalid && (myForm.get('phone_number').dirty || myForm.get('phone_number').touched)" style="margin-top: 0px">
-                  <span style="color: red;display: flex">Il faut 8 chiffres.</span>
-                </div>
-              </div>
-            </div>
-  
-            <div class="mb-3">
-              <div class="row">
-                <div class="col-1">
-                  <label for="email" class="form-label">Email</label>
-                </div>
-                <div class="col">
-                  <input type="email" class="form-control" id="email" formControlName="email" placeholder="">
-                </div>
-                <div *ngIf="myForm.get('email').invalid && (myForm.get('email').dirty || myForm.get('email').touched)" style="margin-top: 0px">
-                  <span style="color: red;display: flex"> L'email existe déjà dans la base de données ou l'email Invalid. </span>
-                </div>
-                <div *ngIf="myForm.get('email').hasError('validate')">
-                    <span style="color: red;display: flex">Validation de l'email échouée.</span>
-                  </div>
-              </div>
-            </div>
-  
-            <div class="mb-3">
-              <div class="row">
-                <div class="col-2">
-                  <label for="password" class="form-label">Mot de passe</label>
-                </div>
-                <div class="col">
-                  <input type="password" class="form-control" id="password" formControlName="password" placeholder="">
-                </div>
-                <div *ngIf="myForm.get('password').invalid && (myForm.get('password').dirty || myForm.get('password').touched)" style="margin-top: 0px">
-                  <span style="color: red;display: flex">Le mot de passe doit contenir au moins une lettre, un chiffre et un caractère spécial.</span>
-                </div>
-              </div>
-            </div>
-  
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
-              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="myForm.invalid" (click)="AddUser()">Enregistrer</button>
-            </div>
-          </form>
-  
-        </div>
-      </div>
     </div>
-  </div>
-  
+</div>
+
 
 <div class="modal fade " id="more-info-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
@@ -167,11 +167,11 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img *ngIf="!user?.image" src="assets/img/Placeholder/me.jpg" width="245px" height="245px" alt="" class="circular_image" />
+                                <img *ngIf="!admin?.image" src="assets/img/Placeholder/me.jpg" width="245px" height="245px" alt="" class="circular_image" />
                                 <div class="mt-3">
-                                    <h4>{{user.email}} </h4>
+                                    <h4>{{admin.email}} </h4>
 
-                                    <p class="text-muted font-size-sm">{{user.phone_number}}</p>
+                                    <p class="text-muted font-size-sm">{{admin.phone_number}}</p>
 
                                     <button class="btn btn-outline-primary">Contacter</button>
                                 </div>
@@ -184,7 +184,7 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
 
-                             
+
                             </li>
                         </ul>
 
@@ -223,7 +223,7 @@
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">nom de societe </h6>
                                 </div>
-                               
+
                             </div>
                             <hr>
                             <div class="row">
@@ -231,7 +231,7 @@
                                     <h6 class="mb-0">Email</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{user.email}}
+                                    {{admin.email}}
                                 </div>
                             </div>
                             <hr>
@@ -240,13 +240,13 @@
                                     <h6 class="mb-0">Phone</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{user.phone_number}}
+                                    {{admin.phone_number}}
                                 </div>
                             </div>
 
                             <hr>
-                            
-                           
+
+
 
 
                             <div class="row">
@@ -254,7 +254,7 @@
                                     <h6 class="mb-0">address</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{user.address}}
+                                    {{admin.address}}
                                 </div>
                             </div>
 
@@ -283,8 +283,8 @@
                                                     <div class="resume-box">
                                                         <ul>
                                                             <li>
-                                                               
-                                                              
+
+
                                                             </li>
 
                                                         </ul>
@@ -293,7 +293,7 @@
                                                 <div class="col-lg-6 m-15px-tb">
                                                     <div class="resume-box">
                                                         <ul>
-                                                           
+
 
                                                         </ul>
                                                     </div>

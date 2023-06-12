@@ -15,8 +15,8 @@ import { EmailValidator } from 'src/email controle/EmailValidator';
 })
 export class AdminsComponent implements OnInit {
   myForm: FormGroup;
-  Users: admin[] = [];
-  user : admin = {};
+  admins: admin[] = [];
+  admin : admin = {};
 
 
 
@@ -36,7 +36,7 @@ export class AdminsComponent implements OnInit {
       ],
       password: ['', [Validators.required, Validators.pattern('^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]]
     });
-    this.getUsers(); 
+    this.getAdmins(); 
   this.authservice.loggedIn
   }
 
@@ -44,11 +44,11 @@ export class AdminsComponent implements OnInit {
   itemsPerPage = 10;
   currentPage = 1;
 
-  getUsers(){
+  getAdmins(){
     this.UserService.getAdmins().subscribe({
       next: (response: admin[]) => {
-        this.Users = response;
-        console.log(this.Users);
+        this.admins = response;
+        console.log(this.admins);
       },
       error: (e) =>  {console.log(e),this.error=true;},
       complete: () => {}
@@ -58,10 +58,10 @@ export class AdminsComponent implements OnInit {
 
 
 
-  deleteUser(user : Company){
-    this.UserService.deleteAdmin(user).subscribe({
+  deleteAdmin(admin : admin){
+    this.UserService.deleteAdmin(admin).subscribe({
       next: () => {
-        this.getUsers();
+        this.getAdmins();
         this.supprimer=true;
         setTimeout(() => {
           this.supprimer = false;
@@ -76,12 +76,12 @@ export class AdminsComponent implements OnInit {
   }
 
 
-  setCurrentUser(user : admin){
-    this.user=user;
+  setCurrentAdmin(admin : admin){
+    this.admin=admin;
   }
 
   close(){
-    this.user= {};
+    this.admin= {};
   }
 
 
@@ -110,7 +110,7 @@ export class AdminsComponent implements OnInit {
       
       next: () => {
        
-        this.getUsers();
+        this.getAdmins();
         this.mise_a_jour = true; 
         setTimeout(() => {
           this.mise_a_jour = false;
