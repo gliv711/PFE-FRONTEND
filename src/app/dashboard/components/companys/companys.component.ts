@@ -88,23 +88,26 @@ export class CompanysComponent implements OnInit {
     this.user= {};
   }
 
+  currentFile : File;
 
-  AddUser() {
+  addUser() {
     if (this.myForm.invalid) {
       return;
     }
   
-    const user = {
-      nameofCompany: this.myForm.value['nameofCompany'],
-      nameofResponsible: this.myForm.value['nameofResponsible'],
-      email: this.myForm.value['email'],
-      password: this.myForm.value['password'],
-      phone_number: this.myForm.value['phone_number'],
-      address: this.myForm.value['address'],
-      domaineofActivity: this.myForm.value['domaineofActivity']
-    };
+    const formData: FormData = new FormData();
+    formData.append('nameofCompany', this.myForm.value['nameofCompany']);
+    formData.append('nameofResponsible', this.myForm.value['nameofResponsible']);
+    formData.append('email', this.myForm.value['email']);
+    formData.append('password', this.myForm.value['password']);
+    formData.append('phone_number', this.myForm.value['phone_number']);
+    formData.append('address', this.myForm.value['address']);
+    formData.append('domaineofActivity', this.myForm.value['domaineofActivity']);
   
-    this.UserService.addCompany(user).subscribe({
+    if (this.currentFile != null) {
+      formData.append('picture_file',this.currentFile,this.currentFile?.name);
+    }
+    this.UserService.AddCompany(formData).subscribe({
       next: () => {
         this.getUsers();
         this.mise_a_jour = true;
