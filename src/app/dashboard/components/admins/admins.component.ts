@@ -27,20 +27,30 @@ export class AdminsComponent implements OnInit {
   supprimer=false ;
   error = false ;
   constructor(private UserService : UserServiceService ,private authservice :AuthService,private router:Router,private formBuilder: FormBuilder,private emailValidator: EmailValidator,private sanitizer: DomSanitizer) {
-    
-    this.myForm = this.formBuilder.group({
-      address: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]],
-      phone_number: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('[0-9]*')]],
-      email: [
-        '',
-        [Validators.required, Validators.email],
-        [emailValidator.validate.bind(emailValidator)],
-      ],
-      password: ['', [Validators.required, Validators.pattern('^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]]
-    });
     this.getAdmins(); 
-  this.authservice.loggedIn
-  }
+    
+  //   this.myForm = this.formBuilder.group({
+  //     address: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]],
+  //     phone_number: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('[0-9]*')]],
+  //     email: [
+  //       '',
+  //       [Validators.required, Validators.email],
+  //       [emailValidator.validate.bind(emailValidator)],
+  //     ],
+  //     password: ['', [Validators.required, Validators.pattern('^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]]
+  //   });
+  this.myForm = this.formBuilder.group({
+        address: ['', [Validators.required, ]],
+        phone_number: ['', [Validators.required, ]],
+        email: [
+          '',
+          [Validators.required, ],
+          ,        ],
+        password: ['', [Validators.required,]]
+      });
+  
+   
+   }
 
   roles = Object.values(Role);
   itemsPerPage = 10;
@@ -155,6 +165,7 @@ getSrcFromCustomFile(admin : admin) {
     this.UserService.addAdmin(formData).subscribe({
       next: () => {
         this.getAdmins();
+        console.log(formData)
         this.mise_a_jour=true; 
         setTimeout(() => {
           this.mise_a_jour = false;

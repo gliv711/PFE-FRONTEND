@@ -101,7 +101,7 @@ apisurvey=environment.baseUrl+'/SURVEY-MANAGEMENT/api/';
     const refreshToken=localStorage.getItem('refreshtoken')
     var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
     console.log(formData)
-    return this.http.post<admin>(this.api+"/image",formData);
+    return this.http.post<admin>(this.apiadmin+"/image",formData);
   }
 
 
