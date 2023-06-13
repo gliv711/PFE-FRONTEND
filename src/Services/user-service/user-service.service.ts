@@ -96,6 +96,14 @@ apisurvey=environment.baseUrl+'/SURVEY-MANAGEMENT/api/';
     return this.http.post<admin>(this.apiadmin,user,{headers});
 
   }
+  addAdmin(formData : FormData) {
+    const accessToken:any = localStorage.getItem('accesstoken');
+    const refreshToken=localStorage.getItem('refreshtoken')
+    var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
+    console.log(formData)
+    return this.http.post<admin>(this.api+"/image",formData);
+  }
+
 
   registrationAddUser(user : User) {
     return this.http.post<User>(environment.baseUrl+'/USER-MANAGEMENT/api/register/user', user);
@@ -156,6 +164,9 @@ apisurvey=environment.baseUrl+'/SURVEY-MANAGEMENT/api/';
       var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
       return this.http.delete<Company>(this.apicompany+"/"+Company.id,{headers});
     }
+
+
+    
     addCompany(Company:Company) {
       const accessToken:any = localStorage.getItem('accesstoken');
       const refreshToken=localStorage.getItem('refreshtoken')
@@ -163,11 +174,17 @@ apisurvey=environment.baseUrl+'/SURVEY-MANAGEMENT/api/';
       return this.http.post<Company>(this.apicompany,Company);
     }
 
-    AddCompany(formData:FormData) {
+
+
+
+
+    AddCompany(formData : FormData) {
       const accessToken:any = localStorage.getItem('accesstoken');
       const refreshToken=localStorage.getItem('refreshtoken')
       var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
-      return this.http.post<Company>(this.apicompany,formData);
+      console.log(formData)
+      return this.http.post<FormData>(this.apicompany+"/image",formData);
+  
     }
 
 
@@ -178,6 +195,7 @@ apisurvey=environment.baseUrl+'/SURVEY-MANAGEMENT/api/';
       var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
       return this.http.post<any>(this.api + 'upload', formData);
     }
+    
     addUserWithImage(formData: FormData) {
       const accessToken:any = localStorage.getItem('accesstoken');
       const refreshToken=localStorage.getItem('refreshtoken')

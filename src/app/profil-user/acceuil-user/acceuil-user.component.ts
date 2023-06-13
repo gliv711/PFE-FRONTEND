@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from 'src/Models/Users/User';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
@@ -10,7 +11,7 @@ import { UserServiceService } from 'src/Services/user-service/user-service.servi
 })
 export class AcceuilUserComponent implements OnInit {
 
-  constructor(private userService:UserServiceService) { }
+  constructor(private userService:UserServiceService,private sanitizer: DomSanitizer) { }
 
   user: User = {
     name: '',
@@ -49,5 +50,11 @@ export class AcceuilUserComponent implements OnInit {
     return decodeaccesToken.sub
 
 }
+getSrcFromCustomFile(user: User) {
+  let uint8Array = new Uint8Array(atob(user.picture.data).split("").map(char => char.charCodeAt(0)));
+  let dwn = new Blob([uint8Array]);
+  return this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(dwn));
+}
+
 
 }

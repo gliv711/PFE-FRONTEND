@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { timer } from 'rxjs';
+import { Answer } from 'src/Models/Form/Answer';
 
 import { Survey } from 'src/Models/Form/Survey';
 import { AnswerService } from 'src/Services/answer-service/answer.service';
@@ -143,7 +144,7 @@ export class SurveyFormComponent implements OnInit {
     }
   
 
-    
+  
 
     getCurrentStepQuestions(): any[] {
       const startIndex = (this.currentStep - 1) * this.questionsPerStep;
@@ -161,29 +162,38 @@ export class SurveyFormComponent implements OnInit {
         this.currentStep--;
       }
     }
-  
-    nextStep(): void {
+    ans : Answer ;
+    nextStep(question_id , answer_id): void {
       if (this.currentStep < this.totalSteps) {
         this.currentStep++;
       }
-      
+
+      // console.log(question_id);
+      // console.log(answer_id);
+      // console.log(this.ans);
+      this.selectedAnswers.push({"questionId": question_id, "answerId":this.ans.answer_id})
+      console.log(this.selectedAnswers)
     }
 
 
+     selectedAnswers: { questionId: any; answerId: any }[] = [];
 
 
-    submitSurvey(): void {
-      const selectedAnswers: { questionId: number; answerId: number }[] = [];
+
+    submitSurvey(question): void {
+      this.selectedAnswers.push({"questionId": question.question, "answerId":this.ans.answer})
+      console.log(this.selectedAnswers)
+
       this.getCurrentStepQuestions().forEach((question: any) => {
         const selectedAnswerElement = document.querySelector(`input[name="${question.question_id}"]:checked`) as HTMLInputElement;
         if (selectedAnswerElement) {
           const selectedAnswerId = parseInt(selectedAnswerElement.value, 10);
           const answer = { questionId: question.question_id, answerId: selectedAnswerId };
-          selectedAnswers.push(answer);
+          this.selectedAnswers.push(answer);
         }
       });
     
-      const resultList = selectedAnswers.map((answer: any) => {
+      const resultList = this.selectedAnswers.map((answer: any) => {
         const question = this.selectedSurvey.questions.find((q: any) => q.question_id === answer.questionId);
         const selectedAnswer = question.answers.find((a: any) => a.answer_id === answer.answerId);
         return {

@@ -24,8 +24,7 @@ export class SettingsComponent implements OnInit {
     
     email: '',
     phone_number: '',
-    address: '',
-    image:''
+    address: ''
   }; 
   ngOnInit(): void {
     const email: string = this.getemail(); // Assuming 'getemail()' returns a string

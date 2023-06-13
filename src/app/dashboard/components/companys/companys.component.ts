@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Company } from 'src/Models/Users/Company';
 import { User } from 'src/Models/Users/User';
 import { AuthService } from 'src/Services/auth-service/auth.service';
@@ -25,21 +26,10 @@ export class CompanysComponent implements OnInit {
   mise_a_jour=false ;
   supprimer=false ;
   error = false ;
-  constructor(private UserService : UserServiceService ,private authservice :AuthService,private formBuilder: FormBuilder,private emailValidator: EmailValidator) {
+  constructor(private UserService : UserServiceService ,private authservice :AuthService,private formBuilder: FormBuilder,private emailValidator: EmailValidator,private sanitizer: DomSanitizer) {
     this.getCompanys(); 
   
-    this.myForm = this.formBuilder.group({
-      nameofCompany: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-ZÀ-ÿ ]*'), Validators.maxLength(30)]],
-      nameofResponsible: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-ZÀ-ÿ ]*'), Validators.maxLength(30)]],
-      email: [
-        '',
-        [Validators.required, Validators.email],
-        [emailValidator.validate.bind(emailValidator)],
-      ],     
-       password: ['', [Validators.required, Validators.minLength(8),Validators.pattern('^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
-      phone_number: ['', [Validators.required,Validators.minLength(8),Validators.maxLength(8),Validators.pattern('[0-9]*')]],
-      address: ['',[Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-ZÀ-ÿ ]*'), Validators.maxLength(30)]],
-    });
+    
   }
 
   roles = Object.values(domaine);
@@ -50,9 +40,8 @@ export class CompanysComponent implements OnInit {
 
   getCompanys(){
     this.UserService.getsociete().subscribe({
-      next: (response: User[]) => {
+      next: (response: Company[]) => {
         this.companys = response;
-        console.log(this.companys);
       },
       error: (e) =>  {console.log(e),this.error=true;},
       complete: () => {}
@@ -87,22 +76,43 @@ export class CompanysComponent implements OnInit {
   close(){
     this.company= {};
   }
+  getSrcFromCustomFile(company : Company) {
+    let uint8Array = new Uint8Array(atob(company.picture.data).split("").map(char => char.charCodeAt(0)));
+    let dwn = new Blob([uint8Array])
+    return this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(dwn));
+  }
+  onFileSelected(event : any) {
+
+    this.currentFile = event.target.files[0];
+    console.log("file selected")
+}
 
   currentFile : File;
 
-  addCompany() {
-    if (this.myForm.invalid) {
-      return;
-    }
-  
+  addCompany(company : Company) {
+   
+     // formData.append('nameofCompany', this.myForm.value['nameofCompany']);
+    // formData.append('nameofResponsible', this.myForm.value['nameofResponsible']);
+    // formData.append('email', this.myForm.value['email']);
+    // formData.append('password', this.myForm.value['password']);
+    // formData.append('phone_number', this.myForm.value['phone_number']);
+    // formData.append('address', this.myForm.value['address']);
+    // formData.append('domaineofActivity', this.myForm.value['domaineofActivity']);
+
     const formData: FormData = new FormData();
-    formData.append('nameofCompany', this.myForm.value['nameofCompany']);
-    formData.append('nameofResponsible', this.myForm.value['nameofResponsible']);
-    formData.append('email', this.myForm.value['email']);
-    formData.append('password', this.myForm.value['password']);
-    formData.append('phone_number', this.myForm.value['phone_number']);
-    formData.append('address', this.myForm.value['address']);
-    formData.append('domaineofActivity', this.myForm.value['domaineofActivity']);
+ 
+    if(company.id!=null)
+    formData.append('id', company.id+"");
+    formData.append('address', company.address+"");
+    formData.append('domaineofActivity', company.domaineofActivity+"");
+    formData.append('email', company.email+"");
+    formData.append('appRoles', "model have no app roles");
+    formData.append('nameofCompany', company.nameofCompany+"");
+    formData.append('nameofResponsible', company.nameofResponsible+"");
+    formData.append('phone_number', company.phone_number+"");
+    formData.append('password', company.password+"");
+
+
   
     if (this.currentFile != null) {
       formData.append('picture_file',this.currentFile,this.currentFile?.name);
@@ -111,6 +121,7 @@ export class CompanysComponent implements OnInit {
       next: () => {
         this.getCompanys();
         this.mise_a_jour = true;
+        console.log(formData);
         setTimeout(() => {
           this.mise_a_jour = false;
         }, 3000);
@@ -124,48 +135,9 @@ export class CompanysComponent implements OnInit {
       }
     });
   }
-  updateCompany() {
-    
-    if (this.myForm.invalid) {
-      return;
-    }
-  
-    const company = {
-      nameofCompany: this.myForm.value['nameofCompany'],
-      nameofResponsible: this.myForm.value['nameofResponsible'],
-      email: this.myForm.value['email'],
-      password: this.myForm.value['password'],
-      phone_number: this.myForm.value['phone_number'],
-      address: this.myForm.value['address'],
-      domaineofActivity: this.myForm.value['domaineofActivity']
-    };
-    if (
-      this.myForm.controls['nameofCompany'].valid &&
-      this.myForm.controls['nameofResponsible'].valid &&
-      this.myForm.controls['password'].valid &&
-      this.myForm.controls['phone_number'].valid &&
-      this.myForm.controls['address'] &&
-      this.myForm.controls['domaineofActivity'].valid
-    ){
-  
-    this.UserService.addCompany(company).subscribe({
-      next: () => {
-        this.getCompanys();
-        this.mise_a_jour = true;
-        setTimeout(() => {
-          this.mise_a_jour = false;
-        }, 3000);
-      },
-      error: (e) => {
-        console.log(e);
-        this.error = true;
-      },
-      complete: () => {
-        this.close();
-      }
-    });
-  }
-}
+
+
+
   
 
 

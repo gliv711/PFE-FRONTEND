@@ -11,8 +11,9 @@ export class Company extends lambda {
     link?:File;
     picture?:CustomFile;
 
-    constructor(id: number, email: string, Password: string,phone_number: string,address:string,image : string) {
+    constructor(id: number, email: string, Password: string,phone_number: string,address:string,domaineofActivity : string,nameofResponsible : string,nameofCompany:string) {
         super( id,email,Password,phone_number,address);
+       
     }
 
 }

@@ -13,27 +13,28 @@
                     <ul class="list-unstyled">
                         <li *ngFor="let answer of question.answers">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" [name]="question.question_id" [value]="answer.answer_id" id="{{answer.answer_id}}">
+                                <input class="form-check-input" type="radio" [name]="question.question_id" [value]="answer.answer_id" id="{{answer.answer_id}}" [(ngModel)]="ans">
                                 <label class="form-check-label" for="{{answer.answer_id}}">
                     {{answer.answer}}
                   </label>
                             </div>
                         </li>
                     </ul>
+                    <div class="text-center">
+                        <div *ngIf="timer > 0" class="mb-3">
+                            <h5>{{ timer }} sec ⏱</h5>
+                        </div>
+                        <div *ngIf="timer === 0" class="mb-3">
+                            <h5>Temps terminé</h5>
+                        </div>
+                        <button class="btn btn-primary" (click)="previousStep()" *ngIf="currentStep > 1">Previous</button>
+                        <button class="btn btn-primary" (click)="nextStep(question,answer)" *ngIf="currentStep < totalSteps">Next</button>
+                        <button class="btn btn-primary" (click)="submitSurvey(question)" *ngIf="currentStep === totalSteps">Submit</button>
+                    </div>
                 </div>
             </ng-container>
 
-            <div class="text-center">
-                <div *ngIf="timer > 0" class="mb-3">
-                    <h5>{{ timer }} sec ⏱</h5>
-                </div>
-                <div *ngIf="timer === 0" class="mb-3">
-                    <h5>Temps terminé</h5>
-                </div>
-                <button class="btn btn-primary" (click)="previousStep()" *ngIf="currentStep > 1">Previous</button>
-                <button class="btn btn-primary" (click)="nextStep()" *ngIf="currentStep < totalSteps">Next</button>
-                <button class="btn btn-primary" (click)="submitSurvey()" *ngIf="currentStep === totalSteps">Submit</button>
-            </div>
+
         </div>
     </div>
 
