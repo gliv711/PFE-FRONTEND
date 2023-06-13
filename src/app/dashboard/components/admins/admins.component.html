@@ -23,7 +23,10 @@
                 <tbody>
                     <tr *ngFor="let admin of admins">
                         <th scope="row">{{admin.id}}</th>
-                        <td> <img *ngIf="!admin?.image" src="assets/img/Placeholder/me.jpg" width="40px" height="40px" alt="" class="circular_image" /></td>
+                        <td>
+                            <img *ngIf="!admin?.picture" src="assets/img/Placeholder/me.jpg" width="40px" height="40px" alt="" class="circular_image" />
+                            <img *ngIf="admin?.picture" [src]="getSrcFromCustomFile(admin)" width="40px" height="40px" alt="" class="circular_image" />
+                        </td>
 
 
                         <td>{{admin?.phone_number}}</td>
@@ -80,11 +83,13 @@
             <div class="modal-body">
 
                 <div *ngIf="admin.picture">
-                    <img [src]="user.picture" alt="User profile picture" class="image-preview" />
+                    <img *ngIf="!admin?.picture" src="assets/img/Placeholder/me.jpg" width="40px" height="40px" alt="" class="circular_image" />
+                    <img *ngIf="admin?.picture" [src]="getSrcFromCustomFile(admin)" width="40px" height="40px" alt="" class="circular_image" />
+
                 </div>
                 <!-- Input field for image upload -->
                 <div class="mb-3">
-                    <input type="file">
+                    <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
                 </div>
 
                 <form [formGroup]="myForm">
@@ -145,7 +150,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="myForm.invalid" (click)="AddAdmin(admin)">Enregistrer</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="AddAdmin(admin)">Enregistrer</button>
                     </div>
                 </form>
 
