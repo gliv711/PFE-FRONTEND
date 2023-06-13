@@ -163,6 +163,7 @@ export class SurveyFormComponent implements OnInit {
       }
     }
     ans : Answer ;
+    
     nextStep(question_id , answer_id): void {
       if (this.currentStep < this.totalSteps) {
         this.currentStep++;
@@ -171,59 +172,78 @@ export class SurveyFormComponent implements OnInit {
       // console.log(question_id);
       // console.log(answer_id);
       // console.log(this.ans);
-      this.selectedAnswers.push({"questionId": question_id, "answerId":this.ans.answer_id})
+      this.selectedAnswers.push({"question": question_id, "answerId":this.ans})
       console.log(this.selectedAnswers)
     }
 
 
-     selectedAnswers: { questionId: any; answerId: any }[] = [];
+     selectedAnswers: { question: any; answerId: any }[] = [];
 
 
 
-    submitSurvey(question): void {
-      this.selectedAnswers.push({"questionId": question.question, "answerId":this.ans.answer})
-      console.log(this.selectedAnswers)
+    // submitSurvey(question): void {
+    //   this.selectedAnswers.push({"question": question.question, "answerId":this.ans})
+    //   console.log(this.selectedAnswers)
 
+    //   this.getCurrentStepQuestions().forEach((question: any) => {
+    //     const selectedAnswerElement = document.querySelector(`input[name="${question.question_id}"]:checked`) as HTMLInputElement;
+    //     if (selectedAnswerElement) {
+    //       const selectedAnswerId = parseInt(selectedAnswerElement.value, 10);
+    //       const answer = { question: question.question_id, answerId: selectedAnswerId };
+    //       this.selectedAnswers.push(answer);
+    //     }
+    //   });
+    
+    //   const resultList = this.selectedAnswers.map((answer: any) => {
+    //     const question = this.selectedSurvey.questions.find((q: any) => q.question_id === answer.questionId);
+    //     const selectedAnswer = question.answers.find((a: any) => a.answer_id === answer.answerId);
+    //     return {
+    //       question: question.question,
+    //       answer: selectedAnswer.answer
+    //     };
+    //   });
+    
+    //   const apiUrl = 'http://localhost:8888/RESULT-MANAGEMENT/api/results/';
+    
+    //   const body = {
+    //     email: this.getemail(), // Use the getemail() method to get the email
+    //     domain: this.selectedField,
+    //     resultList: resultList
+    //   };
+    
+    //   this.http.post(apiUrl, body).subscribe(
+    //     (response: any) => {
+    //       console.log('Survey submitted successfully', response);
+    //       console.log(body);
+    //       console.log(response);
+    //       localStorage.setItem('surveyCompleted', 'true');
+
+    //     },
+    //     (error: any) => {
+    //       console.error('Error submitting survey', error);
+    //       // Handle error response
+    //     }
+    //   );
+    // }
+
+    submitSurvey(question: any): void {
+      // Add the current question's answer to selectedAnswers
+      this.selectedAnswers.push({"question": question.question, "answerId": this.ans});
+      console.log(this.selectedAnswers);
+    
+      // Get all current step questions and process their answers
       this.getCurrentStepQuestions().forEach((question: any) => {
         const selectedAnswerElement = document.querySelector(`input[name="${question.question_id}"]:checked`) as HTMLInputElement;
         if (selectedAnswerElement) {
           const selectedAnswerId = parseInt(selectedAnswerElement.value, 10);
-          const answer = { questionId: question.question_id, answerId: selectedAnswerId };
+          const answer = { question: question.question_id, answerId: selectedAnswerId };
           this.selectedAnswers.push(answer);
         }
       });
     
-      const resultList = this.selectedAnswers.map((answer: any) => {
-        const question = this.selectedSurvey.questions.find((q: any) => q.question_id === answer.questionId);
-        const selectedAnswer = question.answers.find((a: any) => a.answer_id === answer.answerId);
-        return {
-          question: question.question,
-          answer: selectedAnswer.answer
-        };
-      });
     
-      const apiUrl = 'http://localhost:8888/RESULT-MANAGEMENT/api/results/';
-    
-      const body = {
-        email: this.getemail(), // Use the getemail() method to get the email
-        domain: this.selectedField,
-        resultList: resultList
-      };
-    
-      this.http.post(apiUrl, body).subscribe(
-        (response: any) => {
-          console.log('Survey submitted successfully', response);
-          console.log(body);
-          console.log(response);
-          localStorage.setItem('surveyCompleted', 'true');
-
-        },
-        (error: any) => {
-          console.error('Error submitting survey', error);
-          // Handle error response
-        }
-      );
     }
+    
     
     
     
