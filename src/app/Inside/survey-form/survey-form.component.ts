@@ -4,12 +4,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { timer } from 'rxjs';
 import { Answer } from 'src/Models/Form/Answer';
+import { Questions } from 'src/Models/Form/Questions';
 
 import { Survey } from 'src/Models/Form/Survey';
 import { AnswerService } from 'src/Services/answer-service/answer.service';
 import { QuestionsService } from 'src/Services/question-service/questions.service';
+import { ResultService } from 'src/Services/result-service/result.service';
 import { SurveyServiceService } from 'src/Services/survey-service/survey-service.service';
-
+import { QA } from 'src/Models/QA'
 @Component({
   selector: 'app-survey-form',
   templateUrl: './survey-form.component.html',
@@ -20,7 +22,7 @@ export class SurveyFormComponent implements OnInit {
 
   questionsPerStep = 1; // Change this variable to adjust the number of questions per step
 
-  constructor( private route: ActivatedRoute,private SurveyService : SurveyServiceService,private questionsService : QuestionsService,private answerService : AnswerService,private http: HttpClient ,private router: Router) {
+  constructor(private resultService : ResultService, private route: ActivatedRoute,private SurveyService : SurveyServiceService,private questionsService : QuestionsService,private answerService : AnswerService,private http: HttpClient ,private router: Router) {
    
   }
   readonly DELAY_TIME = 1 * 60 * 1000; // 30 minutes en millisecondes
@@ -162,7 +164,7 @@ export class SurveyFormComponent implements OnInit {
         this.currentStep--;
       }
     }
-    ans : Answer ;
+    ans : number ;
     
     nextStep(question_id , answer_id): void {
       if (this.currentStep < this.totalSteps) {
@@ -172,13 +174,14 @@ export class SurveyFormComponent implements OnInit {
       // console.log(question_id);
       // console.log(answer_id);
       // console.log(this.ans);
-      this.selectedAnswers.push({"question": question_id, "answerId":this.ans})
+      this.selectedAnswers.push(this.ans)
+      this.selectedQuestions.push(question_id)
       console.log(this.selectedAnswers)
     }
 
 
-     selectedAnswers: { question: any; answerId: any }[] = [];
-
+    selectedAnswers : number[] = []
+    selectedQuestions : Questions[]=[];
 
 
     // submitSurvey(question): void {
@@ -226,20 +229,28 @@ export class SurveyFormComponent implements OnInit {
     //   );
     // }
 
+  
     submitSurvey(question: any): void {
-      // Add the current question's answer to selectedAnswers
-      this.selectedAnswers.push({"question": question.question, "answerId": this.ans});
-      console.log(this.selectedAnswers);
-    
-      // Get all current step questions and process their answers
-      this.getCurrentStepQuestions().forEach((question: any) => {
-        const selectedAnswerElement = document.querySelector(`input[name="${question.question_id}"]:checked`) as HTMLInputElement;
-        if (selectedAnswerElement) {
-          const selectedAnswerId = parseInt(selectedAnswerElement.value, 10);
-          const answer = { question: question.question_id, answerId: selectedAnswerId };
-          this.selectedAnswers.push(answer);
-        }
-      });
+      let QA:QA={}  ;
+
+     this.selectedAnswers.push(this.ans)
+     this.selectedQuestions.push(question.question)
+     QA.qs=this.selectedQuestions;
+     QA.answers=this.selectedAnswers;
+
+      console.info(QA)
+      this.resultService.submit(QA).subscribe(
+        // (surveys: Survey[]) => {
+        //   this.Surveys = surveys; // Assign all surveys to the surveys array
+  
+        //   // Select a random survey from the array
+        //   const randomIndex = Math.floor(Math.random() * this.Surveys.length);
+        //   this.selectedSurvey = this.Surveys[randomIndex];
+        // },
+        // (error) => {
+        //   console.error('Failed to fetch surveys:', error);
+        // }
+      );
     
     
     }
