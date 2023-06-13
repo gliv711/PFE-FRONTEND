@@ -24,7 +24,7 @@ export class ForgetPasswordComponent implements OnInit {
     const url = this.api + this.email;
 
     this.http.post(url, {}).subscribe(
-      () => {
+      (response) => {
         alert('Email sent successfully');
       },
       (error) => {
