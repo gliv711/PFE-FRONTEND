@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -9,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ForgetPasswordComponent implements OnInit {
 
-  constructor(private http :HttpClient) { }
+  constructor(private http :HttpClient,private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -17,6 +18,8 @@ export class ForgetPasswordComponent implements OnInit {
   code : string ='';
 
   api=environment.baseUrl+'/USER-MANAGEMENT/api/user/send-email/';
+  api2=environment.baseUrl+'/USER-MANAGEMENT/api/user/verify/';
+  
   sendEmail(): void {
     const url = this.api + this.email;
 
@@ -33,5 +36,26 @@ export class ForgetPasswordComponent implements OnInit {
       }
     );
   }
+
+  validateCode(): void {
+    const url = this.api2 + this.email + '/' + this.code;
+  
+    this.http.post<any>(url, {}).subscribe(
+      (response) => {
+        if (response.message) {
+          alert('Code Vérifié');
+          this.router.navigate(['/reset-password']); // Redirect to the "resetpassword" page
+        } else {
+          console.error('Error:', response.error);
+          alert('Mail Invalide');
+        }
+      },
+      (error) => {
+        console.error('Error:', error);
+        alert('Veuillez vérifier votre code');
+      }
+    );
+  }
+  
 
 }
