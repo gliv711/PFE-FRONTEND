@@ -79,8 +79,8 @@
             </div>
             <div class="modal-body">
 
-                <div *ngIf="admin.image">
-                    <img [src]="user.image" alt="User profile picture" class="image-preview" />
+                <div *ngIf="admin.picture">
+                    <img [src]="user.picture" alt="User profile picture" class="image-preview" />
                 </div>
                 <!-- Input field for image upload -->
                 <div class="mb-3">
@@ -145,7 +145,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="myForm.invalid" (click)="AddUser()">Enregistrer</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="myForm.invalid" (click)="AddAdmin(admin)">Enregistrer</button>
                     </div>
                 </form>
 
@@ -167,7 +167,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img *ngIf="!admin?.image" src="assets/img/Placeholder/me.jpg" width="245px" height="245px" alt="" class="circular_image" />
+                                <img *ngIf="!admin?.picture" src="assets/img/Placeholder/me.jpg" width="245px" height="245px" alt="" class="circular_image" />
                                 <div class="mt-3">
                                     <h4>{{admin.email}} </h4>
 
