@@ -232,6 +232,9 @@ apisurvey=environment.baseUrl+'/SURVEY-MANAGEMENT/api/';
       var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
       return this.http.get(this.apicompany+"/check-email/"+email);
     }
+   forgetpassword(email:any){
+    return this.http.post(this.api+"/send-email/",email)
+   }
     
 
   }

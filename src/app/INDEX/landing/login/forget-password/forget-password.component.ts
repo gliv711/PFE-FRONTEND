@@ -14,6 +14,7 @@ export class ForgetPasswordComponent implements OnInit {
   ngOnInit(): void {
   }
   email: string ='';
+  code : string ='';
 
   api=environment.baseUrl+'/USER-MANAGEMENT/api/user/send-email/';
   sendEmail(): void {
