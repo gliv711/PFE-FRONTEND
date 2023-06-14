@@ -11,7 +11,6 @@ import { environment } from 'src/environments/environment';
 })
 export class SurveyServiceService {
   api = environment.baseUrl+'/SURVEY-MANAGEMENT/api/survey/';
-
   addSurvey(survey:Survey) {
     const accessToken:any = localStorage.getItem('accesstoken');
     const refreshToken=localStorage.getItem('refreshtoken')
@@ -75,6 +74,9 @@ export class SurveyServiceService {
     var headers = new HttpHeaders().set('Authorization', 'Bearer ' + accessToken) ;
     return this.http.get<Questions[]>(`${this.api}${surveyId}/questions`,{headers});
   }
+
+
+ 
 
 
 
