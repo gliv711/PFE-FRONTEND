@@ -4,7 +4,12 @@
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <img *ngIf="!user?.picture" src="assets/img/Placeholder/me.jpg" width="200px" height="200px" alt="" class="circular_image" />
                 <img *ngIf="user?.picture" [src]="getSrcFromCustomFile(user)" width="200px" height="200px" alt="" class="circular_image" />
+               
+                <!-- Input field for image upload -->
+                <div class="mb-3">
+                    <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
 
+                </div>
                 <span class="font-weight-bold">{{user.name}} {{user.lastName}}</span>
                 <span class="text-black-50">{{user.email}}</span><span> </span></div>
         </div>
@@ -31,7 +36,7 @@
 
 
                 <div class="mt-5 text-center">
-                    <button class="btn btn-primary profile-button" type="button" (click)="updateProfile(user)">Save Profile</button>
+                    <button class="btn btn-primary profile-button" type="button" (click)="addUser(user)">Save Profile</button>
                 </div>
                 <div class="mt-3 text-center" *ngIf="updateMessage">
                     <p [ngClass]="{'text-success': updateSuccess, 'text-danger': !updateSuccess}">{{ updateMessage }}</p>
