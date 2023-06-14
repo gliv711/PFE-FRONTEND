@@ -240,6 +240,10 @@ apisurvey=environment.baseUrl+'/SURVEY-MANAGEMENT/api/';
    forgetpassword(email:any){
     return this.http.post(this.api+"/send-email/",email)
    }
+
+   getUsersByDomain(domain : string){
+return this.http.get<User[]>(this.api+"/domain/"+ domain)
+   }
     
 
   }

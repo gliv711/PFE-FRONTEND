@@ -2,11 +2,11 @@
 
 <div class="container">
     <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
-        <div *ngFor="let userSurvey of usersSurvey" class="col">
+        <div *ngFor="let userSurvey of users" class="col">
             <div class="card radius-15">
                 <div class="card-body text-center">
                     <div class="p-4 border radius-15">
-                        <img src="{{ userSurvey.image || 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" width="110" height="110" class="rounded-circle shadow" alt="">
+                        <img src="{{ userSurvey.picture || 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" width="110" height="110" class="rounded-circle shadow" alt="">
                         <h5 class="mb-0 mt-5">{{userSurvey.name}} {{userSurvey.lastName}}</h5>
                         <p class="mb-3">{{userSurvey.email}}</p>
                         <p class="mb-3">+216 {{userSurvey.phone_number}}</p>

@@ -4,6 +4,7 @@ import { Observable, map } from 'rxjs';
 import { Result } from 'src/Models/Result';
 import { Company } from 'src/Models/Users/Company';
 import { User } from 'src/Models/Users/User';
+import { DemandService } from 'src/Services/demand-service/demand.service';
 import { ResultService } from 'src/Services/result-service/result.service';
 import { UserServiceService } from 'src/Services/user-service/user-service.service';
 
@@ -16,14 +17,15 @@ export class UserListComponent implements OnInit {
  
   ngOnInit(): void {
     this.getUsersFromSurvey();
+    
   
   }
-  constructor(private userService : UserServiceService,private resultService : ResultService) { }
+  constructor(private demandService : DemandService,  private userService : UserServiceService,private resultService : ResultService) { }
 
 
 
   userSurvey : User ;
-  usersSurvey: User[];
+  users: User[];
 
 
   helper = new JwtHelperService();
@@ -37,18 +39,14 @@ export class UserListComponent implements OnInit {
 
   getUsersFromSurvey() {
     this.getCurrentCompanyDomain().subscribe((domain: string) => {
-      this.resultService.getResultsPerDomain(domain).subscribe({
-        next: (response: Result[]) => {
-          this.usersSurvey = [];
-  
-          response.forEach((result: Result) => {
-            const userEmail = result.email;
-            this.getUserByEmail(userEmail).subscribe((user: User) => {
-              this.usersSurvey.push(user);
-            });
-          });
+      this.userService.getUsersByDomain(domain).subscribe({
+        next: (response: User[]) => {
+          this.users = response;  // Assign the API response to this.users
+          console.log(domain);
+          console.log(this.users);
         },
         error: (e) => {
+          console.log(domain);
           console.log(e);
         },
         complete: () => {}
@@ -56,6 +54,7 @@ export class UserListComponent implements OnInit {
     });
   }
   
+    
   
   getCurrentCompanyDomain(): Observable<string> {
     const email = this.getemail();
