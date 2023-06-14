@@ -2,7 +2,12 @@
     <div class="row">
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                <div *ngIf="company.picture">
+                    <img [src]="company.picture" alt="User profile picture" class="image-preview" />
+                </div>
+                <div class="mb-3">
+                    <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+                </div>
                 <span> {{company.nameofCompany}}</span>
                 <span> {{company.email}}</span>
             </div>
@@ -24,11 +29,11 @@
 
                 </div>
                 <div class="mt-5 text-center">
-                    <button class="btn btn-primary profile-button" type="button" (click)="updateProfile(company)">Save Profile</button>
+                    <button class="btn btn-primary profile-button" type="button" (click)="addCompany(company)">Save Profile</button>
                   </div>
-                  <div class="mt-3 text-center" *ngIf="updateMessage">
+                  <!-- <div class="mt-3 text-center" >
                     <p [ngClass]="{'text-success': updateSuccess, 'text-danger': !updateSuccess}">{{ updateMessage }}</p>
-                  </div>            
+                  </div>             -->
             </div>
         </div>
     </div>

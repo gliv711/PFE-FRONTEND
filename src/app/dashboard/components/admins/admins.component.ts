@@ -112,32 +112,32 @@ export class AdminsComponent implements OnInit {
     
   }
 
-  // AddUser() {
-  //   if (this.myForm.invalid) {
-  //     return;
-  //   }
-  //   const { phone_number, password, address, email } = this.myForm.value;
-  //   const user = { phone_number, password, address, email };
-  //   this.UserService.addadmin(user).subscribe({
+  AddUser() {
+    if (this.myForm.invalid) {
+      return;
+    }
+    const { phone_number, password, address, email } = this.myForm.value;
+    const user = { phone_number, password, address, email };
+    this.UserService.addadmin(user).subscribe({
       
-  //     next: () => {
+      next: () => {
        
-  //       this.getAdmins();
-  //       this.mise_a_jour = true; 
-  //       setTimeout(() => {
-  //         this.mise_a_jour = false;
-  //       }, 3000); 
-  //     },
-  //     error: (e) => {
-  //       console.log(e);
-  //       this.error = true;
-  //     },
-  //     complete: () => {
-  //       this.close();
-  //     }
-  //   });
+        this.getAdmins();
+        this.mise_a_jour = true; 
+        setTimeout(() => {
+          this.mise_a_jour = false;
+        }, 3000); 
+      },
+      error: (e) => {
+        console.log(e);
+        this.error = true;
+      },
+      complete: () => {
+        this.close();
+      }
+    });
     
-  // }
+  }
 
   onFileSelected(event : any) {
 
@@ -149,38 +149,44 @@ getSrcFromCustomFile(admin : admin) {
   let dwn = new Blob([uint8Array])
   return this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(dwn));
 }
-  AddAdmin(admin:admin){
-    const formData : FormData = new FormData();
+  // AddAdmin(admin:admin){
+  //   const formData : FormData = new FormData();
 
-    if (admin.id!=null)
-    formData.append('id', admin.id+"");
-    formData.append('email', admin.email+"");
-    formData.append('address', admin.address+"");
-    formData.append('phone_number', admin.phone_number+"");
-    formData.append('password', admin.password+"");
-    if (this.currentFile != null) {
-      formData.append('picture_file',this.currentFile,this.currentFile?.name);
-    }
-
-    this.UserService.addAdmin(formData).subscribe({
-      next: () => {
-        this.getAdmins();
-        console.log(formData)
-        this.mise_a_jour=true; 
-        setTimeout(() => {
-          this.mise_a_jour = false;
-        }, 3000); 
-      },
-      error: (e) =>  {console.log(e),this.error=true;},
-      complete: () => {
-        
-
-      }
-    })
+  //   if (admin.id!=null)
+  //   formData.append('id', admin.id+"");
+  //   formData.append('email', admin.email+"");
+  //   formData.append('address', admin.address+"");
+  //   formData.append('phone_number', admin.phone_number+"");
+  //   formData.append('password', admin.password+"");
+  //   if (this.currentFile != null) {
+  //     formData.append('picture_file',this.currentFile,this.currentFile?.name);
+  //   }
+  //   console.log(formData.get('email'));
+  //   console.log(formData.get('password'));
 
 
    
-  }
+    
+  //   this.UserService.addAdmin(formData).subscribe({
+      
+  //     next: () => {
+  //       this.getAdmins();
+  //       console.log(formData)
+  //       this.mise_a_jour=true; 
+  //       setTimeout(() => {
+  //         this.mise_a_jour = false;
+  //       }, 3000); 
+  //     },
+  //     error: (e) =>  {console.log(e),this.error=true;},
+  //     complete: () => {
+        
+
+  //     }
+  //   })
+
+
+   
+  // }
   
   }
 
